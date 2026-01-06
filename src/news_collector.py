@@ -42,7 +42,11 @@ class NewsCollector:
         Returns:
             List of search query strings
         """
-        from .config import ALL_JURISDICTIONS
+        try:
+            from .config import ALL_JURISDICTIONS
+        except ImportError:
+            import config
+            ALL_JURISDICTIONS = config.ALL_JURISDICTIONS
 
         jur_name = ALL_JURISDICTIONS[jurisdiction]['name']
         year = self.end_date.year
@@ -219,7 +223,11 @@ class NewsCollector:
         Returns:
             List of all NewsStory objects
         """
-        from .config import ALL_JURISDICTIONS
+        try:
+            from .config import ALL_JURISDICTIONS
+        except ImportError:
+            import config
+            ALL_JURISDICTIONS = config.ALL_JURISDICTIONS
 
         all_stories = []
 
