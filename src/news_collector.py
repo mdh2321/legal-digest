@@ -19,18 +19,49 @@ class NewsStory:
         self.categories = []
         self.materiality_score = 0.0
         self.relevance_score = 0.0
+        # Enhanced attributes
+        self.credibility_score = 0.0
+        self.why_it_matters = ""
+        self.article_content = ""
+        self.is_url_validated = False
 
     def __repr__(self):
         return f"NewsStory(title={self.title[:50]}, jurisdiction={self.jurisdiction})"
 
 
 class NewsCollector:
-    """Collects legal news stories from web searches."""
+    """Collects legal news stories from web searches with enhanced validation and content fetching."""
 
-    def __init__(self, start_date, end_date):
+    def __init__(self, start_date, end_date, enable_validation=True, enable_content_fetch=True):
         self.start_date = start_date
         self.end_date = end_date
         self.stories = []
+        self.enable_validation = enable_validation
+        self.enable_content_fetch = enable_content_fetch
+
+        # Initialize enhanced modules if enabled
+        self.quality_scorer = None
+        self.url_validator = None
+        self.content_fetcher = None
+
+        if enable_validation or enable_content_fetch:
+            try:
+                from .source_quality import SourceQualityScorer
+                self.quality_scorer = SourceQualityScorer()
+
+                if enable_validation:
+                    from .content_fetcher import URLValidator
+                    self.url_validator = URLValidator()
+
+                if enable_content_fetch:
+                    from .content_fetcher import ContentFetcher
+                    self.content_fetcher = ContentFetcher()
+
+            except ImportError as e:
+                # Fallback if enhanced modules not available
+                print(f"  Note: Enhanced features not available ({e}). Using basic collection.")
+                self.enable_validation = False
+                self.enable_content_fetch = False
 
     def build_search_queries(self, jurisdiction: str) -> List[str]:
         """
@@ -130,7 +161,7 @@ class NewsCollector:
 
     def parse_search_results(self, results: List[Dict], jurisdiction: str) -> List[NewsStory]:
         """
-        Parse search results into NewsStory objects.
+        Parse search results into NewsStory objects with enhanced validation and content fetching.
 
         Args:
             results: List of search result dictionaries
@@ -147,6 +178,20 @@ class NewsCollector:
                 url = self.clean_url(result.get('url', ''))
                 snippet = result.get('snippet', '')
                 source = result.get('source', '')
+
+                # Validate URL if enabled
+                if self.enable_validation and self.url_validator:
+                    is_valid, final_url, error = self.url_validator.validate_url(url)
+                    if not is_valid:
+                        # Skip invalid URLs
+                        continue
+                    url = final_url  # Use final URL after redirects
+
+                # Check source quality
+                if self.quality_scorer:
+                    # Reject low-quality sources
+                    if not self.quality_scorer.is_acceptable_source(url):
+                        continue
 
                 # Try to extract date
                 date_obj = self.extract_date_from_text(snippet)
@@ -166,6 +211,25 @@ class NewsCollector:
                     jurisdiction=jurisdiction,
                     snippet=snippet
                 )
+
+                story.is_url_validated = self.enable_validation
+
+                # Calculate source credibility
+                if self.quality_scorer:
+                    story.credibility_score = self.quality_scorer.calculate_source_credibility(
+                        url, source, jurisdiction
+                    )
+
+                # Fetch full article content if enabled
+                if self.enable_content_fetch and self.content_fetcher:
+                    article = self.content_fetcher.fetch_article(url)
+                    if article and article.get('content'):
+                        story.article_content = article['content']
+                        # Update with better extracted data if available
+                        if article.get('title') and len(article['title']) > len(title):
+                            story.title = article['title']
+                        if article.get('date'):
+                            story.date = article['date']
 
                 stories.append(story)
 

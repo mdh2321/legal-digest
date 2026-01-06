@@ -86,7 +86,7 @@ class StoryRanker:
 
     def calculate_overall_score(self, story: NewsStory) -> float:
         """
-        Calculate overall ranking score.
+        Calculate overall ranking score with source credibility.
 
         Args:
             story: NewsStory object
@@ -94,12 +94,18 @@ class StoryRanker:
         Returns:
             float: Overall score
         """
+        from .config import SOURCE_CREDIBILITY_WEIGHT
+
         materiality = self.calculate_materiality_score(story)
         jurisdiction_priority = self.get_jurisdiction_priority_score(story.jurisdiction)
 
-        # Apply weights
+        # Get source credibility (default to 0.5 if not set)
+        source_credibility = getattr(story, 'credibility_score', 0.5)
+
+        # Apply weights (now includes source credibility)
         overall = (materiality * MATERIALITY_WEIGHT +
-                   jurisdiction_priority * JURISDICTION_WEIGHT)
+                   jurisdiction_priority * JURISDICTION_WEIGHT +
+                   source_credibility * SOURCE_CREDIBILITY_WEIGHT)
 
         # Factor in relevance score from content filter
         if hasattr(story, 'relevance_score'):
