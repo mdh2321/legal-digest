@@ -76,3 +76,10 @@ SEARCH_TEMPLATES = {
 # Ranking weights
 MATERIALITY_WEIGHT = 0.6
 JURISDICTION_WEIGHT = 0.4
+
+# RSS Feed configuration
+RSS_FEED_TITLE = "Weekly APJ Legal Digest"
+RSS_FEED_LINK = "https://example.com/digests"
+RSS_FEED_DESCRIPTION = "Weekly digest of legal news covering Asia-Pacific jurisdictions, focused on technology law developments"
+RSS_MAX_ITEMS = 20
+RSS_INCLUDE_FULL_CONTENT = True  # If False, only include summary
