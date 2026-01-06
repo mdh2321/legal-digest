@@ -82,7 +82,7 @@ class RSSExporter:
     """Exports digests to RSS 2.0 format."""
 
     def __init__(self, channel_title="APAC Legal News Digest",
-                 channel_link="https://example.com/legal-digest",
+                 channel_link="https://mdh2321.github.io/legal-digest",
                  channel_description="Weekly digest of legal news covering Asia-Pacific jurisdictions, focused on technology law developments."):
         self.channel_title = channel_title
         self.channel_link = channel_link

@@ -125,6 +125,32 @@ To customize the RSS feed metadata, edit the channel parameters in `export_rss.p
 - `channel_link`: Feed URL
 - `channel_description`: Feed description
 
+### Deploying to GitHub Pages
+
+To publish the RSS feed via GitHub Pages:
+
+```bash
+python deploy_feed.py
+```
+
+This script will:
+1. Generate the RSS feed from all digest files
+2. Copy the feed to `docs/digest_feed.xml` for GitHub Pages hosting
+3. Provide instructions for enabling GitHub Pages
+
+**First-time setup:**
+1. Run `python deploy_feed.py` to generate the feed
+2. Commit and push the `docs/` directory
+3. Go to repository Settings → Pages
+4. Set Source to "Deploy from a branch"
+5. Select branch `main` and folder `/docs`
+6. Save
+
+**Subscribe URL:** `https://mdh2321.github.io/legal-digest/digest_feed.xml`
+
+**Updating the feed:**
+After generating new digests, run `python deploy_feed.py` again, then commit and push the updated `docs/digest_feed.xml`.
+
 ## System Architecture
 
 ### Core Modules
