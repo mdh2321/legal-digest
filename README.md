@@ -100,6 +100,31 @@ This will run with mock data. To use cached search results:
 python run_digest.py search_results.json
 ```
 
+### RSS Feed Export
+
+Convert generated markdown digests to RSS 2.0 format for feed readers:
+
+```bash
+python export_rss.py
+```
+
+This will:
+- Parse all digest files in the `output/` directory
+- Extract stories with metadata (title, URL, source, summary)
+- Generate an RSS feed at `output/digest_feed.xml`
+- Include up to 10 stories per digest item
+
+The RSS feed can be:
+- Subscribed to in feed readers (Feedly, Inoreader, etc.)
+- Integrated with automation tools (Zapier, IFTTT)
+- Used for email notifications
+- Embedded in websites
+
+To customize the RSS feed metadata, edit the channel parameters in `export_rss.py`:
+- `channel_title`: Feed title
+- `channel_link`: Feed URL
+- `channel_description`: Feed description
+
 ## System Architecture
 
 ### Core Modules

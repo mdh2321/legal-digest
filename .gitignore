@@ -39,6 +39,7 @@ Thumbs.db
 
 # Project specific
 output/*.md
+output/*.xml
 !output/.gitkeep
 search_results.json
 *.log
