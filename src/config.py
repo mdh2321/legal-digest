@@ -21,10 +21,13 @@ ALL_JURISDICTIONS = {**TIER1_JURISDICTIONS, **TIER2_JURISDICTIONS}
 TARGET_STORY_COUNT = (8, 10)  # (min, max)
 TIER2_MAX_STORIES = 3
 
-# Word limits
-MAX_TOTAL_WORDS = 1000
-MAX_INSIGHTS_WORDS = 120
+# Word limits (updated for 5-10 minute read time)
+MAX_TOTAL_WORDS = 2500  # Increased from 1000 for comprehensive coverage
+MAX_STORY_SUMMARY = 150  # Words per story summary
+MAX_EXECUTIVE_SUMMARY = 200  # Words for executive summary
+MAX_INSIGHTS_WORDS = 400  # Increased from 120 for detailed analysis
 MAX_HEADLINE_WORDS = 12
+MAX_SPOTLIGHT_WORDS = 300  # For deep dive section
 
 # Content exclusion keywords
 EXCLUDE_TOPICS = [
@@ -74,5 +77,54 @@ SEARCH_TEMPLATES = {
 }
 
 # Ranking weights
-MATERIALITY_WEIGHT = 0.6
-JURISDICTION_WEIGHT = 0.4
+MATERIALITY_WEIGHT = 0.5  # Reduced slightly to balance with source credibility
+JURISDICTION_WEIGHT = 0.3
+SOURCE_CREDIBILITY_WEIGHT = 0.2  # New: Factor in source quality
+
+# Enhanced source configurations
+PRIORITY_SOURCES = {
+    'AU': {
+        'official': [
+            'legislation.gov.au', 'aph.gov.au', 'treasury.gov.au',
+            'accc.gov.au', 'asic.gov.au', 'oaic.gov.au', 'esafety.gov.au',
+            'fedcourt.gov.au', 'hcourt.gov.au'
+        ],
+        'news': [
+            'afr.com', 'theaustralian.com.au', 'smh.com.au', 'abc.net.au'
+        ]
+    },
+    'SG': {
+        'official': [
+            'mas.gov.sg', 'imda.gov.sg', 'pdpc.gov.sg', 'csa.gov.sg',
+            'agc.gov.sg', 'parliament.gov.sg', 'judiciary.gov.sg'
+        ],
+        'news': [
+            'straitstimes.com', 'businesstimes.com.sg', 'channelnewsasia.com'
+        ]
+    },
+    'JP': {
+        'official': [
+            'digital.go.jp', 'meti.go.jp', 'fsa.go.jp', 'ppc.go.jp',
+            'courts.go.jp'
+        ],
+        'news': [
+            'japantimes.co.jp', 'nikkei.com', 'japantoday.com'
+        ]
+    },
+    'HK': {
+        'official': [
+            'gov.hk', 'hkma.gov.hk', 'pcpd.org.hk', 'judiciary.hk'
+        ],
+        'news': [
+            'scmp.com', 'thestandard.com.hk'
+        ]
+    },
+    'IN': {
+        'official': [
+            'rbi.org.in', 'meity.gov.in', 'cert-in.org.in', 'nic.in'
+        ],
+        'news': [
+            'economictimes.indiatimes.com', 'livemint.com', 'thehindu.com'
+        ]
+    }
+}

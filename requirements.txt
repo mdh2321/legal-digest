@@ -8,6 +8,13 @@ requests>=2.31.0
 beautifulsoup4>=4.12.0
 lxml>=4.9.0
 
+# Content extraction and fetching
+trafilatura>=1.6.0
+newspaper3k>=0.2.8
+
+# LLM integration for enhanced summaries
+anthropic>=0.18.0
+
 # Development dependencies (optional)
 pytest>=7.4.0
 black>=23.0.0
