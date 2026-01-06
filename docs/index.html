@@ -3,28 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APAC Legal News Digest - RSS Feed</title>
+    <title>APAC Legal News Digest</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            max-width: 800px;
+            max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
             line-height: 1.6;
             color: #333;
+            background: #f9f9f9;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         h1 {
             color: #2c3e50;
             border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .intro {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        .rss-section {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        .rss-section h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.3em;
         }
         .feed-url {
-            background: #f4f4f4;
-            padding: 15px;
-            border-radius: 5px;
+            background: #fff;
+            padding: 12px;
+            border-radius: 4px;
             font-family: 'Courier New', monospace;
-            margin: 20px 0;
+            font-size: 0.9em;
+            margin: 15px 0;
             word-break: break-all;
+            border: 1px solid #ddd;
         }
         .subscribe-btn {
             display: inline-block;
@@ -35,100 +63,146 @@
             border-radius: 5px;
             margin: 10px 10px 10px 0;
             transition: background 0.3s;
+            font-weight: 500;
         }
         .subscribe-btn:hover {
             background: #2980b9;
         }
-        .info-box {
-            background: #e8f4f8;
+        .digests-section {
+            margin-top: 40px;
+        }
+        .digests-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        .digest-list {
+            list-style: none;
+            padding: 0;
+        }
+        .digest-item {
+            background: #f8f9fa;
+            margin: 12px 0;
+            border-radius: 4px;
+            transition: all 0.2s;
             border-left: 4px solid #3498db;
-            padding: 15px;
-            margin: 20px 0;
         }
-        .coverage {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 15px 0;
+        .digest-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        .jurisdiction {
-            background: #ecf0f1;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 14px;
+        .digest-link {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #2c3e50;
+        }
+        .digest-date {
+            font-weight: 600;
+            color: #3498db;
+            font-size: 1.1em;
+        }
+        .digest-title {
+            color: #555;
+            font-size: 0.95em;
+            margin-top: 5px;
         }
         footer {
-            margin-top: 40px;
+            margin-top: 50px;
             padding-top: 20px;
             border-top: 1px solid #ddd;
             text-align: center;
             color: #777;
-            font-size: 14px;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>📰 APAC Legal News Digest</h1>
+    <div class="container">
+        <h1>📰 APAC Legal News Digest</h1>
 
-    <p>Weekly digest of legal news covering Asia-Pacific jurisdictions, focused on technology law developments relevant to global tech companies.</p>
-
-    <div class="info-box">
-        <h2>🔔 Subscribe to the RSS Feed</h2>
-        <p>Copy this URL into your favorite RSS reader:</p>
-        <div class="feed-url">
-            https://mdh2321.github.io/legal-digest/digest_feed.xml
+        <div class="intro">
+            The APAC Legal News Digest provides weekly curated updates on technology law developments across
+            Asia-Pacific jurisdictions. Each digest focuses on regulatory changes, policy updates, and legal
+            developments in areas like AI/ML regulation, data privacy, cybersecurity, cloud computing, and fintech
+            that matter to global technology companies operating in the region. Our coverage spans Australia,
+            Singapore, Japan, and key emerging markets including New Zealand, Philippines, Hong Kong, Vietnam,
+            and India.
         </div>
 
-        <a href="https://mdh2321.github.io/legal-digest/digest_feed.xml" class="subscribe-btn">📡 View RSS Feed</a>
-        <a href="https://github.com/mdh2321/legal-digest" class="subscribe-btn" style="background: #2c3e50;">💻 View on GitHub</a>
+        <div class="rss-section">
+            <h2>🔔 Subscribe via RSS</h2>
+            <p>Get automatic updates in your feed reader:</p>
+            <div class="feed-url">
+                https://mdh2321.github.io/legal-digest/digest_feed.xml
+            </div>
+            <a href="digest_feed.xml" class="subscribe-btn">📡 Subscribe to Feed</a>
+            <a href="https://github.com/mdh2321/legal-digest" class="subscribe-btn" style="background: #2c3e50;">💻 View on GitHub</a>
+        </div>
+
+        <div class="digests-section">
+            <h2>📚 Published Digests</h2>
+            <ul class="digest-list" id="digestList">
+                <!-- Digest list will be inserted here -->
+            </ul>
+        </div>
+
+        <footer>
+            <p>Generated using the <a href="https://github.com/mdh2321/legal-digest">APAC Legal News Digest Generator</a></p>
+        </footer>
     </div>
 
-    <h2>Coverage</h2>
+    <script>
+        // Digest list data - will be populated by build script
+        const digests = [
+            {
+                        "date": "2026-01-05",
+                        "title": "Weekly APJ Legal Digest \u2014 30 Dec 2025 \u2013 5 Jan 2026 (\u2248847 words)",
+                        "file": "digest_2026-01-05.html"
+            }
+];
 
-    <h3>Tier 1 Jurisdictions (minimum 1 story each)</h3>
-    <div class="coverage">
-        <span class="jurisdiction">🇦🇺 Australia</span>
-        <span class="jurisdiction">🇸🇬 Singapore</span>
-        <span class="jurisdiction">🇯🇵 Japan</span>
-    </div>
+        // Populate digest list
+        const digestList = document.getElementById('digestList');
 
-    <h3>Tier 2 Jurisdictions (up to 3 stories total)</h3>
-    <div class="coverage">
-        <span class="jurisdiction">🇳🇿 New Zealand</span>
-        <span class="jurisdiction">🇵🇭 Philippines</span>
-        <span class="jurisdiction">🇭🇰 Hong Kong</span>
-        <span class="jurisdiction">🇻🇳 Vietnam</span>
-        <span class="jurisdiction">🇮🇳 India</span>
-    </div>
+        if (digests.length === 0) {
+            digestList.innerHTML = '<li style="padding: 20px; text-align: center; color: #777;">No digests published yet.</li>';
+        } else {
+            digests.forEach(digest => {
+                const li = document.createElement('li');
+                li.className = 'digest-item';
 
-    <h2>Content Focus Areas</h2>
-    <ul>
-        <li>AI/ML regulation</li>
-        <li>Data privacy & protection</li>
-        <li>Cybersecurity requirements</li>
-        <li>Cloud computing</li>
-        <li>Electronic signatures</li>
-        <li>Contract law</li>
-        <li>Competition & antitrust</li>
-        <li>Consumer protection</li>
-        <li>Corporate governance</li>
-        <li>Fintech & financial services</li>
-        <li>Anti-money laundering (AML)</li>
-        <li>Anti-bribery & corruption</li>
-    </ul>
+                const a = document.createElement('a');
+                a.href = digest.file;
+                a.className = 'digest-link';
 
-    <h2>Compatible RSS Readers</h2>
-    <ul>
-        <li><a href="https://feedly.com">Feedly</a></li>
-        <li><a href="https://www.inoreader.com">Inoreader</a></li>
-        <li><a href="https://theoldreader.com">The Old Reader</a></li>
-        <li><a href="https://newsblur.com">NewsBlur</a></li>
-        <li>Any RSS/Atom feed reader</li>
-    </ul>
+                const dateSpan = document.createElement('div');
+                dateSpan.className = 'digest-date';
+                dateSpan.textContent = new Date(digest.date).toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
 
-    <footer>
-        <p>Generated using the APAC Legal News Digest Generator</p>
-        <p><a href="https://github.com/mdh2321/legal-digest">GitHub Repository</a></p>
-    </footer>
+                const titleSpan = document.createElement('div');
+                titleSpan.className = 'digest-title';
+                titleSpan.textContent = digest.title;
+
+                a.appendChild(dateSpan);
+                a.appendChild(titleSpan);
+                li.appendChild(a);
+                digestList.appendChild(li);
+            });
+        }
+    </script>
 </body>
 </html>
