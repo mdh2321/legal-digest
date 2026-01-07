@@ -21,6 +21,7 @@ from src.story_selector import StorySelector
 from src.formatter import DigestFormatter
 from src.insights_generator import InsightsGenerator
 from src.qa_validator import QAValidator
+from src.rss_generator import RSSGenerator
 
 
 class DigestGenerator:
@@ -38,12 +39,14 @@ class DigestGenerator:
         self.start_date = None
         self.end_date = None
 
-    def run(self, output_dir: str = 'output', verbose: bool = True):
+    def run(self, output_dir: str = 'output', output_format: str = 'markdown',
+            verbose: bool = True):
         """
         Run the complete digest generation process.
 
         Args:
             output_dir: Directory to save output
+            output_format: Output format - 'markdown' or 'rss'
             verbose: Print progress messages
         """
         if verbose:
@@ -126,7 +129,7 @@ class DigestGenerator:
 
         # Step 7: Format digest
         if verbose:
-            print("\n[7/8] Formatting digest...")
+            print(f"\n[7/8] Formatting digest ({output_format})...")
 
         formatter = DigestFormatter(self.start_date, self.end_date)
 
@@ -135,11 +138,18 @@ class DigestGenerator:
             for i, story in enumerate(stories):
                 selected_stories[jur][i] = formatter.expand_acronyms_in_story(story)
 
-        digest_text = formatter.format_digest(selected_stories, insights)
-
-        if verbose:
-            total_words = len(digest_text.split())
-            print(f"  Formatted digest ({total_words} words)")
+        if output_format == 'rss':
+            rss_gen = RSSGenerator(self.start_date, self.end_date)
+            digest_text = rss_gen.generate_feed(selected_stories, insights)
+            file_extension = 'xml'
+            if verbose:
+                print(f"  Generated RSS feed")
+        else:
+            digest_text = formatter.format_digest(selected_stories, insights)
+            file_extension = 'md'
+            if verbose:
+                total_words = len(digest_text.split())
+                print(f"  Formatted digest ({total_words} words)")
 
         # Step 8: Validate
         if verbose:
@@ -166,7 +176,7 @@ class DigestGenerator:
         output_path = Path(output_dir)
         output_path.mkdir(exist_ok=True)
 
-        filename = f"digest_{self.end_date.strftime('%Y-%m-%d')}.md"
+        filename = f"digest_{self.end_date.strftime('%Y-%m-%d')}.{file_extension}"
         output_file = output_path / filename
 
         with open(output_file, 'w', encoding='utf-8') as f:

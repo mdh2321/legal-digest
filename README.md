@@ -1,49 +1,61 @@
 # APAC Legal News Digest Generator
 
-An automated system to generate weekly legal news digests covering Asia-Pacific jurisdictions, focused on technology law developments relevant to global tech companies.
+An automated system to generate weekly legal news digests covering Asia-Pacific jurisdictions, focused on technology law developments relevant to global SaaS companies.
 
 ## Overview
 
 This system automatically:
-- Collects legal news from APAC jurisdictions (AU, SG, JP, NZ, PH, HK, VN, IN)
-- Filters for technology-relevant topics (AI, data privacy, cybersecurity, etc.)
+- Collects legal news from 10 APAC jurisdictions (AU, SG, JP, IN, PH, ID, HK, KR, NZ, VN)
+- Filters for technology-relevant topics (AI, data privacy, eSignatures, tax, etc.)
 - Ranks stories by materiality and jurisdiction priority
-- Generates formatted markdown digests with regional insights
+- Generates **RSS feeds** or markdown digests with regional insights
+- Includes SaaS-specific relevance analysis and key takeaways
 - Validates output against quality standards
 
 ## Features
 
 ### Jurisdiction Coverage
-**Tier 1** (minimum 1 story each):
+**Tier 1 (Priority)** - minimum 1 story each:
 - 🇦🇺 Australia
 - 🇸🇬 Singapore
 - 🇯🇵 Japan
 
-**Tier 2** (maximum 3 stories total):
-- 🇳🇿 New Zealand
-- 🇵🇭 Philippines
-- 🇭🇰 Hong Kong
-- 🇻🇳 Vietnam
+**Tier 2** - maximum 3 stories total:
 - 🇮🇳 India
+- 🇵🇭 Philippines
+- 🇮🇩 Indonesia
+- 🇭🇰 Hong Kong
+- 🇰🇷 South Korea
+- 🇳🇿 New Zealand
+- 🇻🇳 Vietnam
 
 ### Content Focus Areas
-- AI/ML regulation
-- Data privacy & protection
+- AI/ML regulation & governance
+- Data privacy & protection (cross-border transfers, data localization)
 - Cybersecurity requirements
-- Cloud computing
-- Electronic signatures
-- Contract law
-- Competition & antitrust
-- Consumer protection
-- Corporate governance
+- Cloud & SaaS (software licensing, subscription services)
+- Electronic signatures & digital identity
+- Contract law (standard terms, limitation of liability)
+- Competition & digital markets
+- Consumer protection (unfair contract terms)
+- Corporate governance & ESG
 - Fintech & financial services
+- Tax (digital services tax, transfer pricing)
 - Anti-money laundering (AML)
 - Anti-bribery & corruption
+- Outsourcing & vendor management
 
-### Output Format
+### Output Formats
+
+**RSS Feed** (default, for Readwise Reader and other RSS readers):
+- Valid RSS 2.0 with `content:encoded` for rich content
+- Each story includes: headline, executive summary, key takeaways, SaaS relevance
+- Categories for country and practice areas (enables filtering)
+- Clean source URLs
+
+**Markdown** (alternative):
 - Target: 8-10 stories
 - Maximum: 1,000 words
-- Markdown formatted
 - Region insights (≤120 words)
 - Source citations with clean URLs
 - Category tags
@@ -91,14 +103,24 @@ The primary way to use this system is through Claude Code, which provides web se
 For testing without web search:
 
 ```bash
-python run_digest.py
+# Generate RSS feed (default)
+python run_digest.py --format rss
+
+# Generate Markdown digest
+python run_digest.py --format markdown
+
+# Use cached search results
+python run_digest.py --format rss --results search_results.json
+
+# Specify output directory
+python run_digest.py --format rss --output ./digests
 ```
 
-This will run with mock data. To use cached search results:
-
-```bash
-python run_digest.py search_results.json
-```
+**CLI Options:**
+- `--format, -f`: Output format (`rss` or `markdown`, default: `rss`)
+- `--output, -o`: Output directory (default: `output`)
+- `--results, -r`: JSON file with cached search results
+- `--quiet, -q`: Suppress progress output
 
 ## System Architecture
 
@@ -113,6 +135,7 @@ src/
 ├── story_ranker.py        # Materiality-based ranking
 ├── story_selector.py      # Story selection logic
 ├── formatter.py           # Markdown output generation
+├── rss_generator.py       # RSS 2.0 feed generation
 ├── insights_generator.py  # Regional trend analysis
 └── qa_validator.py        # Quality assurance checks
 ```
@@ -264,6 +287,14 @@ For issues or questions:
 4. Consult Claude Code documentation
 
 ## Version History
+
+- **1.1.0** (2026-01-07): RSS Feed Support
+  - Added RSS 2.0 feed generation for Readwise Reader
+  - Added SaaS-specific relevance analysis and key takeaways
+  - Expanded jurisdiction coverage to 10 (added Korea, Indonesia)
+  - Added Tax category for digital services tax tracking
+  - Enhanced topic keywords for SaaS company relevance
+  - CLI now defaults to RSS output format
 
 - **1.0.0** (2026-01-06): Initial release
   - Core digest generation pipeline
