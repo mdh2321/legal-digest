@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>APAC Legal Digest - Week of 05 January 2026</title>
+    <link>https://mdh2321.github.io/legal-digest/</link>
+    <description>Weekly legal and regulatory news digest for global technology companies operating in Asia-Pacific. Covering Australia, Singapore, Japan, and other APAC jurisdictions.</description>
+    <language>en</language>
+    <lastBuildDate>Wed, 08 Jan 2026 12:00:00 +0000</lastBuildDate>
+    <ttl>10080</ttl>
+    <item>
+      <title>South Korea AI Framework Act Takes Effect January 22, 2026</title>
+      <link>https://fpf.org/blog/south-koreas-new-ai-framework-act-a-balancing-act-between-innovation-and-regulation/</link>
+      <pubDate>Mon, 06 Jan 2026 00:00:00 +0000</pubDate>
+      <category>South Korea</category>
+      <category>AI/ML</category>
+      <category>Competition</category>
+      <description>South Korea becomes the first APAC jurisdiction to implement comprehensive AI legislation. The Framework Act introduces mandatory obligations for high-impact AI systems in healthcare, energy, and public services, plus labeling requirements for generative AI content.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>High-impact AI systems in 11 specified areas face new compliance requirements including impact assessments, risk management, and human oversight</li>
+          <li>Mandatory watermarking and labeling required for AI-generated content - assess product implications</li>
+          <li>Foreign companies must appoint a domestic representative in Korea if no local presence</li>
+        </ul>
+        <h2>Why This Matters for SaaS Companies</h2>
+        <p>First comprehensive AI law in APAC creates compliance obligations for any AI-powered features used by Korean customers. Generative AI labeling requirements may affect product UX. Penalties up to KRW 30 million (~$20,870) and potential imprisonment for violations.</p>
+        <p><em>Country: South Korea | Topics: AI/ML, Competition, Corporate Governance</em></p>
+        <p><a href="https://fpf.org/blog/south-koreas-new-ai-framework-act-a-balancing-act-between-innovation-and-regulation/">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Japan Seeks Public Comment on AI Training Data Disclosure Requirements</title>
+      <link>https://thelegalwire.ai/japans-cabinet-office-seeking-public-comment-on-a-draft-principles-code-that-would-press-generative-ai-businesses-to-disclose-model-training-and-web-crawling-practices-and-respond-to-limited/</link>
+      <pubDate>Mon, 06 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Japan</category>
+      <category>AI/ML</category>
+      <category>Data Privacy</category>
+      <description>Japan's Cabinet Office opens consultation on draft principles code requiring generative AI businesses to disclose model training and web crawling practices. Consultation closes January 26, 2026.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Draft code introduces dispute-triggered disclosure pathways for rights holders to verify if copyrighted materials were used in training</li>
+          <li>JIPDEC launching AI Governance Mark for government procurement eligibility in 2026</li>
+          <li>Technical safeguards like digital watermarking emphasized in guidance</li>
+        </ul>
+        <h2>Why This Matters for SaaS Companies</h2>
+        <p>While Japan maintains a lighter-touch voluntary approach compared to EU/Korea, this signals increasing transparency expectations. Companies using third-party AI models should assess training data provenance and prepare for potential disclosure requests.</p>
+        <p><em>Country: Japan | Topics: AI/ML, Data Privacy, Contract Law</em></p>
+        <p><a href="https://thelegalwire.ai/japans-cabinet-office-seeking-public-comment-on-a-draft-principles-code-that-would-press-generative-ai-businesses-to-disclose-model-training-and-web-crawling-practices-and-respond-to-limited/">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Australia's Privacy Reforms: Automated Decision-Making Disclosure Takes Effect December 2026</title>
+      <link>https://www.corrs.com.au/insights/australias-ongoing-privacy-reforms-bolstering-australias-privacy-regulatory-framework</link>
+      <pubDate>Sun, 05 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Australia</category>
+      <category>AI/ML</category>
+      <category>Data Privacy</category>
+      <description>Privacy and Other Legislation Amendment Act 2024 reforms require privacy policies to disclose automated decision-making by December 10, 2026. OAIC developing Children's Online Privacy Code on same timeline.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review privacy policies now - must disclose any automated decision-making affecting individuals by December 2026</li>
+          <li>OAIC actively regulating AI through Privacy Act interpretation rather than waiting for dedicated legislation</li>
+          <li>Regulators launching compliance sweeps of public-facing policies in early 2026</li>
+        </ul>
+        <h2>Why This Matters for SaaS Companies</h2>
+        <p>Automated decision-making transparency requirements will apply to any algorithmic processing that affects Australian users. Start auditing AI/ML features now to identify what needs disclosure. The OAIC's proactive enforcement approach means early compliance is advisable.</p>
+        <p><em>Country: Australia | Topics: AI/ML, Data Privacy, Consumer Protection</em></p>
+        <p><a href="https://www.corrs.com.au/insights/australias-ongoing-privacy-reforms-bolstering-australias-privacy-regulatory-framework">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Australia Launches AI Safety Institute with AUD 29.9 Million Funding</title>
+      <link>https://iapp.org/news/a/australia-unveils-ai-policy-roadmap</link>
+      <pubDate>Fri, 03 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Australia</category>
+      <category>AI/ML</category>
+      <category>Corporate Governance</category>
+      <description>Australian government commits AUD 29.9 million to establish AI Safety Institute in early 2026, tasked with holding tech companies accountable for AI products and ensuring compliance with Australian laws before market release.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>AI Safety Institute will assess AI products for compliance before market placement</li>
+          <li>Government maintaining "innovation-first" approach by embedding AI obligations into existing frameworks rather than standalone legislation</li>
+          <li>Privacy reform becoming primary vehicle for regulating AI risk in Australia</li>
+        </ul>
+        <h2>Why This Matters for SaaS Companies</h2>
+        <p>The AI Safety Institute signals increased government scrutiny of AI-powered products. Companies launching AI features in Australia should anticipate pre-market compliance assessments. Engage early with the Institute to understand expectations.</p>
+        <p><em>Country: Australia | Topics: AI/ML, Corporate Governance, Competition</em></p>
+        <p><a href="https://iapp.org/news/a/australia-unveils-ai-policy-roadmap">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Singapore PDPA Enforcement Intensifies: 250+ Cases and Rising</title>
+      <link>https://practiceguides.chambers.com/practice-guides/data-protection-privacy-2025/singapore/trends-and-developments</link>
+      <pubDate>Thu, 02 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Singapore</category>
+      <category>Data Privacy</category>
+      <category>Cybersecurity</category>
+      <description>Singapore's PDPC takes more proactive enforcement stance with over 250 published enforcement decisions. Significant cases involve breaches of Protection Obligation arising from ransomware attacks and cybersecurity incidents.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>PDPC enforcement focus on cybersecurity incidents - ensure security controls meet Protection Obligation standards</li>
+          <li>Data breach notification required within 3 calendar days of determination</li>
+          <li>Data portability provisions passed but not yet in effect - prepare for machine-readable export requirements</li>
+        </ul>
+        <h2>Why This Matters for SaaS Companies</h2>
+        <p>Singapore's enforcement trend emphasizes security. Review incident response procedures to ensure 3-day notification timeline is achievable. Upcoming data portability will require data export capabilities in commonly used machine-readable formats.</p>
+        <p><em>Country: Singapore | Topics: Data Privacy, Cybersecurity, Consumer Protection</em></p>
+        <p><a href="https://practiceguides.chambers.com/practice-guides/data-protection-privacy-2025/singapore/trends-and-developments">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>India DPDP Rules 2025 Now In Force: 12-18 Month Compliance Timeline Begins</title>
+      <link>https://www.hoganlovells.com/en/publications/indias-digital-personal-data-protection-act-2023-brought-into-force-</link>
+      <pubDate>Wed, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <category>India</category>
+      <category>Data Privacy</category>
+      <category>Corporate Governance</category>
+      <description>India's Digital Personal Data Protection Rules 2025 operationalize the DPDPA with phased implementation. Core compliance requirements due within 12-18 months including consent managers, DPOs, and 72-hour breach notification.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Implement consent management systems and appoint Data Protection Officers for India operations</li>
+          <li>72-hour breach notification requirement to Data Protection Board and affected individuals</li>
+          <li>Penalties up to INR 250 crore (~USD 27.5 million) for serious violations</li>
+        </ul>
+        <h2>Why This Matters for SaaS Companies</h2>
+        <p>DPDPA applies extraterritorially to foreign entities offering goods/services to Indian data principals. Start compliance program now given 12-18 month implementation timeline. "Significant Data Fiduciary" designations expected in 2026 will trigger additional obligations.</p>
+        <p><em>Country: India | Topics: Data Privacy, Corporate Governance, Contract Law</em></p>
+        <p><a href="https://www.hoganlovells.com/en/publications/indias-digital-personal-data-protection-act-2023-brought-into-force-">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>New Zealand Privacy Amendment Act: Indirect Collection Disclosure Required by May 2026</title>
+      <link>https://www.hunton.com/privacy-and-information-security-law/new-zealand-privacy-amendment-act-2025-introduces-new-notification-requirements</link>
+      <pubDate>Tue, 31 Dec 2025 00:00:00 +0000</pubDate>
+      <category>New Zealand</category>
+      <category>Data Privacy</category>
+      <category>Consumer Protection</category>
+      <description>New Zealand's Privacy Amendment Act 2025 introduces Information Privacy Principle 3A requiring organizations to notify individuals when personal information is collected from third-party sources. Takes effect May 1, 2026.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>New IPP 3A requires disclosure when collecting personal data from sources other than the individual</li>
+          <li>Change driven by EU adequacy requirements - maintains NZ-EU data transfer arrangements</li>
+          <li>Biometrics Processing Privacy Code also taking effect, limiting "intrusive uses" like emotion prediction</li>
+        </ul>
+        <h2>Why This Matters for SaaS Companies</h2>
+        <p>Review data collection practices for any third-party data enrichment or integration scenarios. Update privacy notices to disclose indirect collection. The biometrics code limits AI features that infer sensitive attributes from biometric data.</p>
+        <p><em>Country: New Zealand | Topics: Data Privacy, Consumer Protection, AI/ML</em></p>
+        <p><a href="https://www.hunton.com/privacy-and-information-security-law/new-zealand-privacy-amendment-act-2025-introduces-new-notification-requirements">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Region Insights - 05 January 2026</title>
+      <link>https://mdh2321.github.io/legal-digest/</link>
+      <pubDate>Wed, 08 Jan 2026 12:00:00 +0000</pubDate>
+      <category>Analysis</category>
+      <category>APAC</category>
+      <description>Cross-jurisdictional trends and upcoming regulatory developments for the week.</description>
+      <content:encoded><![CDATA[
+        <h2>Regional Trends</h2>
+        <ul>
+          <li><strong>AI Governance Acceleration:</strong> South Korea's AI Framework Act (effective Jan 22) joins Japan's AI Promotion Act as APAC's first comprehensive AI laws. Australia taking enforcement-led approach through privacy reforms.</li>
+          <li><strong>Privacy Enforcement Maturation:</strong> Singapore, India, and Australia all showing increased enforcement activity. 72-hour breach notification becoming regional standard.</li>
+          <li><strong>Cross-border Alignment:</strong> New Zealand's privacy changes driven by EU adequacy requirements signal ongoing harmonization pressure across region.</li>
+        </ul>
+        <h2>Key Dates</h2>
+        <ul>
+          <li><strong>Jan 22, 2026:</strong> South Korea AI Framework Act takes effect</li>
+          <li><strong>Jan 26, 2026:</strong> Japan AI principles code consultation closes</li>
+          <li><strong>May 1, 2026:</strong> New Zealand IPP 3A takes effect</li>
+          <li><strong>Dec 10, 2026:</strong> Australia automated decision-making disclosure required</li>
+        </ul>
+        <p><em>Analysis based on this week's regulatory developments across APAC.</em></p>
+      ]]></content:encoded>
+    </item>
+  </channel>
+</rss>
