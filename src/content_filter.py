@@ -146,21 +146,45 @@ class ContentFilter:
             Text with acronyms expanded
         """
         acronym_map = {
+            # Technology
             'AI': 'Artificial Intelligence (AI)',
             'ML': 'Machine Learning (ML)',
-            'GDPR': 'General Data Protection Regulation (GDPR)',
-            'PDPA': 'Personal Data Protection Act (PDPA)',
-            'PDPC': 'Personal Data Protection Commission (PDPC)',
-            'AML': 'Anti-Money Laundering (AML)',
-            'KYC': 'Know Your Customer (KYC)',
             'API': 'Application Programming Interface (API)',
             'SaaS': 'Software as a Service (SaaS)',
             'PaaS': 'Platform as a Service (PaaS)',
             'IaaS': 'Infrastructure as a Service (IaaS)',
+            # Privacy & Data
+            'GDPR': 'General Data Protection Regulation (GDPR)',
+            'PDPA': 'Personal Data Protection Act (PDPA)',
+            'PDPC': 'Personal Data Protection Commission (PDPC)',
+            'PIPL': 'Personal Information Protection Law (PIPL)',
+            'DPDP': 'Digital Personal Data Protection (DPDP)',
+            'DPA': 'Data Protection Authority (DPA)',
+            # Financial
+            'AML': 'Anti-Money Laundering (AML)',
+            'KYC': 'Know Your Customer (KYC)',
+            'CFT': 'Counter Financing of Terrorism (CFT)',
+            # Governance
             'ESG': 'Environmental, Social, and Governance (ESG)',
+            # Australian Regulators
             'ACCC': 'Australian Competition and Consumer Commission (ACCC)',
+            'ASIC': 'Australian Securities and Investments Commission (ASIC)',
+            'OAIC': 'Office of the Australian Information Commissioner (OAIC)',
+            'APRA': 'Australian Prudential Regulation Authority (APRA)',
+            # Singapore Regulators
             'MAS': 'Monetary Authority of Singapore (MAS)',
-            'ASIC': 'Australian Securities and Investments Commission (ASIC)'
+            'IMDA': 'Infocomm Media Development Authority (IMDA)',
+            # Japan Regulators
+            'PPC': 'Personal Information Protection Commission (PPC)',
+            'FSA': 'Financial Services Agency (FSA)',
+            'METI': 'Ministry of Economy, Trade and Industry (METI)',
+            # India Regulators
+            'RBI': 'Reserve Bank of India (RBI)',
+            'SEBI': 'Securities and Exchange Board of India (SEBI)',
+            # Other
+            'DST': 'Digital Services Tax (DST)',
+            'B2B': 'Business-to-Business (B2B)',
+            'B2C': 'Business-to-Consumer (B2C)'
         }
 
         result = text

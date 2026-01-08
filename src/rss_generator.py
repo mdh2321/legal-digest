@@ -1,5 +1,6 @@
 """RSS 2.0 feed generator for legal news digest."""
 import html
+import re
 from datetime import datetime
 from email.utils import formatdate
 from typing import List, Dict, Optional
@@ -44,6 +45,35 @@ class RSSGenerator:
         if not text:
             return ""
         return html.escape(text, quote=True)
+
+    def _add_bold_emphasis(self, text: str) -> str:
+        """
+        Add bold emphasis to important legal/regulatory terms.
+
+        Args:
+            text: Text to process
+
+        Returns:
+            Text with key terms wrapped in <strong> tags
+        """
+        # Important terms to bold for scannability
+        important_terms = [
+            'compliance', 'mandatory', 'required', 'enforcement',
+            'penalty', 'penalties', 'fine', 'fines',
+            'deadline', 'effective date', 'implementation',
+            'new law', 'new regulation', 'amendment',
+            'data protection', 'privacy', 'AI governance',
+            'cross-border', 'data transfer', 'consent',
+            'notification', 'breach', 'incident response'
+        ]
+
+        result = text
+        for term in important_terms:
+            # Case-insensitive replacement, preserving original case
+            pattern = re.compile(re.escape(term), re.IGNORECASE)
+            result = pattern.sub(lambda m: f'<strong>{m.group(0)}</strong>', result)
+
+        return result
 
     def generate_saas_relevance(self, story: NewsStory) -> str:
         """
@@ -206,14 +236,14 @@ class RSSGenerator:
         # Source name
         source_name = story.source if story.source else 'Source'
 
-        # Build content:encoded HTML
+        # Build content:encoded HTML with bold emphasis on key terms
         content_html = f"""<h2>Key Takeaways</h2>
         <ul>
 {takeaways_html}
         </ul>
         <h2>Why This Matters for SaaS Companies</h2>
-        <p>{self.escape_xml(relevance)}</p>
-        <p><em>Country: {self.escape_xml(jur_name)} | Topics: {', '.join(self.escape_xml(c) for c in categories[:3])}</em></p>
+        <p>{self._add_bold_emphasis(self.escape_xml(relevance))}</p>
+        <p><em>Country: <strong>{self.escape_xml(jur_name)}</strong> | Topics: {', '.join(f'<strong>{self.escape_xml(c)}</strong>' for c in categories[:3])}</em></p>
         <p><a href="{self.escape_xml(story.url)}">Read full article &rarr;</a></p>"""
 
         # Escape title

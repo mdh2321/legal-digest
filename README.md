@@ -235,6 +235,57 @@ MATERIALITY_WEIGHT = 0.7  # Increase focus on materiality
 JURISDICTION_WEIGHT = 0.3
 ```
 
+## Editorial Guidelines
+
+### Writing Style
+- Use **straightforward, jargon-free language** with short sentences
+- **Bold important terms or phrases** to highlight essential information
+- Keep summaries concise and scannable
+- Write for a legal professional audience at a global technology company
+
+### Acronym Handling
+- **Expand the first acronym in each story** on first use
+- Format: "PDPC (Personal Data Protection Commission)"
+- Subsequent uses can use the acronym alone
+- Common expansions are handled automatically by the formatter
+
+### Link Quality
+- All URLs must be **clean, human-readable permalinks**
+- Remove tracking parameters (utm_*, fbclid, gclid, etc.)
+- Prefer official source URLs over aggregator links
+- Verify links are accessible before inclusion
+
+### Jurisdiction Coverage
+- If **no relevant stories** are available for a Tier 1 jurisdiction in the target week, **clearly state this** rather than including outdated material
+- Example: "🇯🇵 Japan: No significant technology law developments this week"
+- Never backfill with older articles to meet quotas
+
+## Pre-Flight Checklist
+
+Before finalizing each digest, verify:
+
+**Date Compliance**
+- [ ] All stories published within target week (Monday-Sunday)
+- [ ] Publication dates cross-checked against source articles
+- [ ] No articles older than 7 days from digest date
+
+**Content Quality**
+- [ ] Important terms bolded for scannability
+- [ ] Acronyms expanded on first use per story
+- [ ] Language is clear and jargon-free
+- [ ] Summaries are concise (2-3 sentences max)
+
+**Technical Quality**
+- [ ] All URLs are clean permalinks (no tracking params)
+- [ ] Links verified as accessible
+- [ ] No duplicate stories
+- [ ] Correct jurisdiction tagging
+
+**Coverage Requirements**
+- [ ] Tier 1 jurisdictions addressed (AU, SG, JP) - or noted as no news
+- [ ] Tier 2 stories limited to 3 maximum
+- [ ] Total stories: 5-10 range
+
 ## Strict Date Filtering
 
 **CRITICAL**: Only articles published within the target week (Monday-Sunday) are included.
