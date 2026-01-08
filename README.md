@@ -256,8 +256,7 @@ JURISDICTION_WEIGHT = 0.3
 - Verify links are accessible before inclusion
 
 ### Jurisdiction Coverage
-- If **no relevant stories** are available for a Tier 1 jurisdiction in the target week, **clearly state this** rather than including outdated material
-- Example: "🇯🇵 Japan: No significant technology law developments this week"
+- If **no relevant stories** are available for a jurisdiction in the target week, **omit it** rather than including outdated material
 - Never backfill with older articles to meet quotas
 
 ## Pre-Flight Checklist
@@ -282,9 +281,9 @@ Before finalizing each digest, verify:
 - [ ] Correct jurisdiction tagging
 
 **Coverage Requirements**
-- [ ] Tier 1 jurisdictions addressed (AU, SG, JP) - or noted as no news
 - [ ] Tier 2 stories limited to 3 maximum
 - [ ] Total stories: 5-10 range
+- [ ] No jurisdictions included without current-week stories
 
 ## Strict Date Filtering
 
