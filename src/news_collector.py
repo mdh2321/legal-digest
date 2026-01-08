@@ -34,7 +34,7 @@ class NewsCollector:
 
     def build_search_queries(self, jurisdiction: str) -> List[str]:
         """
-        Build search queries for a jurisdiction.
+        Build search queries for a jurisdiction with strict date constraints.
 
         Args:
             jurisdiction: Two-letter jurisdiction code
@@ -46,6 +46,7 @@ class NewsCollector:
 
         jur_name = ALL_JURISDICTIONS[jurisdiction]['name']
         year = self.end_date.year
+        month = self.end_date.strftime('%B')  # e.g., "January"
 
         # Core technology law topics
         topics = [
@@ -60,12 +61,23 @@ class NewsCollector:
 
         queries = []
         for topic in topics:
-            # Build date-constrained queries
+            # Build date-constrained queries with explicit month/year
             queries.append(
-                f'{jur_name} {topic} {year} law policy regulation'
+                f'{jur_name} {topic} {month} {year}'
             )
 
         return queries
+
+    def get_date_search_hint(self) -> str:
+        """
+        Get a date hint string for manual searches.
+
+        Returns:
+            String describing the target date range
+        """
+        start_str = self.start_date.strftime('%d %B %Y')
+        end_str = self.end_date.strftime('%d %B %Y')
+        return f"Only include articles published between {start_str} and {end_str}"
 
     def clean_url(self, url: str) -> str:
         """
@@ -148,13 +160,19 @@ class NewsCollector:
                 snippet = result.get('snippet', '')
                 source = result.get('source', '')
 
-                # Try to extract date
+                # Try to extract date from multiple sources
                 date_obj = self.extract_date_from_text(snippet)
                 if not date_obj:
                     date_obj = self.extract_date_from_text(title)
+
+                # If no date found, skip this article - strict date enforcement
                 if not date_obj:
-                    # Default to end of week if we can't find a date
-                    date_obj = datetime.combine(self.end_date, datetime.min.time())
+                    continue
+
+                # Verify the date is within our target week range
+                story_date = date_obj.date()
+                if not (self.start_date <= story_date <= self.end_date):
+                    continue  # Skip articles outside the target week
 
                 # Create story object
                 story = NewsStory(

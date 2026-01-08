@@ -235,12 +235,28 @@ MATERIALITY_WEIGHT = 0.7  # Increase focus on materiality
 JURISDICTION_WEIGHT = 0.3
 ```
 
+## Strict Date Filtering
+
+**CRITICAL**: Only articles published within the target week (Monday-Sunday) are included.
+
+The system enforces strict date validation at multiple levels:
+1. **Search queries** include explicit month/year constraints
+2. **News collector** requires extractable publication dates (articles without dates are skipped)
+3. **Content filter** strictly validates dates against the target week range
+
+When running manual searches via Claude Code:
+- Always verify the publication date of each article before including
+- Use the target date range shown in the console output
+- Reject any articles older than the target week, even if topically relevant
+- If in doubt, skip the article rather than include potentially stale news
+
 ## Troubleshooting
 
 ### No Stories Found
 - Check date range is correct
 - Verify search function is working
 - Review filter criteria (may be too restrictive)
+- **Note**: The system now strictly filters by date, so weeks with less news activity will have fewer stories
 
 ### Too Many/Few Stories
 - Adjust `TARGET_STORY_COUNT` in config.py
@@ -251,6 +267,11 @@ JURISDICTION_WEIGHT = 0.3
 - Reduce target story count
 - Shorten insights section
 - Adjust summary lengths
+
+### Old Articles Appearing
+- Ensure publication dates are being extracted correctly
+- Check that articles have visible publication dates
+- The system will skip articles without extractable dates
 
 ## Development
 
@@ -287,6 +308,13 @@ For issues or questions:
 4. Consult Claude Code documentation
 
 ## Version History
+
+- **1.1.1** (2026-01-08): Strict Date Filtering
+  - **BREAKING**: Articles without extractable publication dates are now skipped
+  - Added strict date range validation in news collector
+  - Search queries now include explicit month/year constraints
+  - Added date rejection logging for debugging
+  - Updated documentation on date filtering requirements
 
 - **1.1.0** (2026-01-07): RSS Feed Support
   - Added RSS 2.0 feed generation for Readwise Reader

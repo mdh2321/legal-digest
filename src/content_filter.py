@@ -32,16 +32,28 @@ class ContentFilter:
 
     def is_in_date_range(self, story: NewsStory) -> bool:
         """
-        Check if story date is within target week.
+        Check if story date is within target week (STRICT enforcement).
+
+        This is a critical filter - only articles published within the
+        exact target week (Monday-Sunday) should pass.
 
         Args:
             story: NewsStory object
 
         Returns:
-            bool: True if date is in range
+            bool: True if date is strictly within the target week range
         """
         story_date = story.date.date()
-        return self.start_date <= story_date <= self.end_date
+
+        # Strict check: must be >= start_date AND <= end_date
+        in_range = self.start_date <= story_date <= self.end_date
+
+        # Log rejection for debugging
+        if not in_range:
+            print(f"  [DATE FILTER] Rejected: '{story.title[:50]}...' "
+                  f"(date: {story_date}, range: {self.start_date} to {self.end_date})")
+
+        return in_range
 
     def get_matching_categories(self, story: NewsStory) -> List[str]:
         """
