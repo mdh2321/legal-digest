@@ -34,7 +34,13 @@ class NewsCollector:
 
     def build_search_queries(self, jurisdiction: str) -> List[str]:
         """
-        Build search queries for a jurisdiction with strict date constraints.
+        Build comprehensive search queries for a jurisdiction.
+
+        Searches across:
+        - General web for topic + jurisdiction + date
+        - Jurisdiction-specific regulator sites
+        - Major law firm publications
+        - Legal news aggregators
 
         Args:
             jurisdiction: Two-letter jurisdiction code
@@ -42,29 +48,98 @@ class NewsCollector:
         Returns:
             List of search query strings
         """
-        from .config import ALL_JURISDICTIONS
+        from .config import (
+            ALL_JURISDICTIONS, REGULATOR_SOURCES,
+            LAW_FIRM_SOURCES, LEGAL_PUBLICATIONS
+        )
 
         jur_name = ALL_JURISDICTIONS[jurisdiction]['name']
         year = self.end_date.year
         month = self.end_date.strftime('%B')  # e.g., "January"
 
-        # Core technology law topics
+        queries = []
+
+        # --- 1. TOPIC-BASED SEARCHES ---
         topics = [
-            'data privacy regulation',
-            'cybersecurity law',
-            'artificial intelligence regulation',
-            'technology law',
+            'data privacy law',
+            'cybersecurity regulation',
+            'artificial intelligence law',
             'digital regulation',
-            'fintech regulation',
-            'consumer protection digital'
+            'fintech law',
+            'technology regulation',
         ]
 
-        queries = []
         for topic in topics:
-            # Build date-constrained queries with explicit month/year
-            queries.append(
-                f'{jur_name} {topic} {month} {year}'
-            )
+            queries.append(f'{jur_name} {topic} {month} {year}')
+
+        # --- 2. REGULATOR-SPECIFIC SEARCHES ---
+        regulator_sites = REGULATOR_SOURCES.get(jurisdiction, [])
+        if regulator_sites:
+            # Create site: query for regulators
+            site_filter = ' OR '.join(f'site:{site}' for site in regulator_sites[:4])
+            queries.append(f'{jur_name} regulation announcement {month} {year} ({site_filter})')
+
+        # --- 3. LAW FIRM PUBLICATION SEARCHES ---
+        # Search major law firm sites for jurisdiction-specific updates
+        top_firms = LAW_FIRM_SOURCES[:10]  # Top 10 global firms
+        firm_filter = ' OR '.join(f'site:{firm}' for firm in top_firms)
+        queries.append(f'{jur_name} legal update {month} {year} ({firm_filter})')
+
+        # --- 4. LEGAL PUBLICATION SEARCHES ---
+        # Search legal news aggregators
+        top_pubs = ['lexology.com', 'mondaq.com', 'iapp.org', 'law360.com']
+        pub_filter = ' OR '.join(f'site:{pub}' for pub in top_pubs)
+        queries.append(f'{jur_name} privacy data AI law {month} {year} ({pub_filter})')
+
+        return queries
+
+    def build_law_firm_queries(self) -> List[str]:
+        """
+        Build queries specifically targeting law firm publications.
+
+        Returns:
+            List of search query strings for law firm content
+        """
+        from .config import LAW_FIRM_SOURCES
+
+        year = self.end_date.year
+        month = self.end_date.strftime('%B')
+
+        queries = []
+
+        # Group firms into batches for OR queries
+        batch_size = 5
+        topics = ['data privacy', 'AI regulation', 'technology law']
+
+        for i in range(0, min(len(LAW_FIRM_SOURCES), 25), batch_size):
+            batch = LAW_FIRM_SOURCES[i:i + batch_size]
+            site_filter = ' OR '.join(f'site:{firm}' for firm in batch)
+            for topic in topics:
+                queries.append(f'Asia Pacific {topic} {month} {year} ({site_filter})')
+
+        return queries
+
+    def build_publication_queries(self) -> List[str]:
+        """
+        Build queries specifically targeting legal publications.
+
+        Returns:
+            List of search query strings for legal publications
+        """
+        from .config import LEGAL_PUBLICATIONS
+
+        year = self.end_date.year
+        month = self.end_date.strftime('%B')
+
+        queries = []
+
+        # Key aggregators
+        key_pubs = ['lexology.com', 'mondaq.com', 'iapp.org', 'law360.com', 'iclg.com']
+        site_filter = ' OR '.join(f'site:{pub}' for pub in key_pubs)
+
+        jurisdictions = ['Australia', 'Singapore', 'Japan', 'India', 'Korea', 'Hong Kong']
+        for jur in jurisdictions:
+            queries.append(f'{jur} data privacy technology law {month} {year} ({site_filter})')
 
         return queries
 

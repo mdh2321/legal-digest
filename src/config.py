@@ -19,6 +19,176 @@ TIER2_JURISDICTIONS = {
 
 ALL_JURISDICTIONS = {**TIER1_JURISDICTIONS, **TIER2_JURISDICTIONS}
 
+# =============================================================================
+# SOURCE CONFIGURATION
+# =============================================================================
+
+# Major international law firms with APAC technology/privacy practices
+LAW_FIRM_SOURCES = [
+    # Global firms with strong APAC presence
+    'bakermckenzie.com',
+    'herbertsmithfreehills.com',
+    'allens.com.au',
+    'kwm.com',              # King & Wood Mallesons
+    'cliffordchance.com',
+    'linklaters.com',
+    'freshfields.com',
+    'whitecase.com',
+    'dentons.com',
+    'dlapiper.com',
+    'nortonrosefulbright.com',
+    'ashurst.com',
+    'simmons-simmons.com',
+    'hoganlovells.com',
+    'minterellison.com',
+    'corrs.com.au',
+    'gtlaw.com.au',         # Gilbert + Tobin
+    'claytonutz.com',
+    # Asia-focused firms
+    'wongpartnership.com',  # Singapore
+    'rajahtan.com',         # Rajah & Tann (Singapore/SEA)
+    'drewnapier.com',       # Singapore
+    'nishimura.com',        # Japan
+    'amt-law.com',          # Japan (Anderson Mori & Tomotsune)
+    'nagashima.jp',         # Japan (Nagashima Ohno & Tsunematsu)
+    'mhmjapan.com',         # Japan (Mori Hamada & Matsumoto)
+    'trilegal.com',         # India
+    'azbpartners.com',      # India
+    'nishithdesai.com',     # India
+    'kimchang.com',         # Korea
+    'leeko.com',            # Korea
+    'yoonyang.com',         # Korea
+    'ssek.com',             # Indonesia
+    'abnrlaw.com',          # Indonesia (Ali Budiardjo)
+    'makabata.com',         # Indonesia
+    'syciplaw.com',         # Philippines (SyCip Salazar)
+    'accralaw.com',         # Philippines
+    'zicolaw.com',          # Vietnam/SEA
+    'vci-legal.com',        # Vietnam
+    'russellmcveagh.com',   # New Zealand
+    'bellgully.com',        # New Zealand
+    'chapmantripp.com',     # New Zealand
+    'mayerbrown.com',
+    'twobirds.com',         # Bird & Bird
+    'fieldfisher.com',
+    'osborneclarke.com',
+]
+
+# Regulator and government sites by jurisdiction
+REGULATOR_SOURCES = {
+    'AU': [
+        'oaic.gov.au',          # Privacy Commissioner
+        'accc.gov.au',          # Competition & Consumer
+        'asic.gov.au',          # Securities
+        'apra.gov.au',          # Prudential Regulation
+        'homeaffairs.gov.au',   # Cyber security
+        'ag.gov.au',            # Attorney-General
+        'industry.gov.au',      # Industry/AI policy
+    ],
+    'SG': [
+        'pdpc.gov.sg',          # Personal Data Protection Commission
+        'mas.gov.sg',           # Monetary Authority
+        'imda.gov.sg',          # Infocomm Media Development
+        'csa.gov.sg',           # Cyber Security Agency
+        'mlaw.gov.sg',          # Ministry of Law
+        'aiverify.sg',          # AI Verify Foundation
+    ],
+    'JP': [
+        'ppc.go.jp',            # Personal Information Protection Commission
+        'meti.go.jp',           # Ministry of Economy, Trade and Industry
+        'soumu.go.jp',          # Ministry of Internal Affairs
+        'fsa.go.jp',            # Financial Services Agency
+        'nisc.go.jp',           # Cybersecurity Center
+        'cao.go.jp',            # Cabinet Office
+    ],
+    'IN': [
+        'meity.gov.in',         # Ministry of Electronics and IT
+        'rbi.org.in',           # Reserve Bank of India
+        'sebi.gov.in',          # Securities and Exchange Board
+        'cci.gov.in',           # Competition Commission
+        'cert-in.org.in',       # CERT-India
+    ],
+    'KR': [
+        'pipc.go.kr',           # Personal Information Protection Commission
+        'kcc.go.kr',            # Korea Communications Commission
+        'fsc.go.kr',            # Financial Services Commission
+        'ftc.go.kr',            # Fair Trade Commission
+        'kisa.or.kr',           # Korea Internet & Security Agency
+    ],
+    'HK': [
+        'pcpd.org.hk',          # Privacy Commissioner
+        'hkma.gov.hk',          # Monetary Authority
+        'sfc.hk',               # Securities and Futures Commission
+        'ogcio.gov.hk',         # Office of Government CIO
+    ],
+    'NZ': [
+        'privacy.org.nz',       # Privacy Commissioner
+        'comcom.govt.nz',       # Commerce Commission
+        'dia.govt.nz',          # Department of Internal Affairs
+        'ncsc.govt.nz',         # National Cyber Security Centre
+    ],
+    'ID': [
+        'kominfo.go.id',        # Ministry of Communications
+        'ojk.go.id',            # Financial Services Authority
+        'kppu.go.id',           # Competition Commission
+        'bi.go.id',             # Bank Indonesia
+    ],
+    'PH': [
+        'privacy.gov.ph',       # National Privacy Commission
+        'bsp.gov.ph',           # Central Bank
+        'dict.gov.ph',          # Dept of ICT
+        'sec.gov.ph',           # Securities and Exchange Commission
+    ],
+    'VN': [
+        'mic.gov.vn',           # Ministry of Information and Communications
+        'sbv.gov.vn',           # State Bank of Vietnam
+        'moj.gov.vn',           # Ministry of Justice
+    ],
+}
+
+# Legal news publications and aggregators
+LEGAL_PUBLICATIONS = [
+    # Major legal news aggregators
+    'lexology.com',
+    'law360.com',
+    'mondaq.com',
+    'iclg.com',                 # International Comparative Legal Guides
+    'globallegalpost.com',
+    'legalbusinessonline.com',  # Asia focused
+    'law.asia',                 # Asia Law Portal
+    # Technology/privacy focused
+    'iapp.org',                 # International Association of Privacy Professionals
+    'dataprotectionreport.com',
+    'privacylaws.com',
+    'technologylawdispatch.com',
+    'techlawinsight.com',
+    # Regional publications
+    'lawyersweekly.com.au',     # Australia
+    'afr.com',                  # Australian Financial Review (legal)
+    'lawsociety.com.au',
+    'straitstimes.com',         # Singapore
+    'businesstimes.com.sg',
+    'japantimes.co.jp',
+    'nikkei.com',               # Japan
+    'livemint.com',             # India
+    'barandbench.com',          # India legal
+    'livelaw.in',               # India legal
+    'koreaherald.com',          # Korea
+    'koreatimes.co.kr',
+    'scmp.com',                 # South China Morning Post (HK)
+    'nzherald.co.nz',           # New Zealand
+    'jakartapost.com',          # Indonesia
+    'philstar.com',             # Philippines
+    'businessmirror.com.ph',
+    'vnexpress.net',            # Vietnam
+    'vietnamnews.vn',
+]
+
+# All sources flattened for easy searching
+ALL_REGULATOR_SITES = []
+for sites in REGULATOR_SOURCES.values():
+    ALL_REGULATOR_SITES.extend(sites)
+
 # Story selection limits
 TARGET_STORY_COUNT = (8, 10)  # (min, max)
 TIER2_MAX_STORIES = 3

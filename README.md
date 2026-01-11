@@ -45,6 +45,31 @@ This system automatically:
 - Anti-bribery & corruption
 - Outsourcing & vendor management
 
+### Source Coverage
+
+The system searches across multiple source categories for comprehensive coverage:
+
+**Regulators & Government** (55+ sites)
+- Privacy commissioners (OAIC, PDPC, PPC, etc.)
+- Financial regulators (MAS, ASIC, RBI, FSA, etc.)
+- Competition authorities (ACCC, FTC Korea, etc.)
+- Cybersecurity agencies (CSA Singapore, NISC Japan, etc.)
+- Ministries of digital/technology
+
+**Law Firms** (45+ firms)
+- Global firms: Baker McKenzie, Herbert Smith Freehills, Clifford Chance, DLA Piper, etc.
+- Australia: Allens, MinterEllison, Corrs, Clayton Utz, Gilbert + Tobin
+- Singapore: WongPartnership, Rajah & Tann, Drew & Napier
+- Japan: Nishimura & Asahi, Anderson Mori, Nagashima Ohno, Mori Hamada
+- India: Trilegal, AZB Partners, Nishith Desai
+- Korea: Kim & Chang, Lee & Ko, Yoon & Yang
+- SEA: SSEK, ABNR, SyCip Salazar, ZICO Law
+
+**Legal Publications** (25+ sources)
+- Aggregators: Lexology, Mondaq, Law360, ICLG
+- Privacy-focused: IAPP, Data Protection Report
+- Regional: AFR, Straits Times, Nikkei, Bar & Bench, Korea Herald
+
 ### Output Formats
 
 **RSS Feed** (default, for Readwise Reader and other RSS readers):
