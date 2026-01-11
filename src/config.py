@@ -208,30 +208,119 @@ EXCLUDE_TOPICS = [
 
 # Content inclusion topics (focus areas)
 INCLUDE_TOPICS = {
+    # --- CORE TECHNOLOGY LAW ---
     'AI/ML': ['artificial intelligence', 'machine learning', 'AI', 'ML', 'neural network', 'deep learning',
-              'generative AI', 'AI governance', 'AI regulation', 'algorithmic'],
+              'generative AI', 'AI governance', 'AI regulation', 'algorithmic', 'foundation model', 'LLM'],
     'Data Privacy': ['data privacy', 'data protection', 'GDPR', 'personal data', 'privacy law', 'PDPA', 'PDPC',
-                     'cross-border data', 'data localization', 'data residency', 'data transfer'],
+                     'cross-border data', 'data localization', 'data residency', 'data transfer', 'privacy notice',
+                     'consent management', 'data subject rights', 'data breach notification'],
     'Cybersecurity': ['cybersecurity', 'cyber security', 'data breach', 'ransomware', 'hacking',
-                      'information security', 'security incident', 'cyber resilience'],
+                      'information security', 'security incident', 'cyber resilience', 'critical infrastructure',
+                      'security standards', 'penetration testing', 'vulnerability disclosure'],
     'Cloud': ['cloud computing', 'cloud service', 'SaaS', 'PaaS', 'IaaS', 'cloud provider',
-              'software licensing', 'subscription services', 'API regulation', 'software as a service'],
+              'software licensing', 'subscription services', 'API regulation', 'software as a service',
+              'cloud sovereignty', 'multi-tenancy'],
+
+    # --- DIGITAL TRANSACTIONS ---
     'eSignature': ['electronic signature', 'e-signature', 'digital signature', 'digital identity',
-                   'electronic contract', 'electronic transaction', 'electronic record', 'remote notarization'],
+                   'electronic contract', 'electronic transaction', 'electronic record', 'remote notarization',
+                   'digital authentication', 'biometric verification'],
+    'E-commerce': ['e-commerce', 'online marketplace', 'platform regulation', 'digital services act',
+                   'online terms', 'distance selling', 'digital contract', 'click-wrap', 'browse-wrap'],
+
+    # --- CONTRACTS & COMMERCIAL ---
     'Contract Law': ['contract law', 'commercial contract', 'contractual', 'agreement', 'standard terms',
-                     'limitation of liability', 'indemnification', 'auto-renewal', 'terms of service'],
+                     'limitation of liability', 'indemnification', 'auto-renewal', 'terms of service',
+                     'force majeure', 'service level agreement', 'SLA'],
+
+    # --- COMPETITION & MARKETS ---
     'Competition': ['competition law', 'antitrust', 'anti-trust', 'monopoly', 'market dominance', 'cartel',
-                    'digital markets', 'platform regulation', 'gatekeeper'],
+                    'digital markets', 'platform regulation', 'gatekeeper', 'self-preferencing', 'bundling',
+                    'abuse of dominance', 'merger control'],
+
+    # --- CONSUMER & PLATFORM ---
     'Consumer Protection': ['consumer protection', 'consumer rights', 'consumer law', 'unfair practice',
-                            'unfair contract terms', 'consumer guarantee', 'digital consumer'],
-    'Corporate Governance': ['corporate governance', 'director duties', 'shareholders', 'board', 'ESG'],
-    'Fintech': ['fintech', 'financial technology', 'digital payment', 'cryptocurrency', 'blockchain', 'digital wallet'],
-    'AML': ['anti-money laundering', 'AML', 'money laundering', 'financial crime'],
-    'Anti-Bribery': ['anti-bribery', 'anti-corruption', 'bribery', 'corruption', 'FCPA'],
-    'Outsourcing': ['outsourcing', 'vendor management', 'third party', 'service provider',
-                    'subcontracting', 'offshore', 'BPO'],
+                            'unfair contract terms', 'consumer guarantee', 'digital consumer', 'dark patterns',
+                            'subscription traps', 'drip pricing'],
+    'Platform Liability': ['platform liability', 'intermediary liability', 'content moderation', 'safe harbor',
+                           'notice and takedown', 'illegal content', 'harmful content', 'online safety',
+                           'digital services', 'hosting provider'],
+
+    # --- CORPORATE & GOVERNANCE ---
+    'Corporate Governance': ['corporate governance', 'director duties', 'shareholders', 'board', 'ESG',
+                             'sustainability reporting', 'climate disclosure', 'supply chain due diligence'],
+
+    # --- FINANCIAL SERVICES ---
+    'Fintech': ['fintech', 'financial technology', 'digital payment', 'cryptocurrency', 'blockchain',
+                'digital wallet', 'open banking', 'payment services', 'digital assets', 'stablecoin', 'CBDC'],
+    'AML': ['anti-money laundering', 'AML', 'money laundering', 'financial crime', 'sanctions', 'KYC',
+            'customer due diligence', 'beneficial ownership'],
+    'Anti-Bribery': ['anti-bribery', 'anti-corruption', 'bribery', 'corruption', 'FCPA', 'foreign corrupt'],
+
+    # --- EMPLOYMENT & WORKFORCE ---
+    'Employment': ['employment law', 'remote work', 'work from home', 'gig economy', 'platform worker',
+                   'independent contractor', 'employee classification', 'right to disconnect',
+                   'algorithmic management', 'workplace AI', 'employment AI'],
+
+    # --- INTELLECTUAL PROPERTY ---
+    'IP': ['intellectual property', 'patent', 'copyright', 'trademark', 'trade secret', 'software patent',
+           'open source', 'licensing', 'IP infringement', 'standard essential patent', 'SEP', 'FRAND'],
+
+    # --- TAX & OUTSOURCING ---
     'Tax': ['digital services tax', 'withholding tax', 'transfer pricing', 'tax treaty',
-            'permanent establishment', 'VAT digital', 'GST digital', 'tax compliance']
+            'permanent establishment', 'VAT digital', 'GST digital', 'tax compliance', 'Pillar One', 'Pillar Two',
+            'global minimum tax'],
+    'Outsourcing': ['outsourcing', 'vendor management', 'third party', 'service provider',
+                    'subcontracting', 'offshore', 'BPO', 'subprocessor', 'supply chain'],
+
+    # --- TELECOMMUNICATIONS ---
+    'Telecom': ['telecommunications', 'telecom regulation', 'spectrum', 'net neutrality',
+                'internet service provider', 'ISP', 'communications law', '5G regulation'],
+}
+
+# Search topic categories for comprehensive coverage
+SEARCH_TOPICS = {
+    'core_tech': [
+        'data privacy law',
+        'cybersecurity regulation',
+        'artificial intelligence law',
+        'digital regulation',
+        'technology regulation',
+    ],
+    'enforcement': [
+        'privacy enforcement penalty fine',
+        'data protection enforcement action',
+        'regulatory penalty technology',
+        'GDPR fine enforcement',
+    ],
+    'consultations': [
+        'draft legislation technology',
+        'public consultation digital',
+        'proposed regulation technology',
+        'regulatory consultation privacy AI',
+    ],
+    'platform': [
+        'platform regulation liability',
+        'content moderation law',
+        'online safety regulation',
+        'digital services regulation',
+    ],
+    'commercial': [
+        'fintech regulation',
+        'e-commerce law',
+        'electronic signature law',
+        'digital contract regulation',
+    ],
+    'employment': [
+        'gig economy worker classification',
+        'remote work employment law',
+        'platform worker regulation',
+    ],
+    'ip': [
+        'AI copyright intellectual property',
+        'software patent technology',
+        'open source licensing regulation',
+    ],
 }
 
 # Source priority tiers

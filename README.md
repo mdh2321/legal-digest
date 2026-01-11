@@ -30,20 +30,39 @@ This system automatically:
 - 🇻🇳 Vietnam
 
 ### Content Focus Areas
-- AI/ML regulation & governance
-- Data privacy & protection (cross-border transfers, data localization)
-- Cybersecurity requirements
-- Cloud & SaaS (software licensing, subscription services)
+
+**Core Technology Law**
+- AI/ML regulation & governance (including generative AI, foundation models)
+- Data privacy & protection (cross-border transfers, data localization, breach notification)
+- Cybersecurity requirements (critical infrastructure, security standards)
+- Cloud & SaaS (software licensing, cloud sovereignty, multi-tenancy)
+
+**Digital Transactions & Platform**
 - Electronic signatures & digital identity
-- Contract law (standard terms, limitation of liability)
-- Competition & digital markets
-- Consumer protection (unfair contract terms)
-- Corporate governance & ESG
-- Fintech & financial services
-- Tax (digital services tax, transfer pricing)
-- Anti-money laundering (AML)
-- Anti-bribery & corruption
-- Outsourcing & vendor management
+- E-commerce & online marketplace regulation
+- Platform liability & content moderation
+- Online safety & digital services
+
+**Commercial & Contracts**
+- Contract law (standard terms, limitation of liability, SLAs)
+- Competition & digital markets (gatekeeper regulation, self-preferencing)
+- Consumer protection (dark patterns, subscription traps)
+
+**Financial & Corporate**
+- Fintech (digital payments, open banking, digital assets, CBDC)
+- Anti-money laundering (AML/KYC, sanctions, beneficial ownership)
+- Corporate governance & ESG (climate disclosure, supply chain due diligence)
+- Tax (digital services tax, transfer pricing, Pillar One/Two)
+
+**Employment & IP**
+- Employment law (gig economy, remote work, platform workers, algorithmic management)
+- Intellectual property (AI copyright, software patents, open source licensing)
+- Telecommunications (net neutrality, 5G regulation)
+
+**Enforcement & Forward-Looking**
+- Regulatory enforcement actions & penalties
+- Draft legislation & public consultations
+- Proposed regulations & policy developments
 
 ### Source Coverage
 

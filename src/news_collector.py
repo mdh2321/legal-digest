@@ -37,7 +37,11 @@ class NewsCollector:
         Build comprehensive search queries for a jurisdiction.
 
         Searches across:
-        - General web for topic + jurisdiction + date
+        - Core tech law topics (privacy, AI, cybersecurity, etc.)
+        - Enforcement actions and penalties
+        - Draft legislation and consultations
+        - Platform and e-commerce regulation
+        - Employment and IP matters
         - Jurisdiction-specific regulator sites
         - Major law firm publications
         - Legal news aggregators
@@ -50,7 +54,7 @@ class NewsCollector:
         """
         from .config import (
             ALL_JURISDICTIONS, REGULATOR_SOURCES,
-            LAW_FIRM_SOURCES, LEGAL_PUBLICATIONS
+            LAW_FIRM_SOURCES, SEARCH_TOPICS
         )
 
         jur_name = ALL_JURISDICTIONS[jurisdiction]['name']
@@ -59,34 +63,46 @@ class NewsCollector:
 
         queries = []
 
-        # --- 1. TOPIC-BASED SEARCHES ---
-        topics = [
-            'data privacy law',
-            'cybersecurity regulation',
-            'artificial intelligence law',
-            'digital regulation',
-            'fintech law',
-            'technology regulation',
-        ]
-
-        for topic in topics:
+        # --- 1. CORE TECH LAW TOPICS ---
+        for topic in SEARCH_TOPICS['core_tech']:
             queries.append(f'{jur_name} {topic} {month} {year}')
 
-        # --- 2. REGULATOR-SPECIFIC SEARCHES ---
+        # --- 2. ENFORCEMENT ACTIONS (critical for compliance) ---
+        for topic in SEARCH_TOPICS['enforcement'][:2]:
+            queries.append(f'{jur_name} {topic} {month} {year}')
+
+        # --- 3. DRAFT LEGISLATION & CONSULTATIONS ---
+        for topic in SEARCH_TOPICS['consultations'][:2]:
+            queries.append(f'{jur_name} {topic} {month} {year}')
+
+        # --- 4. PLATFORM & E-COMMERCE ---
+        for topic in SEARCH_TOPICS['platform'][:2]:
+            queries.append(f'{jur_name} {topic} {month} {year}')
+
+        # --- 5. COMMERCIAL (fintech, ecommerce, esignature) ---
+        for topic in SEARCH_TOPICS['commercial'][:2]:
+            queries.append(f'{jur_name} {topic} {month} {year}')
+
+        # --- 6. EMPLOYMENT & GIG ECONOMY ---
+        queries.append(f'{jur_name} {SEARCH_TOPICS["employment"][0]} {month} {year}')
+
+        # --- 7. INTELLECTUAL PROPERTY ---
+        queries.append(f'{jur_name} {SEARCH_TOPICS["ip"][0]} {month} {year}')
+
+        # --- 8. REGULATOR-SPECIFIC SEARCHES ---
         regulator_sites = REGULATOR_SOURCES.get(jurisdiction, [])
         if regulator_sites:
-            # Create site: query for regulators
             site_filter = ' OR '.join(f'site:{site}' for site in regulator_sites[:4])
             queries.append(f'{jur_name} regulation announcement {month} {year} ({site_filter})')
+            # Also search for enforcement specifically on regulator sites
+            queries.append(f'{jur_name} enforcement penalty {month} {year} ({site_filter})')
 
-        # --- 3. LAW FIRM PUBLICATION SEARCHES ---
-        # Search major law firm sites for jurisdiction-specific updates
-        top_firms = LAW_FIRM_SOURCES[:10]  # Top 10 global firms
+        # --- 9. LAW FIRM PUBLICATION SEARCHES ---
+        top_firms = LAW_FIRM_SOURCES[:10]
         firm_filter = ' OR '.join(f'site:{firm}' for firm in top_firms)
         queries.append(f'{jur_name} legal update {month} {year} ({firm_filter})')
 
-        # --- 4. LEGAL PUBLICATION SEARCHES ---
-        # Search legal news aggregators
+        # --- 10. LEGAL PUBLICATION SEARCHES ---
         top_pubs = ['lexology.com', 'mondaq.com', 'iapp.org', 'law360.com']
         pub_filter = ' OR '.join(f'site:{pub}' for pub in top_pubs)
         queries.append(f'{jur_name} privacy data AI law {month} {year} ({pub_filter})')
