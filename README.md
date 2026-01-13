@@ -190,10 +190,27 @@ src/
 2. **News Collection**: Search for stories across all jurisdictions
 3. **Content Filtering**: Apply topic inclusion/exclusion rules
 4. **Story Ranking**: Score by materiality (60%) and jurisdiction priority (40%)
-5. **Story Selection**: Select 8-10 stories meeting tier requirements
-6. **Insights Generation**: Identify cross-jurisdictional trends
-7. **Formatting**: Generate markdown with proper structure
-8. **Quality Assurance**: Validate against all requirements
+5. **Deduplication**: Remove duplicate stories, keeping highest-priority source
+6. **Story Selection**: Select 8-10 stories meeting tier requirements
+7. **Insights Generation**: Identify cross-jurisdictional trends
+8. **Formatting**: Generate markdown with proper structure
+9. **Quality Assurance**: Validate against all requirements
+
+### Source Prioritization
+
+When the same news event is covered by multiple sources, the system keeps the most authoritative source based on this hierarchy:
+
+| Priority | Source Type | Examples |
+|----------|-------------|----------|
+| 3 (Highest) | Government/Regulator | oaic.gov.au, pdpc.gov.sg, mas.gov.sg |
+| 2 | Legal Publications | Lexology, Law360, IAPP, JDSupra |
+| 1 | Law Firm Analysis | Baker McKenzie, Herbert Smith Freehills |
+
+**Deduplication Logic:**
+- Stories are compared by title similarity and key term overlap
+- Must be from the same jurisdiction to be considered duplicates
+- When duplicates are found, the highest-priority source is retained
+- This ensures official announcements are preferred over commentary
 
 ## Configuration
 
