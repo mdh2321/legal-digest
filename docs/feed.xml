@@ -1,249 +1,384 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>APAC Legal Digest - Week of 11 January 2026</title>
+    <title>APAC Legal Digest - Week of 15 January 2026</title>
     <link>https://legal-digest.local/</link>
-    <description>Weekly legal and regulatory news digest for global technology companies operating in Asia-Pacific. Covering Australia, Singapore, Japan, and other APAC jurisdictions.</description>
+    <description>Weekly legal and regulatory news digest for global technology companies operating in Asia-Pacific.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 15 Jan 2026 14:03:20 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Jan 2026 22:53:57 +0000</lastBuildDate>
     <ttl>10080</ttl>
     <item>
-      <title>Home Affairs Activates Phase 2 Cybersecurity Enforcement</title>
-      <link>https://www.jdsupra.com/legalnews/privacy-and-cybersecurity-client-alert</link>
-      <pubDate>Sat, 03 Jan 2026 00:00:00 +0000</pubDate>
+      <title>OAIC Launches First Privacy Compliance Sweep Targeting 60 Organizations Across Six Sectors</title>
+      <link>https://www.lexology.com/library/detail.aspx?g=9a01271a-5312-4188-9ddc-9d051acfc079</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
       <category>Australia</category>
       <category>Data Privacy</category>
-      <category>Cybersecurity</category>
-      <description>Australia&#x27;s Department of Home Affairs commenced Phase 2 cybersecurity enforcement from 1 January 2026.</description>
+      <category>Enforcement</category>
+      <description>Starting in the first week of January 2026, the OAIC will scrutinise the privacy policies of approximately 60 entities across six sectors. Entities with non-compliant privacy policies could face penal</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
-          <li>Review data handling practices for Australia compliance</li>
-          <li>Assess cross-border data transfer mechanisms</li>
+          <li>Conduct immediate audit of Australian privacy policy to ensure compliance with Privacy Act requirements before January 2026</li>
+          <li>Review and update data handling practices and disclosures across all Australian operations to align with OAIC expectations</li>
+          <li>Establish monitoring process for OAIC guidance and sector-specific requirements that may emerge from this enforcement sweep</li>
         </ul>
-        <h2>Why This Matters for SaaS Companies</h2>
-        <p>Affects customer data handling, DPA requirements, <strong>cross-border</strong> transfers, and data subject rights <strong>implementation</strong>.</p>
-        <p><em>Country: <strong>Australia</strong> | Topics: <strong>Data Privacy</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://www.jdsupra.com/legalnews/privacy-and-cybersecurity-client-alert">Read full article &rarr;</a></p>
+        <h2>Summary</h2>
+        <p>Australia&#x27;s Office of the Australian Information Commissioner (OAIC) will conduct its first comprehensive privacy compliance sweep starting January 2026, targeting 60 organizations across six sectors to review privacy policy compliance. Non-compliant entities face penalties up to AUD $66,000 per infringement, marking a significant escalation in Australian privacy enforcement activity.</p>
+        <p><em>Country: <strong>Australia</strong> | Topics: <strong>Data Privacy</strong>, <strong>Enforcement</strong></em></p>
+        <p><a href="https://www.lexology.com/library/detail.aspx?g=9a01271a-5312-4188-9ddc-9d051acfc079">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>OAIC Launches First Privacy Compliance Sweep Targeting 60 Organizations</title>
-      <link>https://www.maddocks.com.au/insights/the-oaic-privacy-sweep-in-2026</link>
-      <pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate>
+      <title>Privacy and Other Legislation Amendment Act 2024: Children&#x27;s Online Privacy Code Due December 2026</title>
+      <link>https://www.nortonrosefulbright.com/en/knowledge/publications/be98b0ff/australian-privacy-alert-parliament-passes-major-and-meaningful-privacy-law-reform</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
       <category>Australia</category>
       <category>Data Privacy</category>
-      <category>Cybersecurity</category>
-      <description>The OAIC has launched its first-ever compliance sweep targeting 60 organizations across 6 industry sectors.</description>
+      <category>Legislation</category>
+      <description>Australia&#x27;s Privacy and Other Legislation Amendment Act 2024 received Royal Assent on 10 December 2024. The Children&#x27;s Online Privacy Code is mandated for release by 10 December 2026.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
-          <li>Review data handling practices for Australia compliance</li>
-          <li>Assess cross-border data transfer mechanisms</li>
+          <li>Monitor the development of Australia&#x27;s Children&#x27;s Online Privacy Code throughout 2025-2026 to understand specific compliance requirements for SaaS platforms serving Australian users</li>
+          <li>Review current data collection and processing practices for users under 18 in Australia to identify potential gaps that may need addressing once the Code is finalized</li>
+          <li>Engage with Australian privacy counsel to assess how the new legislation may impact existing privacy policies, terms of service, and data handling procedures for Australian customers</li>
         </ul>
-        <h2>Why This Matters for SaaS Companies</h2>
-        <p>Affects customer data handling, DPA requirements, <strong>cross-border</strong> transfers, and data subject rights <strong>implementation</strong>.</p>
-        <p><em>Country: <strong>Australia</strong> | Topics: <strong>Data Privacy</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://www.maddocks.com.au/insights/the-oaic-privacy-sweep-in-2026">Read full article &rarr;</a></p>
+        <h2>Summary</h2>
+        <p>Australia&#x27;s Privacy and Other Legislation Amendment Act 2024 received Royal Assent on December 10, 2024, establishing new privacy protections for children online. The Act mandates the creation of a Children&#x27;s Online Privacy Code that must be released by December 10, 2026, which will likely impose specific obligations on digital service providers regarding the collection and processing of children&#x27;s personal data.</p>
+        <p><em>Country: <strong>Australia</strong> | Topics: <strong>Data Privacy</strong>, <strong>Legislation</strong></em></p>
+        <p><a href="https://www.nortonrosefulbright.com/en/knowledge/publications/be98b0ff/australian-privacy-alert-parliament-passes-major-and-meaningful-privacy-law-reform">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>PDPC Issues Penalties to Four Organizations for Data Protection Breaches</title>
-      <link>https://www.pdpc.gov.sg/news-and-events/announcements/2026/01/decisions</link>
-      <pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate>
+      <title>Australia Preparing Second Tranche of Privacy Act Reforms Addressing Generative AI</title>
+      <link>https://www.pinsentmasons.com/out-law/analysis/privacy-act-reforms-australia</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
+      <category>Australia</category>
+      <category>Data Privacy</category>
+      <category>AI/ML</category>
+      <category>Legislation</category>
+      <description>Attorney General Michelle Rowland confirmed that a second set of reforms to amend Australia&#x27;s Privacy Act is currently being prepared, particularly considering the rise of generative artificial intell</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Monitor Australian government consultations and draft legislation releases for the second tranche of Privacy Act reforms</li>
+          <li>Conduct gap analysis of current AI/ML data processing practices against anticipated Australian privacy requirements</li>
+          <li>Engage with Australian legal counsel to assess potential compliance obligations for generative AI features in your SaaS platform</li>
+        </ul>
+        <h2>Summary</h2>
+        <p>Australia&#x27;s Attorney General has confirmed that a second tranche of Privacy Act reforms is being prepared, specifically targeting the regulatory challenges posed by generative AI technologies. This follows earlier privacy law amendments and signals Australia&#x27;s proactive approach to governing AI-driven data processing activities.</p>
+        <p><em>Country: <strong>Australia</strong> | Topics: <strong>Data Privacy</strong>, <strong>AI/ML</strong>, <strong>Legislation</strong></em></p>
+        <p><a href="https://www.pinsentmasons.com/out-law/analysis/privacy-act-reforms-australia">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>PDPC Imposes $17,500 Penalty on Singapore Data Hub for Protection Obligation Breach</title>
+      <link>https://www.pdpc.gov.sg/all-commissions-decisions/2026/01/breach-of-the-protection-obligation-by-singapore-data-hub-pte-ltd</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
       <category>Singapore</category>
       <category>Data Privacy</category>
+      <category>Enforcement</category>
       <category>Cybersecurity</category>
-      <description>Singapore&#x27;s PDPC issued financial penalties to 4 organizations. Goldheart Jewelry fined S$58,000.</description>
+      <description>On January 8, 2026, a financial penalty of $17,500 was imposed on Singapore Data Hub Pte Ltd for failing to put in place reasonable security arrangements to protect personal data.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
-          <li>Review data handling practices for Singapore compliance</li>
-          <li>Assess cross-border data transfer mechanisms</li>
+          <li>Review and audit current data security arrangements to ensure they meet Singapore PDPA requirements for reasonable security measures</li>
+          <li>Implement comprehensive security frameworks including encryption, access controls, and monitoring systems for personal data protection</li>
+          <li>Establish regular security assessments and incident response procedures to demonstrate ongoing compliance with protection obligations</li>
         </ul>
-        <h2>Why This Matters for SaaS Companies</h2>
-        <p>Affects customer data handling, DPA requirements, <strong>cross-border</strong> transfers, and data subject rights <strong>implementation</strong>.</p>
-        <p><em>Country: <strong>Singapore</strong> | Topics: <strong>Data Privacy</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://www.pdpc.gov.sg/news-and-events/announcements/2026/01/decisions">Read full article &rarr;</a></p>
+        <h2>Summary</h2>
+        <p>Singapore&#x27;s PDPC imposed a $17,500 penalty on Singapore Data Hub Pte Ltd for inadequate data security arrangements under the Personal Data Protection Act. This enforcement action highlights regulatory focus on organizations&#x27; obligation to implement reasonable security measures to protect personal data.</p>
+        <p><em>Country: <strong>Singapore</strong> | Topics: <strong>Data Privacy</strong>, <strong>Enforcement</strong>, <strong>Cybersecurity</strong></em></p>
+        <p><a href="https://www.pdpc.gov.sg/all-commissions-decisions/2026/01/breach-of-the-protection-obligation-by-singapore-data-hub-pte-ltd">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>MAS AI Risk Management Guidelines Consultation Closing January 31</title>
-      <link>https://www.mas.gov.sg/publications/consultations/2025/ai-risk-management</link>
-      <pubDate>Fri, 09 Jan 2026 00:00:00 +0000</pubDate>
+      <title>Singapore PDPC Takes Stringent Approach to Enforcement Following Ransomware Incidents</title>
+      <link>https://practiceguides.chambers.com/practice-guides/data-protection-privacy-2025/singapore/trends-and-developments</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
       <category>Singapore</category>
-      <category>Data Privacy</category>
       <category>Cybersecurity</category>
-      <description>The MAS consultation on AI Risk Management Guidelines closes January 31, 2026.</description>
+      <category>Data Privacy</category>
+      <category>Enforcement</category>
+      <description>The PDPC appears to be adopting a more stringent approach in meting out financial penalties. A significant number of recent cases involve breaches arising from cybersecurity incidents, particularly ra</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
-          <li>Review data handling practices for Singapore compliance</li>
-          <li>Assess cross-border data transfer mechanisms</li>
+          <li>Review and strengthen cybersecurity controls and incident response procedures for Singapore operations, with particular focus on ransomware prevention and detection</li>
+          <li>Conduct compliance audit of Singapore data protection practices and ensure robust security measures are documented and implemented</li>
+          <li>Evaluate cyber insurance coverage and incident response plans to account for potentially higher PDPC penalties following security breaches</li>
         </ul>
-        <h2>Why This Matters for SaaS Companies</h2>
-        <p>Affects customer data handling, DPA requirements, <strong>cross-border</strong> transfers, and data subject rights <strong>implementation</strong>.</p>
-        <p><em>Country: <strong>Singapore</strong> | Topics: <strong>Data Privacy</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://www.mas.gov.sg/publications/consultations/2025/ai-risk-management">Read full article &rarr;</a></p>
+        <h2>Summary</h2>
+        <p>Singapore&#x27;s Personal Data Protection Commission (PDPC) is taking a more aggressive enforcement stance with increased financial penalties, particularly targeting organizations that suffer data breaches from ransomware attacks and other cybersecurity incidents. This signals a regulatory shift toward holding companies more accountable for cybersecurity failures that result in personal data exposure.</p>
+        <p><em>Country: <strong>Singapore</strong> | Topics: <strong>Cybersecurity</strong>, <strong>Data Privacy</strong>, <strong>Enforcement</strong></em></p>
+        <p><a href="https://practiceguides.chambers.com/practice-guides/data-protection-privacy-2025/singapore/trends-and-developments">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>Active Cyber Defense Act Takes Effect - Critical Infrastructure Reporting Required</title>
-      <link>https://www.nippon.com/en/in-depth/d01147/</link>
-      <pubDate>Tue, 06 Jan 2026 00:00:00 +0000</pubDate>
+      <title>ASEAN Developing Cybersecurity Cooperation Strategy 2026-2030</title>
+      <link>https://www.digital.gov.my/api/file/file/17012025_PRESS%20RELEASE_ADGMIN%202025.pdf</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
+      <category>Singapore</category>
+      <category>Cybersecurity</category>
+      <category>Regional</category>
+      <description>ASEAN is developing the &#x27;ASEAN Cyber Cooperation Strategy 2026-2030&#x27; led by Malaysia to foster a resilient and secure cyberspace.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Monitor the development of the ASEAN Cyber Cooperation Strategy 2026-2030 for potential new regional cybersecurity requirements that may impact SaaS operations</li>
+          <li>Review current cybersecurity compliance frameworks to ensure alignment with anticipated ASEAN-wide standards and prepare for potential harmonization requirements</li>
+          <li>Engage with regional cybersecurity working groups or industry associations to stay informed on strategy implementation and provide input during consultation phases</li>
+        </ul>
+        <h2>Summary</h2>
+        <p>ASEAN is developing a new cybersecurity cooperation strategy for 2026-2030, led by Malaysia, aimed at creating a more resilient and secure cyberspace across the region. This initiative will likely result in harmonized cybersecurity standards and requirements across ASEAN member states.</p>
+        <p><em>Country: <strong>Singapore</strong> | Topics: <strong>Cybersecurity</strong>, <strong>Regional</strong></em></p>
+        <p><a href="https://www.digital.gov.my/api/file/file/17012025_PRESS%20RELEASE_ADGMIN%202025.pdf">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Japan&#x27;s Active Cyberdefense Act to Introduce Infrastructure Incident Reporting by November 2026</title>
+      <link>https://iclg.com/practice-areas/cybersecurity-laws-and-regulations/japan</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
+      <category>Japan</category>
+      <category>Cybersecurity</category>
+      <category>Legislation</category>
+      <description>Japan&#x27;s Active Cyberdefense Act will introduce an incident reporting obligation applicable to specified essential infrastructure providers, taking effect in or before November 2026.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Assess whether your SaaS company qualifies as an &#x27;essential infrastructure provider&#x27; under the new Japanese legislation</li>
+          <li>Develop incident response and reporting procedures to comply with the upcoming Japanese cybersecurity reporting requirements</li>
+          <li>Monitor for publication of implementation details and specific reporting requirements before the November 2026 deadline</li>
+        </ul>
+        <h2>Summary</h2>
+        <p>Japan is enacting an Active Cyberdefense Act that will require specified essential infrastructure providers to report cybersecurity incidents, with implementation by November 2026. This new legislation will create mandatory incident reporting obligations for qualifying organizations operating critical infrastructure in Japan.</p>
+        <p><em>Country: <strong>Japan</strong> | Topics: <strong>Cybersecurity</strong>, <strong>Legislation</strong></em></p>
+        <p><a href="https://iclg.com/practice-areas/cybersecurity-laws-and-regulations/japan">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Japan PPC Advances APPI Triennial Review Amendments for 2026-2027 Implementation</title>
+      <link>https://connectontech.bakermckenzie.com/japan-discussions-for-the-amendment-of-the-data-privacy-law/</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
       <category>Japan</category>
       <category>Data Privacy</category>
-      <category>Cybersecurity</category>
-      <description>Japan&#x27;s Active Cyber Defense Act takes effect, requiring critical infrastructure operators to report cyberattacks.</description>
+      <category>Legislation</category>
+      <description>The PPC published an updated proposal on the APPI Triennial Review. If the amended law is enacted, implementation is expected in either 2026 or 2027.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
-          <li>Review data handling practices for Japan compliance</li>
-          <li>Assess cross-border data transfer mechanisms</li>
+          <li>Monitor the PPC&#x27;s triennial review process and final amendments to understand new compliance obligations that may affect SaaS operations in Japan</li>
+          <li>Begin preliminary assessment of current data processing practices in Japan to identify potential gaps with upcoming APPI changes</li>
+          <li>Engage with legal counsel familiar with Japanese privacy law to prepare for implementation timeline and potential system updates needed</li>
         </ul>
-        <h2>Why This Matters for SaaS Companies</h2>
-        <p>Affects customer data handling, DPA requirements, <strong>cross-border</strong> transfers, and data subject rights <strong>implementation</strong>.</p>
-        <p><em>Country: <strong>Japan</strong> | Topics: <strong>Data Privacy</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://www.nippon.com/en/in-depth/d01147/">Read full article &rarr;</a></p>
+        <h2>Summary</h2>
+        <p>Japan&#x27;s Personal Information Protection Commission (PPC) has published an updated proposal for amendments to the Act on Protection of Personal Information (APPI) as part of its triennial review process. The amended law, if enacted, is expected to be implemented in 2026 or 2027, potentially introducing new data privacy requirements for companies operating in Japan.</p>
+        <p><em>Country: <strong>Japan</strong> | Topics: <strong>Data Privacy</strong>, <strong>Legislation</strong></em></p>
+        <p><a href="https://connectontech.bakermckenzie.com/japan-discussions-for-the-amendment-of-the-data-privacy-law/">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>AI Framework Act Enters Into Force January 22 - World&#x27;s Second Comprehensive AI Law</title>
-      <link>https://fpf.org/blog/south-koreas-new-ai-framework-act</link>
-      <pubDate>Sat, 10 Jan 2026 00:00:00 +0000</pubDate>
+      <title>South Korea&#x27;s AI Framework Act Takes Effect January 22, 2026</title>
+      <link>https://fpf.org/blog/south-koreas-new-ai-framework-act-a-balancing-act-between-innovation-and-regulation/</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
       <category>South Korea</category>
-      <category>Data Privacy</category>
-      <category>Cybersecurity</category>
-      <description>South Korea&#x27;s AI Framework Act takes effect January 22, 2026 - the world&#x27;s second comprehensive AI law.</description>
+      <category>AI/ML</category>
+      <category>Legislation</category>
+      <description>South Korea&#x27;s Framework Act on the Development of Artificial Intelligence takes effect on 22 January 2026. The Act introduces obligations for &#x27;high-impact&#x27; AI systems and mandatory labeling for genera</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
-          <li>Review data handling practices for South Korea compliance</li>
-          <li>Assess cross-border data transfer mechanisms</li>
+          <li>Conduct audit of current AI/ML systems to determine which qualify as &#x27;high-impact&#x27; under South Korean definitions</li>
+          <li>Implement mandatory labeling protocols for any generative AI features or applications offered to South Korean users</li>
+          <li>Establish compliance framework and potentially engage local Korean legal counsel to ensure full regulatory adherence</li>
         </ul>
-        <h2>Why This Matters for SaaS Companies</h2>
-        <p>Affects customer data handling, DPA requirements, <strong>cross-border</strong> transfers, and data subject rights <strong>implementation</strong>.</p>
-        <p><em>Country: <strong>South Korea</strong> | Topics: <strong>Data Privacy</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://fpf.org/blog/south-koreas-new-ai-framework-act">Read full article &rarr;</a></p>
+        <h2>Summary</h2>
+        <p>South Korea&#x27;s Framework Act on AI Development becomes effective January 22, 2026, establishing new compliance obligations for high-impact AI systems and mandatory labeling requirements for generative AI applications. This creates new regulatory requirements for SaaS companies operating AI-powered services in the South Korean market.</p>
+        <p><em>Country: <strong>South Korea</strong> | Topics: <strong>AI/ML</strong>, <strong>Legislation</strong></em></p>
+        <p><a href="https://fpf.org/blog/south-koreas-new-ai-framework-act-a-balancing-act-between-innovation-and-regulation/">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>Personal Data Protection Law Now In Effect - First Dedicated Privacy Law</title>
-      <link>https://www.rajahtannasia.com/viewpoints/new-law-on-personal-data-protection</link>
-      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
-      <category>Vietnam</category>
-      <category>Data Privacy</category>
-      <category>Cybersecurity</category>
-      <description>Vietnam&#x27;s Personal Data Protection Law came into operation on 1 January 2026.</description>
-      <content:encoded><![CDATA[
-        <h2>Key Takeaways</h2>
-        <ul>
-          <li>Review data handling practices for Vietnam compliance</li>
-          <li>Assess cross-border data transfer mechanisms</li>
-        </ul>
-        <h2>Why This Matters for SaaS Companies</h2>
-        <p>Affects customer data handling, DPA requirements, <strong>cross-border</strong> transfers, and data subject rights <strong>implementation</strong>.</p>
-        <p><em>Country: <strong>Vietnam</strong> | Topics: <strong>Data Privacy</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://www.rajahtannasia.com/viewpoints/new-law-on-personal-data-protection">Read full article &rarr;</a></p>
-      ]]></content:encoded>
-    </item>
-    <item>
-      <title>Compliance Countdown - 11 January 2026</title>
-      <link>https://legal-digest.local/deadlines</link>
-      <pubDate>Thu, 15 Jan 2026 14:03:20 +0000</pubDate>
-      <category>Deadlines</category>
+      <title>South Korea Finalizing Enforcement Decree for AI Basic Act</title>
+      <link>https://www.onetrust.com/blog/south-koreas-new-ai-law-what-it-means-for-organizations-and-how-to-prepare/</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
+      <category>South Korea</category>
+      <category>AI/ML</category>
       <category>Compliance</category>
-      <description>Upcoming regulatory compliance deadlines for technology companies in APAC.</description>
+      <description>Organizations must comply with core obligations including user notification of AI, impact assessments for high-impact AI, risk-management systems with human oversight, and domestic representative requ</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Assess current AI systems to determine which qualify as &#x27;high-impact AI&#x27; under South Korean regulations and may require formal impact assessments</li>
+          <li>Implement user notification processes to inform customers when AI systems are being used in your SaaS platform</li>
+          <li>Evaluate need for appointing a domestic representative in South Korea if the company operates AI services there without a local presence</li>
+        </ul>
+        <h2>Summary</h2>
+        <p>South Korea is finalizing enforcement details for its AI Basic Act, which will impose compliance obligations on organizations using AI systems. Key requirements include user notifications, impact assessments for high-risk AI applications, human oversight systems, and appointing domestic representatives for foreign companies.</p>
+        <p><em>Country: <strong>South Korea</strong> | Topics: <strong>AI/ML</strong>, <strong>Compliance</strong></em></p>
+        <p><a href="https://www.onetrust.com/blog/south-koreas-new-ai-law-what-it-means-for-organizations-and-how-to-prepare/">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Hong Kong PCPD Contacts Elon Musk&#x27;s xAI Over Grok AI Image Generation Concerns</title>
+      <link>https://hongkongfp.com/2026/01/15/hong-kong-privacy-watchdog-contacts-elon-musks-xai-over-sexualised-ai-images-of-people-and-minors/</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
+      <category>Hong Kong</category>
+      <category>AI/ML</category>
+      <category>Data Privacy</category>
+      <category>Enforcement</category>
+      <description>Hong Kong&#x27;s privacy watchdog has contacted Elon Musk&#x27;s xAI over its AI chatbot Grok, advising the public not to share personal data with AI chatbots arbitrarily.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review and audit all AI/ML features in your SaaS platform to ensure compliance with Hong Kong&#x27;s Personal Data (Privacy) Ordinance if you operate in that jurisdiction</li>
+          <li>Update privacy policies and user terms to clearly disclose how AI systems process personal data, particularly for any chatbot or AI-generated content features</li>
+          <li>Implement stronger user warnings and consent mechanisms before collecting personal data for AI processing, following Hong Kong&#x27;s regulatory guidance</li>
+        </ul>
+        <h2>Summary</h2>
+        <p>Hong Kong&#x27;s Privacy Commissioner for Personal Data (PCPD) has contacted Elon Musk&#x27;s xAI regarding privacy concerns with its Grok AI chatbot, particularly around image generation capabilities. The regulator is advising users not to arbitrarily share personal data with AI chatbots, signaling increased regulatory scrutiny of AI systems that process personal information.</p>
+        <p><em>Country: <strong>Hong Kong</strong> | Topics: <strong>AI/ML</strong>, <strong>Data Privacy</strong>, <strong>Enforcement</strong></em></p>
+        <p><a href="https://hongkongfp.com/2026/01/15/hong-kong-privacy-watchdog-contacts-elon-musks-xai-over-sexualised-ai-images-of-people-and-minors/">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Hong Kong PCPD Studying Mandatory Data Breach Notification and Administrative Fines</title>
+      <link>https://www.hfw.com/insights/a-new-era-for-data-protection-in-hong-kong-legislative-updates-for-a-digital-age/</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
+      <category>Hong Kong</category>
+      <category>Data Privacy</category>
+      <category>Legislation</category>
+      <description>Proposed amendments include introducing a mandatory data breach notification mechanism and empowering the PCPD to impose administrative fines linked to annual turnover.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Monitor developments in Hong Kong&#x27;s Personal Data (Privacy) Ordinance amendments and prepare breach notification procedures</li>
+          <li>Review current data processing activities in Hong Kong to ensure compliance readiness for potential turnover-based fines</li>
+          <li>Assess impact on existing incident response procedures and consider updates to breach detection and notification workflows</li>
+        </ul>
+        <h2>Summary</h2>
+        <p>Hong Kong&#x27;s Privacy Commissioner for Personal Data (PCPD) is considering amendments to introduce mandatory data breach notification requirements and administrative fines based on annual turnover. These changes would bring Hong Kong&#x27;s privacy regime closer to GDPR-style enforcement mechanisms with potentially significant financial penalties.</p>
+        <p><em>Country: <strong>Hong Kong</strong> | Topics: <strong>Data Privacy</strong>, <strong>Legislation</strong></em></p>
+        <p><a href="https://www.hfw.com/insights/a-new-era-for-data-protection-in-hong-kong-legislative-updates-for-a-digital-age/">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>India DPDP Rules Published: Phased Implementation Through 2027</title>
+      <link>https://www.lexology.com/library/detail.aspx?g=2073ac40-628f-4112-81f3-fffdfd4b8858</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
+      <category>India</category>
+      <category>Data Privacy</category>
+      <category>Legislation</category>
+      <description>India&#x27;s DPDP Rules were notified on November 13, 2025. Key milestones: consent manager registration opens November 2026, all privacy notice and security requirements effective May 2027.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Begin gap analysis of current India data processing activities against new DPDP Rules requirements</li>
+          <li>Develop implementation roadmap for privacy notice updates and security compliance measures ahead of May 2027 deadline</li>
+          <li>Evaluate need for consent manager registration and monitor registration process opening in November 2026</li>
+        </ul>
+        <h2>Summary</h2>
+        <p>India has published its Digital Personal Data Protection (DPDP) Rules with a phased implementation timeline extending through 2027. The rules establish key compliance milestones including consent manager registration in November 2026 and full privacy notice and security requirements taking effect in May 2027.</p>
+        <p><em>Country: <strong>India</strong> | Topics: <strong>Data Privacy</strong>, <strong>Legislation</strong></em></p>
+        <p><a href="https://www.lexology.com/library/detail.aspx?g=2073ac40-628f-4112-81f3-fffdfd4b8858">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>India DPDP Act: 72-Hour Breach Notification and INR 250 Crore Maximum Penalties</title>
+      <link>https://secureprivacy.ai/blog/india-dpdp-act-phase-1</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
+      <category>India</category>
+      <category>Data Privacy</category>
+      <category>Enforcement</category>
+      <description>Companies must implement 72-hour breach notification protocols and comprehensive security safeguards within 18 months. The Data Protection Board can impose penalties up to INR 250 crore.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Establish 72-hour breach notification procedures for Indian operations and customer data</li>
+          <li>Conduct comprehensive security audit and implement required safeguards for India compliance</li>
+          <li>Review current incident response procedures to ensure alignment with DPDP Act requirements</li>
+        </ul>
+        <h2>Summary</h2>
+        <p>India&#x27;s Data Protection and Digital Privacy (DPDP) Act requires companies to implement 72-hour breach notification protocols and comprehensive security safeguards within 18 months. The Data Protection Board can impose maximum penalties of INR 250 crore (approximately $30 million USD) for non-compliance.</p>
+        <p><em>Country: <strong>India</strong> | Topics: <strong>Data Privacy</strong>, <strong>Enforcement</strong></em></p>
+        <p><a href="https://secureprivacy.ai/blog/india-dpdp-act-phase-1">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Indonesia PDP Agency Targeted for Full Operation by 2026</title>
+      <link>https://www.rajahtannasia.com/viewpoints/new-law-on-personal-data-protection-comes-into-operation-on-1-january-2026/</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
+      <category>Indonesia</category>
+      <category>Data Privacy</category>
+      <category>Enforcement</category>
+      <description>Indonesia&#x27;s dedicated Personal Data Protection Agency is set to become operational by 2026. Companies can face fines up to 2% of annual revenue.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Conduct gap analysis of current data processing activities in Indonesia against PDP Law requirements before 2026 enforcement begins</li>
+          <li>Establish local data governance framework and consider appointing a local data protection officer or representative in Indonesia</li>
+          <li>Review and update privacy policies, data processing agreements, and consent mechanisms to ensure compliance with Indonesian PDP Law</li>
+        </ul>
+        <h2>Summary</h2>
+        <p>Indonesia is establishing a dedicated Personal Data Protection Agency that will be fully operational by 2026, with enforcement powers including fines up to 2% of annual revenue. This represents a significant escalation in Indonesia&#x27;s data privacy enforcement capabilities, similar to GDPR-style penalties.</p>
+        <p><em>Country: <strong>Indonesia</strong> | Topics: <strong>Data Privacy</strong>, <strong>Enforcement</strong></em></p>
+        <p><a href="https://www.rajahtannasia.com/viewpoints/new-law-on-personal-data-protection-comes-into-operation-on-1-january-2026/">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Philippines to Prioritize AI Governance as ASEAN Chair 2026</title>
+      <link>https://thephilbiznews.com/2026/01/10/ph-flags-ai-risks-calls-for-deeper-asean-global-cyber-cooperation/</link>
+      <pubDate>Thu, 15 Jan 2026 22:52:27 +0000</pubDate>
+      <category>Philippines</category>
+      <category>AI/ML</category>
+      <category>Cybersecurity</category>
+      <category>Regional</category>
+      <description>With the Philippines assuming ASEAN Chairmanship in 2026, Manila intends to place AI governance and security high on the regional agenda.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Monitor ASEAN AI governance developments throughout 2025-2026 to prepare for potential new regional compliance requirements</li>
+          <li>Review current AI/ML features and data processing activities in ASEAN markets to assess potential regulatory impact</li>
+          <li>Engage with regional industry associations or government relations teams to stay informed on proposed ASEAN AI frameworks</li>
+        </ul>
+        <h2>Summary</h2>
+        <p>The Philippines will prioritize AI governance and security as key agenda items during its ASEAN Chairmanship in 2026. This signals potential new regional AI regulations and compliance frameworks across the 10-member ASEAN bloc that could impact SaaS operations in Southeast Asia.</p>
+        <p><em>Country: <strong>Philippines</strong> | Topics: <strong>AI/ML</strong>, <strong>Cybersecurity</strong>, <strong>Regional</strong></em></p>
+        <p><a href="https://thephilbiznews.com/2026/01/10/ph-flags-ai-risks-calls-for-deeper-asean-global-cyber-cooperation/">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Compliance Countdown - 15 January 2026</title>
+      <link>https://legal-digest.local/deadlines</link>
+      <pubDate>Thu, 15 Jan 2026 22:53:57 +0000</pubDate>
+      <category>Deadlines</category>
+      <description>Upcoming regulatory compliance deadlines for APAC.</description>
       <content:encoded><![CDATA[
         <h2>Compliance Countdown</h2>
-        <p><em>Key regulatory deadlines affecting technology companies in APAC.</em></p>
-        <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
-          <thead>
-            <tr style="background: #f5f0e8; text-align: left;">
-              <th style="padding: 10px;">Time Left</th>
-              <th style="padding: 10px;">Date</th>
-              <th style="padding: 10px;">Jurisdiction</th>
-              <th style="padding: 10px;">Requirement</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-            <tr style="border-bottom: 1px solid #eee;">
-              <td style="padding: 8px; font-weight: bold; color: #666;">15 days ago</td>
-              <td style="padding: 8px;">01 Jan 2026</td>
-              <td style="padding: 8px;">🇦🇺 Australia</td>
-              <td style="padding: 8px;">Phase 2 cybersecurity enforcement commencement date</td>
-            </tr>
-
-            <tr style="border-bottom: 1px solid #eee;">
-              <td style="padding: 8px; font-weight: bold; color: #666;">15 days ago</td>
-              <td style="padding: 8px;">01 Jan 2026</td>
-              <td style="padding: 8px;">🇻🇳 Vietnam</td>
-              <td style="padding: 8px;">Effective date of Vietnam&#x27;s Personal Data Protection Law</td>
-            </tr>
-
-            <tr style="border-bottom: 1px solid #eee;">
-              <td style="padding: 8px; font-weight: bold; color: #dc2626;">6 days</td>
-              <td style="padding: 8px;">22 Jan 2026</td>
-              <td style="padding: 8px;">🇰🇷 South Korea</td>
-              <td style="padding: 8px;">AI Framework Act becomes effective</td>
-            </tr>
-
-            <tr style="border-bottom: 1px solid #eee;">
-              <td style="padding: 8px; font-weight: bold; color: #92400e;">15 days</td>
-              <td style="padding: 8px;">31 Jan 2026</td>
-              <td style="padding: 8px;">🇸🇬 Singapore</td>
-              <td style="padding: 8px;">Deadline to submit comments on MAS AI Risk Management Guidelines consultation</td>
-            </tr>
-          </tbody>
-        </table>
-        <p style="margin-top: 16px; font-size: 0.9em; color: #666;"><em>Deadlines extracted from this week's stories. Verify all dates with primary sources.</em></p>
+        <table style="width:100%;border-collapse:collapse;"><thead><tr style="background:#f5f0e8;"><th>Time</th><th>Date</th><th>Jurisdiction</th><th>Requirement</th></tr></thead><tbody><tr><td>9 days ago</td><td>07 Jan 2026</td><td>🇦🇺 Australia</td><td>OAIC privacy compliance sweep begins first week of January 2026</td></tr><tr><td>6 days</td><td>22 Jan 2026</td><td>🇰🇷 South Korea</td><td>Effective date of South Korea&#x27;s Framework Act on AI Development</td></tr><tr><td>318 days</td><td>30 Nov 2026</td><td>🇯🇵 Japan</td><td>Implementation deadline for Japan&#x27;s Active Cyberdefense Act incident reporting r</td></tr><tr><td>328 days</td><td>10 Dec 2026</td><td>🇦🇺 Australia</td><td>Children&#x27;s Online Privacy Code must be released</td></tr><tr><td>349 days</td><td>31 Dec 2026</td><td>🇮🇩 Indonesia</td><td>Indonesia PDP Agency expected to be fully operational</td></tr><tr><td>500 days</td><td>31 May 2027</td><td>🇮🇳 India</td><td>All privacy notice and security requirements under India DPDP Rules become effec</td></tr></tbody></table>
       ]]></content:encoded>
     </item>
     <item>
-      <title>AI Regulatory Tracker - 11 January 2026</title>
+      <title>AI Regulatory Tracker - 15 January 2026</title>
       <link>https://legal-digest.local/ai-tracker</link>
-      <pubDate>Thu, 15 Jan 2026 14:03:20 +0000</pubDate>
+      <pubDate>Thu, 15 Jan 2026 22:53:57 +0000</pubDate>
       <category>AI Regulation</category>
-      <category>APAC</category>
-      <description>AI governance and regulatory developments across 10 APAC jurisdictions.</description>
+      <description>AI governance and regulatory developments across APAC.</description>
       <content:encoded><![CDATA[
         <h2>AI Regulatory Tracker</h2>
-        <p><em>This week's AI governance and regulation developments across all 10 APAC jurisdictions.</em></p>
-
-        <div style="background: #f5f0e8; padding: 12px 16px; border-radius: 8px; margin: 16px 0;">
-          <p style="margin: 0; font-size: 0.9em;"><strong>Coverage:</strong> Australia, Singapore, Japan, South Korea, India, Indonesia, Philippines, Hong Kong, New Zealand, Vietnam</p>
-        </div>
-
-        
-            <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #eee;">
-              <p style="margin: 0 0 4px 0;"><strong>🇸🇬 Singapore</strong></p>
-              <p style="margin: 0 0 8px 0; font-weight: 600;">MAS AI Risk Management Guidelines Consultation Closing January 31</p>
-              <p style="margin: 0 0 8px 0; color: #666;">Singapore&#x27;s Monetary Authority (MAS) is consulting on new AI Risk Management Guidelines that will likely require financial services companies using AI systems to implement specific risk controls and g...</p>
-              <p style="margin: 0;"><a href="https://www.mas.gov.sg/publications/consultations/2025/ai-risk-management">Read more &rarr;</a></p>
-            </div>
-
-            <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #eee;">
-              <p style="margin: 0 0 4px 0;"><strong>🇰🇷 South Korea</strong></p>
-              <p style="margin: 0 0 8px 0; font-weight: 600;">AI Framework Act Enters Into Force January 22 - World&#x27;s Second Comprehensive AI Law</p>
-              <p style="margin: 0 0 8px 0; color: #666;">South Korea&#x27;s AI Framework Act becomes effective January 22, 2026, making it the world&#x27;s second comprehensive AI regulation after the EU AI Act. This law will establish new compliance requirements for...</p>
-              <p style="margin: 0;"><a href="https://fpf.org/blog/south-koreas-new-ai-framework-act">Read more &rarr;</a></p>
-            </div>
-
-        <p style="margin-top: 16px; font-size: 0.9em; color: #666;"><em>AI stories identified based on content analysis. Includes AI governance, algorithmic regulation, foundation models, and automated decision-making.</em></p>
+        <div style="margin-bottom:16px;border-bottom:1px solid #eee;padding-bottom:16px;"><p><strong>🇦🇺 Australia</strong></p><p style="font-weight:600;">Australia Preparing Second Tranche of Privacy Act Reforms Addressing Generative AI</p><p style="color:#666;">Australia&#x27;s Attorney General has confirmed that a second tranche of Privacy Act reforms is being prepared, specifically targeting the regulatory challenges posed by generative AI technologies. This fo...</p><p><a href="https://www.pinsentmasons.com/out-law/analysis/privacy-act-reforms-australia">Read more →</a></p></div><div style="margin-bottom:16px;border-bottom:1px solid #eee;padding-bottom:16px;"><p><strong>🇰🇷 South Korea</strong></p><p style="font-weight:600;">South Korea&#x27;s AI Framework Act Takes Effect January 22, 2026</p><p style="color:#666;">South Korea&#x27;s Framework Act on AI Development becomes effective January 22, 2026, establishing new compliance obligations for high-impact AI systems and mandatory labeling requirements for generative ...</p><p><a href="https://fpf.org/blog/south-koreas-new-ai-framework-act-a-balancing-act-between-innovation-and-regulation/">Read more →</a></p></div><div style="margin-bottom:16px;border-bottom:1px solid #eee;padding-bottom:16px;"><p><strong>🇰🇷 South Korea</strong></p><p style="font-weight:600;">South Korea Finalizing Enforcement Decree for AI Basic Act</p><p style="color:#666;">South Korea is finalizing enforcement details for its AI Basic Act, which will impose compliance obligations on organizations using AI systems. Key requirements include user notifications, impact asse...</p><p><a href="https://www.onetrust.com/blog/south-koreas-new-ai-law-what-it-means-for-organizations-and-how-to-prepare/">Read more →</a></p></div><div style="margin-bottom:16px;border-bottom:1px solid #eee;padding-bottom:16px;"><p><strong>🇭🇰 Hong Kong</strong></p><p style="font-weight:600;">Hong Kong PCPD Contacts Elon Musk&#x27;s xAI Over Grok AI Image Generation Concerns</p><p style="color:#666;">Hong Kong&#x27;s Privacy Commissioner for Personal Data (PCPD) has contacted Elon Musk&#x27;s xAI regarding privacy concerns with its Grok AI chatbot, particularly around image generation capabilities. The regu...</p><p><a href="https://hongkongfp.com/2026/01/15/hong-kong-privacy-watchdog-contacts-elon-musks-xai-over-sexualised-ai-images-of-people-and-minors/">Read more →</a></p></div><div style="margin-bottom:16px;border-bottom:1px solid #eee;padding-bottom:16px;"><p><strong>🇵🇭 Philippines</strong></p><p style="font-weight:600;">Philippines to Prioritize AI Governance as ASEAN Chair 2026</p><p style="color:#666;">The Philippines will prioritize AI governance and security as key agenda items during its ASEAN Chairmanship in 2026. This signals potential new regional AI regulations and compliance frameworks acros...</p><p><a href="https://thephilbiznews.com/2026/01/10/ph-flags-ai-risks-calls-for-deeper-asean-global-cyber-cooperation/">Read more →</a></p></div>
       ]]></content:encoded>
     </item>
     <item>
-      <title>Region Insights - 11 January 2026</title>
+      <title>Region Insights - 15 January 2026</title>
       <link>https://legal-digest.local/insights</link>
-      <pubDate>Thu, 15 Jan 2026 14:03:20 +0000</pubDate>
+      <pubDate>Thu, 15 Jan 2026 22:53:57 +0000</pubDate>
       <category>Analysis</category>
-      <category>APAC</category>
-      <description>Cross-jurisdictional trends and upcoming regulatory developments for the week.</description>
+      <description>Cross-jurisdictional trends and regulatory developments.</description>
       <content:encoded><![CDATA[
-        <h2>Regional Trends &amp; Analysis</h2>
-        - **Data Privacy Focus:** Regional harmonization of data protection standards continues<br/>- **Cross-border impacts:** Cybersecurity developments affecting multinational operations and compliance strategies.<br/>- **Upcoming:** Key consultation period or deadline mentioned in featured developments.
-        <p><em>Analysis based on this week's regulatory developments across APAC.</em></p>
+        <h2>Regional Trends</h2>
+        <p>• Australia&#x27;s OAIC launched its first privacy compliance sweep targeting 60 organizations<br/>• South Korea&#x27;s AI Framework Act takes effect January 22, 2026 - first comprehensive AI legislation in APAC<br/>• Singapore&#x27;s PDPC continues stringent enforcement with January 2026 penalty decisions<br/>• Hong Kong&#x27;s PCPD contacted xAI regarding Grok AI chatbot concerns<br/>• Philippines will prioritize AI governance during 2026 ASEAN Chairmanship<br/>• India&#x27;s DPDP Rules create phased implementation timeline through 2027</p>
       ]]></content:encoded>
     </item>
   </channel>
