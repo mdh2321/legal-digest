@@ -1,0 +1,90 @@
+name: Generate Weekly Digest
+
+on:
+  schedule:
+    # Run Monday 7am AEDT (Sunday 8pm UTC during daylight saving)
+    # Adjust for standard time: Monday 7am AEST = Sunday 9pm UTC
+    - cron: '0 20 * * 0'  # Sunday 8pm UTC = Monday 7am AEDT
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  generate-digest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install anthropic requests
+
+      - name: Create API key file
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            echo "$ANTHROPIC_API_KEY" > api_key.txt
+            echo "API key configured"
+          else
+            echo "No API key found - content enhancement will be disabled"
+          fi
+
+      - name: Generate digest
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python run_digest.py --format rss --publish
+
+      - name: Archive old digests
+        run: |
+          # Keep last 12 weeks of digests
+          cd docs/archive 2>/dev/null || mkdir -p docs/archive
+
+          # Move current digest to archive with date
+          DATE=$(date +%Y-%m-%d)
+          if [ -f docs/digest.html ]; then
+            cp docs/digest.html "docs/archive/digest-${DATE}.html"
+          fi
+
+          # Clean up digests older than 12 weeks (84 days)
+          find docs/archive -name "digest-*.html" -mtime +84 -delete 2>/dev/null || true
+
+      - name: Update archive index
+        run: |
+          python scripts/update_archive_index.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          git add docs/
+          git add -f docs/archive/ 2>/dev/null || true
+
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            DATE=$(date +"%d %B %Y")
+            git commit -m "Publish Weekly Digest - Week of ${DATE}"
+            git push
+          fi
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "Digest generation failed. Check the logs for details."
+          # Add Slack/email notification here if desired

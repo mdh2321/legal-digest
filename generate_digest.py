@@ -22,6 +22,7 @@ from src.formatter import DigestFormatter
 from src.insights_generator import InsightsGenerator
 from src.qa_validator import QAValidator
 from src.rss_generator import RSSGenerator
+from src.content_enhancer import ContentEnhancer, extract_deadlines_from_stories, filter_ai_stories
 
 
 class DigestGenerator:
@@ -93,7 +94,7 @@ class DigestGenerator:
 
         # Step 4: Rank stories
         if verbose:
-            print("\n[4/8] Ranking stories...")
+            print("\n[4/9] Ranking stories...")
 
         ranker = StoryRanker()
         ranked_stories = ranker.rank_stories(filtered_stories)
@@ -101,9 +102,28 @@ class DigestGenerator:
         if verbose:
             print(f"  Ranked {len(ranked_stories)} stories by materiality and jurisdiction")
 
-        # Step 5: Select stories
+        # Step 5: Enhance content with Claude API
         if verbose:
-            print("\n[5/8] Selecting stories...")
+            print("\n[5/9] Enhancing content with AI...")
+
+        enhancer = ContentEnhancer()
+        # Only enhance top stories to save API costs
+        top_stories = ranked_stories[:20]
+        enhanced_stories = enhancer.enhance_stories(top_stories, verbose=verbose)
+
+        # Replace enhanced stories in the ranked list
+        for i, story in enumerate(enhanced_stories):
+            ranked_stories[i] = story
+
+        if verbose:
+            ai_count = len([s for s in enhanced_stories if getattr(s, 'is_ai_related', False)])
+            deadline_count = len([s for s in enhanced_stories if hasattr(s, 'compliance_deadline') and s.compliance_deadline])
+            print(f"  Enhanced {len(enhanced_stories)} stories")
+            print(f"  Found {ai_count} AI-related stories, {deadline_count} with deadlines")
+
+        # Step 6: Select stories
+        if verbose:
+            print("\n[6/9] Selecting stories...")
 
         selector = StorySelector(ranker)
         selected_stories = selector.select_stories(ranked_stories)
@@ -116,9 +136,9 @@ class DigestGenerator:
                 jur_name = ALL_JURISDICTIONS[jur]['name']
                 print(f"    {jur_name}: {len(stories)}")
 
-        # Step 6: Generate insights
+        # Step 7: Generate insights
         if verbose:
-            print("\n[6/8] Generating region insights...")
+            print("\n[7/9] Generating region insights...")
 
         insights_gen = InsightsGenerator()
         insights = insights_gen.generate_insights(selected_stories)
@@ -127,9 +147,18 @@ class DigestGenerator:
             word_count = len(insights.split())
             print(f"  Generated insights ({word_count} words)")
 
-        # Step 7: Format digest
+        # Extract deadlines and AI stories for new sections
+        all_selected = [s for stories in selected_stories.values() for s in stories]
+        deadlines = extract_deadlines_from_stories(all_selected)
+        ai_stories = filter_ai_stories(all_selected)
+
         if verbose:
-            print(f"\n[7/8] Formatting digest ({output_format})...")
+            print(f"  Extracted {len(deadlines)} compliance deadlines")
+            print(f"  Identified {len(ai_stories)} AI regulatory stories")
+
+        # Step 8: Format digest
+        if verbose:
+            print(f"\n[8/9] Formatting digest ({output_format})...")
 
         formatter = DigestFormatter(self.start_date, self.end_date)
 
@@ -140,7 +169,10 @@ class DigestGenerator:
 
         if output_format == 'rss':
             rss_gen = RSSGenerator(self.start_date, self.end_date)
-            digest_text = rss_gen.generate_feed(selected_stories, insights)
+            digest_text = rss_gen.generate_feed(
+                selected_stories, insights,
+                deadlines=deadlines, ai_stories=ai_stories
+            )
             file_extension = 'xml'
             if verbose:
                 print(f"  Generated RSS feed")
@@ -151,9 +183,9 @@ class DigestGenerator:
                 total_words = len(digest_text.split())
                 print(f"  Formatted digest ({total_words} words)")
 
-        # Step 8: Validate
+        # Step 9: Validate
         if verbose:
-            print("\n[8/8] Running quality assurance...")
+            print("\n[9/9] Running quality assurance...")
 
         validator = QAValidator(self.start_date, self.end_date)
         is_valid, errors, warnings = validator.validate_all(selected_stories, digest_text)

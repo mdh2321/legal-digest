@@ -90,22 +90,37 @@ class NewsCollector:
         queries.append(f'{jur_name} {SEARCH_TOPICS["ip"][0]} {month} {year}')
 
         # --- 8. REGULATOR-SPECIFIC SEARCHES ---
+        # Search ALL regulator sites for the jurisdiction (not limited to 4)
         regulator_sites = REGULATOR_SOURCES.get(jurisdiction, [])
         if regulator_sites:
-            site_filter = ' OR '.join(f'site:{site}' for site in regulator_sites[:4])
-            queries.append(f'{jur_name} regulation announcement {month} {year} ({site_filter})')
-            # Also search for enforcement specifically on regulator sites
+            # Search all regulators in batches to avoid query length limits
+            for i in range(0, len(regulator_sites), 4):
+                batch = regulator_sites[i:i+4]
+                site_filter = ' OR '.join(f'site:{site}' for site in batch)
+                queries.append(f'{jur_name} regulation announcement {month} {year} ({site_filter})')
+            # Also search for enforcement specifically
+            site_filter = ' OR '.join(f'site:{site}' for site in regulator_sites[:5])
             queries.append(f'{jur_name} enforcement penalty {month} {year} ({site_filter})')
 
         # --- 9. LAW FIRM PUBLICATION SEARCHES ---
-        top_firms = LAW_FIRM_SOURCES[:10]
-        firm_filter = ' OR '.join(f'site:{firm}' for firm in top_firms)
-        queries.append(f'{jur_name} legal update {month} {year} ({firm_filter})')
+        # Search 30 law firms (up from 10) in batches
+        top_firms = LAW_FIRM_SOURCES[:30]
+        for i in range(0, len(top_firms), 6):
+            batch = top_firms[i:i+6]
+            firm_filter = ' OR '.join(f'site:{firm}' for firm in batch)
+            queries.append(f'{jur_name} legal update {month} {year} ({firm_filter})')
 
         # --- 10. LEGAL PUBLICATION SEARCHES ---
-        top_pubs = ['lexology.com', 'mondaq.com', 'iapp.org', 'law360.com']
-        pub_filter = ' OR '.join(f'site:{pub}' for pub in top_pubs)
-        queries.append(f'{jur_name} privacy data AI law {month} {year} ({pub_filter})')
+        # Expanded from 4 to 12 publications
+        top_pubs = [
+            'lexology.com', 'mondaq.com', 'iapp.org', 'law360.com',
+            'iclg.com', 'jdsupra.com', 'globallegalpost.com', 'law.asia',
+            'dataprotectionreport.com', 'techlawinsight.com', 'fpf.org', 'privacylaws.com'
+        ]
+        for i in range(0, len(top_pubs), 4):
+            batch = top_pubs[i:i+4]
+            pub_filter = ' OR '.join(f'site:{pub}' for pub in batch)
+            queries.append(f'{jur_name} privacy data AI law {month} {year} ({pub_filter})')
 
         return queries
 

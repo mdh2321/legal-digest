@@ -3,7 +3,7 @@ import html
 import re
 from datetime import datetime
 from email.utils import formatdate
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
 from .news_collector import NewsStory
 from .config import ALL_JURISDICTIONS, TIER1_JURISDICTIONS, TIER2_JURISDICTIONS
 from .date_utils import format_date_range
@@ -263,13 +263,16 @@ class RSSGenerator:
         return item_xml
 
     def generate_feed(self, selected_stories: Dict[str, List[NewsStory]],
-                      insights: str = "") -> str:
+                      insights: str = "", deadlines: List = None,
+                      ai_stories: List = None) -> str:
         """
         Generate complete RSS 2.0 feed.
 
         Args:
             selected_stories: Dict mapping jurisdiction codes to stories
             insights: Optional insights text (included as separate item)
+            deadlines: List of compliance deadlines extracted from stories
+            ai_stories: List of AI-related stories for the AI Tracker
 
         Returns:
             Complete RSS XML string
@@ -295,6 +298,16 @@ class RSSGenerator:
 
         # Join items
         items_xml = '\n'.join(items)
+
+        # Add Compliance Countdown section if deadlines exist
+        if deadlines:
+            countdown_item = self._format_compliance_countdown(deadlines)
+            items_xml += '\n' + countdown_item
+
+        # Add AI Regulatory Tracker section if AI stories exist
+        if ai_stories:
+            ai_tracker_item = self._format_ai_tracker(ai_stories)
+            items_xml += '\n' + ai_tracker_item
 
         # Add insights as final item if present
         if insights:
@@ -341,6 +354,143 @@ class RSSGenerator:
       <category>Analysis</category>
       <category>APAC</category>
       <description>Cross-jurisdictional trends and upcoming regulatory developments for the week.</description>
+      <content:encoded><![CDATA[
+        {content_html}
+      ]]></content:encoded>
+    </item>"""
+
+    def _format_compliance_countdown(self, deadlines: List) -> str:
+        """
+        Format compliance deadlines as an RSS item.
+
+        Args:
+            deadlines: List of deadline dictionaries
+
+        Returns:
+            RSS item XML for compliance countdown
+        """
+        date_str = format_date_range(self.start_date, self.end_date)
+        pub_date = self.to_rfc822_date(datetime.now())
+
+        # Build deadline rows
+        deadline_rows = []
+        for d in deadlines[:10]:  # Limit to 10 upcoming deadlines
+            jur_info = ALL_JURISDICTIONS.get(d['jurisdiction'], {})
+            jur_name = jur_info.get('name', d['jurisdiction'])
+            flag = jur_info.get('flag', '')
+
+            # Calculate days until deadline
+            days_until = (d['date'] - datetime.now()).days
+            if days_until < 0:
+                urgency = "past"
+                days_text = f"{abs(days_until)} days ago"
+            elif days_until == 0:
+                urgency = "today"
+                days_text = "TODAY"
+            elif days_until <= 7:
+                urgency = "urgent"
+                days_text = f"{days_until} days"
+            elif days_until <= 30:
+                urgency = "soon"
+                days_text = f"{days_until} days"
+            else:
+                urgency = "upcoming"
+                days_text = f"{days_until} days"
+
+            # Format date nicely
+            date_formatted = d['date'].strftime('%d %b %Y')
+
+            deadline_rows.append(f"""
+            <tr style="border-bottom: 1px solid #eee;">
+              <td style="padding: 8px; font-weight: bold; color: {'#dc2626' if urgency in ['today', 'urgent'] else '#92400e' if urgency == 'soon' else '#666'};">{days_text}</td>
+              <td style="padding: 8px;">{date_formatted}</td>
+              <td style="padding: 8px;">{flag} {self.escape_xml(jur_name)}</td>
+              <td style="padding: 8px;">{self.escape_xml(d['description'])}</td>
+            </tr>""")
+
+        deadline_table = '\n'.join(deadline_rows) if deadline_rows else '<tr><td colspan="4">No upcoming deadlines identified this week.</td></tr>'
+
+        content_html = f"""<h2>Compliance Countdown</h2>
+        <p><em>Key regulatory deadlines affecting technology companies in APAC.</em></p>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <thead>
+            <tr style="background: #f5f0e8; text-align: left;">
+              <th style="padding: 10px;">Time Left</th>
+              <th style="padding: 10px;">Date</th>
+              <th style="padding: 10px;">Jurisdiction</th>
+              <th style="padding: 10px;">Requirement</th>
+            </tr>
+          </thead>
+          <tbody>
+            {deadline_table}
+          </tbody>
+        </table>
+        <p style="margin-top: 16px; font-size: 0.9em; color: #666;"><em>Deadlines extracted from this week's stories. Verify all dates with primary sources.</em></p>"""
+
+        return f"""    <item>
+      <title>Compliance Countdown - {date_str}</title>
+      <link>https://legal-digest.local/deadlines</link>
+      <pubDate>{pub_date}</pubDate>
+      <category>Deadlines</category>
+      <category>Compliance</category>
+      <description>Upcoming regulatory compliance deadlines for technology companies in APAC.</description>
+      <content:encoded><![CDATA[
+        {content_html}
+      ]]></content:encoded>
+    </item>"""
+
+    def _format_ai_tracker(self, ai_stories: List[NewsStory]) -> str:
+        """
+        Format AI regulatory stories as an RSS item.
+
+        Args:
+            ai_stories: List of AI-related NewsStory objects
+
+        Returns:
+            RSS item XML for AI regulatory tracker
+        """
+        date_str = format_date_range(self.start_date, self.end_date)
+        pub_date = self.to_rfc822_date(datetime.now())
+
+        # Build story summaries
+        story_items = []
+        for story in ai_stories[:8]:  # Limit to 8 AI stories
+            jur_info = ALL_JURISDICTIONS.get(story.jurisdiction, {})
+            jur_name = jur_info.get('name', story.jurisdiction)
+            flag = jur_info.get('flag', '')
+
+            # Use enhanced summary if available
+            summary = getattr(story, 'enhanced_summary', None) or story.summary or story.snippet
+            summary = summary[:200] + '...' if len(summary) > 200 else summary
+
+            story_items.append(f"""
+            <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #eee;">
+              <p style="margin: 0 0 4px 0;"><strong>{flag} {self.escape_xml(jur_name)}</strong></p>
+              <p style="margin: 0 0 8px 0; font-weight: 600;">{self.escape_xml(story.title)}</p>
+              <p style="margin: 0 0 8px 0; color: #666;">{self.escape_xml(summary)}</p>
+              <p style="margin: 0;"><a href="{self.escape_xml(story.url)}">Read more &rarr;</a></p>
+            </div>""")
+
+        stories_html = '\n'.join(story_items) if story_items else '<p>No AI-specific regulatory developments identified this week.</p>'
+
+        content_html = f"""<h2>AI Regulatory Tracker</h2>
+        <p><em>This week's AI governance and regulation developments across all 10 APAC jurisdictions.</em></p>
+
+        <div style="background: #f5f0e8; padding: 12px 16px; border-radius: 8px; margin: 16px 0;">
+          <p style="margin: 0; font-size: 0.9em;"><strong>Coverage:</strong> Australia, Singapore, Japan, South Korea, India, Indonesia, Philippines, Hong Kong, New Zealand, Vietnam</p>
+        </div>
+
+        {stories_html}
+
+        <p style="margin-top: 16px; font-size: 0.9em; color: #666;"><em>AI stories identified based on content analysis. Includes AI governance, algorithmic regulation, foundation models, and automated decision-making.</em></p>"""
+
+        return f"""    <item>
+      <title>AI Regulatory Tracker - {date_str}</title>
+      <link>https://legal-digest.local/ai-tracker</link>
+      <pubDate>{pub_date}</pubDate>
+      <category>AI Regulation</category>
+      <category>APAC</category>
+      <description>AI governance and regulatory developments across 10 APAC jurisdictions.</description>
       <content:encoded><![CDATA[
         {content_html}
       ]]></content:encoded>
