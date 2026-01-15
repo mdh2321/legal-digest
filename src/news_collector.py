@@ -43,8 +43,11 @@ class NewsCollector:
         - Platform and e-commerce regulation
         - Employment and IP matters
         - Jurisdiction-specific regulator sites
-        - Major law firm publications
-        - Legal news aggregators
+        - ALL law firm publications (47 firms)
+        - Legal news aggregators (40+ publications)
+        - Court and tribunal databases
+        - Industry associations
+        - Think tanks and policy research
 
         Args:
             jurisdiction: Two-letter jurisdiction code
@@ -54,7 +57,9 @@ class NewsCollector:
         """
         from .config import (
             ALL_JURISDICTIONS, REGULATOR_SOURCES,
-            LAW_FIRM_SOURCES, SEARCH_TOPICS
+            LAW_FIRM_SOURCES, SEARCH_TOPICS,
+            COURT_SOURCES, INDUSTRY_ASSOCIATIONS, THINK_TANKS,
+            LEGAL_PUBLICATIONS
         )
 
         jur_name = ALL_JURISDICTIONS[jurisdiction]['name']
@@ -103,24 +108,40 @@ class NewsCollector:
             queries.append(f'{jur_name} enforcement penalty {month} {year} ({site_filter})')
 
         # --- 9. LAW FIRM PUBLICATION SEARCHES ---
-        # Search 30 law firms (up from 10) in batches
-        top_firms = LAW_FIRM_SOURCES[:30]
-        for i in range(0, len(top_firms), 6):
-            batch = top_firms[i:i+6]
+        # Search ALL law firms in batches (47 firms total)
+        for i in range(0, len(LAW_FIRM_SOURCES), 6):
+            batch = LAW_FIRM_SOURCES[i:i+6]
             firm_filter = ' OR '.join(f'site:{firm}' for firm in batch)
             queries.append(f'{jur_name} legal update {month} {year} ({firm_filter})')
 
         # --- 10. LEGAL PUBLICATION SEARCHES ---
-        # Expanded from 4 to 12 publications
-        top_pubs = [
-            'lexology.com', 'mondaq.com', 'iapp.org', 'law360.com',
-            'iclg.com', 'jdsupra.com', 'globallegalpost.com', 'law.asia',
-            'dataprotectionreport.com', 'techlawinsight.com', 'fpf.org', 'privacylaws.com'
-        ]
-        for i in range(0, len(top_pubs), 4):
-            batch = top_pubs[i:i+4]
+        # Search ALL legal publications from config (40+ publications)
+        for i in range(0, len(LEGAL_PUBLICATIONS), 5):
+            batch = LEGAL_PUBLICATIONS[i:i+5]
             pub_filter = ' OR '.join(f'site:{pub}' for pub in batch)
             queries.append(f'{jur_name} privacy data AI law {month} {year} ({pub_filter})')
+
+        # --- 11. COURT DATABASE SEARCHES ---
+        # Search court and tribunal databases for the jurisdiction
+        court_sites = COURT_SOURCES.get(jurisdiction, [])
+        if court_sites:
+            site_filter = ' OR '.join(f'site:{site}' for site in court_sites)
+            queries.append(f'{jur_name} technology data privacy judgment decision {month} {year} ({site_filter})')
+            queries.append(f'{jur_name} regulatory enforcement ruling {month} {year} ({site_filter})')
+
+        # --- 12. INDUSTRY ASSOCIATION SEARCHES ---
+        # Search industry associations in batches
+        for i in range(0, len(INDUSTRY_ASSOCIATIONS), 6):
+            batch = INDUSTRY_ASSOCIATIONS[i:i+6]
+            assoc_filter = ' OR '.join(f'site:{site}' for site in batch)
+            queries.append(f'{jur_name} technology policy regulation {month} {year} ({assoc_filter})')
+
+        # --- 13. THINK TANK SEARCHES ---
+        # Search think tanks and policy research organizations
+        for i in range(0, len(THINK_TANKS), 5):
+            batch = THINK_TANKS[i:i+5]
+            tank_filter = ' OR '.join(f'site:{site}' for site in batch)
+            queries.append(f'Asia Pacific {jur_name} technology regulation policy {month} {year} ({tank_filter})')
 
         return queries
 
@@ -138,11 +159,11 @@ class NewsCollector:
 
         queries = []
 
-        # Group firms into batches for OR queries
-        batch_size = 5
-        topics = ['data privacy', 'AI regulation', 'technology law']
+        # Group ALL firms into batches for OR queries (47 total)
+        batch_size = 6
+        topics = ['data privacy', 'AI regulation', 'technology law', 'cybersecurity']
 
-        for i in range(0, min(len(LAW_FIRM_SOURCES), 25), batch_size):
+        for i in range(0, len(LAW_FIRM_SOURCES), batch_size):
             batch = LAW_FIRM_SOURCES[i:i + batch_size]
             site_filter = ' OR '.join(f'site:{firm}' for firm in batch)
             for topic in topics:
@@ -164,13 +185,15 @@ class NewsCollector:
 
         queries = []
 
-        # Key aggregators
-        key_pubs = ['lexology.com', 'mondaq.com', 'iapp.org', 'law360.com', 'iclg.com']
-        site_filter = ' OR '.join(f'site:{pub}' for pub in key_pubs)
+        # Search ALL publications in batches (40+ total)
+        jurisdictions = ['Australia', 'Singapore', 'Japan', 'India', 'Korea', 'Hong Kong',
+                        'New Zealand', 'Indonesia', 'Philippines', 'Vietnam']
 
-        jurisdictions = ['Australia', 'Singapore', 'Japan', 'India', 'Korea', 'Hong Kong']
-        for jur in jurisdictions:
-            queries.append(f'{jur} data privacy technology law {month} {year} ({site_filter})')
+        for i in range(0, len(LEGAL_PUBLICATIONS), 5):
+            batch = LEGAL_PUBLICATIONS[i:i + 5]
+            site_filter = ' OR '.join(f'site:{pub}' for pub in batch)
+            for jur in jurisdictions:
+                queries.append(f'{jur} data privacy technology law {month} {year} ({site_filter})')
 
         return queries
 

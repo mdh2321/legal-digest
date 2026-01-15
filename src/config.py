@@ -156,12 +156,21 @@ LEGAL_PUBLICATIONS = [
     'globallegalpost.com',
     'legalbusinessonline.com',  # Asia focused
     'law.asia',                 # Asia Law Portal
+    'jdsupra.com',              # Legal intelligence
+    'lawcom.gov.uk',            # Law Commission resources
     # Technology/privacy focused
     'iapp.org',                 # International Association of Privacy Professionals
     'dataprotectionreport.com',
     'privacylaws.com',
     'technologylawdispatch.com',
     'techlawinsight.com',
+    'fpf.org',                  # Future of Privacy Forum
+    'cdt.org',                  # Center for Democracy & Technology
+    'eff.org',                  # Electronic Frontier Foundation
+    # Wire services / Business news
+    'reuters.com',
+    'bloomberg.com',
+    'ft.com',                   # Financial Times
     # Regional publications
     'lawyersweekly.com.au',     # Australia
     'afr.com',                  # Australian Financial Review (legal)
@@ -182,6 +191,119 @@ LEGAL_PUBLICATIONS = [
     'businessmirror.com.ph',
     'vnexpress.net',            # Vietnam
     'vietnamnews.vn',
+]
+
+# Court and tribunal databases by jurisdiction
+COURT_SOURCES = {
+    'AU': [
+        'federalcourt.gov.au',      # Federal Court of Australia
+        'hcourt.gov.au',            # High Court of Australia
+        'austlii.edu.au',           # Legal Information Institute
+        'aat.gov.au',               # Administrative Appeals Tribunal
+        'judgments.fedcourt.gov.au',
+    ],
+    'SG': [
+        'judiciary.gov.sg',         # Singapore Judiciary
+        'supremecourt.gov.sg',
+        'statecourts.gov.sg',
+        'sicc.gov.sg',              # Singapore International Commercial Court
+    ],
+    'JP': [
+        'courts.go.jp',             # Courts of Japan
+    ],
+    'IN': [
+        'sci.gov.in',               # Supreme Court of India
+        'indiankanoon.org',         # Indian case law database
+        'delhihighcourt.nic.in',
+    ],
+    'KR': [
+        'scourt.go.kr',             # Supreme Court of Korea
+    ],
+    'HK': [
+        'judiciary.hk',             # Hong Kong Judiciary
+        'legalref.judiciary.hk',
+    ],
+    'NZ': [
+        'courtsofnz.govt.nz',       # Courts of New Zealand
+        'nzlii.org',                # NZ Legal Information Institute
+    ],
+    'ID': [
+        'mahkamahagung.go.id',      # Supreme Court of Indonesia
+    ],
+    'PH': [
+        'sc.judiciary.gov.ph',      # Supreme Court of Philippines
+    ],
+    'VN': [
+        'toaan.gov.vn',             # Supreme People's Court
+    ],
+}
+
+# Industry associations and tech bodies
+INDUSTRY_ASSOCIATIONS = [
+    # Australia
+    'aiia.com.au',              # Australian Information Industry Association
+    'acs.org.au',               # Australian Computer Society
+    'digi.org.au',              # Digital Industry Group
+    'tech.gov.au',              # Digital Transformation Agency
+    # Singapore
+    'sgtech.org.sg',            # SGTech
+    'aisingapore.org',          # AI Singapore
+    'imda.gov.sg',              # IMDA (also regulatory)
+    # Japan
+    'jisa.or.jp',               # Japan Information Service Industry Association
+    'jipdec.or.jp',             # Japan Institute for Promotion of Digital Economy
+    'jnsa.org',                 # Japan Network Security Association
+    # India
+    'nasscom.in',               # National Association of Software Companies
+    'dsci.in',                  # Data Security Council of India
+    # Korea
+    'kosa.or.kr',               # Korea Software Industry Association
+    'kait.or.kr',               # Korea Association for IT Industry
+    # Hong Kong
+    'hkitf.org.hk',             # HK Information Technology Federation
+    'hkcs.org.hk',              # HK Computer Society
+    # Regional / International
+    'apec.org',                 # APEC
+    'asean.org',                # ASEAN
+    'bsa.org',                  # BSA | The Software Alliance
+    'itechlaw.org',             # International Technology Law Association
+    'techuk.org',               # techUK
+    'digiteurope.org',          # Digital Europe
+    'accesspartnership.com',    # Access Partnership (policy advisory)
+]
+
+# Think tanks and policy research organizations
+THINK_TANKS = [
+    # Privacy/Tech focused
+    'fpf.org',                  # Future of Privacy Forum
+    'cdt.org',                  # Center for Democracy & Technology
+    'eff.org',                  # Electronic Frontier Foundation
+    'accessnow.org',            # Access Now
+    'privacyinternational.org', # Privacy International
+    # General policy think tanks
+    'brookings.edu',            # Brookings Institution
+    'cfr.org',                  # Council on Foreign Relations
+    'carnegieendowment.org',    # Carnegie Endowment
+    'rand.org',                 # RAND Corporation
+    'adb.org',                  # Asian Development Bank
+    'worldbank.org',            # World Bank
+    'oecd.org',                 # OECD
+    # Regional think tanks
+    'lowyinstitute.org',        # Lowy Institute (Australia)
+    'aspi.org.au',              # Australian Strategic Policy Institute
+    'iseas.edu.sg',             # ISEAS-Yusof Ishak Institute (Singapore)
+    'rsis.edu.sg',              # S. Rajaratnam School (Singapore)
+    'jri.co.jp',                # Japan Research Institute
+    'rieti.go.jp',              # Research Institute of Economy, Trade and Industry
+    'nippon.com',               # Nippon Communications Foundation
+    'orfonline.org',            # Observer Research Foundation (India)
+    'kdi.re.kr',                # Korea Development Institute
+    # AI/Tech specific research
+    'ainowinstitute.org',       # AI Now Institute
+    'partnershiponai.org',      # Partnership on AI
+    'cset.georgetown.edu',      # Center for Security and Emerging Technology
+    'hai.stanford.edu',         # Stanford HAI
+    'oxfordmartin.ox.ac.uk',    # Oxford Martin School
 ]
 
 # All sources flattened for easy searching
