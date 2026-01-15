@@ -395,86 +395,7 @@
                 align-self: flex-start;
             }
 
-            .reading-modes {
-                flex-wrap: wrap;
-            }
         }
-
-        /* Reading Mode Toggles */
-        .reading-modes {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1.25rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .reading-modes span {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-right: 0.5rem;
-            align-self: center;
-        }
-
-        .mode-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            background: var(--bg-primary);
-            color: var(--text-secondary);
-            font-size: 0.8125rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.15s;
-        }
-
-        .mode-btn:hover {
-            background: var(--bg-secondary);
-            border-color: var(--text-muted);
-        }
-
-        .mode-btn.active {
-            background: var(--text-primary);
-            color: white;
-            border-color: var(--text-primary);
-        }
-
-        /* Reading Mode Content Visibility */
-        .mode-full .tldr-only,
-        .mode-action-items .tldr-only { display: none !important; }
-
-        .mode-tldr .full-only,
-        .mode-action-items .full-only { display: none !important; }
-
-        .mode-tldr .action-only,
-        .mode-full .action-only { display: none !important; }
-
-        /* TL;DR mode: hide detailed content */
-        .mode-tldr .story-summary { display: none !important; }
-        .mode-tldr .relevance { display: none !important; }
-        .mode-tldr .source-link { display: none !important; }
-
-        /* Action Items mode: only show takeaways */
-        .mode-action-items .story-summary { display: none !important; }
-        .mode-action-items .relevance { display: none !important; }
-        .mode-action-items .story-source { display: none !important; }
-        .mode-action-items .quick-hits { display: none !important; }
-
-        /* Mode indicator */
-        .mode-indicator {
-            display: none;
-            background: var(--bg-accent);
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        .mode-tldr .mode-indicator.tldr-indicator,
-        .mode-action-items .mode-indicator.action-indicator { display: block; }
     </style>
 </head>
 <body>
@@ -491,23 +412,9 @@
                 <a href="archive.html">Archive</a>
                 <a href="feed.xml">Subscribe via RSS</a>
             </nav>
-            <div class="reading-modes">
-                <span>Reading Mode:</span>
-                <button class="mode-btn active" data-mode="full">Full</button>
-                <button class="mode-btn" data-mode="tldr">TL;DR</button>
-                <button class="mode-btn" data-mode="action-items">Action Items</button>
-            </div>
         </header>
 
         <main>
-            <!-- Mode Indicators -->
-            <div class="mode-indicator tldr-indicator">
-                <strong>TL;DR Mode:</strong> Showing headlines, tags, and key takeaways only. Switch to "Full" for complete details.
-            </div>
-            <div class="mode-indicator action-indicator">
-                <strong>Action Items Mode:</strong> Showing only actionable takeaways for each story. Switch to "Full" for complete coverage.
-            </div>
-
             <!-- Quick Hits -->
             <section class="quick-hits">
                 <p class="section-label">Quick Hits</p>
@@ -734,39 +641,5 @@
             <p class="footer-meta">Generated January 11, 2026</p>
         </footer>
     </div>
-
-    <script>
-        // Reading Mode Toggle Functionality
-        (function() {
-            const container = document.querySelector('.container');
-            const buttons = document.querySelectorAll('.mode-btn');
-
-            // Load saved preference
-            const savedMode = localStorage.getItem('digestReadingMode') || 'full';
-            setMode(savedMode);
-
-            // Add click handlers
-            buttons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const mode = btn.dataset.mode;
-                    setMode(mode);
-                    localStorage.setItem('digestReadingMode', mode);
-                });
-            });
-
-            function setMode(mode) {
-                // Remove all mode classes
-                container.classList.remove('mode-full', 'mode-tldr', 'mode-action-items');
-
-                // Add new mode class
-                container.classList.add('mode-' + mode);
-
-                // Update button states
-                buttons.forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.mode === mode);
-                });
-            }
-        })();
-    </script>
 </body>
 </html>
