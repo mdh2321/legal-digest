@@ -1,0 +1,12 @@
+# Anthropic API Key for Claude-enhanced content
+#
+# To enable AI-enhanced summaries and takeaways:
+# 1. Get your API key from https://console.anthropic.com/
+# 2. Copy this file to 'api_key.txt' (remove .template)
+# 3. Replace the line below with your actual API key
+#
+# Your API key should look like: sk-ant-api03-xxxxx...
+#
+# IMPORTANT: Never commit api_key.txt to git (it's in .gitignore)
+
+YOUR_API_KEY_HERE

@@ -34,7 +34,20 @@ class NewsCollector:
 
     def build_search_queries(self, jurisdiction: str) -> List[str]:
         """
-        Build search queries for a jurisdiction.
+        Build comprehensive search queries for a jurisdiction.
+
+        Searches across:
+        - Core tech law topics (privacy, AI, cybersecurity, etc.)
+        - Enforcement actions and penalties
+        - Draft legislation and consultations
+        - Platform and e-commerce regulation
+        - Employment and IP matters
+        - Jurisdiction-specific regulator sites
+        - ALL law firm publications (47 firms)
+        - Legal news aggregators (40+ publications)
+        - Court and tribunal databases
+        - Industry associations
+        - Think tanks and policy research
 
         Args:
             jurisdiction: Two-letter jurisdiction code
@@ -42,30 +55,158 @@ class NewsCollector:
         Returns:
             List of search query strings
         """
-        from .config import ALL_JURISDICTIONS
+        from .config import (
+            ALL_JURISDICTIONS, REGULATOR_SOURCES,
+            LAW_FIRM_SOURCES, SEARCH_TOPICS,
+            COURT_SOURCES, INDUSTRY_ASSOCIATIONS, THINK_TANKS,
+            LEGAL_PUBLICATIONS
+        )
 
         jur_name = ALL_JURISDICTIONS[jurisdiction]['name']
         year = self.end_date.year
-
-        # Core technology law topics
-        topics = [
-            'data privacy regulation',
-            'cybersecurity law',
-            'artificial intelligence regulation',
-            'technology law',
-            'digital regulation',
-            'fintech regulation',
-            'consumer protection digital'
-        ]
+        month = self.end_date.strftime('%B')  # e.g., "January"
 
         queries = []
-        for topic in topics:
-            # Build date-constrained queries
-            queries.append(
-                f'{jur_name} {topic} {year} law policy regulation'
-            )
+
+        # --- 1. CORE TECH LAW TOPICS ---
+        for topic in SEARCH_TOPICS['core_tech']:
+            queries.append(f'{jur_name} {topic} {month} {year}')
+
+        # --- 2. ENFORCEMENT ACTIONS (critical for compliance) ---
+        for topic in SEARCH_TOPICS['enforcement'][:2]:
+            queries.append(f'{jur_name} {topic} {month} {year}')
+
+        # --- 3. DRAFT LEGISLATION & CONSULTATIONS ---
+        for topic in SEARCH_TOPICS['consultations'][:2]:
+            queries.append(f'{jur_name} {topic} {month} {year}')
+
+        # --- 4. PLATFORM & E-COMMERCE ---
+        for topic in SEARCH_TOPICS['platform'][:2]:
+            queries.append(f'{jur_name} {topic} {month} {year}')
+
+        # --- 5. COMMERCIAL (fintech, ecommerce, esignature) ---
+        for topic in SEARCH_TOPICS['commercial'][:2]:
+            queries.append(f'{jur_name} {topic} {month} {year}')
+
+        # --- 6. EMPLOYMENT & GIG ECONOMY ---
+        queries.append(f'{jur_name} {SEARCH_TOPICS["employment"][0]} {month} {year}')
+
+        # --- 7. INTELLECTUAL PROPERTY ---
+        queries.append(f'{jur_name} {SEARCH_TOPICS["ip"][0]} {month} {year}')
+
+        # --- 8. REGULATOR-SPECIFIC SEARCHES ---
+        # Search ALL regulator sites for the jurisdiction (not limited to 4)
+        regulator_sites = REGULATOR_SOURCES.get(jurisdiction, [])
+        if regulator_sites:
+            # Search all regulators in batches to avoid query length limits
+            for i in range(0, len(regulator_sites), 4):
+                batch = regulator_sites[i:i+4]
+                site_filter = ' OR '.join(f'site:{site}' for site in batch)
+                queries.append(f'{jur_name} regulation announcement {month} {year} ({site_filter})')
+            # Also search for enforcement specifically
+            site_filter = ' OR '.join(f'site:{site}' for site in regulator_sites[:5])
+            queries.append(f'{jur_name} enforcement penalty {month} {year} ({site_filter})')
+
+        # --- 9. LAW FIRM PUBLICATION SEARCHES ---
+        # Search ALL law firms in batches (47 firms total)
+        for i in range(0, len(LAW_FIRM_SOURCES), 6):
+            batch = LAW_FIRM_SOURCES[i:i+6]
+            firm_filter = ' OR '.join(f'site:{firm}' for firm in batch)
+            queries.append(f'{jur_name} legal update {month} {year} ({firm_filter})')
+
+        # --- 10. LEGAL PUBLICATION SEARCHES ---
+        # Search ALL legal publications from config (40+ publications)
+        for i in range(0, len(LEGAL_PUBLICATIONS), 5):
+            batch = LEGAL_PUBLICATIONS[i:i+5]
+            pub_filter = ' OR '.join(f'site:{pub}' for pub in batch)
+            queries.append(f'{jur_name} privacy data AI law {month} {year} ({pub_filter})')
+
+        # --- 11. COURT DATABASE SEARCHES ---
+        # Search court and tribunal databases for the jurisdiction
+        court_sites = COURT_SOURCES.get(jurisdiction, [])
+        if court_sites:
+            site_filter = ' OR '.join(f'site:{site}' for site in court_sites)
+            queries.append(f'{jur_name} technology data privacy judgment decision {month} {year} ({site_filter})')
+            queries.append(f'{jur_name} regulatory enforcement ruling {month} {year} ({site_filter})')
+
+        # --- 12. INDUSTRY ASSOCIATION SEARCHES ---
+        # Search industry associations in batches
+        for i in range(0, len(INDUSTRY_ASSOCIATIONS), 6):
+            batch = INDUSTRY_ASSOCIATIONS[i:i+6]
+            assoc_filter = ' OR '.join(f'site:{site}' for site in batch)
+            queries.append(f'{jur_name} technology policy regulation {month} {year} ({assoc_filter})')
+
+        # --- 13. THINK TANK SEARCHES ---
+        # Search think tanks and policy research organizations
+        for i in range(0, len(THINK_TANKS), 5):
+            batch = THINK_TANKS[i:i+5]
+            tank_filter = ' OR '.join(f'site:{site}' for site in batch)
+            queries.append(f'Asia Pacific {jur_name} technology regulation policy {month} {year} ({tank_filter})')
 
         return queries
+
+    def build_law_firm_queries(self) -> List[str]:
+        """
+        Build queries specifically targeting law firm publications.
+
+        Returns:
+            List of search query strings for law firm content
+        """
+        from .config import LAW_FIRM_SOURCES
+
+        year = self.end_date.year
+        month = self.end_date.strftime('%B')
+
+        queries = []
+
+        # Group ALL firms into batches for OR queries (47 total)
+        batch_size = 6
+        topics = ['data privacy', 'AI regulation', 'technology law', 'cybersecurity']
+
+        for i in range(0, len(LAW_FIRM_SOURCES), batch_size):
+            batch = LAW_FIRM_SOURCES[i:i + batch_size]
+            site_filter = ' OR '.join(f'site:{firm}' for firm in batch)
+            for topic in topics:
+                queries.append(f'Asia Pacific {topic} {month} {year} ({site_filter})')
+
+        return queries
+
+    def build_publication_queries(self) -> List[str]:
+        """
+        Build queries specifically targeting legal publications.
+
+        Returns:
+            List of search query strings for legal publications
+        """
+        from .config import LEGAL_PUBLICATIONS
+
+        year = self.end_date.year
+        month = self.end_date.strftime('%B')
+
+        queries = []
+
+        # Search ALL publications in batches (40+ total)
+        jurisdictions = ['Australia', 'Singapore', 'Japan', 'India', 'Korea', 'Hong Kong',
+                        'New Zealand', 'Indonesia', 'Philippines', 'Vietnam']
+
+        for i in range(0, len(LEGAL_PUBLICATIONS), 5):
+            batch = LEGAL_PUBLICATIONS[i:i + 5]
+            site_filter = ' OR '.join(f'site:{pub}' for pub in batch)
+            for jur in jurisdictions:
+                queries.append(f'{jur} data privacy technology law {month} {year} ({site_filter})')
+
+        return queries
+
+    def get_date_search_hint(self) -> str:
+        """
+        Get a date hint string for manual searches.
+
+        Returns:
+            String describing the target date range
+        """
+        start_str = self.start_date.strftime('%d %B %Y')
+        end_str = self.end_date.strftime('%d %B %Y')
+        return f"Only include articles published between {start_str} and {end_str}"
 
     def clean_url(self, url: str) -> str:
         """
@@ -148,13 +289,19 @@ class NewsCollector:
                 snippet = result.get('snippet', '')
                 source = result.get('source', '')
 
-                # Try to extract date
+                # Try to extract date from multiple sources
                 date_obj = self.extract_date_from_text(snippet)
                 if not date_obj:
                     date_obj = self.extract_date_from_text(title)
+
+                # If no date found, skip this article - strict date enforcement
                 if not date_obj:
-                    # Default to end of week if we can't find a date
-                    date_obj = datetime.combine(self.end_date, datetime.min.time())
+                    continue
+
+                # Verify the date is within our target week range
+                story_date = date_obj.date()
+                if not (self.start_date <= story_date <= self.end_date):
+                    continue  # Skip articles outside the target week
 
                 # Create story object
                 story = NewsStory(

@@ -42,6 +42,7 @@ output/*.md
 !output/.gitkeep
 search_results.json
 *.log
+api_key.txt
 
 # Testing
 .pytest_cache/

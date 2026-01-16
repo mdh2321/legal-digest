@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APAC Legal Digest - Week of 11 January 2026</title>
+    <link rel="alternate" type="application/rss+xml" title="APAC Legal Digest" href="feed.xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #faf8f5;
+            --bg-accent: #f5f0e8;
+            --text-primary: #1a1a1a;
+            --text-secondary: #5c5c5c;
+            --text-muted: #8a8a8a;
+            --accent: #c9a227;
+            --accent-dark: #a68521;
+            --border: #e8e4dc;
+            --link: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            background: var(--bg-primary);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            padding: 2.5rem 2rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .brand-text {
+            font-size: 1.125rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .edition {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+
+        .nav-links {
+            margin-top: 1.25rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Main content */
+        main {
+            padding: 0 2rem;
+        }
+
+        /* Quick Hits Section */
+        .quick-hits {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-dark);
+            margin-bottom: 1rem;
+        }
+
+        .quick-hits-content {
+            background: var(--bg-accent);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .quick-hits-list {
+            list-style: none;
+        }
+
+        .quick-hits-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            font-size: 0.9375rem;
+            line-height: 1.5;
+        }
+
+        .quick-hits-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .quick-hits-list li:first-child {
+            padding-top: 0;
+        }
+
+        .quick-hits-list strong {
+            color: var(--text-primary);
+        }
+
+        /* Key Dates */
+        .key-dates {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dates-grid {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .date-item {
+            display: flex;
+            gap: 1rem;
+            align-items: baseline;
+        }
+
+        .date-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+            background: var(--bg-accent);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .date-text {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+        }
+
+        /* Stories */
+        .stories {
+            padding: 2rem 0;
+        }
+
+        .story {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .story:last-child {
+            border-bottom: none;
+        }
+
+        .story-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--text-primary);
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .story-jurisdiction {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .story-jurisdiction .flag {
+            font-size: 1rem;
+        }
+
+        .story-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .story-source {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .story-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .tag {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.625rem;
+            border-radius: 4px;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+        }
+
+        .tag.enforcement {
+            background: #fef2f2;
+            color: #991b1b;
+        }
+
+        .tag.deadline {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .tag.new-law {
+            background: #ecfdf5;
+            color: #065f46;
+        }
+
+        .story-summary {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-summary strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .takeaways {
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent);
+            padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.25rem;
+        }
+
+        .takeaways-label {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .takeaways ul {
+            list-style: none;
+        }
+
+        .takeaways li {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            padding: 0.375rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .takeaways li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .relevance {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .source-link {
+            font-size: 0.875rem;
+        }
+
+        .source-link a {
+            color: var(--link);
+            text-decoration: underline;
+            text-decoration-color: var(--border);
+            text-underline-offset: 2px;
+            font-weight: 500;
+            transition: text-decoration-color 0.15s;
+        }
+
+        .source-link a:hover {
+            text-decoration-color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2.5rem 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-meta {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            header, main, footer {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            h1 {
+                font-size: 1.625rem;
+            }
+
+            .story-title {
+                font-size: 1.125rem;
+            }
+
+            .date-item {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .date-badge {
+                align-self: flex-start;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="brand-icon">&#9878;</div>
+                <span class="brand-text">APAC Legal Digest</span>
+            </div>
+            <p class="edition">Week of January 11, 2026</p>
+            <h1>Tech Law Developments Across Asia-Pacific</h1>
+            <nav class="nav-links">
+                <a href="index.html">&larr; Home</a>
+                <a href="archive.html">Archive</a>
+                <a href="feed.xml">Subscribe via RSS</a>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Quick Hits -->
+            <section class="quick-hits">
+                <p class="section-label">Quick Hits</p>
+                <div class="quick-hits-content">
+                    <ul class="quick-hits-list">
+                        <li><strong>Enforcement surge:</strong> Singapore's PDPC penalized 4 organizations this week. Australia's OAIC launched its first-ever privacy compliance sweep targeting 60 companies.</li>
+                        <li><strong>AI governance accelerates:</strong> South Korea's AI Framework Act takes effect January 22, becoming the world's second comprehensive AI law. Singapore's MAS AI guidelines consultation closes January 31.</li>
+                        <li><strong>New data protection regime:</strong> Vietnam's first dedicated Personal Data Protection Law is now in effect, with fines up to 5% of revenue for cross-border transfer violations.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Key Dates -->
+            <section class="key-dates">
+                <p class="section-label">Dates to Watch</p>
+                <div class="dates-grid">
+                    <div class="date-item">
+                        <span class="date-badge">Jan 22</span>
+                        <span class="date-text">South Korea AI Framework Act enters into force</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-badge">Jan 31</span>
+                        <span class="date-text">Singapore MAS AI Risk Management Guidelines consultation closes</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-badge">May 2026</span>
+                        <span class="date-text">New Zealand Privacy Amendment Act (IPP 3A) takes effect</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-badge">Nov 2026</span>
+                        <span class="date-text">Japan critical infrastructure cyber incident reporting deadline</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stories -->
+            <section class="stories">
+                <p class="section-label">This Week's Stories</p>
+
+                <!-- Story 1 -->
+                <article class="story">
+                    <span class="story-number">1</span>
+                    <p class="story-jurisdiction"><span class="flag">&#127462;&#127482;</span> Australia</p>
+                    <h2 class="story-title">OAIC Launches First Privacy Compliance Sweep Targeting 60 Organizations</h2>
+                    <p class="story-source">Maddocks, Computer Weekly</p>
+                    <div class="story-tags">
+                        <span class="tag enforcement">Enforcement</span>
+                        <span class="tag">Data Privacy</span>
+                    </div>
+                    <p class="story-summary">
+                        The Office of the Australian Information Commissioner (OAIC) has launched its <strong>first-ever compliance sweep</strong> in the first week of January 2026. The sweep targets <strong>60 organizations across 6 industry sectors</strong> where in-person data collection creates "power and information asymmetries" for consumers. Sectors include retailers, licensed venues, car hire companies, and real estate agents. Organizations with <strong>non-compliant privacy policies</strong> face penalties up to <strong>A$66,000</strong>.
+                    </p>
+                    <div class="takeaways">
+                        <p class="takeaways-label">What This Means for You</p>
+                        <ul>
+                            <li>Review privacy policies for compliance with new OAIC enforcement standards</li>
+                            <li>Ensure transparency in face-to-face personal information collection</li>
+                            <li>Assess data minimization practices to avoid over-collection</li>
+                        </ul>
+                    </div>
+                    <p class="relevance">SaaS Relevance: Affects customer-facing data collection practices and privacy notice requirements for Australian operations.</p>
+                    <p class="source-link">Read more: <a href="https://www.maddocks.com.au/insights/the-oaic-privacy-sweep-in-2026">Maddocks</a></p>
+                </article>
+
+                <!-- Story 2 -->
+                <article class="story">
+                    <span class="story-number">2</span>
+                    <p class="story-jurisdiction"><span class="flag">&#127480;&#127468;</span> Singapore</p>
+                    <h2 class="story-title">PDPC Issues Penalties to Four Organizations for Data Protection Breaches</h2>
+                    <p class="story-source">PDPC Singapore | 8 January 2026</p>
+                    <div class="story-tags">
+                        <span class="tag enforcement">Enforcement</span>
+                        <span class="tag">Cybersecurity</span>
+                    </div>
+                    <p class="story-summary">
+                        Singapore's Personal Data Protection Commission (PDPC) issued <strong>financial penalties to 4 organizations</strong> on January 8, 2026 for breaching protection obligations. <strong>Singapore Data Hub</strong> received a <strong>$17,500 fine</strong> for failing to implement reasonable security arrangements. <strong>Goldheart Jewelry</strong> was fined <strong>S$58,000</strong> for inadequate patch management. The breaches collectively affected <strong>over 1 million individuals</strong>. Common failures included outdated software, lack of security reviews, and missing Data Protection Officer appointments.
+                    </p>
+                    <div class="takeaways">
+                        <p class="takeaways-label">What This Means for You</p>
+                        <ul>
+                            <li>Implement robust patch management and software update processes</li>
+                            <li>Conduct periodic security reviews and vulnerability assessments</li>
+                            <li>Ensure Data Protection Officer is appointed and policies documented</li>
+                        </ul>
+                    </div>
+                    <p class="relevance">SaaS Relevance: Highlights security baseline expectations for customer data handling. Review patch management and DPO appointment status.</p>
+                    <p class="source-link">Read more: <a href="https://www.pdpc.gov.sg/news-and-events/announcements/2026/01/new-commission's-decisions-and-undertaking-on-8-january-2026">PDPC Singapore</a></p>
+                </article>
+
+                <!-- Story 3 -->
+                <article class="story">
+                    <span class="story-number">3</span>
+                    <p class="story-jurisdiction"><span class="flag">&#127472;&#127479;</span> South Korea</p>
+                    <h2 class="story-title">AI Framework Act Enters Into Force January 22 - World's Second Comprehensive AI Law</h2>
+                    <p class="story-source">Future of Privacy Forum, IAPP</p>
+                    <div class="story-tags">
+                        <span class="tag new-law">New Law</span>
+                        <span class="tag deadline">Deadline: Jan 22</span>
+                        <span class="tag">AI/ML</span>
+                    </div>
+                    <p class="story-summary">
+                        South Korea's <strong>AI Framework Act takes effect on January 22, 2026</strong>, making it the <strong>world's second comprehensive AI law</strong> after the EU AI Act and the first in Asia-Pacific. The Act introduces <strong>mandatory requirements for "high-impact" AI systems</strong> in critical sectors including healthcare, energy, and public services. It also establishes <strong>labeling requirements for generative AI</strong> applications. The Personal Information Protection Commission (PIPC) has developed AI-specific data processing guidelines to support implementation.
+                    </p>
+                    <div class="takeaways">
+                        <p class="takeaways-label">What This Means for You</p>
+                        <ul>
+                            <li>Assess whether AI systems qualify as "high-impact" under the new framework</li>
+                            <li>Implement labeling for generative AI features used in Korean market</li>
+                            <li>Review PIPC AI data processing guidelines for compliance requirements</li>
+                        </ul>
+                    </div>
+                    <p class="relevance">SaaS Relevance: AI-powered features deployed in Korea now subject to world's second comprehensive AI law. Immediate compliance review recommended.</p>
+                    <p class="source-link">Read more: <a href="https://fpf.org/blog/south-koreas-new-ai-framework-act-a-balancing-act-between-innovation-and-regulation/">Future of Privacy Forum</a></p>
+                </article>
+
+                <!-- Story 4 -->
+                <article class="story">
+                    <span class="story-number">4</span>
+                    <p class="story-jurisdiction"><span class="flag">&#127483;&#127475;</span> Vietnam</p>
+                    <h2 class="story-title">Personal Data Protection Law Now In Effect - First Dedicated Privacy Law</h2>
+                    <p class="story-source">Rajah & Tann, Lexology | 1 January 2026</p>
+                    <div class="story-tags">
+                        <span class="tag new-law">New Law</span>
+                        <span class="tag">Data Privacy</span>
+                        <span class="tag">Cross-Border</span>
+                    </div>
+                    <p class="story-summary">
+                        Vietnam's <strong>Personal Data Protection Law came into operation on 1 January 2026</strong>, establishing the country's first formal law dedicated to personal data protection. The law introduces <strong>fines up to 5% of revenue</strong> for cross-border data transfer violations and up to <strong>VND 3 billion</strong> for other breaches. <strong>Small enterprises and startups receive a 5-year grace period</strong> for certain obligations. Micro-enterprises and household businesses are exempt from specified requirements.
+                    </p>
+                    <div class="takeaways">
+                        <p class="takeaways-label">What This Means for You</p>
+                        <ul>
+                            <li>Review cross-border data transfer mechanisms for Vietnam operations</li>
+                            <li>Assess whether grace period exemptions apply to your organization</li>
+                            <li>Implement consent and notice requirements for Vietnamese data subjects</li>
+                        </ul>
+                    </div>
+                    <p class="relevance">SaaS Relevance: Cross-border data transfers from Vietnam now subject to formal regulation. Review data flows and transfer mechanisms.</p>
+                    <p class="source-link">Read more: <a href="https://www.rajahtannasia.com/viewpoints/new-law-on-personal-data-protection-comes-into-operation-on-1-january-2026/">Rajah & Tann</a></p>
+                </article>
+
+                <!-- Story 5 -->
+                <article class="story">
+                    <span class="story-number">5</span>
+                    <p class="story-jurisdiction"><span class="flag">&#127471;&#127477;</span> Japan</p>
+                    <h2 class="story-title">Active Cyber Defense Act Takes Effect - Critical Infrastructure Reporting Required</h2>
+                    <p class="story-source">Nippon.com, ICLG</p>
+                    <div class="story-tags">
+                        <span class="tag new-law">New Law</span>
+                        <span class="tag deadline">Deadline: Nov 2026</span>
+                        <span class="tag">Cybersecurity</span>
+                    </div>
+                    <p class="story-summary">
+                        Japan's <strong>Active Cyber Defense Act takes effect in 2026</strong>, introducing significant new cybersecurity obligations. <strong>Critical infrastructure operators must now report cyberattacks</strong> and new IT system deployments to the government. The Act establishes a <strong>Cyber Threat Information Sharing Council</strong> for public-private cooperation. An <strong>incident reporting obligation</strong> for essential infrastructure providers takes effect <strong>by November 2026</strong>. The law also grants government authority to monitor foreign internet traffic for threat detection.
+                    </p>
+                    <div class="takeaways">
+                        <p class="takeaways-label">What This Means for You</p>
+                        <ul>
+                            <li>Assess whether operations qualify as critical infrastructure under the new law</li>
+                            <li>Prepare incident reporting procedures for November 2026 deadline</li>
+                            <li>Consider participation in Cyber Threat Information Sharing Council</li>
+                        </ul>
+                    </div>
+                    <p class="relevance">SaaS Relevance: Cloud providers serving critical infrastructure may face new reporting obligations. Review customer base and prepare compliance procedures.</p>
+                    <p class="source-link">Read more: <a href="https://www.nippon.com/en/in-depth/d01147/">Nippon.com</a></p>
+                </article>
+
+                <!-- Story 6 -->
+                <article class="story">
+                    <span class="story-number">6</span>
+                    <p class="story-jurisdiction"><span class="flag">&#127480;&#127468;</span> Singapore</p>
+                    <h2 class="story-title">MAS AI Risk Management Guidelines Consultation Closing January 31</h2>
+                    <p class="story-source">MAS Singapore</p>
+                    <div class="story-tags">
+                        <span class="tag deadline">Deadline: Jan 31</span>
+                        <span class="tag">AI/ML</span>
+                        <span class="tag">Fintech</span>
+                    </div>
+                    <p class="story-summary">
+                        The Monetary Authority of Singapore (MAS) consultation on <strong>AI Risk Management Guidelines closes January 31, 2026</strong>. When finalized, the Guidelines will establish <strong>regulatory expectations for financial institutions</strong> deploying AI systems. A <strong>12-month transition period</strong> will apply after promulgation. The guidelines cover AI governance, risk assessment, model validation, and ongoing monitoring requirements for regulated entities.
+                    </p>
+                    <div class="takeaways">
+                        <p class="takeaways-label">What This Means for You</p>
+                        <ul>
+                            <li>Submit consultation feedback by January 31 if operating in Singapore financial services</li>
+                            <li>Begin preparing AI governance frameworks aligned with MAS expectations</li>
+                            <li>Plan for 12-month implementation period after guidelines finalized</li>
+                        </ul>
+                    </div>
+                    <p class="relevance">SaaS Relevance: Financial services AI products in Singapore will need to comply. Early preparation recommended during transition period.</p>
+                    <p class="source-link">Read more: <a href="https://www.mas.gov.sg/publications/consultations/2025/consultation-paper-on-guidelines-on-artificial-intelligence-risk-management">MAS Singapore</a></p>
+                </article>
+
+                <!-- Story 7 -->
+                <article class="story">
+                    <span class="story-number">7</span>
+                    <p class="story-jurisdiction"><span class="flag">&#127462;&#127482;</span> Australia</p>
+                    <h2 class="story-title">Home Affairs Activates Phase 2 Cybersecurity Enforcement</h2>
+                    <p class="story-source">JD Supra | January 2026</p>
+                    <div class="story-tags">
+                        <span class="tag enforcement">Enforcement</span>
+                        <span class="tag">Cybersecurity</span>
+                    </div>
+                    <p class="story-summary">
+                        Australia's Department of Home Affairs has commenced <strong>Phase 2 cybersecurity enforcement from 1 January 2026</strong>, shifting to an "active regulatory focus" for ransomware payment reporting under the Cyber Security Act 2024. Organizations must now <strong>report ransomware payments within the prescribed timeframe</strong> or face civil penalties up to <strong>AU$19,800</strong>. This marks a transition from the initial awareness phase to active compliance monitoring and enforcement.
+                    </p>
+                    <div class="takeaways">
+                        <p class="takeaways-label">What This Means for You</p>
+                        <ul>
+                            <li>Ensure ransomware incident response procedures include payment reporting</li>
+                            <li>Review Cyber Security Act 2024 obligations for applicable reporting timelines</li>
+                            <li>Update incident response playbooks to reflect enforcement phase requirements</li>
+                        </ul>
+                    </div>
+                    <p class="relevance">SaaS Relevance: Ransomware incidents affecting Australian operations now subject to active enforcement. Review incident response procedures.</p>
+                    <p class="source-link">Read more: <a href="https://www.jdsupra.com/legalnews/privacy-and-cybersecurity-client-alert-7255771/">JD Supra</a></p>
+                </article>
+            </section>
+        </main>
+
+        <footer>
+            <p class="footer-brand">APAC Legal Digest</p>
+            <p class="footer-meta">For technology company legal professionals</p>
+            <p class="footer-meta">Generated January 11, 2026</p>
+        </footer>
+    </div>
+</body>
+</html>

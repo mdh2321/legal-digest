@@ -1,49 +1,105 @@
 # APAC Legal News Digest Generator
 
-An automated system to generate weekly legal news digests covering Asia-Pacific jurisdictions, focused on technology law developments relevant to global tech companies.
+An automated system to generate weekly legal news digests covering Asia-Pacific jurisdictions, focused on technology law developments relevant to global SaaS companies.
 
 ## Overview
 
 This system automatically:
-- Collects legal news from APAC jurisdictions (AU, SG, JP, NZ, PH, HK, VN, IN)
-- Filters for technology-relevant topics (AI, data privacy, cybersecurity, etc.)
+- Collects legal news from 10 APAC jurisdictions (AU, SG, JP, IN, PH, ID, HK, KR, NZ, VN)
+- Filters for technology-relevant topics (AI, data privacy, eSignatures, tax, etc.)
 - Ranks stories by materiality and jurisdiction priority
-- Generates formatted markdown digests with regional insights
+- Generates **RSS feeds** or markdown digests with regional insights
+- Includes SaaS-specific relevance analysis and key takeaways
 - Validates output against quality standards
 
 ## Features
 
 ### Jurisdiction Coverage
-**Tier 1** (minimum 1 story each):
+**Tier 1 (Priority)** - minimum 1 story each:
 - 🇦🇺 Australia
 - 🇸🇬 Singapore
 - 🇯🇵 Japan
 
-**Tier 2** (maximum 3 stories total):
-- 🇳🇿 New Zealand
-- 🇵🇭 Philippines
-- 🇭🇰 Hong Kong
-- 🇻🇳 Vietnam
+**Tier 2** - maximum 3 stories total:
 - 🇮🇳 India
+- 🇵🇭 Philippines
+- 🇮🇩 Indonesia
+- 🇭🇰 Hong Kong
+- 🇰🇷 South Korea
+- 🇳🇿 New Zealand
+- 🇻🇳 Vietnam
 
 ### Content Focus Areas
-- AI/ML regulation
-- Data privacy & protection
-- Cybersecurity requirements
-- Cloud computing
-- Electronic signatures
-- Contract law
-- Competition & antitrust
-- Consumer protection
-- Corporate governance
-- Fintech & financial services
-- Anti-money laundering (AML)
-- Anti-bribery & corruption
 
-### Output Format
+**Core Technology Law**
+- AI/ML regulation & governance (including generative AI, foundation models)
+- Data privacy & protection (cross-border transfers, data localization, breach notification)
+- Cybersecurity requirements (critical infrastructure, security standards)
+- Cloud & SaaS (software licensing, cloud sovereignty, multi-tenancy)
+
+**Digital Transactions & Platform**
+- Electronic signatures & digital identity
+- E-commerce & online marketplace regulation
+- Platform liability & content moderation
+- Online safety & digital services
+
+**Commercial & Contracts**
+- Contract law (standard terms, limitation of liability, SLAs)
+- Competition & digital markets (gatekeeper regulation, self-preferencing)
+- Consumer protection (dark patterns, subscription traps)
+
+**Financial & Corporate**
+- Fintech (digital payments, open banking, digital assets, CBDC)
+- Anti-money laundering (AML/KYC, sanctions, beneficial ownership)
+- Corporate governance & ESG (climate disclosure, supply chain due diligence)
+- Tax (digital services tax, transfer pricing, Pillar One/Two)
+
+**Employment & IP**
+- Employment law (gig economy, remote work, platform workers, algorithmic management)
+- Intellectual property (AI copyright, software patents, open source licensing)
+- Telecommunications (net neutrality, 5G regulation)
+
+**Enforcement & Forward-Looking**
+- Regulatory enforcement actions & penalties
+- Draft legislation & public consultations
+- Proposed regulations & policy developments
+
+### Source Coverage
+
+The system searches across multiple source categories for comprehensive coverage:
+
+**Regulators & Government** (55+ sites)
+- Privacy commissioners (OAIC, PDPC, PPC, etc.)
+- Financial regulators (MAS, ASIC, RBI, FSA, etc.)
+- Competition authorities (ACCC, FTC Korea, etc.)
+- Cybersecurity agencies (CSA Singapore, NISC Japan, etc.)
+- Ministries of digital/technology
+
+**Law Firms** (45+ firms)
+- Global firms: Baker McKenzie, Herbert Smith Freehills, Clifford Chance, DLA Piper, etc.
+- Australia: Allens, MinterEllison, Corrs, Clayton Utz, Gilbert + Tobin
+- Singapore: WongPartnership, Rajah & Tann, Drew & Napier
+- Japan: Nishimura & Asahi, Anderson Mori, Nagashima Ohno, Mori Hamada
+- India: Trilegal, AZB Partners, Nishith Desai
+- Korea: Kim & Chang, Lee & Ko, Yoon & Yang
+- SEA: SSEK, ABNR, SyCip Salazar, ZICO Law
+
+**Legal Publications** (25+ sources)
+- Aggregators: Lexology, Mondaq, Law360, ICLG
+- Privacy-focused: IAPP, Data Protection Report
+- Regional: AFR, Straits Times, Nikkei, Bar & Bench, Korea Herald
+
+### Output Formats
+
+**RSS Feed** (default, for Readwise Reader and other RSS readers):
+- Valid RSS 2.0 with `content:encoded` for rich content
+- Each story includes: headline, executive summary, key takeaways, SaaS relevance
+- Categories for country and practice areas (enables filtering)
+- Clean source URLs
+
+**Markdown** (alternative):
 - Target: 8-10 stories
 - Maximum: 1,000 words
-- Markdown formatted
 - Region insights (≤120 words)
 - Source citations with clean URLs
 - Category tags
@@ -91,14 +147,24 @@ The primary way to use this system is through Claude Code, which provides web se
 For testing without web search:
 
 ```bash
-python run_digest.py
+# Generate RSS feed (default)
+python run_digest.py --format rss
+
+# Generate Markdown digest
+python run_digest.py --format markdown
+
+# Use cached search results
+python run_digest.py --format rss --results search_results.json
+
+# Specify output directory
+python run_digest.py --format rss --output ./digests
 ```
 
-This will run with mock data. To use cached search results:
-
-```bash
-python run_digest.py search_results.json
-```
+**CLI Options:**
+- `--format, -f`: Output format (`rss` or `markdown`, default: `rss`)
+- `--output, -o`: Output directory (default: `output`)
+- `--results, -r`: JSON file with cached search results
+- `--quiet, -q`: Suppress progress output
 
 ## System Architecture
 
@@ -113,6 +179,7 @@ src/
 ├── story_ranker.py        # Materiality-based ranking
 ├── story_selector.py      # Story selection logic
 ├── formatter.py           # Markdown output generation
+├── rss_generator.py       # RSS 2.0 feed generation
 ├── insights_generator.py  # Regional trend analysis
 └── qa_validator.py        # Quality assurance checks
 ```
@@ -123,10 +190,27 @@ src/
 2. **News Collection**: Search for stories across all jurisdictions
 3. **Content Filtering**: Apply topic inclusion/exclusion rules
 4. **Story Ranking**: Score by materiality (60%) and jurisdiction priority (40%)
-5. **Story Selection**: Select 8-10 stories meeting tier requirements
-6. **Insights Generation**: Identify cross-jurisdictional trends
-7. **Formatting**: Generate markdown with proper structure
-8. **Quality Assurance**: Validate against all requirements
+5. **Deduplication**: Remove duplicate stories, keeping highest-priority source
+6. **Story Selection**: Select 8-10 stories meeting tier requirements
+7. **Insights Generation**: Identify cross-jurisdictional trends
+8. **Formatting**: Generate markdown with proper structure
+9. **Quality Assurance**: Validate against all requirements
+
+### Source Prioritization
+
+When the same news event is covered by multiple sources, the system keeps the most authoritative source based on this hierarchy:
+
+| Priority | Source Type | Examples |
+|----------|-------------|----------|
+| 3 (Highest) | Government/Regulator | oaic.gov.au, pdpc.gov.sg, mas.gov.sg |
+| 2 | Legal Publications | Lexology, Law360, IAPP, JDSupra |
+| 1 | Law Firm Analysis | Baker McKenzie, Herbert Smith Freehills |
+
+**Deduplication Logic:**
+- Stories are compared by title similarity and key term overlap
+- Must be from the same jurisdiction to be considered duplicates
+- When duplicates are found, the highest-priority source is retained
+- This ensures official announcements are preferred over commentary
 
 ## Configuration
 
@@ -212,12 +296,78 @@ MATERIALITY_WEIGHT = 0.7  # Increase focus on materiality
 JURISDICTION_WEIGHT = 0.3
 ```
 
+## Editorial Guidelines
+
+### Writing Style
+- Use **straightforward, jargon-free language** with short sentences
+- **Bold important terms or phrases** to highlight essential information
+- Keep summaries concise and scannable
+- Write for a legal professional audience at a global technology company
+
+### Acronym Handling
+- **Expand the first acronym in each story** on first use
+- Format: "PDPC (Personal Data Protection Commission)"
+- Subsequent uses can use the acronym alone
+- Common expansions are handled automatically by the formatter
+
+### Link Quality
+- All URLs must be **clean, human-readable permalinks**
+- Remove tracking parameters (utm_*, fbclid, gclid, etc.)
+- Prefer official source URLs over aggregator links
+- Verify links are accessible before inclusion
+
+### Jurisdiction Coverage
+- If **no relevant stories** are available for a jurisdiction in the target week, **omit it** rather than including outdated material
+- Never backfill with older articles to meet quotas
+
+## Pre-Flight Checklist
+
+Before finalizing each digest, verify:
+
+**Date Compliance**
+- [ ] All stories published within target week (Monday-Sunday)
+- [ ] Publication dates cross-checked against source articles
+- [ ] No articles older than 7 days from digest date
+
+**Content Quality**
+- [ ] Important terms bolded for scannability
+- [ ] Acronyms expanded on first use per story
+- [ ] Language is clear and jargon-free
+- [ ] Summaries are concise (2-3 sentences max)
+
+**Technical Quality**
+- [ ] All URLs are clean permalinks (no tracking params)
+- [ ] Links verified as accessible
+- [ ] No duplicate stories
+- [ ] Correct jurisdiction tagging
+
+**Coverage Requirements**
+- [ ] Tier 2 stories limited to 3 maximum
+- [ ] Total stories: 5-10 range
+- [ ] No jurisdictions included without current-week stories
+
+## Strict Date Filtering
+
+**CRITICAL**: Only articles published within the target week (Monday-Sunday) are included.
+
+The system enforces strict date validation at multiple levels:
+1. **Search queries** include explicit month/year constraints
+2. **News collector** requires extractable publication dates (articles without dates are skipped)
+3. **Content filter** strictly validates dates against the target week range
+
+When running manual searches via Claude Code:
+- Always verify the publication date of each article before including
+- Use the target date range shown in the console output
+- Reject any articles older than the target week, even if topically relevant
+- If in doubt, skip the article rather than include potentially stale news
+
 ## Troubleshooting
 
 ### No Stories Found
 - Check date range is correct
 - Verify search function is working
 - Review filter criteria (may be too restrictive)
+- **Note**: The system now strictly filters by date, so weeks with less news activity will have fewer stories
 
 ### Too Many/Few Stories
 - Adjust `TARGET_STORY_COUNT` in config.py
@@ -228,6 +378,11 @@ JURISDICTION_WEIGHT = 0.3
 - Reduce target story count
 - Shorten insights section
 - Adjust summary lengths
+
+### Old Articles Appearing
+- Ensure publication dates are being extracted correctly
+- Check that articles have visible publication dates
+- The system will skip articles without extractable dates
 
 ## Development
 
@@ -264,6 +419,21 @@ For issues or questions:
 4. Consult Claude Code documentation
 
 ## Version History
+
+- **1.1.1** (2026-01-08): Strict Date Filtering
+  - **BREAKING**: Articles without extractable publication dates are now skipped
+  - Added strict date range validation in news collector
+  - Search queries now include explicit month/year constraints
+  - Added date rejection logging for debugging
+  - Updated documentation on date filtering requirements
+
+- **1.1.0** (2026-01-07): RSS Feed Support
+  - Added RSS 2.0 feed generation for Readwise Reader
+  - Added SaaS-specific relevance analysis and key takeaways
+  - Expanded jurisdiction coverage to 10 (added Korea, Indonesia)
+  - Added Tax category for digital services tax tracking
+  - Enhanced topic keywords for SaaS company relevance
+  - CLI now defaults to RSS output format
 
 - **1.0.0** (2026-01-06): Initial release
   - Core digest generation pipeline
