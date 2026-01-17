@@ -371,6 +371,95 @@
             color: var(--text-muted);
         }
 
+        /* Compliance Countdown */
+        .compliance-countdown {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .countdown-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .countdown-table th {
+            background: var(--bg-accent);
+            padding: 0.75rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .countdown-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9375rem;
+        }
+
+        .countdown-table .days-urgent {
+            color: #dc2626;
+            font-weight: 700;
+        }
+
+        .countdown-table .days-soon {
+            color: #92400e;
+            font-weight: 600;
+        }
+
+        /* AI Tracker */
+        .ai-tracker {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ai-tracker-intro {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .ai-story {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ai-story:last-child {
+            border-bottom: none;
+        }
+
+        .ai-story-jurisdiction {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .ai-story-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .ai-story-summary {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .ai-story-link {
+            font-size: 0.875rem;
+        }
+
+        .ai-story-link a {
+            color: var(--link);
+            text-decoration: underline;
+        }
+
         /* Responsive */
         @media (max-width: 640px) {
             header, main, footer {
@@ -632,6 +721,118 @@
                     <p class="relevance">SaaS Relevance: Ransomware incidents affecting Australian operations now subject to active enforcement. Review incident response procedures.</p>
                     <p class="source-link">Read more: <a href="https://www.jdsupra.com/legalnews/privacy-and-cybersecurity-client-alert-7255771/">JD Supra</a></p>
                 </article>
+            </section>
+
+            <!-- Compliance Countdown -->
+            <section class="compliance-countdown">
+                <p class="section-label">Compliance Countdown</p>
+                <p style="font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 1rem;">Key regulatory deadlines affecting technology companies in APAC.</p>
+                <table class="countdown-table">
+                    <thead>
+                        <tr>
+                            <th>Time Left</th>
+                            <th>Date</th>
+                            <th>Jurisdiction</th>
+                            <th>Requirement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="days-urgent">7 days</td>
+                            <td>22 Jan 2026</td>
+                            <td>🇰🇷 South Korea</td>
+                            <td>AI Framework Act enters into force</td>
+                        </tr>
+                        <tr>
+                            <td class="days-urgent">16 days</td>
+                            <td>31 Jan 2026</td>
+                            <td>🇸🇬 Singapore</td>
+                            <td>MAS AI Risk Management Guidelines consultation closes</td>
+                        </tr>
+                        <tr>
+                            <td class="days-soon">135 days</td>
+                            <td>01 Jun 2026</td>
+                            <td>🇳🇿 New Zealand</td>
+                            <td>Privacy Amendment Act (IPP 3A) takes effect</td>
+                        </tr>
+                        <tr>
+                            <td>299 days</td>
+                            <td>13 Nov 2026</td>
+                            <td>🇮🇳 India</td>
+                            <td>DPDP consent manager registration opens</td>
+                        </tr>
+                        <tr>
+                            <td>299 days</td>
+                            <td>Nov 2026</td>
+                            <td>🇯🇵 Japan</td>
+                            <td>Critical infrastructure cyber incident reporting deadline</td>
+                        </tr>
+                        <tr>
+                            <td>329 days</td>
+                            <td>10 Dec 2026</td>
+                            <td>🇦🇺 Australia</td>
+                            <td>Children's Online Privacy Code mandatory release</td>
+                        </tr>
+                        <tr>
+                            <td>329 days</td>
+                            <td>11 Dec 2026</td>
+                            <td>🇦🇺 Australia</td>
+                            <td>Automated decision-making privacy policy updates required</td>
+                        </tr>
+                        <tr>
+                            <td>483 days</td>
+                            <td>13 May 2027</td>
+                            <td>🇮🇳 India</td>
+                            <td>DPDP full implementation (privacy notices, security requirements)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 1rem; font-style: italic;">Deadlines extracted from this week's stories. Verify all dates with primary sources.</p>
+            </section>
+
+            <!-- AI Regulatory Tracker -->
+            <section class="ai-tracker">
+                <p class="section-label">AI Regulatory Tracker</p>
+                <div class="ai-tracker-intro">
+                    <strong>Coverage:</strong> AI governance and regulation developments across APAC jurisdictions this week.
+                </div>
+
+                <div class="ai-story">
+                    <p class="ai-story-jurisdiction">🇰🇷 South Korea</p>
+                    <p class="ai-story-title">AI Framework Act Takes Effect January 22, 2026</p>
+                    <p class="ai-story-summary">World's second comprehensive AI law introduces mandatory requirements for "high-impact" AI systems in healthcare, energy, and public services, plus labeling requirements for generative AI.</p>
+                    <p class="ai-story-link"><a href="https://fpf.org/blog/south-koreas-new-ai-framework-act-a-balancing-act-between-innovation-and-regulation/">Read more →</a></p>
+                </div>
+
+                <div class="ai-story">
+                    <p class="ai-story-jurisdiction">🇭🇰 Hong Kong</p>
+                    <p class="ai-story-title">PCPD Contacts xAI Over Grok AI Image Generation Concerns</p>
+                    <p class="ai-story-summary">Hong Kong's privacy watchdog has contacted Elon Musk's xAI over its AI chatbot Grok being used to create inappropriate content, advising the public not to share personal data with AI chatbots.</p>
+                    <p class="ai-story-link"><a href="https://hongkongfp.com/2026/01/15/hong-kong-privacy-watchdog-contacts-elon-musks-xai-over-sexualised-ai-images-of-people-and-minors/">Read more →</a></p>
+                </div>
+
+                <div class="ai-story">
+                    <p class="ai-story-jurisdiction">🇦🇺 Australia</p>
+                    <p class="ai-story-title">Second Tranche of Privacy Reforms to Address Generative AI</p>
+                    <p class="ai-story-summary">Attorney General confirms new Privacy Act reforms being prepared for cabinet approval, specifically addressing generative AI concerns. Current legislation described as "not fit for the digital age."</p>
+                    <p class="ai-story-link"><a href="https://www.pinsentmasons.com/out-law/analysis/privacy-act-reforms-australia">Read more →</a></p>
+                </div>
+
+                <div class="ai-story">
+                    <p class="ai-story-jurisdiction">🇵🇭 Philippines / ASEAN</p>
+                    <p class="ai-story-title">Philippines to Prioritize AI Governance as ASEAN Chair 2026</p>
+                    <p class="ai-story-summary">With the Philippines assuming ASEAN Chairmanship in 2026, Manila will place AI governance and security high on the regional agenda, calling for stronger governance frameworks and cross-border cooperation.</p>
+                    <p class="ai-story-link"><a href="https://thephilbiznews.com/2026/01/10/ph-flags-ai-risks-calls-for-deeper-asean-global-cyber-cooperation/">Read more →</a></p>
+                </div>
+
+                <div class="ai-story">
+                    <p class="ai-story-jurisdiction">🇸🇬 Singapore</p>
+                    <p class="ai-story-title">MAS AI Risk Management Guidelines Consultation Closes January 31</p>
+                    <p class="ai-story-summary">Financial institutions deploying AI must prepare for new regulatory expectations covering AI governance, risk assessment, model validation, and ongoing monitoring. 12-month transition period after finalization.</p>
+                    <p class="ai-story-link"><a href="https://www.mas.gov.sg/publications/consultations/2025/consultation-paper-on-guidelines-on-artificial-intelligence-risk-management">Read more →</a></p>
+                </div>
+
+                <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 1.5rem; font-style: italic;">AI stories identified based on content analysis. Includes AI governance, algorithmic regulation, foundation models, and automated decision-making.</p>
             </section>
         </main>
 
