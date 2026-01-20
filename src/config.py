@@ -14,7 +14,13 @@ TIER2_JURISDICTIONS = {
     'HK': {'name': 'Hong Kong', 'flag': '🇭🇰', 'priority': 1},
     'KR': {'name': 'South Korea', 'flag': '🇰🇷', 'priority': 1},
     'NZ': {'name': 'New Zealand', 'flag': '🇳🇿', 'priority': 1},
-    'VN': {'name': 'Vietnam', 'flag': '🇻🇳', 'priority': 1}
+    'VN': {'name': 'Vietnam', 'flag': '🇻🇳', 'priority': 1},
+    'MY': {'name': 'Malaysia', 'flag': '🇲🇾', 'priority': 1}
+}
+
+# Regional grouping for ASEAN-wide searches
+REGIONAL_JURISDICTIONS = {
+    'ASEAN': {'name': 'ASEAN', 'flag': '🌏', 'priority': 1}
 }
 
 ALL_JURISDICTIONS = {**TIER1_JURISDICTIONS, **TIER2_JURISDICTIONS}
@@ -144,6 +150,15 @@ REGULATOR_SOURCES = {
         'sbv.gov.vn',           # State Bank of Vietnam
         'moj.gov.vn',           # Ministry of Justice
     ],
+    'MY': [
+        'pdp.gov.my',           # Personal Data Protection Department
+        'mcmc.gov.my',          # Malaysian Communications and Multimedia Commission
+        'bnm.gov.my',           # Bank Negara Malaysia
+        'nacsa.gov.my',         # National Cyber Security Agency
+        'mdec.my',              # Malaysia Digital Economy Corporation
+        'kkmm.gov.my',          # Ministry of Communications and Multimedia
+        'sc.com.my',            # Securities Commission Malaysia
+    ],
 }
 
 # Legal news publications and aggregators
@@ -235,6 +250,10 @@ COURT_SOURCES = {
     ],
     'VN': [
         'toaan.gov.vn',             # Supreme People's Court
+    ],
+    'MY': [
+        'kehakiman.gov.my',         # Malaysian Judiciary
+        'federalcourt.gov.my',      # Federal Court of Malaysia
     ],
 }
 
@@ -466,8 +485,47 @@ SEARCH_TEMPLATES = {
     'HK': 'Hong Kong {topic} law technology regulation site:gov.hk OR site:hk',
     'KR': 'South Korea {topic} law technology regulation site:korea.kr OR site:kr',
     'NZ': 'New Zealand {topic} law technology regulation site:govt.nz OR site:nz',
-    'VN': 'Vietnam {topic} law technology regulation site:gov.vn OR site:vn'
+    'VN': 'Vietnam {topic} law technology regulation site:gov.vn OR site:vn',
+    'MY': 'Malaysia {topic} law technology regulation site:gov.my OR site:my',
+    'ASEAN': 'ASEAN {topic} digital economy regulation'
 }
+
+# =============================================================================
+# COMPREHENSIVE SEARCH CONFIGURATION
+# =============================================================================
+# This defines the complete search matrix for digest generation.
+# When generating a digest, Claude should run ALL keyword searches
+# for ALL jurisdictions to ensure comprehensive coverage.
+
+# All jurisdictions to search (12 jurisdictions + 1 regional)
+DIGEST_JURISDICTIONS = [
+    'AU',   # Australia
+    'SG',   # Singapore
+    'JP',   # Japan
+    'KR',   # South Korea
+    'HK',   # Hong Kong
+    'IN',   # India
+    'ID',   # Indonesia
+    'VN',   # Vietnam
+    'NZ',   # New Zealand
+    'MY',   # Malaysia
+    'PH',   # Philippines
+    'ASEAN' # Regional ASEAN
+]
+
+# All keyword topics to search per jurisdiction (7 keyword categories)
+DIGEST_SEARCH_KEYWORDS = [
+    'privacy data protection law',
+    'cybersecurity law regulation',
+    'AI artificial intelligence regulation',
+    'fintech digital assets crypto regulation',
+    'platform regulation online safety',
+    'enforcement penalty fine data privacy',
+    'technology law digital economy'
+]
+
+# Total expected searches: 12 jurisdictions × 7 keywords = 84 searches
+# This ensures comprehensive coverage across all topics and regions
 
 # Ranking weights
 MATERIALITY_WEIGHT = 0.6

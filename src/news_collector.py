@@ -187,7 +187,7 @@ class NewsCollector:
 
         # Search ALL publications in batches (40+ total)
         jurisdictions = ['Australia', 'Singapore', 'Japan', 'India', 'Korea', 'Hong Kong',
-                        'New Zealand', 'Indonesia', 'Philippines', 'Vietnam']
+                        'New Zealand', 'Indonesia', 'Philippines', 'Vietnam', 'Malaysia', 'ASEAN']
 
         for i in range(0, len(LEGAL_PUBLICATIONS), 5):
             batch = LEGAL_PUBLICATIONS[i:i + 5]
