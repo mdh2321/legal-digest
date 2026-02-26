@@ -51,12 +51,16 @@ jobs:
           python run_digest.py --format rss --publish
 
       - name: Send email digest
-        if: ${{ secrets.RESEND_API_KEY != '' && vars.DIGEST_EMAIL != '' }}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          DIGEST_EMAIL: ${{ vars.DIGEST_EMAIL }}
         run: |
-          python run_digest.py --format rss --email "${{ vars.DIGEST_EMAIL }}" --quiet
+          if [ -n "$RESEND_API_KEY" ] && [ -n "$DIGEST_EMAIL" ]; then
+            python run_digest.py --format rss --email "$DIGEST_EMAIL" --quiet
+          else
+            echo "Email delivery skipped — RESEND_API_KEY or DIGEST_EMAIL not configured"
+          fi
 
       - name: Archive old digests
         run: |
