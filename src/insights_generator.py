@@ -1,8 +1,16 @@
 """Region insights generator for cross-jurisdictional patterns."""
-from typing import List, Dict
+import os
+from typing import List, Dict, Optional
 from collections import Counter
 from .news_collector import NewsStory
-from .config import MAX_INSIGHTS_WORDS
+from .config import MAX_INSIGHTS_WORDS, ALL_JURISDICTIONS
+
+# Try to import anthropic for Claude-powered insights
+try:
+    import anthropic
+    ANTHROPIC_AVAILABLE = True
+except ImportError:
+    ANTHROPIC_AVAILABLE = False
 
 
 class InsightsGenerator:
@@ -14,6 +22,10 @@ class InsightsGenerator:
     def generate_insights(self, selected_stories: Dict[str, List[NewsStory]]) -> str:
         """
         Generate region insights section.
+
+        When Claude API is available, generates a brief Editor's Note
+        summarizing the most consequential developments and cross-jurisdictional
+        patterns. Falls back to category-counting logic otherwise.
 
         Args:
             selected_stories: Dict mapping jurisdiction codes to stories
@@ -29,12 +41,16 @@ class InsightsGenerator:
         if not all_stories:
             return ""
 
-        # Analyze trends
+        # Try Claude-powered insights first
+        claude_insights = self._generate_claude_insights(all_stories)
+        if claude_insights:
+            return claude_insights
+
+        # Fall back to rule-based insights
         trends = self._identify_trends(all_stories)
         cross_border = self._identify_cross_border_impacts(all_stories)
         upcoming = self._identify_upcoming_items(all_stories)
 
-        # Format insights
         insights = []
 
         if trends:
@@ -46,11 +62,68 @@ class InsightsGenerator:
         if upcoming:
             insights.append(f"- **Upcoming:** {upcoming}")
 
-        # Join and ensure word limit
         result = '\n'.join(insights)
         result = self._truncate_to_word_limit(result, self.max_words)
 
         return result
+
+    def _generate_claude_insights(self, stories: List[NewsStory]) -> Optional[str]:
+        """Generate an Editor's Note using Claude API."""
+        if not ANTHROPIC_AVAILABLE:
+            return None
+
+        api_key = self._load_api_key()
+        if not api_key:
+            return None
+
+        # Build story summaries for the prompt
+        story_summaries = []
+        for s in stories[:12]:
+            jur_name = ALL_JURISDICTIONS.get(s.jurisdiction, {}).get('name', s.jurisdiction)
+            summary = getattr(s, 'enhanced_summary', None) or s.summary or s.snippet
+            cats = ', '.join(s.categories[:3]) if s.categories else 'General'
+            story_summaries.append(f"- [{jur_name}] {s.title}: {summary} (Categories: {cats})")
+
+        stories_text = '\n'.join(story_summaries)
+
+        prompt = f"""You are the editor of a weekly APAC legal digest for in-house counsel at global tech companies.
+
+Based on these {len(stories)} stories from this week's digest, write a brief "Editor's Note" (80-120 words) that:
+1. Highlights the 1-2 most consequential developments
+2. Identifies any cross-jurisdictional patterns or converging regulatory trends
+3. Notes what to watch in the coming weeks
+
+Stories:
+{stories_text}
+
+Write in a direct, analytical tone. No bullet points — use flowing prose. Start with "**Editor's Note:**" """
+
+        try:
+            client = anthropic.Anthropic(api_key=api_key)
+            response = client.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=300,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            result = response.content[0].text.strip()
+            return self._truncate_to_word_limit(result, self.max_words)
+        except Exception as e:
+            print(f"  [InsightsGenerator] Claude API failed, using fallback: {e}")
+            return None
+
+    @staticmethod
+    def _load_api_key() -> Optional[str]:
+        """Load API key from environment or file."""
+        key = os.environ.get('ANTHROPIC_API_KEY')
+        if key:
+            return key
+        from pathlib import Path
+        key_file = Path(__file__).parent.parent / 'api_key.txt'
+        if key_file.exists():
+            k = key_file.read_text().strip()
+            if k and not k.startswith('#'):
+                return k
+        return None
 
     def _identify_trends(self, stories: List[NewsStory]) -> Dict[str, str]:
         """Identify dominant trends across stories."""

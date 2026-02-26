@@ -7,6 +7,7 @@ from typing import List, Dict, Optional, Any
 from .news_collector import NewsStory
 from .config import ALL_JURISDICTIONS, TIER1_JURISDICTIONS, TIER2_JURISDICTIONS
 from .date_utils import format_date_range
+from .story_ranker import StoryRanker
 
 
 class RSSGenerator:
@@ -201,6 +202,9 @@ class RSSGenerator:
         """
         Format a single story as an RSS item.
 
+        Uses Claude-enhanced takeaways and summary when available,
+        falling back to generic generation.
+
         Args:
             story: NewsStory object
 
@@ -214,13 +218,23 @@ class RSSGenerator:
         # Format pub date
         pub_date = self.to_rfc822_date(story.date)
 
-        # Generate content
-        takeaways = self.generate_takeaways(story)
-        relevance = self.generate_saas_relevance(story)
+        # Use enhanced takeaways if available, else fall back to generated
+        enhanced_takeaways = getattr(story, 'enhanced_takeaways', None)
+        takeaways = enhanced_takeaways if enhanced_takeaways else self.generate_takeaways(story)
+
+        # Use enhanced summary for relevance if available, else fall back
+        enhanced_summary = getattr(story, 'enhanced_summary', None)
+        relevance = enhanced_summary if enhanced_summary else self.generate_saas_relevance(story)
+
         categories = getattr(story, 'categories', [])
 
         # Build takeaways HTML
         takeaways_html = '\n'.join(f'          <li>{self.escape_xml(t)}</li>' for t in takeaways)
+
+        # Get materiality label and source type
+        materiality_label = StoryRanker.get_materiality_label(story)
+        source_type = getattr(story, 'source_type', '')
+        source_type_tag = f'[{source_type}]' if source_type else ''
 
         # Build categories XML
         category_xml = f'      <category>{self.escape_xml(jur_name)}</category>\n'
@@ -228,7 +242,7 @@ class RSSGenerator:
             category_xml += f'      <category>{self.escape_xml(cat)}</category>\n'
 
         # Clean summary
-        summary = story.summary if story.summary else story.snippet
+        summary = enhanced_summary or story.summary or story.snippet
         if not summary:
             summary = "Details available at source."
         summary = summary.strip()
@@ -241,13 +255,14 @@ class RSSGenerator:
         <ul>
 {takeaways_html}
         </ul>
-        <h2>Why This Matters for SaaS Companies</h2>
+        <h2>Practical Impact</h2>
         <p>{self._add_bold_emphasis(self.escape_xml(relevance))}</p>
         <p><em>Country: <strong>{self.escape_xml(jur_name)}</strong> | Topics: {', '.join(f'<strong>{self.escape_xml(c)}</strong>' for c in categories[:3])}</em></p>
         <p><a href="{self.escape_xml(story.url)}">Read full article &rarr;</a></p>"""
 
-        # Escape title
-        title = self.escape_xml(story.title)
+        # Title with materiality label and source type
+        title_prefix = f"{materiality_label} {source_type_tag} " if source_type_tag else f"{materiality_label} "
+        title = self.escape_xml(title_prefix + story.title)
 
         item_xml = f"""    <item>
       <title>{title}</title>

@@ -1,5 +1,6 @@
 """News collection module using web search."""
 import re
+import time
 from datetime import datetime
 from typing import List, Dict, Optional
 
@@ -19,6 +20,7 @@ class NewsStory:
         self.categories = []
         self.materiality_score = 0.0
         self.relevance_score = 0.0
+        self.source_type = ""  # Regulator, Court, News, Law Firm, Publication
 
     def __repr__(self):
         return f"NewsStory(title={self.title[:50]}, jurisdiction={self.jurisdiction})"
@@ -34,20 +36,11 @@ class NewsCollector:
 
     def build_search_queries(self, jurisdiction: str) -> List[str]:
         """
-        Build comprehensive search queries for a jurisdiction.
+        Build optimized search queries for a jurisdiction (~15-20 queries).
 
-        Searches across:
-        - Core tech law topics (privacy, AI, cybersecurity, etc.)
-        - Enforcement actions and penalties
-        - Draft legislation and consultations
-        - Platform and e-commerce regulation
-        - Employment and IP matters
-        - Jurisdiction-specific regulator sites
-        - ALL law firm publications (47 firms)
-        - Legal news aggregators (40+ publications)
-        - Court and tribunal databases
-        - Industry associations
-        - Think tanks and policy research
+        Uses Brave freshness=pw instead of month/year in query text.
+        Keeps high-value regulator site: searches, drops batched law firm/
+        publication/think tank/association searches.
 
         Args:
             jurisdiction: Two-letter jurisdiction code
@@ -56,169 +49,66 @@ class NewsCollector:
             List of search query strings
         """
         from .config import (
-            ALL_JURISDICTIONS, REGULATOR_SOURCES,
-            LAW_FIRM_SOURCES, SEARCH_TOPICS,
-            COURT_SOURCES, INDUSTRY_ASSOCIATIONS, THINK_TANKS,
-            LEGAL_PUBLICATIONS
+            ALL_JURISDICTIONS, REGULATOR_SOURCES, COURT_SOURCES
         )
 
-        jur_name = ALL_JURISDICTIONS[jurisdiction]['name']
-        year = self.end_date.year
-        month = self.end_date.strftime('%B')  # e.g., "January"
+        jur_info = ALL_JURISDICTIONS.get(jurisdiction)
+        if not jur_info:
+            return []
+        jur_name = jur_info['name']
 
         queries = []
 
-        # --- 1. CORE TECH LAW TOPICS ---
-        for topic in SEARCH_TOPICS['core_tech']:
-            queries.append(f'{jur_name} {topic} {month} {year}')
+        # --- 1. CORE TOPIC QUERIES (5) ---
+        core_topics = [
+            'data privacy data protection law regulation',
+            'cybersecurity law regulation incident breach',
+            'artificial intelligence AI regulation governance',
+            'digital regulation technology law',
+            'platform regulation online safety digital services',
+        ]
+        for topic in core_topics:
+            queries.append(f'{jur_name} {topic}')
 
-        # --- 2. ENFORCEMENT ACTIONS (critical for compliance) ---
-        for topic in SEARCH_TOPICS['enforcement'][:2]:
-            queries.append(f'{jur_name} {topic} {month} {year}')
+        # --- 2. ENFORCEMENT QUERIES (2) ---
+        queries.append(f'{jur_name} enforcement penalty fine data privacy cybersecurity')
+        queries.append(f'{jur_name} investigation compliance order undertaking infringement notice')
 
-        # --- 3. DRAFT LEGISLATION & CONSULTATIONS ---
-        for topic in SEARCH_TOPICS['consultations'][:2]:
-            queries.append(f'{jur_name} {topic} {month} {year}')
+        # --- 3. DATA BREACH QUERY (1) ---
+        queries.append(f'{jur_name} data breach notification cyber incident')
 
-        # --- 4. PLATFORM & E-COMMERCE ---
-        for topic in SEARCH_TOPICS['platform'][:2]:
-            queries.append(f'{jur_name} {topic} {month} {year}')
+        # --- 4. CONSULTATION / DRAFT LEGISLATION (2) ---
+        queries.append(f'{jur_name} draft legislation consultation technology digital')
+        queries.append(f'{jur_name} proposed regulation amendment privacy AI cybersecurity')
 
-        # --- 5. COMMERCIAL (fintech, ecommerce, esignature) ---
-        for topic in SEARCH_TOPICS['commercial'][:2]:
-            queries.append(f'{jur_name} {topic} {month} {year}')
+        # --- 5. COMMERCIAL / FINTECH (2) ---
+        queries.append(f'{jur_name} fintech digital assets cryptocurrency regulation')
+        queries.append(f'{jur_name} e-commerce electronic signature contract law')
 
-        # --- 6. EMPLOYMENT & GIG ECONOMY ---
-        queries.append(f'{jur_name} {SEARCH_TOPICS["employment"][0]} {month} {year}')
-
-        # --- 7. INTELLECTUAL PROPERTY ---
-        queries.append(f'{jur_name} {SEARCH_TOPICS["ip"][0]} {month} {year}')
-
-        # --- 8. REGULATOR-SPECIFIC SEARCHES ---
-        # Search ALL regulator sites for the jurisdiction (not limited to 4)
+        # --- 6. REGULATOR SITE SEARCHES (batched, high-value) ---
         regulator_sites = REGULATOR_SOURCES.get(jurisdiction, [])
         if regulator_sites:
-            # Search all regulators in batches to avoid query length limits
             for i in range(0, len(regulator_sites), 4):
                 batch = regulator_sites[i:i+4]
                 site_filter = ' OR '.join(f'site:{site}' for site in batch)
-                queries.append(f'{jur_name} regulation announcement {month} {year} ({site_filter})')
-            # Also search for enforcement specifically
-            site_filter = ' OR '.join(f'site:{site}' for site in regulator_sites[:5])
-            queries.append(f'{jur_name} enforcement penalty {month} {year} ({site_filter})')
+                queries.append(f'{jur_name} regulation announcement ({site_filter})')
 
-        # --- 9. LAW FIRM PUBLICATION SEARCHES ---
-        # Search ALL law firms in batches (47 firms total)
-        for i in range(0, len(LAW_FIRM_SOURCES), 6):
-            batch = LAW_FIRM_SOURCES[i:i+6]
-            firm_filter = ' OR '.join(f'site:{firm}' for firm in batch)
-            queries.append(f'{jur_name} legal update {month} {year} ({firm_filter})')
-
-        # --- 10. LEGAL PUBLICATION SEARCHES ---
-        # Search ALL legal publications from config (40+ publications)
-        for i in range(0, len(LEGAL_PUBLICATIONS), 5):
-            batch = LEGAL_PUBLICATIONS[i:i+5]
-            pub_filter = ' OR '.join(f'site:{pub}' for pub in batch)
-            queries.append(f'{jur_name} privacy data AI law {month} {year} ({pub_filter})')
-
-        # --- 11. COURT DATABASE SEARCHES ---
-        # Search court and tribunal databases for the jurisdiction
+        # --- 7. COURT SITE SEARCHES (1-2, if available) ---
         court_sites = COURT_SOURCES.get(jurisdiction, [])
         if court_sites:
-            site_filter = ' OR '.join(f'site:{site}' for site in court_sites)
-            queries.append(f'{jur_name} technology data privacy judgment decision {month} {year} ({site_filter})')
-            queries.append(f'{jur_name} regulatory enforcement ruling {month} {year} ({site_filter})')
-
-        # --- 12. INDUSTRY ASSOCIATION SEARCHES ---
-        # Search industry associations in batches
-        for i in range(0, len(INDUSTRY_ASSOCIATIONS), 6):
-            batch = INDUSTRY_ASSOCIATIONS[i:i+6]
-            assoc_filter = ' OR '.join(f'site:{site}' for site in batch)
-            queries.append(f'{jur_name} technology policy regulation {month} {year} ({assoc_filter})')
-
-        # --- 13. THINK TANK SEARCHES ---
-        # Search think tanks and policy research organizations
-        for i in range(0, len(THINK_TANKS), 5):
-            batch = THINK_TANKS[i:i+5]
-            tank_filter = ' OR '.join(f'site:{site}' for site in batch)
-            queries.append(f'Asia Pacific {jur_name} technology regulation policy {month} {year} ({tank_filter})')
-
-        return queries
-
-    def build_law_firm_queries(self) -> List[str]:
-        """
-        Build queries specifically targeting law firm publications.
-
-        Returns:
-            List of search query strings for law firm content
-        """
-        from .config import LAW_FIRM_SOURCES
-
-        year = self.end_date.year
-        month = self.end_date.strftime('%B')
-
-        queries = []
-
-        # Group ALL firms into batches for OR queries (47 total)
-        batch_size = 6
-        topics = ['data privacy', 'AI regulation', 'technology law', 'cybersecurity']
-
-        for i in range(0, len(LAW_FIRM_SOURCES), batch_size):
-            batch = LAW_FIRM_SOURCES[i:i + batch_size]
-            site_filter = ' OR '.join(f'site:{firm}' for firm in batch)
-            for topic in topics:
-                queries.append(f'Asia Pacific {topic} {month} {year} ({site_filter})')
-
-        return queries
-
-    def build_publication_queries(self) -> List[str]:
-        """
-        Build queries specifically targeting legal publications.
-
-        Returns:
-            List of search query strings for legal publications
-        """
-        from .config import LEGAL_PUBLICATIONS
-
-        year = self.end_date.year
-        month = self.end_date.strftime('%B')
-
-        queries = []
-
-        # Search ALL publications in batches (40+ total)
-        jurisdictions = ['Australia', 'Singapore', 'Japan', 'India', 'Korea', 'Hong Kong',
-                        'New Zealand', 'Indonesia', 'Philippines', 'Vietnam', 'Malaysia', 'ASEAN']
-
-        for i in range(0, len(LEGAL_PUBLICATIONS), 5):
-            batch = LEGAL_PUBLICATIONS[i:i + 5]
-            site_filter = ' OR '.join(f'site:{pub}' for pub in batch)
-            for jur in jurisdictions:
-                queries.append(f'{jur} data privacy technology law {month} {year} ({site_filter})')
+            site_filter = ' OR '.join(f'site:{site}' for site in court_sites[:4])
+            queries.append(f'{jur_name} technology data privacy judgment ruling ({site_filter})')
 
         return queries
 
     def get_date_search_hint(self) -> str:
-        """
-        Get a date hint string for manual searches.
-
-        Returns:
-            String describing the target date range
-        """
+        """Get a date hint string for manual searches."""
         start_str = self.start_date.strftime('%d %B %Y')
         end_str = self.end_date.strftime('%d %B %Y')
         return f"Only include articles published between {start_str} and {end_str}"
 
     def clean_url(self, url: str) -> str:
-        """
-        Clean URL by removing tracking parameters.
-
-        Args:
-            url: Raw URL
-
-        Returns:
-            Cleaned URL
-        """
-        # Remove common tracking parameters
+        """Clean URL by removing tracking parameters."""
         tracking_params = ['utm_source', 'utm_medium', 'utm_campaign',
                            'utm_content', 'utm_term', 'fbclid', 'gclid']
 
@@ -234,16 +124,7 @@ class NewsCollector:
         return url
 
     def extract_date_from_text(self, text: str) -> Optional[datetime]:
-        """
-        Extract date from text snippets.
-
-        Args:
-            text: Text containing potential date
-
-        Returns:
-            datetime object or None
-        """
-        # Common date patterns
+        """Extract date from text snippets."""
         patterns = [
             r'(\d{1,2})\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{4})',
             r'(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),?\s+(\d{4})',
@@ -257,7 +138,6 @@ class NewsCollector:
                     if '-' in match.group(0):
                         return datetime.strptime(match.group(0), '%Y-%m-%d')
                     else:
-                        # Try to parse the matched date
                         date_str = match.group(0)
                         for fmt in ['%d %B %Y', '%B %d, %Y', '%B %d %Y']:
                             try:
@@ -268,6 +148,45 @@ class NewsCollector:
                     continue
 
         return None
+
+    def _classify_source_type(self, url: str) -> str:
+        """
+        Classify a URL into a source type.
+
+        Returns one of: Regulator, Court, Law Firm, Publication, News
+        """
+        from .config import (
+            REGULATOR_SOURCES, COURT_SOURCES,
+            LAW_FIRM_SOURCES, LEGAL_PUBLICATIONS
+        )
+
+        url_lower = url.lower()
+
+        # Check regulator sources
+        all_regulator_domains = []
+        for sites in REGULATOR_SOURCES.values():
+            all_regulator_domains.extend(sites)
+        for domain in all_regulator_domains:
+            if domain in url_lower:
+                return "Regulator"
+
+        # Check court sources
+        for sites in COURT_SOURCES.values():
+            for domain in sites:
+                if domain in url_lower:
+                    return "Court"
+
+        # Check law firm sources
+        for domain in LAW_FIRM_SOURCES:
+            if domain in url_lower:
+                return "Law Firm"
+
+        # Check legal publications
+        for domain in LEGAL_PUBLICATIONS:
+            if domain in url_lower:
+                return "Publication"
+
+        return "News"
 
     def parse_search_results(self, results: List[Dict], jurisdiction: str) -> List[NewsStory]:
         """
@@ -301,9 +220,8 @@ class NewsCollector:
                 # Verify the date is within our target week range
                 story_date = date_obj.date()
                 if not (self.start_date <= story_date <= self.end_date):
-                    continue  # Skip articles outside the target week
+                    continue
 
-                # Create story object
                 story = NewsStory(
                     title=title,
                     url=url,
@@ -314,10 +232,12 @@ class NewsCollector:
                     snippet=snippet
                 )
 
+                # Classify source type
+                story.source_type = self._classify_source_type(url)
+
                 stories.append(story)
 
-            except Exception as e:
-                # Skip malformed results
+            except Exception:
                 continue
 
         return stories
@@ -325,7 +245,7 @@ class NewsCollector:
     def collect_stories_for_jurisdiction(self, jurisdiction: str,
                                           search_function) -> List[NewsStory]:
         """
-        Collect stories for a specific jurisdiction.
+        Collect stories for a specific jurisdiction with retry logic.
 
         Args:
             jurisdiction: Two-letter jurisdiction code
@@ -343,8 +263,15 @@ class NewsCollector:
                 stories = self.parse_search_results(results, jurisdiction)
                 all_stories.extend(stories)
             except Exception as e:
-                # Continue with other queries if one fails
-                continue
+                # Retry once with 2s backoff
+                try:
+                    time.sleep(2)
+                    results = search_function(query)
+                    stories = self.parse_search_results(results, jurisdiction)
+                    all_stories.extend(stories)
+                except Exception:
+                    print(f"  [NewsCollector] Query failed after retry ({jurisdiction}): {query[:60]}...")
+                    continue
 
         # Deduplicate by URL
         seen_urls = set()

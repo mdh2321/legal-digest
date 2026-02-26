@@ -2,8 +2,8 @@
 """
 Run script for APAC Legal News Digest Generator.
 
-This script is designed to be called from Claude Code which provides
-the web search integration.
+Supports Brave Search API for live search, cached results from JSON,
+and optional email delivery via Resend.
 """
 import sys
 import json
@@ -17,36 +17,30 @@ from generate_digest import DigestGenerator
 
 
 def create_mock_search_function():
-    """
-    Create a mock search function for testing.
-
-    In production, this is replaced by actual web search integration.
-    """
+    """Create a mock search function for testing."""
     def mock_search(query):
-        """Mock search function that returns empty results."""
         print(f"  Mock search: {query}")
         return []
-
     return mock_search
 
 
+def create_brave_search_function():
+    """Create a search function using Brave Search API."""
+    from src.brave_search import BraveSearchClient
+    client = BraveSearchClient()
+    if not client.enabled:
+        return None
+    print("Using Brave Search API for live search.")
+    return client.search
+
+
 def load_search_results(results_file: str):
-    """
-    Load pre-fetched search results from a JSON file.
-
-    Args:
-        results_file: Path to JSON file with search results
-
-    Returns:
-        Function that returns cached results
-    """
+    """Load pre-fetched search results from a JSON file."""
     with open(results_file, 'r') as f:
         cached_results = json.load(f)
 
     def cached_search(query):
-        """Return cached results for query."""
         return cached_results.get(query, [])
-
     return cached_search
 
 
@@ -61,6 +55,7 @@ Examples:
   python run_digest.py --format markdown --output ./digests
   python run_digest.py --format rss --results search_results.json
   python run_digest.py --publish  # Output to docs/ for GitHub Pages
+  python run_digest.py --email user@example.com  # Send via email
         """
     )
 
@@ -89,6 +84,11 @@ Examples:
     )
 
     parser.add_argument(
+        '--email', '-e',
+        help='Email address to send the digest to (requires RESEND_API_KEY)'
+    )
+
+    parser.add_argument(
         '--quiet', '-q',
         action='store_true',
         help='Suppress progress output'
@@ -101,14 +101,18 @@ def main():
     """Main entry point."""
     args = parse_args()
 
-    # Set up search function
+    # Set up search function (priority: cached results > Brave API > mock)
     if args.results:
         print(f"Using cached results from: {args.results}")
         search_function = load_search_results(args.results)
     else:
-        print("No search results provided, using mock search.")
-        print("To use cached results: python run_digest.py --results <results.json>")
-        search_function = create_mock_search_function()
+        # Try Brave Search API
+        search_function = create_brave_search_function()
+        if search_function is None:
+            print("No search results provided and Brave API not configured, using mock search.")
+            print("To use Brave Search: set BRAVE_SEARCH_API_KEY or create brave_api_key.txt")
+            print("To use cached results: python run_digest.py --results <results.json>")
+            search_function = create_mock_search_function()
 
     # Determine output directory
     if args.publish:
@@ -138,6 +142,21 @@ def main():
         if not args.quiet:
             print(f"Published to: {feed_file}")
             print(f"RSS URL: https://mdh2321.github.io/legal-digest/feed.xml")
+
+    # Send email if requested
+    if args.email:
+        from src.email_sender import EmailSender
+        from src.date_utils import format_date_range, get_last_week_range
+        start, end = get_last_week_range()
+        date_str = format_date_range(start, end)
+        subject = f"APAC Legal Digest - Week of {date_str}"
+
+        sender = EmailSender()
+        sender.send_digest(
+            html_content=result['digest_text'],
+            subject=subject,
+            to_email=args.email
+        )
 
     # Print summary
     print("\n" + "=" * 70)
