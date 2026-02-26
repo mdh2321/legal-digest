@@ -144,3 +144,42 @@ class StoryRanker:
         jur_stories = [s for s in stories if s.jurisdiction == jurisdiction]
         ranked = self.rank_stories(jur_stories)
         return ranked[:count]
+
+    @staticmethod
+    def get_materiality_label(story: NewsStory) -> str:
+        """
+        Get a materiality tag label for a story based on content keywords.
+
+        Returns one of:
+            [NEW LAW], [ENFORCEMENT], [COURT DECISION],
+            [CONSULTATION], [GUIDANCE], [ANALYSIS]
+        """
+        text = f"{story.title} {story.summary}".lower()
+
+        # Check in priority order
+        new_law_kw = ['new regulation', 'new law', 'legislation passed', 'law passed',
+                      'enacted', 'comes into force', 'effective date', 'ban', 'prohibited']
+        if any(kw in text for kw in new_law_kw):
+            return '[NEW LAW]'
+
+        enforcement_kw = ['enforcement', 'fine', 'penalty', 'penalties', 'fined',
+                          'infringement', 'compliance order', 'undertaking', 'sanction']
+        if any(kw in text for kw in enforcement_kw):
+            return '[ENFORCEMENT]'
+
+        court_kw = ['court decision', 'ruling', 'judgment', 'supreme court',
+                    'tribunal', 'appeal', 'judicial']
+        if any(kw in text for kw in court_kw):
+            return '[COURT DECISION]'
+
+        consultation_kw = ['consultation', 'proposed', 'draft', 'comment period',
+                           'white paper', 'discussion paper']
+        if any(kw in text for kw in consultation_kw):
+            return '[CONSULTATION]'
+
+        guidance_kw = ['guidance', 'advisory', 'guideline', 'recommendation',
+                       'framework', 'standard', 'policy']
+        if any(kw in text for kw in guidance_kw):
+            return '[GUIDANCE]'
+
+        return '[ANALYSIS]'

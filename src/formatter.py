@@ -5,6 +5,7 @@ from .news_collector import NewsStory
 from .config import (ALL_JURISDICTIONS, TIER1_JURISDICTIONS,
                      TIER2_JURISDICTIONS, MAX_HEADLINE_WORDS)
 from .date_utils import format_source_date, format_date_range
+from .story_ranker import StoryRanker
 
 
 class DigestFormatter:
@@ -38,13 +39,20 @@ class DigestFormatter:
         """
         Format a single story according to specification.
 
+        Uses Claude-enhanced summary and takeaways when available.
+
         Args:
             story: NewsStory object
 
         Returns:
             Formatted markdown string
         """
-        # Format headline
+        # Materiality label and source type
+        materiality_label = StoryRanker.get_materiality_label(story)
+        source_type = getattr(story, 'source_type', '')
+        source_type_tag = f'`{source_type}`' if source_type else ''
+
+        # Format headline with materiality label
         headline = self.truncate_headline(story.title)
 
         # Format source and date
@@ -52,8 +60,9 @@ class DigestFormatter:
         source_date = format_source_date(story.date)
         source_link = f"[{source_name}]({story.url})"
 
-        # Format summary
-        summary = story.summary if story.summary else story.snippet
+        # Use enhanced summary if available
+        enhanced_summary = getattr(story, 'enhanced_summary', None)
+        summary = enhanced_summary or story.summary or story.snippet
         if not summary:
             summary = "Details available at source."
 
@@ -62,14 +71,19 @@ class DigestFormatter:
         if not summary.endswith('.'):
             summary += '.'
 
-        # Why it matters (generate based on categories)
-        relevance = self._generate_relevance(story)
+        # Use enhanced takeaways for "Why it matters" if available
+        enhanced_takeaways = getattr(story, 'enhanced_takeaways', None)
+        if enhanced_takeaways:
+            relevance = enhanced_takeaways[0]
+        else:
+            relevance = self._generate_relevance(story)
 
         # Categories
         categories = ' '.join(f'`{cat}`' for cat in story.categories[:3])
 
         # Assemble story
-        story_text = f"- **{headline}** ({source_link}, {source_date})\n"
+        tags = f"{materiality_label} {source_type_tag} " if source_type_tag else f"{materiality_label} "
+        story_text = f"- {tags}**{headline}** ({source_link}, {source_date})\n"
         story_text += f"  {summary}\n"
         story_text += f"  *Why it matters:* {relevance}\n"
         if categories:

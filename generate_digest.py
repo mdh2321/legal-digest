@@ -23,6 +23,7 @@ from src.insights_generator import InsightsGenerator
 from src.qa_validator import QAValidator
 from src.rss_generator import RSSGenerator
 from src.content_enhancer import ContentEnhancer, extract_deadlines_from_stories, filter_ai_stories
+from src.deadline_tracker import DeadlineTracker
 
 
 class DigestGenerator:
@@ -149,11 +150,17 @@ class DigestGenerator:
 
         # Extract deadlines and AI stories for new sections
         all_selected = [s for stories in selected_stories.values() for s in stories]
-        deadlines = extract_deadlines_from_stories(all_selected)
+        new_deadlines = extract_deadlines_from_stories(all_selected)
         ai_stories = filter_ai_stories(all_selected)
 
+        # Persistent deadline tracker — merges new deadlines, removes past ones
+        tracker = DeadlineTracker()
+        tracker.update(new_deadlines)
+        deadlines = tracker.get_all_upcoming()
+
         if verbose:
-            print(f"  Extracted {len(deadlines)} compliance deadlines")
+            print(f"  Extracted {len(new_deadlines)} new compliance deadlines")
+            print(f"  Total upcoming deadlines (persistent): {len(deadlines)}")
             print(f"  Identified {len(ai_stories)} AI regulatory stories")
 
         # Step 8: Format digest

@@ -15,7 +15,9 @@ TIER2_JURISDICTIONS = {
     'KR': {'name': 'South Korea', 'flag': '🇰🇷', 'priority': 1},
     'NZ': {'name': 'New Zealand', 'flag': '🇳🇿', 'priority': 1},
     'VN': {'name': 'Vietnam', 'flag': '🇻🇳', 'priority': 1},
-    'MY': {'name': 'Malaysia', 'flag': '🇲🇾', 'priority': 1}
+    'MY': {'name': 'Malaysia', 'flag': '🇲🇾', 'priority': 1},
+    'TW': {'name': 'Taiwan', 'flag': '🇹🇼', 'priority': 1},
+    'TH': {'name': 'Thailand', 'flag': '🇹🇭', 'priority': 1},
 }
 
 # Regional grouping for ASEAN-wide searches
@@ -159,6 +161,18 @@ REGULATOR_SOURCES = {
         'kkmm.gov.my',          # Ministry of Communications and Multimedia
         'sc.com.my',            # Securities Commission Malaysia
     ],
+    'TW': [
+        'ndc.gov.tw',           # National Development Council
+        'moj.gov.tw',           # Ministry of Justice
+        'ncc.gov.tw',           # National Communications Commission
+        'fsc.gov.tw',           # Financial Supervisory Commission
+    ],
+    'TH': [
+        'pdpc.or.th',           # PDPA Commission
+        'etda.or.th',           # Electronic Transactions Development Agency
+        'bot.or.th',            # Bank of Thailand
+        'nbtc.go.th',           # National Broadcasting and Telecommunications Commission
+    ],
 }
 
 # Legal news publications and aggregators
@@ -254,6 +268,12 @@ COURT_SOURCES = {
     'MY': [
         'kehakiman.gov.my',         # Malaysian Judiciary
         'federalcourt.gov.my',      # Federal Court of Malaysia
+    ],
+    'TW': [
+        'judicial.gov.tw',          # Judicial Yuan
+    ],
+    'TH': [
+        'coj.go.th',                # Courts of Justice
     ],
 }
 
@@ -432,7 +452,7 @@ SEARCH_TOPICS = {
         'privacy enforcement penalty fine',
         'data protection enforcement action',
         'regulatory penalty technology',
-        'GDPR fine enforcement',
+        'investigation compliance order undertaking infringement notice',
     ],
     'consultations': [
         'draft legislation technology',
@@ -487,6 +507,8 @@ SEARCH_TEMPLATES = {
     'NZ': 'New Zealand {topic} law technology regulation site:govt.nz OR site:nz',
     'VN': 'Vietnam {topic} law technology regulation site:gov.vn OR site:vn',
     'MY': 'Malaysia {topic} law technology regulation site:gov.my OR site:my',
+    'TW': 'Taiwan {topic} law technology regulation site:gov.tw OR site:tw',
+    'TH': 'Thailand {topic} law technology regulation site:go.th OR site:th',
     'ASEAN': 'ASEAN {topic} digital economy regulation'
 }
 
@@ -510,6 +532,8 @@ DIGEST_JURISDICTIONS = [
     'NZ',   # New Zealand
     'MY',   # Malaysia
     'PH',   # Philippines
+    'TW',   # Taiwan
+    'TH',   # Thailand
     'ASEAN' # Regional ASEAN
 ]
 

@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install anthropic requests
+          pip install anthropic requests resend
 
       - name: Create API key file
         env:
@@ -45,8 +45,18 @@ jobs:
       - name: Generate digest
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BRAVE_SEARCH_API_KEY: ${{ secrets.BRAVE_SEARCH_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: |
           python run_digest.py --format rss --publish
+
+      - name: Send email digest
+        if: ${{ secrets.RESEND_API_KEY != '' && vars.DIGEST_EMAIL != '' }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          python run_digest.py --format rss --email "${{ vars.DIGEST_EMAIL }}" --quiet
 
       - name: Archive old digests
         run: |
@@ -73,6 +83,7 @@ jobs:
 
           git add docs/
           git add -f docs/archive/ 2>/dev/null || true
+          git add data/deadlines.json 2>/dev/null || true
 
           # Check if there are changes to commit
           if git diff --staged --quiet; then
