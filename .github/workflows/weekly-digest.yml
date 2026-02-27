@@ -56,23 +56,7 @@ jobs:
           DIGEST_EMAIL: ${{ vars.DIGEST_EMAIL }}
         run: |
           if [ -n "$RESEND_API_KEY" ] && [ -n "$DIGEST_EMAIL" ]; then
-            python -c "
-from src.email_sender import EmailSender
-from src.date_utils import get_last_week_range, format_date_range
-from pathlib import Path
-
-start, end = get_last_week_range()
-subject = f'APAC Legal Digest - Week of {format_date_range(start, end)}'
-
-# Read the generated feed
-feed_file = Path('docs/feed.xml')
-if feed_file.exists():
-    content = feed_file.read_text()
-    sender = EmailSender()
-    sender.send_digest(content, subject, '$DIGEST_EMAIL')
-else:
-    print('No feed.xml found — skipping email')
-"
+            python scripts/send_email.py
           else
             echo "Email delivery skipped — RESEND_API_KEY or DIGEST_EMAIL not configured"
           fi
