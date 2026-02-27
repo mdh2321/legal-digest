@@ -3,7 +3,11 @@ import re
 from typing import List, Dict, Set
 from .news_collector import NewsStory
 from .config import (TIER1_JURISDICTIONS, TIER2_JURISDICTIONS,
-                     TARGET_STORY_COUNT, TIER2_MAX_STORIES, SOURCE_PRIORITY)
+                     EXTRATERRITORIAL_JURISDICTIONS,
+                     MIN_STORIES, DEFAULT_MAX_STORIES, BUSY_WEEK_MAX_STORIES,
+                     TIER1_MAX_PER_JURISDICTION, TIER2_MAX_STORIES,
+                     EXTRA_MAX_STORIES, MATERIALITY_EXPANSION_THRESHOLD,
+                     SOURCE_PRIORITY)
 
 
 class StorySelector:
@@ -111,12 +115,24 @@ class StorySelector:
 
         return key_terms
 
+    def _extract_proper_nouns(self, text: str) -> Set[str]:
+        """Extract likely proper nouns / entity names from text."""
+        # Match capitalized multi-word names (e.g. "FIIG Securities", "OAIC")
+        entities = set()
+        for match in re.finditer(r'\b[A-Z][A-Za-z]*(?:\s+[A-Z][A-Za-z]*)*\b', text):
+            word = match.group()
+            # Skip common title-case words
+            if word.lower() not in {'the', 'a', 'an', 'and', 'or', 'for', 'in', 'on', 'to',
+                                     'new', 'law', 'court', 'act', 'bill', 'draft'}:
+                entities.add(word.lower())
+        return entities
+
     def _are_stories_similar(self, story1: NewsStory, story2: NewsStory,
-                             threshold: float = 0.6) -> bool:
+                             threshold: float = 0.4) -> bool:
         """
         Check if two stories are about the same news event.
 
-        Uses title similarity and key term overlap.
+        Uses title similarity, key term overlap, and entity matching.
 
         Args:
             story1: First story
@@ -154,9 +170,16 @@ class StorySelector:
 
         if terms1 and terms2:
             term_overlap = len(terms1 & terms2) / min(len(terms1), len(terms2))
-            # High term overlap + moderate title similarity suggests same story
-            if term_overlap >= 0.8 and title_similarity >= 0.4:
+            # High term overlap + any title similarity suggests same story
+            if term_overlap >= 0.8 and title_similarity >= 0.3:
                 return True
+
+        # Check entity overlap (catches same story from different outlets)
+        entities1 = self._extract_proper_nouns(story1.title)
+        entities2 = self._extract_proper_nouns(story2.title)
+        shared_entities = entities1 & entities2
+        if len(shared_entities) >= 2 and title_similarity >= 0.25:
+            return True
 
         return False
 
@@ -205,7 +228,15 @@ class StorySelector:
 
     def select_stories(self, stories: List[NewsStory]) -> Dict[str, List[NewsStory]]:
         """
-        Select stories meeting all requirements.
+        Select stories using demand-driven dynamic volume.
+
+        Logic:
+        1. Tier 1 minimums (1 each AU, SG, JP)
+        2. Tier 1 expansion: additional stories above threshold, up to TIER1_MAX_PER_JURISDICTION
+        3. Tier 2 selection: stories above threshold, up to TIER2_MAX_STORIES total
+        4. Extraterritorial: up to EXTRA_MAX_STORIES from 'EXTRA'
+        5. Floor: if below MIN_STORIES, backfill from best remaining
+        6. Ceiling: if above BUSY_WEEK_MAX_STORIES, trim lowest-scoring (preserving Tier 1 minimums)
 
         Args:
             stories: List of ranked NewsStory objects
@@ -222,72 +253,95 @@ class StorySelector:
         for jur_code, jur_info in TIER1_JURISDICTIONS.items():
             min_stories = jur_info['min_stories']
             jur_stories = [s for s in stories if s.jurisdiction == jur_code]
-
-            # Rank and take top N
             ranked = self.ranker.rank_stories(jur_stories)
             selected[jur_code] = ranked[:min_stories]
 
-        # Step 2: Calculate remaining budget
-        current_count = sum(len(stories) for stories in selected.values())
-        min_target, max_target = TARGET_STORY_COUNT
-        remaining_slots = max_target - current_count
-
-        # Step 3: Select from Tier 1 (additional stories beyond minimum)
-        tier1_pool = []
+        # Step 2: Tier 1 expansion — add stories above threshold up to per-jurisdiction cap
         for jur_code in TIER1_JURISDICTIONS.keys():
             jur_stories = [s for s in stories if s.jurisdiction == jur_code]
+            ranked = self.ranker.rank_stories(jur_stories)
             selected_ids = {id(s) for s in selected.get(jur_code, [])}
-            # Get stories not yet selected
-            remaining = [s for s in jur_stories if id(s) not in selected_ids]
-            tier1_pool.extend(remaining)
+            current_count = len(selected.get(jur_code, []))
 
-        # Rank and add best Tier 1 stories
-        tier1_pool = self.ranker.rank_stories(tier1_pool)
-        tier1_additions = min(len(tier1_pool), remaining_slots // 2)
+            for story in ranked:
+                if current_count >= TIER1_MAX_PER_JURISDICTION:
+                    break
+                if id(story) in selected_ids:
+                    continue
+                if getattr(story, 'overall_score', 0) >= MATERIALITY_EXPANSION_THRESHOLD:
+                    selected[jur_code].append(story)
+                    selected_ids.add(id(story))
+                    current_count += 1
 
-        for story in tier1_pool[:tier1_additions]:
-            if story.jurisdiction not in selected:
-                selected[story.jurisdiction] = []
-            selected[story.jurisdiction].append(story)
-            remaining_slots -= 1
-
-        # Step 4: Select from Tier 2 (max 3 total)
-        tier2_pool = [s for s in stories
-                      if s.jurisdiction in TIER2_JURISDICTIONS]
+        # Step 3: Tier 2 selection — stories above threshold up to TIER2_MAX_STORIES total
+        tier2_pool = [s for s in stories if s.jurisdiction in TIER2_JURISDICTIONS]
         tier2_pool = self.ranker.rank_stories(tier2_pool)
 
         tier2_count = 0
-        tier2_selected = {}
-
         for story in tier2_pool:
             if tier2_count >= TIER2_MAX_STORIES:
                 break
-            if remaining_slots <= 0:
-                break
+            if getattr(story, 'overall_score', 0) >= MATERIALITY_EXPANSION_THRESHOLD:
+                if story.jurisdiction not in selected:
+                    selected[story.jurisdiction] = []
+                selected[story.jurisdiction].append(story)
+                tier2_count += 1
 
-            if story.jurisdiction not in tier2_selected:
-                tier2_selected[story.jurisdiction] = []
+        # Step 4: Extraterritorial — up to EXTRA_MAX_STORIES
+        extra_pool = [s for s in stories if s.jurisdiction == 'EXTRA']
+        extra_pool = self.ranker.rank_stories(extra_pool)
+        extra_selected = extra_pool[:EXTRA_MAX_STORIES]
+        if extra_selected:
+            selected['EXTRA'] = extra_selected
 
-            tier2_selected[story.jurisdiction].append(story)
-            tier2_count += 1
-            remaining_slots -= 1
-
-        # Merge Tier 2 selections
-        selected.update(tier2_selected)
-
-        # Step 5: Ensure we meet minimum target if possible
-        current_count = sum(len(stories) for stories in selected.values())
-        if current_count < min_target:
-            # Try to add more stories from any jurisdiction
-            all_selected_ids = {id(s) for stories in selected.values() for s in stories}
+        # Step 5: Floor — backfill if below MIN_STORIES
+        current_total = sum(len(st) for st in selected.values())
+        if current_total < MIN_STORIES:
+            all_selected_ids = {id(s) for st in selected.values() for s in st}
             remaining_pool = [s for s in stories if id(s) not in all_selected_ids]
             remaining_pool = self.ranker.rank_stories(remaining_pool)
 
-            needed = min_target - current_count
+            needed = MIN_STORIES - current_total
             for story in remaining_pool[:needed]:
                 if story.jurisdiction not in selected:
                     selected[story.jurisdiction] = []
                 selected[story.jurisdiction].append(story)
+
+        # Step 6: Ceiling — trim if above BUSY_WEEK_MAX_STORIES
+        current_total = sum(len(st) for st in selected.values())
+        if current_total > BUSY_WEEK_MAX_STORIES:
+            # Collect all selected with scores, preserving Tier 1 minimums
+            all_selected = []
+            for jur, st_list in selected.items():
+                for s in st_list:
+                    all_selected.append((jur, s))
+
+            # Sort by score ascending (lowest first = candidates for removal)
+            all_selected.sort(key=lambda x: getattr(x[1], 'overall_score', 0))
+
+            # Track Tier 1 counts to protect minimums
+            tier1_counts = {jur: len(st) for jur, st in selected.items()
+                           if jur in TIER1_JURISDICTIONS}
+
+            to_remove = current_total - BUSY_WEEK_MAX_STORIES
+            removed = set()
+            for jur, story in all_selected:
+                if to_remove <= 0:
+                    break
+                # Protect Tier 1 minimums
+                if jur in TIER1_JURISDICTIONS:
+                    min_req = TIER1_JURISDICTIONS[jur]['min_stories']
+                    if tier1_counts.get(jur, 0) <= min_req:
+                        continue
+                    tier1_counts[jur] -= 1
+                removed.add(id(story))
+                to_remove -= 1
+
+            # Rebuild selected without removed stories
+            for jur in list(selected.keys()):
+                selected[jur] = [s for s in selected[jur] if id(s) not in removed]
+                if not selected[jur]:
+                    del selected[jur]
 
         return selected
 
@@ -326,11 +380,9 @@ class StorySelector:
         if tier2_count > TIER2_MAX_STORIES:
             return False
 
-        # Check total count
+        # Check total count — ceiling is a soft limit (warning, not failure)
         total = self.get_story_count(selected)
-        min_target, max_target = TARGET_STORY_COUNT
-        # Allow going below minimum if there aren't enough quality stories
-        if total > max_target:
+        if total > BUSY_WEEK_MAX_STORIES:
             return False
 
         return True

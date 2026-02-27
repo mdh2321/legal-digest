@@ -2,7 +2,8 @@
 import re
 from typing import List
 from .news_collector import NewsStory
-from .config import EXCLUDE_TOPICS, INCLUDE_TOPICS
+from urllib.parse import urlparse
+from .config import EXCLUDE_TOPICS, INCLUDE_TOPICS, DOMAIN_BLOCKLIST, ALL_APPROVED_DOMAINS
 
 
 class ContentFilter:
@@ -11,6 +12,31 @@ class ContentFilter:
     def __init__(self, start_date, end_date):
         self.start_date = start_date
         self.end_date = end_date
+
+    def _extract_domain(self, url: str) -> str:
+        """Extract the registered domain from a URL."""
+        try:
+            hostname = urlparse(url).hostname or ''
+            return hostname.lower()
+        except Exception:
+            return ''
+
+    def is_blocked_source(self, story: NewsStory) -> bool:
+        """Check if story is from a blocked domain."""
+        domain = self._extract_domain(story.url)
+        for blocked in DOMAIN_BLOCKLIST:
+            if domain.endswith(blocked) or blocked in domain:
+                print(f"  [BLOCKED] '{story.title[:60]}...' from blocked domain: {domain}")
+                return True
+        return False
+
+    def is_approved_source(self, story: NewsStory) -> bool:
+        """Check if story URL matches any approved source domain."""
+        domain = self._extract_domain(story.url)
+        for approved in ALL_APPROVED_DOMAINS:
+            if approved in domain or domain.endswith(approved):
+                return True
+        return False
 
     def should_exclude(self, story: NewsStory) -> bool:
         """
@@ -93,15 +119,8 @@ class ContentFilter:
         if not categories:
             return 0.0
 
-        # Base score from number of matching categories
+        # Base score from number of matching categories (no topic bias)
         base_score = min(len(categories) / 3.0, 1.0)
-
-        # Boost for high-priority topics
-        priority_topics = {'AI/ML', 'Data Privacy', 'Cybersecurity', 'Fintech'}
-        has_priority = any(cat in priority_topics for cat in categories)
-
-        if has_priority:
-            base_score = min(base_score * 1.2, 1.0)
 
         return base_score
 
@@ -118,6 +137,16 @@ class ContentFilter:
         filtered = []
 
         for story in stories:
+            # Check blocklist first
+            if self.is_blocked_source(story):
+                continue
+
+            # Check source allowlist
+            if not self.is_approved_source(story):
+                domain = self._extract_domain(story.url)
+                print(f"  [SOURCE] Rejected (unapproved domain: {domain}): '{story.title[:60]}...'")
+                continue
+
             # Check exclusions
             if self.should_exclude(story):
                 continue

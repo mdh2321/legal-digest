@@ -37,10 +37,10 @@ class NewsCollector:
 
     def build_search_queries(self, jurisdiction: str) -> List[str]:
         """
-        Build optimized search queries for a jurisdiction (~6-8 queries).
+        Build search queries for a jurisdiction from config keywords.
 
-        Consolidates topics to minimize API calls while maintaining coverage.
-        Brave freshness parameter handles time filtering.
+        Loops over DIGEST_SEARCH_KEYWORDS, prepending jurisdiction name.
+        Also adds a regulator site search if available.
 
         Args:
             jurisdiction: Two-letter jurisdiction code
@@ -49,7 +49,7 @@ class NewsCollector:
             List of search query strings
         """
         from .config import (
-            ALL_JURISDICTIONS, REGULATOR_SOURCES, COURT_SOURCES
+            ALL_JURISDICTIONS, REGULATOR_SOURCES, DIGEST_SEARCH_KEYWORDS
         )
 
         jur_info = ALL_JURISDICTIONS.get(jurisdiction)
@@ -59,19 +59,11 @@ class NewsCollector:
 
         queries = []
 
-        # --- 1. BROAD TECH LAW QUERY (1) ---
-        queries.append(f'{jur_name} technology law regulation 2026')
+        # Keyword-driven queries from config
+        for keyword in DIGEST_SEARCH_KEYWORDS:
+            queries.append(f'{jur_name} {keyword}')
 
-        # --- 2. CORE TOPICS (3, consolidated) ---
-        queries.append(f'{jur_name} data privacy data protection regulation')
-        queries.append(f'{jur_name} cybersecurity regulation data breach law')
-        queries.append(f'{jur_name} artificial intelligence AI regulation governance')
-
-        # --- 3. ENFORCEMENT + LEGISLATION (2, consolidated) ---
-        queries.append(f'{jur_name} enforcement penalty fine privacy cybersecurity AI')
-        queries.append(f'{jur_name} new law regulation amendment digital technology')
-
-        # --- 4. REGULATOR SITE SEARCH (1, if available) ---
+        # Regulator site search (if available)
         regulator_sites = REGULATOR_SOURCES.get(jurisdiction, [])
         if regulator_sites:
             batch = regulator_sites[:4]
@@ -276,7 +268,7 @@ class NewsCollector:
 
     def collect_all_stories(self, search_function) -> List[NewsStory]:
         """
-        Collect stories from all jurisdictions.
+        Collect stories from all jurisdictions plus extraterritorial searches.
 
         Args:
             search_function: Function that performs web search
@@ -284,13 +276,41 @@ class NewsCollector:
         Returns:
             List of all NewsStory objects
         """
-        from .config import ALL_JURISDICTIONS
+        from .config import ALL_JURISDICTIONS, EXTRATERRITORIAL_KEYWORDS
 
         all_stories = []
 
+        # Standard jurisdiction searches
         for jur_code in ALL_JURISDICTIONS.keys():
+            if jur_code == 'EXTRA':
+                continue  # handled below
             stories = self.collect_stories_for_jurisdiction(jur_code, search_function)
             all_stories.extend(stories)
+
+        # Extraterritorial searches (no jurisdiction prefix)
+        extra_stories = []
+        for keyword in EXTRATERRITORIAL_KEYWORDS:
+            try:
+                results = search_function(keyword)
+                print(f"  [Search] EXTRA '{keyword[:60]}...' -> {len(results)} results")
+                stories = self.parse_search_results(results, 'EXTRA')
+                extra_stories.extend(stories)
+            except Exception:
+                try:
+                    time.sleep(2)
+                    results = search_function(keyword)
+                    stories = self.parse_search_results(results, 'EXTRA')
+                    extra_stories.extend(stories)
+                except Exception:
+                    print(f"  [NewsCollector] Extraterritorial query failed: {keyword[:60]}...")
+                    continue
+
+        # Deduplicate extraterritorial by URL
+        seen_urls = {s.url for s in all_stories}
+        for story in extra_stories:
+            if story.url not in seen_urls:
+                seen_urls.add(story.url)
+                all_stories.append(story)
 
         self.stories = all_stories
         return all_stories

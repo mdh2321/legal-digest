@@ -25,7 +25,11 @@ REGIONAL_JURISDICTIONS = {
     'ASEAN': {'name': 'ASEAN', 'flag': '🌏', 'priority': 1}
 }
 
-ALL_JURISDICTIONS = {**TIER1_JURISDICTIONS, **TIER2_JURISDICTIONS}
+EXTRATERRITORIAL_JURISDICTIONS = {
+    'EXTRA': {'name': 'Global/Extraterritorial', 'flag': '🌐', 'priority': 2}
+}
+
+ALL_JURISDICTIONS = {**TIER1_JURISDICTIONS, **TIER2_JURISDICTIONS, **EXTRATERRITORIAL_JURISDICTIONS}
 
 # =============================================================================
 # SOURCE CONFIGURATION
@@ -92,6 +96,7 @@ REGULATOR_SOURCES = {
         'homeaffairs.gov.au',   # Cyber security
         'ag.gov.au',            # Attorney-General
         'industry.gov.au',      # Industry/AI policy
+        'transparency.org.au',  # Transparency International Australia
     ],
     'SG': [
         'pdpc.gov.sg',          # Personal Data Protection Commission
@@ -100,6 +105,7 @@ REGULATOR_SOURCES = {
         'csa.gov.sg',           # Cyber Security Agency
         'mlaw.gov.sg',          # Ministry of Law
         'aiverify.sg',          # AI Verify Foundation
+        'cpib.gov.sg',          # Corrupt Practices Investigation Bureau
     ],
     'JP': [
         'ppc.go.jp',            # Personal Information Protection Commission
@@ -108,6 +114,7 @@ REGULATOR_SOURCES = {
         'fsa.go.jp',            # Financial Services Agency
         'nisc.go.jp',           # Cybersecurity Center
         'cao.go.jp',            # Cabinet Office
+        'npsc.go.jp',           # National Public Safety Commission
     ],
     'IN': [
         'meity.gov.in',         # Ministry of Electronics and IT
@@ -115,6 +122,7 @@ REGULATOR_SOURCES = {
         'sebi.gov.in',          # Securities and Exchange Board
         'cci.gov.in',           # Competition Commission
         'cert-in.org.in',       # CERT-India
+        'cvc.gov.in',           # Central Vigilance Commission
     ],
     'KR': [
         'pipc.go.kr',           # Personal Information Protection Commission
@@ -220,6 +228,13 @@ LEGAL_PUBLICATIONS = [
     'businessmirror.com.ph',
     'vnexpress.net',            # Vietnam
     'vietnamnews.vn',
+    # Anti-corruption, compliance, and regional coverage
+    'regulationasia.com',       # Asia regulatory news
+    'conventuslaw.com',         # Asia legal news
+    'asialaw.com',              # Asia law portal
+    'globalcompliancenews.com', # Global compliance
+    'fcpablog.com',             # Anti-corruption (FCPA Blog)
+    'corruptionwatch.org',      # Anti-corruption
 ]
 
 # Court and tribunal databases by jurisdiction
@@ -345,18 +360,44 @@ THINK_TANKS = [
     'oxfordmartin.ox.ac.uk',    # Oxford Martin School
 ]
 
+# Domain blocklist - sources that should never appear
+DOMAIN_BLOCKLIST = [
+    'wikipedia.org', 'reddit.com', 'quora.com', 'medium.com', 'youtube.com',
+    'twitter.com', 'x.com', 'facebook.com', 'tiktok.com', 'pinterest.com',
+    'linkedin.com', 'deepstrike.io', 'insurancebusinessmag.com',
+]
+
 # All sources flattened for easy searching
 ALL_REGULATOR_SITES = []
 for sites in REGULATOR_SOURCES.values():
     ALL_REGULATOR_SITES.extend(sites)
 
-# Story selection limits
-TARGET_STORY_COUNT = (8, 10)  # (min, max)
-TIER2_MAX_STORIES = 3
+ALL_COURT_SITES = []
+for sites in COURT_SOURCES.values():
+    ALL_COURT_SITES.extend(sites)
+
+# Build comprehensive set of all approved domains
+ALL_APPROVED_DOMAINS = set(
+    ALL_REGULATOR_SITES
+    + ALL_COURT_SITES
+    + LAW_FIRM_SOURCES
+    + LEGAL_PUBLICATIONS
+    + INDUSTRY_ASSOCIATIONS
+    + THINK_TANKS
+)
+
+# Story selection limits — dynamic volume
+MIN_STORIES = 6
+DEFAULT_MAX_STORIES = 12
+BUSY_WEEK_MAX_STORIES = 18
+TIER1_MAX_PER_JURISDICTION = 4
+TIER2_MAX_STORIES = 5
+EXTRA_MAX_STORIES = 2
+MATERIALITY_EXPANSION_THRESHOLD = 0.5  # stories scoring above this qualify for expansion
 
 # Word limits
-MAX_TOTAL_WORDS = 1000
-MAX_INSIGHTS_WORDS = 120
+MAX_TOTAL_WORDS = 2500
+MAX_INSIGHTS_WORDS = 200
 MAX_HEADLINE_WORDS = 12
 
 # Content exclusion keywords
@@ -541,18 +582,37 @@ DIGEST_JURISDICTIONS = [
     'ASEAN' # Regional ASEAN
 ]
 
-# All keyword topics to search per jurisdiction (7 keyword categories)
+# All keyword topics to search per jurisdiction (16 keyword categories)
 DIGEST_SEARCH_KEYWORDS = [
+    # Existing core topics
     'privacy data protection law',
     'cybersecurity law regulation',
     'AI artificial intelligence regulation',
     'fintech digital assets crypto regulation',
     'platform regulation online safety',
     'enforcement penalty fine data privacy',
-    'technology law digital economy'
+    'technology law digital economy',
+    # New topic areas
+    'electronic signature e-signature digital identity law',
+    'anti-corruption anti-bribery enforcement',
+    'consumer protection unfair contract terms dark patterns',
+    'competition antitrust digital markets',
+    'employment law gig economy platform workers',
+    'corporate governance ESG sustainability reporting',
+    'copyright intellectual property AI',
+    'digital services tax transfer pricing',
+    'contract law commercial SaaS cloud subscription',
 ]
 
-# Total expected searches: 12 jurisdictions × 7 keywords = 84 searches
+# Extraterritorial / cross-border search keywords (searched without jurisdiction prefix)
+EXTRATERRITORIAL_KEYWORDS = [
+    'EU AI Act extraterritorial Asia Pacific impact',
+    'GDPR enforcement Asia Pacific cross-border',
+    'UK Online Safety Act Asia impact',
+    'US executive order AI regulation Asia Pacific',
+]
+
+# Total expected searches: 14 jurisdictions × 16 keywords + 4 extraterritorial = ~228 searches
 # This ensures comprehensive coverage across all topics and regions
 
 # Ranking weights

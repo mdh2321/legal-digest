@@ -5,7 +5,7 @@ from datetime import datetime
 from email.utils import formatdate
 from typing import List, Dict, Optional, Any
 from .news_collector import NewsStory
-from .config import ALL_JURISDICTIONS, TIER1_JURISDICTIONS, TIER2_JURISDICTIONS
+from .config import ALL_JURISDICTIONS, TIER1_JURISDICTIONS, TIER2_JURISDICTIONS, EXTRATERRITORIAL_JURISDICTIONS
 from .date_utils import format_date_range
 from .story_ranker import StoryRanker
 
@@ -261,8 +261,16 @@ class RSSGenerator:
         <p><em>Country: <strong>{self.escape_xml(jur_name)}</strong> | Topics: {', '.join(f'<strong>{self.escape_xml(c)}</strong>' for c in categories[:3])}</em></p>
         <p><a href="{self.escape_xml(story.url)}">Read full article &rarr;</a></p>"""
 
-        # Title with materiality label and source type
-        title_prefix = f"{materiality_label} {source_type_tag} " if source_type_tag else f"{materiality_label} "
+        # Urgency badge
+        urgency = getattr(story, 'urgency', 'awareness_only')
+        urgency_badge = ''
+        if urgency == 'immediate_action':
+            urgency_badge = '[ACTION REQUIRED] '
+        elif urgency == 'monitor_closely':
+            urgency_badge = '[MONITOR] '
+
+        # Title with urgency badge, materiality label and source type
+        title_prefix = f"{urgency_badge}{materiality_label} {source_type_tag} " if source_type_tag else f"{urgency_badge}{materiality_label} "
         title = self.escape_xml(title_prefix + story.title)
 
         item_xml = f"""    <item>
@@ -280,7 +288,8 @@ class RSSGenerator:
 
     def generate_feed(self, selected_stories: Dict[str, List[NewsStory]],
                       insights: str = "", deadlines: List = None,
-                      ai_stories: List = None) -> str:
+                      ai_stories: List = None,
+                      actions_summary: str = None) -> str:
         """
         Generate complete RSS 2.0 feed.
 
@@ -289,6 +298,7 @@ class RSSGenerator:
             insights: Optional insights text (included as separate item)
             deadlines: List of compliance deadlines extracted from stories
             ai_stories: List of AI-related stories for the AI Tracker
+            actions_summary: Optional "Actions This Week" summary text
 
         Returns:
             Complete RSS XML string
@@ -300,7 +310,11 @@ class RSSGenerator:
         # Collect all items in priority order
         items = []
 
-        # Tier 1 jurisdictions first
+        # Actions This Week goes FIRST
+        if actions_summary:
+            items.append(self._format_actions_item(actions_summary))
+
+        # Tier 1 jurisdictions
         for jur_code in TIER1_JURISDICTIONS.keys():
             if jur_code in selected_stories:
                 for story in selected_stories[jur_code]:
@@ -308,6 +322,12 @@ class RSSGenerator:
 
         # Tier 2 jurisdictions
         for jur_code in TIER2_JURISDICTIONS.keys():
+            if jur_code in selected_stories:
+                for story in selected_stories[jur_code]:
+                    items.append(self.format_item(story))
+
+        # Extraterritorial / Global stories
+        for jur_code in EXTRATERRITORIAL_JURISDICTIONS.keys():
             if jur_code in selected_stories:
                 for story in selected_stories[jur_code]:
                     items.append(self.format_item(story))
@@ -374,6 +394,38 @@ class RSSGenerator:
       <category>Analysis</category>
       <category>APAC</category>
       <description>Cross-jurisdictional trends and upcoming regulatory developments for the week.</description>
+      <content:encoded><![CDATA[
+        {content_html}
+      ]]></content:encoded>
+    </item>"""
+
+    def _format_actions_item(self, actions_summary: str) -> str:
+        """
+        Format "Actions This Week" as the first RSS item.
+
+        Args:
+            actions_summary: Actions summary text
+
+        Returns:
+            RSS item XML for actions summary
+        """
+        date_str = format_date_range(self.start_date, self.end_date)
+        pub_date = self.to_rfc822_date(datetime.now())
+
+        # Convert line breaks to HTML
+        actions_html = actions_summary.replace('\n', '<br/>')
+
+        content_html = f"""<h2>Actions This Week</h2>
+        <p>{actions_html}</p>
+        <p><em>Action items derived from this week's regulatory developments across APAC.</em></p>"""
+
+        return f"""    <item>
+      <title>Actions This Week - {date_str}</title>
+      <link>https://legal-digest.local/actions</link>
+      <pubDate>{pub_date}</pubDate>
+      <category>Actions</category>
+      <category>APAC</category>
+      <description>Key action items for in-house counsel based on this week's regulatory developments.</description>
       <content:encoded><![CDATA[
         {content_html}
       ]]></content:encoded>

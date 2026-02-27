@@ -2,7 +2,7 @@
 from typing import List, Dict, Tuple
 from .news_collector import NewsStory
 from .config import (TIER1_JURISDICTIONS, TIER2_JURISDICTIONS,
-                     TARGET_STORY_COUNT, TIER2_MAX_STORIES,
+                     MIN_STORIES, BUSY_WEEK_MAX_STORIES, TIER2_MAX_STORIES,
                      MAX_TOTAL_WORDS, MAX_INSIGHTS_WORDS)
 
 
@@ -80,17 +80,16 @@ class QAValidator:
                 f"(maximum: {TIER2_MAX_STORIES})"
             )
 
-        # Check total count
+        # Check total count (dynamic range)
         total_count = sum(len(stories) for stories in selected_stories.values())
-        min_target, max_target = TARGET_STORY_COUNT
 
-        if total_count < min_target:
+        if total_count < MIN_STORIES:
             self.warnings.append(
-                f"Total story count ({total_count}) is below target minimum ({min_target})"
+                f"Total story count ({total_count}) is below minimum ({MIN_STORIES})"
             )
-        elif total_count > max_target:
-            self.errors.append(
-                f"Total story count ({total_count}) exceeds maximum ({max_target})"
+        elif total_count > BUSY_WEEK_MAX_STORIES:
+            self.warnings.append(
+                f"Total story count ({total_count}) exceeds busy-week maximum ({BUSY_WEEK_MAX_STORIES})"
             )
 
     def _check_duplicates(self, selected_stories: Dict[str, List[NewsStory]]):

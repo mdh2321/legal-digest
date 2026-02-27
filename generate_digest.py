@@ -22,7 +22,7 @@ from src.formatter import DigestFormatter
 from src.insights_generator import InsightsGenerator
 from src.qa_validator import QAValidator
 from src.rss_generator import RSSGenerator
-from src.content_enhancer import ContentEnhancer, extract_deadlines_from_stories, filter_ai_stories
+from src.content_enhancer import ContentEnhancer, extract_deadlines_from_stories, filter_ai_stories, generate_actions_summary
 from src.deadline_tracker import DeadlineTracker
 
 
@@ -156,6 +156,16 @@ class DigestGenerator:
         new_deadlines = extract_deadlines_from_stories(all_selected)
         ai_stories = filter_ai_stories(all_selected)
 
+        # Generate "Actions This Week" summary
+        if verbose:
+            print("\n  Generating 'Actions This Week' summary...")
+        actions_summary = generate_actions_summary(all_selected)
+        if verbose:
+            if actions_summary:
+                print(f"  Generated actions summary ({len(actions_summary.split())} words)")
+            else:
+                print("  Actions summary not available (Claude API may be disabled)")
+
         # Persistent deadline tracker — merges new deadlines, removes past ones
         tracker = DeadlineTracker()
         tracker.update(new_deadlines)
@@ -181,13 +191,17 @@ class DigestGenerator:
             rss_gen = RSSGenerator(self.start_date, self.end_date)
             digest_text = rss_gen.generate_feed(
                 selected_stories, insights,
-                deadlines=deadlines, ai_stories=ai_stories
+                deadlines=deadlines, ai_stories=ai_stories,
+                actions_summary=actions_summary
             )
             file_extension = 'xml'
             if verbose:
                 print(f"  Generated RSS feed")
         else:
-            digest_text = formatter.format_digest(selected_stories, insights)
+            digest_text = formatter.format_digest(
+                selected_stories, insights,
+                actions_summary=actions_summary
+            )
             file_extension = 'md'
             if verbose:
                 total_words = len(digest_text.split())

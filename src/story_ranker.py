@@ -14,12 +14,17 @@ class StoryRanker:
                 'new regulation', 'new law', 'legislation passed',
                 'court decision', 'supreme court', 'enforcement action',
                 'regulatory guidance', 'policy change', 'compliance requirement',
-                'fine', 'penalty', 'ruling', 'judgment', 'ban', 'prohibited'
+                'fine', 'penalty', 'ruling', 'judgment', 'ban', 'prohibited',
+                'anti-corruption', 'bribery', 'unfair contract', 'dark pattern',
+                'mandatory disclosure'
             ],
             'medium': [
                 'consultation', 'proposed regulation', 'draft law',
                 'guidance', 'advisory', 'recommendation', 'update',
-                'amendment', 'review', 'investigation'
+                'amendment', 'review', 'investigation',
+                'electronic signature', 'e-signature', 'digital identity',
+                'consumer protection', 'competition', 'antitrust',
+                'ESG', 'sustainability'
             ],
             'low': [
                 'discussion', 'opinion', 'analysis', 'commentary',
@@ -53,19 +58,18 @@ class StoryRanker:
         # Normalize to 0-1 range (cap at 3 mentions)
         normalized = min(score / 3.0, 1.0)
 
-        # Boost for regulatory sources
-        if self._is_official_source(story.url):
-            normalized = min(normalized * 1.3, 1.0)
+        # Boost based on classified source type
+        source_type = getattr(story, 'source_type', '')
+        source_boost = {
+            'Regulator': 1.5,
+            'Court': 1.5,
+            'Publication': 1.2,
+            'Law Firm': 1.2,
+            'News': 1.0,
+        }.get(source_type, 1.0)
+        normalized = min(normalized * source_boost, 1.0)
 
         return normalized
-
-    def _is_official_source(self, url: str) -> bool:
-        """Check if URL is from an official government/regulatory source."""
-        official_domains = [
-            '.gov.', '.govt.', 'court', 'regulator',
-            'legislation', 'parliament', 'congress'
-        ]
-        return any(domain in url.lower() for domain in official_domains)
 
     def get_jurisdiction_priority_score(self, jurisdiction: str) -> float:
         """

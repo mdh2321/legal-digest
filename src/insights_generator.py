@@ -76,32 +76,38 @@ class InsightsGenerator:
         if not api_key:
             return None
 
-        # Build story summaries for the prompt
+        # Build story summaries for the prompt (include urgency and legal_area)
         story_summaries = []
         for s in stories[:12]:
             jur_name = ALL_JURISDICTIONS.get(s.jurisdiction, {}).get('name', s.jurisdiction)
             summary = getattr(s, 'enhanced_summary', None) or s.summary or s.snippet
             cats = ', '.join(s.categories[:3]) if s.categories else 'General'
-            story_summaries.append(f"- [{jur_name}] {s.title}: {summary} (Categories: {cats})")
+            urgency = getattr(s, 'urgency', 'awareness_only')
+            legal_area = getattr(s, 'legal_area', cats)
+            story_summaries.append(
+                f"- [{jur_name}] {s.title}: {summary} "
+                f"(Legal area: {legal_area}, Urgency: {urgency})"
+            )
 
         stories_text = '\n'.join(story_summaries)
 
-        prompt = f"""You are the editor of a weekly APAC legal digest for in-house counsel at global tech companies.
+        prompt = f"""You are the editor of a weekly APAC legal digest for in-house counsel at global SaaS companies.
 
-Based on these {len(stories)} stories from this week's digest, write a brief "Editor's Note" (80-120 words) that:
-1. Highlights the 1-2 most consequential developments
-2. Identifies any cross-jurisdictional patterns or converging regulatory trends
-3. Notes what to watch in the coming weeks
+Based on these {len(stories)} stories from this week's digest, write an "Editor's Note" (150-200 words) covering:
+
+1. CROSS-JURISDICTIONAL TRENDS: Name specific countries and their actions that show emerging patterns (e.g., "Australia, Singapore, and Japan all advanced AI governance frameworks this week...").
+2. CONVERGENCE/DIVERGENCE: Where are regulators aligning versus diverging? What does this mean for a company operating across multiple APJ markets?
+3. WHAT TO WATCH NEXT WEEK: Mention specific open consultations, upcoming effective dates, or expected regulatory announcements.
 
 Stories:
 {stories_text}
 
-Write in a direct, analytical tone. No bullet points — use flowing prose. Do NOT use markdown formatting (no ** or *). Use plain text only. Start with "Editor's Note:" """
+Write in a direct, analytical tone. Use flowing prose, not bullet points. Do NOT use markdown formatting (no ** or *). Use plain text only. Be specific — name countries, laws, and regulators. Start with "Editor's Note:" """
 
         try:
             client = anthropic.Anthropic(api_key=api_key)
             response = client.messages.create(
-                model="claude-sonnet-4-6",
+                model="claude-sonnet-4-20250514",
                 max_tokens=300,
                 messages=[{"role": "user", "content": prompt}]
             )

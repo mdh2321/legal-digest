@@ -93,7 +93,7 @@ class ContentEnhancer:
         jur_name = ALL_JURISDICTIONS.get(story.jurisdiction, {}).get('name', story.jurisdiction)
         categories = ', '.join(getattr(story, 'categories', [])[:3]) or 'Legal/Regulatory'
 
-        prompt = f"""You are a legal analyst writing for in-house counsel at a global SaaS company.
+        prompt = f"""You are a legal analyst writing for in-house counsel at a global SaaS company covering APJ.
 Analyze this legal news story and provide enhanced content.
 
 STORY DETAILS:
@@ -108,10 +108,15 @@ Provide your analysis in the following JSON format:
 {{
     "summary": "A 3-4 sentence executive summary of what happened and why it matters for technology companies. Be specific about the regulation, law, or enforcement action. Include the who, what, when, and practical implications. Use plain language, no jargon or markdown formatting.",
     "takeaways": [
-        "First specific, actionable takeaway for a tech company",
+        "First specific, actionable takeaway for a SaaS company — BAD: 'Monitor developments'. GOOD: 'Review subscription agreements for compliance with new auto-renewal disclosure requirements under the amended Consumer Protection Act.'",
         "Second specific, actionable takeaway",
         "Third specific, actionable takeaway (if applicable)"
     ],
+    "urgency": "immediate_action | monitor_closely | awareness_only",
+    "urgency_reason": "One sentence explaining why this urgency level was assigned",
+    "legal_area": "Primary legal area: Data Privacy, Cybersecurity, AI/ML, eSignature, Anti-Corruption, Consumer Protection, Competition, Employment, IP, Tax, Contract Law, Corporate Governance, Fintech, or other",
+    "affects_contracts": true/false — does this require review of existing contracts or subscription terms?,
+    "affects_product": true/false — does this affect product features, UX, or technical compliance?,
     "deadline": "YYYY-MM-DD format if a compliance deadline is mentioned, otherwise null",
     "deadline_description": "Brief description of what the deadline is for, or null",
     "penalty_amount": "Extracted fine/penalty amount with currency if mentioned, otherwise null",
@@ -120,21 +125,24 @@ Provide your analysis in the following JSON format:
 
 GUIDELINES:
 - Summary should explain WHAT happened, WHO is affected, and WHY it matters
-- Takeaways must be specific and actionable (e.g., "Review privacy notices for Australian users" not "Monitor developments")
-- Extract any specific dates mentioned as compliance deadlines
-- Note penalty amounts to help prioritize enforcement stories
-- Flag AI-related stories for the AI Regulatory Tracker
+- Takeaways must be specific and actionable — reference the actual law/regulation name, the specific compliance action required, and the affected business function
+- urgency: use 'immediate_action' only for new obligations with near deadlines or enforcement actions; 'monitor_closely' for proposed laws, consultations, and developing enforcement trends; 'awareness_only' for analysis, guidance, and early-stage developments
+- legal_area: pick the single most relevant area
+- affects_contracts: true if the development could require changes to customer agreements, DPAs, vendor contracts, or terms of service
+- affects_product: true if the development could require changes to product features, data flows, consent mechanisms, or user interfaces
 
 Respond ONLY with the JSON object, no other text."""
 
         try:
             response = self.client.messages.create(
-                model="claude-sonnet-4-6",
+                model="claude-sonnet-4-20250514",
                 max_tokens=1024,
                 messages=[
                     {"role": "user", "content": prompt}
                 ]
             )
+
+            print(f"  [ContentEnhancer] API response received for: {story.title[:50]}...")
 
             # Parse response
             response_text = response.content[0].text.strip()
@@ -167,14 +175,25 @@ Respond ONLY with the JSON object, no other text."""
                 else:
                     story.is_ai_related = False
 
-            except json.JSONDecodeError:
+                # New fields: urgency, legal_area, contract/product impact
+                story.urgency = data.get('urgency', 'awareness_only')
+                story.urgency_reason = data.get('urgency_reason', '')
+                story.legal_area = data.get('legal_area', '')
+                story.affects_contracts = data.get('affects_contracts', False)
+                story.affects_product = data.get('affects_product', False)
+
+                print(f"  [ContentEnhancer] SUCCESS enhanced: {story.title[:50]}...")
+
+            except json.JSONDecodeError as je:
                 # If JSON parsing fails, try to extract key parts
+                print(f"  [ContentEnhancer] JSON parse failed for '{story.title[:50]}...': {je}")
+                print(f"  [ContentEnhancer] Raw response: {response_text[:200]}...")
                 story.enhanced_summary = story.summary
                 story.is_ai_related = self._check_ai_related(story)
 
         except Exception as e:
             # On any error, keep original content
-            print(f"  [ContentEnhancer] Error enhancing story: {e}")
+            print(f"  [ContentEnhancer] FAILED for '{story.title[:50]}...': {type(e).__name__}: {e}")
             story.is_ai_related = self._check_ai_related(story)
 
         return story
@@ -219,6 +238,87 @@ Respond ONLY with the JSON object, no other text."""
             enhanced.append(enhanced_story)
 
         return enhanced
+
+
+def generate_actions_summary(stories: List[NewsStory], client=None) -> Optional[str]:
+    """
+    Generate an "Actions This Week" summary from selected stories using Claude.
+
+    Produces 4 subsections (~200 words total):
+    1. Compliance deadlines
+    2. Required reviews (affects_contracts == True)
+    3. New obligations (urgency == 'immediate_action')
+    4. Items to monitor (urgency == 'monitor_closely')
+
+    Args:
+        stories: List of enhanced NewsStory objects
+        client: Optional anthropic.Anthropic client (creates one if not provided)
+
+    Returns:
+        Formatted actions summary text, or None if generation fails
+    """
+    if not stories:
+        return None
+
+    # Try to get a client
+    if client is None:
+        if not ANTHROPIC_AVAILABLE:
+            return None
+        api_key = load_api_key()
+        if not api_key:
+            return None
+        try:
+            client = anthropic.Anthropic(api_key=api_key)
+        except Exception:
+            return None
+
+    # Build story context for the prompt
+    story_details = []
+    for s in stories:
+        jur_name = ALL_JURISDICTIONS.get(s.jurisdiction, {}).get('name', s.jurisdiction)
+        summary = getattr(s, 'enhanced_summary', None) or s.summary or s.snippet
+        urgency = getattr(s, 'urgency', 'awareness_only')
+        legal_area = getattr(s, 'legal_area', '')
+        affects_contracts = getattr(s, 'affects_contracts', False)
+        affects_product = getattr(s, 'affects_product', False)
+        deadline = getattr(s, 'compliance_deadline', None)
+        deadline_desc = getattr(s, 'deadline_description', '')
+
+        detail = f"- [{jur_name}] {s.title} | urgency={urgency} | legal_area={legal_area}"
+        detail += f" | affects_contracts={affects_contracts} | affects_product={affects_product}"
+        if deadline:
+            detail += f" | deadline={deadline} ({deadline_desc})"
+        detail += f"\n  Summary: {summary[:200]}"
+        story_details.append(detail)
+
+    stories_text = '\n'.join(story_details)
+
+    prompt = f"""You are writing an "Actions This Week" executive summary for in-house counsel at a global SaaS company covering APJ.
+
+Based on these {len(stories)} stories, write a concise action summary (~200 words) with exactly 4 subsections:
+
+1. **Compliance Deadlines** — list any specific dates or deadlines from the stories. If none, say "No new deadlines identified this week."
+2. **Required Reviews** — list contracts, agreements, or terms that need review based on stories where affects_contracts=True. Be specific about which documents and why.
+3. **New Obligations** — list any new compliance obligations from stories with urgency=immediate_action. Include the jurisdiction and specific requirement.
+4. **Items to Monitor** — list developing regulatory trends from stories with urgency=monitor_closely. Note what to watch for and expected timeline.
+
+Stories:
+{stories_text}
+
+Write in direct, actionable prose. No markdown formatting (no ** or *). Use plain text only. Use numbered sub-items within each section. Be specific — name the law, regulator, and jurisdiction."""
+
+    try:
+        response = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=600,
+            messages=[{"role": "user", "content": prompt}]
+        )
+        result = response.content[0].text.strip()
+        print(f"  [ActionsGenerator] Generated actions summary ({len(result.split())} words)")
+        return result
+    except Exception as e:
+        print(f"  [ActionsGenerator] Failed to generate actions summary: {e}")
+        return None
 
 
 def extract_deadlines_from_stories(stories: List[NewsStory]) -> List[Dict]:

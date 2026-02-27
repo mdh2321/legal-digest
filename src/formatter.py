@@ -3,7 +3,8 @@ import re
 from typing import List, Dict
 from .news_collector import NewsStory
 from .config import (ALL_JURISDICTIONS, TIER1_JURISDICTIONS,
-                     TIER2_JURISDICTIONS, MAX_HEADLINE_WORDS)
+                     TIER2_JURISDICTIONS, EXTRATERRITORIAL_JURISDICTIONS,
+                     MAX_HEADLINE_WORDS)
 from .date_utils import format_source_date, format_date_range
 from .story_ranker import StoryRanker
 
@@ -81,8 +82,16 @@ class DigestFormatter:
         # Categories
         categories = ' '.join(f'`{cat}`' for cat in story.categories[:3])
 
+        # Urgency badge
+        urgency = getattr(story, 'urgency', 'awareness_only')
+        urgency_badge = ''
+        if urgency == 'immediate_action':
+            urgency_badge = '[ACTION REQUIRED] '
+        elif urgency == 'monitor_closely':
+            urgency_badge = '[MONITOR] '
+
         # Assemble story
-        tags = f"{materiality_label} {source_type_tag} " if source_type_tag else f"{materiality_label} "
+        tags = f"{urgency_badge}{materiality_label} {source_type_tag} " if source_type_tag else f"{urgency_badge}{materiality_label} "
         story_text = f"- {tags}**{headline}** ({source_link}, {source_date})\n"
         story_text += f"  {summary}\n"
         story_text += f"  *Why it matters:* {relevance}\n"
@@ -148,13 +157,15 @@ class DigestFormatter:
         return section
 
     def format_digest(self, selected_stories: Dict[str, List[NewsStory]],
-                      insights: str = "") -> str:
+                      insights: str = "",
+                      actions_summary: str = None) -> str:
         """
         Format complete digest.
 
         Args:
             selected_stories: Dict mapping jurisdiction codes to stories
             insights: Region insights text
+            actions_summary: Optional "Actions This Week" summary text
 
         Returns:
             Complete formatted markdown digest
@@ -165,6 +176,11 @@ class DigestFormatter:
         # Header
         date_str = format_date_range(self.start_date, self.end_date)
         digest = f"# Weekly APJ Legal Digest — {date_str} (≈{total_words} words)\n\n"
+
+        # Actions This Week (before jurisdiction sections)
+        if actions_summary:
+            digest += "## ⚡  Actions This Week\n\n"
+            digest += actions_summary + "\n\n"
 
         # Tier 1 jurisdictions
         for jur_code in TIER1_JURISDICTIONS.keys():
@@ -183,6 +199,20 @@ class DigestFormatter:
             for jur_code, stories in tier2_stories.items():
                 jur_name = ALL_JURISDICTIONS[jur_code]['name']
                 digest += f"### {jur_name}\n\n"
+                for story in stories:
+                    digest += self.format_story(story) + "\n"
+
+        # Extraterritorial / Global stories (under "Other APJ" section)
+        extra_stories = {jur: stories for jur, stories in selected_stories.items()
+                         if jur in EXTRATERRITORIAL_JURISDICTIONS}
+
+        if extra_stories:
+            # If no Tier 2 header was written, add the Other APJ header
+            if not tier2_stories:
+                digest += "## 🌏  Other APJ\n\n"
+            for jur_code, stories in extra_stories.items():
+                jur_name = ALL_JURISDICTIONS[jur_code]['name']
+                digest += f"### 🌐 {jur_name}\n\n"
                 for story in stories:
                     digest += self.format_story(story) + "\n"
 
