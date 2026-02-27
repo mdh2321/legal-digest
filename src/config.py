@@ -364,7 +364,11 @@ EXCLUDE_TOPICS = [
     'criminal law', 'criminal', 'murder', 'assault', 'theft',
     'wills', 'estates', 'probate', 'inheritance', 'testament',
     'family law', 'divorce', 'custody', 'marriage', 'domestic',
-    'personal injury', 'tort claim'
+    'personal injury', 'tort claim',
+    # Exclude incident reports (not about law/regulation)
+    'ransomware attack', 'hacking incident', 'phishing attack',
+    'malware attack', 'DDoS attack', 'cyber attack on',
+    'hackers stole', 'hackers breached', 'data leak',
 ]
 
 # Content inclusion topics (focus areas)

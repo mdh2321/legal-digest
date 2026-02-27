@@ -158,7 +158,7 @@ def render_story(story: dict, index: int) -> str:
         items = '\n'.join(f'<li>{html.escape(t)}</li>' for t in story['takeaways'][:3])
         takeaways_html = f"""
                     <div class="takeaways">
-                        <p class="takeaways-label">What This Means for You</p>
+                        <p class="takeaways-label">Key Actions</p>
                         <ul>
                             {items}
                         </ul>
@@ -195,6 +195,17 @@ def render_html(data: dict) -> str:
             <section class="compliance-countdown">
                 <p class="section-label">Compliance Countdown</p>
                 {data['deadlines_html']}
+            </section>"""
+
+    # AI Tracker section
+    ai_tracker_section = ''
+    if data['ai_tracker_html']:
+        ai_tracker_section = f"""
+            <section class="stories">
+                <p class="section-label">AI Regulatory Tracker</p>
+                <div style="padding: 1.5rem 0;">
+                    {data['ai_tracker_html']}
+                </div>
             </section>"""
 
     # Insights section
@@ -344,6 +355,7 @@ def render_html(data: dict) -> str:
                 {stories_html}
             </section>
 {deadlines_section}
+{ai_tracker_section}
 {insights_section}
         </main>
 

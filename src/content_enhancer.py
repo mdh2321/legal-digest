@@ -106,7 +106,7 @@ STORY DETAILS:
 
 Provide your analysis in the following JSON format:
 {{
-    "summary": "A 2-3 sentence executive summary of what happened and why it matters. Be specific about the regulation/law/enforcement action. Use plain language, no jargon.",
+    "summary": "A 3-4 sentence executive summary of what happened and why it matters for technology companies. Be specific about the regulation, law, or enforcement action. Include the who, what, when, and practical implications. Use plain language, no jargon or markdown formatting.",
     "takeaways": [
         "First specific, actionable takeaway for a tech company",
         "Second specific, actionable takeaway",
@@ -129,7 +129,7 @@ Respond ONLY with the JSON object, no other text."""
 
         try:
             response = self.client.messages.create(
-                model="claude-haiku-4-5-20251001",
+                model="claude-sonnet-4-6",
                 max_tokens=1024,
                 messages=[
                     {"role": "user", "content": prompt}

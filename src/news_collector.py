@@ -3,6 +3,7 @@ import re
 import time
 from datetime import datetime
 from typing import List, Dict, Optional
+from html import unescape as html_unescape
 
 
 class NewsStory:
@@ -149,6 +150,19 @@ class NewsCollector:
 
         return None
 
+    @staticmethod
+    def _strip_html(text: str) -> str:
+        """Strip HTML tags and decode entities from text."""
+        if not text:
+            return text
+        # Remove HTML tags
+        clean = re.sub(r'<[^>]+>', '', text)
+        # Decode HTML entities
+        clean = html_unescape(clean)
+        # Collapse whitespace
+        clean = re.sub(r'\s+', ' ', clean).strip()
+        return clean
+
     def _classify_source_type(self, url: str) -> str:
         """
         Classify a URL into a source type.
@@ -192,6 +206,10 @@ class NewsCollector:
         """
         Parse search results into NewsStory objects.
 
+        When a date is extractable from the snippet/title, it must fall within
+        the target week. When no date is found, the story is still accepted
+        (Brave's freshness=pw filter already limits to the past week).
+
         Args:
             results: List of search result dictionaries
             jurisdiction: Two-letter jurisdiction code
@@ -203,9 +221,9 @@ class NewsCollector:
 
         for result in results:
             try:
-                title = result.get('title', '')
+                title = self._strip_html(result.get('title', ''))
                 url = self.clean_url(result.get('url', ''))
-                snippet = result.get('snippet', '')
+                snippet = self._strip_html(result.get('snippet', ''))
                 source = result.get('source', '')
 
                 # Try to extract date from multiple sources
@@ -213,14 +231,15 @@ class NewsCollector:
                 if not date_obj:
                     date_obj = self.extract_date_from_text(title)
 
-                # If no date found, skip this article - strict date enforcement
-                if not date_obj:
-                    continue
-
-                # Verify the date is within our target week range
-                story_date = date_obj.date()
-                if not (self.start_date <= story_date <= self.end_date):
-                    continue
+                # If a date IS found, verify it falls within the target week
+                if date_obj:
+                    story_date = date_obj.date()
+                    if not (self.start_date <= story_date <= self.end_date):
+                        continue
+                else:
+                    # No date found — trust Brave's freshness filter,
+                    # use the end_date as a reasonable proxy
+                    date_obj = datetime.combine(self.end_date, datetime.min.time())
 
                 story = NewsStory(
                     title=title,

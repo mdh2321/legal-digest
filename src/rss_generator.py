@@ -241,10 +241,11 @@ class RSSGenerator:
         for cat in categories[:3]:
             category_xml += f'      <category>{self.escape_xml(cat)}</category>\n'
 
-        # Clean summary
+        # Clean summary — plain text only (no HTML) for <description> field
         summary = enhanced_summary or story.summary or story.snippet
         if not summary:
             summary = "Details available at source."
+        summary = re.sub(r'<[^>]+>', '', summary)  # Strip any HTML tags
         summary = summary.strip()
 
         # Source name
@@ -358,8 +359,12 @@ class RSSGenerator:
         date_str = format_date_range(self.start_date, self.end_date)
         pub_date = self.to_rfc822_date(datetime.now())
 
+        # Convert markdown bold (**text**) to HTML <strong> tags
+        insights_html = insights.replace('\n', '<br/>')
+        insights_html = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', insights_html)
+
         content_html = f"""<h2>Regional Trends &amp; Analysis</h2>
-        {self.escape_xml(insights).replace(chr(10), '<br/>')}
+        <p>{insights_html}</p>
         <p><em>Analysis based on this week's regulatory developments across APAC.</em></p>"""
 
         return f"""    <item>

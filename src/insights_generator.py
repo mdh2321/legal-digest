@@ -54,13 +54,13 @@ class InsightsGenerator:
         insights = []
 
         if trends:
-            insights.append(f"- **{trends['name']}:** {trends['description']}")
+            insights.append(f"{trends['name']}: {trends['description']}")
 
         if cross_border:
-            insights.append(f"- **Cross-border impacts:** {cross_border}")
+            insights.append(f"Cross-border impacts: {cross_border}")
 
         if upcoming:
-            insights.append(f"- **Upcoming:** {upcoming}")
+            insights.append(f"Upcoming: {upcoming}")
 
         result = '\n'.join(insights)
         result = self._truncate_to_word_limit(result, self.max_words)
@@ -96,12 +96,12 @@ Based on these {len(stories)} stories from this week's digest, write a brief "Ed
 Stories:
 {stories_text}
 
-Write in a direct, analytical tone. No bullet points — use flowing prose. Start with "**Editor's Note:**" """
+Write in a direct, analytical tone. No bullet points — use flowing prose. Do NOT use markdown formatting (no ** or *). Use plain text only. Start with "Editor's Note:" """
 
         try:
             client = anthropic.Anthropic(api_key=api_key)
             response = client.messages.create(
-                model="claude-haiku-4-5-20251001",
+                model="claude-sonnet-4-6",
                 max_tokens=300,
                 messages=[{"role": "user", "content": prompt}]
             )
