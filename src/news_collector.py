@@ -279,6 +279,7 @@ class NewsCollector:
         for query in queries:
             try:
                 results = search_function(query)
+                print(f"  [Search] '{query[:60]}...' -> {len(results)} results")
                 stories = self.parse_search_results(results, jurisdiction)
                 all_stories.extend(stories)
             except Exception as e:

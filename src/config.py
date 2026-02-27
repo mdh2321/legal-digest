@@ -361,14 +361,14 @@ MAX_HEADLINE_WORDS = 12
 
 # Content exclusion keywords
 EXCLUDE_TOPICS = [
-    'criminal law', 'criminal', 'murder', 'assault', 'theft',
-    'wills', 'estates', 'probate', 'inheritance', 'testament',
-    'family law', 'divorce', 'custody', 'marriage', 'domestic',
+    'criminal law', 'murder', 'assault', 'theft',
+    'wills and estates', 'probate', 'inheritance', 'testament',
+    'family law', 'divorce', 'custody',
     'personal injury', 'tort claim',
     # Exclude incident reports (not about law/regulation)
     'ransomware attack', 'hacking incident', 'phishing attack',
     'malware attack', 'DDoS attack', 'cyber attack on',
-    'hackers stole', 'hackers breached', 'data leak',
+    'hackers stole', 'hackers breached',
 ]
 
 # Content inclusion topics (focus areas)

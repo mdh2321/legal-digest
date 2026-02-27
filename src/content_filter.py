@@ -26,6 +26,7 @@ class ContentFilter:
 
         for exclude_keyword in EXCLUDE_TOPICS:
             if exclude_keyword.lower() in text:
+                print(f"  [EXCLUDE] '{story.title[:60]}...' matched '{exclude_keyword}'")
                 return True
 
         return False
@@ -128,6 +129,7 @@ class ContentFilter:
             # Calculate relevance
             relevance = self.calculate_relevance_score(story)
             if relevance < 0.3:  # Minimum relevance threshold
+                print(f"  [RELEVANCE] Rejected (score={relevance:.2f}): '{story.title[:60]}...'")
                 continue
 
             story.relevance_score = relevance

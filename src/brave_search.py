@@ -94,10 +94,12 @@ class BraveSearchClient:
                     return self._parse_response(resp.json())
 
                 if resp.status_code in (429, 500, 502, 503) and attempt < max_retries - 1:
+                    print(f"  [BraveSearch] HTTP {resp.status_code}, retrying...")
                     time.sleep(2)
                     continue
 
                 # Non-retryable error
+                print(f"  [BraveSearch] HTTP {resp.status_code} for query: {query[:60]}")
                 return []
 
             except requests.RequestException:

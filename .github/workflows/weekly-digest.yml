@@ -50,6 +50,16 @@ jobs:
         run: |
           python run_digest.py --format rss --publish
 
+      - name: Verify digest has content
+        run: |
+          # Check that feed.xml has at least one <item> — abort if empty
+          if ! grep -q '<item>' docs/feed.xml 2>/dev/null; then
+            echo "ERROR: Digest generated with zero stories. Keeping previous version."
+            git checkout -- docs/
+            exit 1
+          fi
+          echo "Feed has content — proceeding."
+
       - name: Generate HTML page
         run: |
           python scripts/generate_html.py
