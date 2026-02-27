@@ -122,13 +122,9 @@ class ContentFilter:
             if self.should_exclude(story):
                 continue
 
-            # Check date range
-            if not self.is_in_date_range(story):
-                continue
-
             # Calculate relevance
             relevance = self.calculate_relevance_score(story)
-            if relevance < 0.3:  # Minimum relevance threshold
+            if relevance < 0.1:  # Minimum relevance threshold (lenient)
                 print(f"  [RELEVANCE] Rejected (score={relevance:.2f}): '{story.title[:60]}...'")
                 continue
 

@@ -204,19 +204,12 @@ class NewsCollector:
                 snippet = self._strip_html(result.get('snippet', ''))
                 source = result.get('source', '')
 
-                # Try to extract date from multiple sources
+                # Try to extract date from snippet/title
                 date_obj = self.extract_date_from_text(snippet)
                 if not date_obj:
                     date_obj = self.extract_date_from_text(title)
-
-                # If a date IS found, verify it falls within the target week
-                if date_obj:
-                    story_date = date_obj.date()
-                    if not (self.start_date <= story_date <= self.end_date):
-                        continue
-                else:
-                    # No date found — trust Brave's freshness filter,
-                    # use the end_date as a reasonable proxy
+                if not date_obj:
+                    # No date found — use end_date as proxy
                     date_obj = datetime.combine(self.end_date, datetime.min.time())
 
                 story = NewsStory(
