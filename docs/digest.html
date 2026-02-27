@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APAC Legal Digest - Week of 9 February 2026</title>
+    <title>APAC Legal Digest - Week of 22 February 2026</title>
     <link rel="alternate" type="application/rss+xml" title="APAC Legal Digest" href="feed.xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,496 +49,66 @@
             overflow: hidden;
         }
 
-        /* Header */
         header {
             padding: 2.5rem 2rem 2rem;
             border-bottom: 1px solid var(--border);
             background: linear-gradient(160deg, #ffffff 0%, #f8faff 100%);
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
+        .brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .brand-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--accent) 0%, #60a5fa 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; color: #fff; box-shadow: 0 8px 18px rgba(79, 70, 229, 0.28); }
+        .brand-text { font-size: 1.125rem; font-weight: 700; letter-spacing: -0.02em; }
+        .edition { font-size: 0.875rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; }
+        .nav-links { margin-top: 1.25rem; display: flex; gap: 1.5rem; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 0.35rem 0.7rem; border-radius: 999px; border: 1px solid transparent; transition: color 0.15s, border-color 0.15s, background 0.15s; }
+        .nav-links a:hover { color: var(--text-primary); border-color: var(--border); background: #fff; }
+
+        main { padding: 0 2rem; }
+
+        .section-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-dark); margin-bottom: 1rem; }
+
+        .stories { padding: 2rem 0; }
+        .story { padding: 2rem 0; border-bottom: 1px solid var(--border); transition: transform 0.15s ease, box-shadow 0.15s ease; border-radius: 12px; padding-left: 1rem; padding-right: 1rem; margin-left: -1rem; margin-right: -1rem; }
+        .story:last-child { border-bottom: none; }
+        .story:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(22, 24, 29, 0.06); }
+
+        .story-number { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: linear-gradient(135deg, var(--accent) 0%, #2563eb 100%); color: white; font-size: 0.875rem; font-weight: 600; border-radius: 50%; margin-bottom: 1rem; }
+        .story-jurisdiction { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; font-weight: 500; color: var(--accent-dark); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+        .story-jurisdiction .flag { font-size: 1rem; }
+        .story-title { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 0.5rem; }
+        .story-title a { color: inherit; text-decoration: none; }
+        .story-title a:hover { text-decoration: underline; }
+        .story-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+        .tag { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.25rem 0.625rem; border-radius: 4px; background: var(--bg-secondary); color: var(--text-secondary); }
+        .tag.enforcement { background: #fef2f2; color: #991b1b; }
+        .tag.deadline { background: #fef3c7; color: #92400e; }
+        .tag.new-law { background: #ecfdf5; color: #065f46; }
+        .tag.ai { background: #ede9fe; color: #5b21b6; }
+        .story-summary { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem; }
+        .story-summary strong { color: var(--text-primary); font-weight: 600; }
+
+        .takeaways { background: #f6f8ff; border-left: 3px solid var(--accent); padding: 1.25rem 1.25rem 1.25rem 1.5rem; border-radius: 0 8px 8px 0; margin-bottom: 1.25rem; }
+        .takeaways-label { font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-dark); margin-bottom: 0.75rem; }
+        .takeaways ul { list-style: none; }
+        .takeaways li { font-size: 0.9375rem; color: var(--text-secondary); padding: 0.375rem 0; padding-left: 1.25rem; position: relative; }
+        .takeaways li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+
+        .compliance-countdown { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+        .compliance-countdown table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        .compliance-countdown th { background: #f3f4ff; padding: 0.75rem; text-align: left; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+        .compliance-countdown td { padding: 0.75rem; border-bottom: 1px solid var(--border); font-size: 0.9375rem; }
+
+        footer { padding: 2.5rem 2rem; border-top: 1px solid var(--border); text-align: center; background: #fcfdff; }
+        .footer-brand { font-weight: 600; margin-bottom: 0.5rem; }
+        .footer-meta { font-size: 0.875rem; color: var(--text-muted); }
 
-        .brand-icon {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, var(--accent) 0%, #60a5fa 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            color: #fff;
-            box-shadow: 0 8px 18px rgba(79, 70, 229, 0.28);
-        }
-
-        .brand-text {
-            font-size: 1.125rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        .edition {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-        }
-
-        .nav-links {
-            margin-top: 1.25rem;
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            padding: 0.35rem 0.7rem;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            transition: color 0.15s, border-color 0.15s, background 0.15s;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-            border-color: var(--border);
-            background: #fff;
-        }
-
-        /* Main content */
-        main {
-            padding: 0 2rem;
-        }
-
-        /* Quick Hits Section */
-        .quick-hits {
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent-dark);
-            margin-bottom: 1rem;
-        }
-
-        .quick-hits-content {
-            background: var(--bg-accent);
-            border-radius: 14px;
-            padding: 1.5rem;
-            border: 1px solid #dbe4ff;
-        }
-
-        .quick-hits-list {
-            list-style: none;
-        }
-
-        .quick-hits-list li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            font-size: 0.9375rem;
-            line-height: 1.5;
-        }
-
-        .quick-hits-list li:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .quick-hits-list li:first-child {
-            padding-top: 0;
-        }
-
-        .quick-hits-list strong {
-            color: var(--text-primary);
-        }
-
-        /* Key Dates */
-        .key-dates {
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--border);
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-            border-radius: 12px;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            margin-left: -1rem;
-            margin-right: -1rem;
-        }
-
-        .dates-grid {
-            display: grid;
-            gap: 0.75rem;
-        }
-
-        .date-item {
-            display: flex;
-            gap: 1rem;
-            align-items: baseline;
-        }
-
-        .date-badge {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--accent-dark);
-            background: var(--bg-accent);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            white-space: nowrap;
-            min-width: 80px;
-            text-align: center;
-        }
-
-        .date-text {
-            font-size: 0.9375rem;
-            color: var(--text-secondary);
-        }
-
-        /* Stories */
-        .stories {
-            padding: 2rem 0;
-        }
-
-        .story {
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .story:last-child {
-            border-bottom: none;
-        }
-
-        .story:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 22px rgba(22, 24, 29, 0.06);
-        }
-
-        .story-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, var(--accent) 0%, #2563eb 100%);
-            color: white;
-            font-size: 0.875rem;
-            font-weight: 600;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-        }
-
-        .story-jurisdiction {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.8125rem;
-            font-weight: 500;
-            color: var(--accent-dark);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
-        }
-
-        .story-jurisdiction .flag {
-            font-size: 1rem;
-        }
-
-        .story-title {
-            font-size: 1.35rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.3;
-            margin-bottom: 0.5rem;
-        }
-
-        .story-source {
-            font-size: 0.8125rem;
-            color: var(--text-muted);
-            margin-bottom: 1.25rem;
-        }
-
-        .story-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .tag {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 0.25rem 0.625rem;
-            border-radius: 4px;
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-        }
-
-        .tag.enforcement {
-            background: #fef2f2;
-            color: #991b1b;
-        }
-
-        .tag.deadline {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        .tag.new-law {
-            background: #ecfdf5;
-            color: #065f46;
-        }
-
-        .tag.ai {
-            background: #ede9fe;
-            color: #5b21b6;
-        }
-
-        .story-title a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .story-title a:hover {
-            text-decoration: underline;
-        }
-
-        .story-summary {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .story-summary strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .takeaways {
-            background: #f6f8ff;
-            border-left: 3px solid var(--accent);
-            padding: 1.25rem 1.25rem 1.25rem 1.5rem;
-            border-radius: 0 8px 8px 0;
-            margin-bottom: 1.25rem;
-        }
-
-        .takeaways-label {
-            font-size: 0.6875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent-dark);
-            margin-bottom: 0.75rem;
-        }
-
-        .takeaways ul {
-            list-style: none;
-        }
-
-        .takeaways li {
-            font-size: 0.9375rem;
-            color: var(--text-secondary);
-            padding: 0.375rem 0;
-            padding-left: 1.25rem;
-            position: relative;
-        }
-
-        .takeaways li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .relevance {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            font-style: italic;
-            padding: 0.75rem 1rem;
-            background: linear-gradient(145deg, #f8faff 0%, #f3f4f6 100%);
-            border-radius: 6px;
-            margin-bottom: 1rem;
-        }
-
-        .source-link {
-            font-size: 0.875rem;
-        }
-
-        .source-link a {
-            color: var(--link);
-            text-decoration: underline;
-            text-decoration-color: var(--border);
-            text-underline-offset: 2px;
-            font-weight: 500;
-            transition: text-decoration-color 0.15s;
-        }
-
-        .source-link a:hover {
-            text-decoration-color: var(--text-primary);
-        }
-
-        /* Footer */
-        footer {
-            padding: 2.5rem 2rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            background: #fcfdff;
-        }
-
-        .footer-brand {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-meta {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        /* Compliance Countdown */
-        .compliance-countdown {
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .countdown-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        .countdown-table th {
-            background: #f3f4ff;
-            padding: 0.75rem;
-            text-align: left;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .countdown-table td {
-            padding: 0.75rem;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.9375rem;
-        }
-
-        .countdown-table .days-urgent {
-            color: #dc2626;
-            font-weight: 700;
-        }
-
-        .countdown-table .days-soon {
-            color: #92400e;
-            font-weight: 600;
-        }
-
-        /* AI Tracker */
-        .ai-tracker {
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .ai-tracker-intro {
-            background: #f3f4ff;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            font-size: 0.875rem;
-        }
-
-        .ai-story {
-            padding: 1.25rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .ai-story:last-child {
-            border-bottom: none;
-        }
-
-        .ai-story-jurisdiction {
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-        }
-
-        .ai-story-title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .ai-story-summary {
-            font-size: 0.9375rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .ai-story-link {
-            font-size: 0.875rem;
-        }
-
-        .ai-story-link a {
-            color: var(--link);
-            text-decoration: underline;
-        }
-
-        /* Responsive */
         @media (max-width: 640px) {
-            body {
-                padding: 0;
-            }
-
-            .container {
-                min-height: 100vh;
-                border-radius: 0;
-                border: none;
-                box-shadow: none;
-            }
-
-            header, main, footer {
-                padding-left: 1.25rem;
-                padding-right: 1.25rem;
-            }
-
-            h1 {
-                font-size: 1.625rem;
-            }
-
-            .story-title {
-                font-size: 1.125rem;
-            }
-
-            .date-item {
-                flex-direction: column;
-                gap: 0.25rem;
-            }
-
-            .date-badge {
-                align-self: flex-start;
-            }
-
+            body { padding: 0; }
+            .container { min-height: 100vh; border-radius: 0; border: none; box-shadow: none; }
+            header, main, footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+            h1 { font-size: 1.625rem; }
+            .story-title { font-size: 1.125rem; }
         }
     </style>
 </head>
@@ -549,7 +119,7 @@
                 <div class="brand-icon">&#9878;</div>
                 <span class="brand-text">APAC Legal Digest</span>
             </div>
-            <p class="edition">Week of February 9, 2026</p>
+            <p class="edition">Week of 22 February 2026</p>
             <h1>Tech Law Developments Across Asia-Pacific</h1>
             <nav class="nav-links">
                 <a href="index.html">&larr; Home</a>
@@ -559,323 +129,88 @@
         </header>
 
         <main>
-            <!-- Quick Hits -->
-            <section class="quick-hits">
-                <p class="section-label">Quick Hits</p>
-                <div class="quick-hits-content">
-                    <ul class="quick-hits-list">
-                        <li><strong>ASEAN DEFA signing on track:</strong> The Digital Economy Framework Agreement is expected to be signed in Q4 2026 in the Philippines following completion of negotiations. The pact could unlock $2 trillion in digital economy value by 2030.</li>
-                        <li><strong>Australia Privacy Act second tranche:</strong> Attorney-General Michelle Rowland confirmed a second set of Privacy Act reforms is being prepared for cabinet approval, citing that current legislation is "not fit for the digital age."</li>
-                        <li><strong>Indonesia PDP Agency formation:</strong> The dedicated Personal Data Protection Agency (Lembaga PDP) is targeted to be formed and operating by 2026, with draft implementing regulations in the final harmonization stage.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Stories -->
             <section class="stories">
                 <p class="section-label">This Week's Stories</p>
-
-                <!-- Story 1 -->
+                
                 <article class="story">
                     <span class="story-number">1</span>
-                    <p class="story-jurisdiction"><span class="flag">&#127462;&#127482;</span> Australia</p>
-                    <h2 class="story-title"><a href="https://www.spruson.com/privacy-in-australia-reflecting-on-2025-and-tips-for-preparing-for-2026/">Privacy Act Second Tranche Reforms in Development</a></h2>
-                    <p class="story-source">Spruson & Ferguson, Ashurst, LexisNexis</p>
+                    <p class="story-jurisdiction"><span class="flag">&#127471;&#127477;</span> Japan</p>
+                    <h2 class="story-title"><a href="https://cyberpress.org/ransomware-attack-disrupts/">Ransomware Attack Disrupts Multiple Systems at Japanese Semiconductor Supplier</a></h2>
                     <div class="story-tags">
-                        <span class="tag new-law">Upcoming Reforms</span>
-                        <span class="tag ai">AI</span>
-                        <span class="tag">Data Privacy</span>
+                        <span class="tag">Analysis</span>
+<span class="tag">News</span>
+<span class="tag">Cybersecurity</span>
                     </div>
                     <p class="story-summary">
-                        Attorney-General Michelle Rowland has confirmed that a <strong>second tranche of Privacy Act reforms</strong> is being prepared for cabinet approval. The first tranche, passed in December 2024, introduced the framework for the <strong>Children's Online Privacy Code</strong> and a new <strong>statutory tort for serious invasions of privacy</strong>. The upcoming reforms will address the rise of <strong>generative AI</strong>, with Rowland noting current legislation is "not fit for the digital age." The OAIC has released its <strong>2025/2026 regulatory action priorities</strong> following the Qantas cyber incident, and can now issue <strong>infringement notices up to $66,000</strong> per contravention. Maximum civil penalties reach <strong>$50 million or 30% of adjusted turnover</strong>.
+                        TOKYO, Japan – February 19, 2026 – &lt;strong&gt;Advantest Corporation (TSE: 6857), a leading supplier of semiconductor test equipment, revealed it is tackling a ransomware incident that impacted parts of its IT network&lt;/strong&gt;.
                     </p>
                     <div class="takeaways">
                         <p class="takeaways-label">What This Means for You</p>
                         <ul>
-                            <li>Monitor second tranche reforms for new AI-related disclosure requirements</li>
-                            <li>Prepare for Children's Online Privacy Code due December 10, 2026</li>
-                            <li>Update privacy policies for automated decision-making disclosures by December 11, 2026</li>
+                            <li>Evaluate security controls against Japan requirements</li>
+<li>Review incident response procedures and notification timelines</li>
                         </ul>
                     </div>
                 </article>
-
-                <!-- Story 2 -->
                 <article class="story">
                     <span class="story-number">2</span>
-                    <p class="story-jurisdiction"><span class="flag">&#127472;&#127479;</span> South Korea</p>
-                    <h2 class="story-title"><a href="https://www.cooley.com/news/insight/2026/2026-01-27-south-koreas-ai-basic-act-overview-and-key-takeaways">AI Basic Act Compliance - Foreign Companies Face Representative Requirement</a></h2>
-                    <p class="story-source">Cooley, OneTrust, Future of Privacy Forum</p>
+                    <p class="story-jurisdiction"><span class="flag">&#127470;&#127475;</span> India</p>
+                    <h2 class="story-title"><a href="https://www.mondaq.com/india/new-technology/1749116/indias-2026-amendment-to-it-rules-regulation-of-deepfakes-ai-content-and-the-three-hour-takedown-regime">India&#x27;s 2026 Amendment To IT Rules: Regulation Of Deepfakes, Artificial Intelligence (AI) Content And The Three-Hour Takedown Regime - New Technology - India</a></h2>
                     <div class="story-tags">
-                        <span class="tag new-law">Now Effective</span>
-                        <span class="tag ai">AI</span>
-                        <span class="tag">Extraterritorial</span>
+                        <span class="tag">Analysis</span>
+<span class="tag">Publication</span>
+<span class="tag ai">AI/ML</span>
                     </div>
                     <p class="story-summary">
-                        South Korea's <strong>AI Basic Act</strong>, effective since January 22, 2026, has <strong>extraterritorial application</strong> - it applies to AI systems outside Korea if they affect users or markets within the country. <strong>Foreign AI businesses without a Korean office</strong> meeting certain thresholds must designate a <strong>local representative</strong>. The law consolidated 19 separate AI-related regulatory proposals into one framework. Unlike the EU AI Act, Korea's approach features <strong>simplified risk categorization</strong> with no prohibited AI practices and <strong>comparatively lower financial penalties</strong>. Startups have expressed concerns that compliance requirements may <strong>hold back innovation</strong>, though Korea implemented its law faster than the EU, whose AI Act phases through 2027.
+                        The amendment, effective from 20 February 2026, represents a significant development in India&#x27;s digital regulatory sphere by &lt;strong&gt;expressly addressing deepfakes and Artificial Intelligence (AI)-generated content&lt;/strong&gt;.2
                     </p>
                     <div class="takeaways">
                         <p class="takeaways-label">What This Means for You</p>
                         <ul>
-                            <li>Assess extraterritorial exposure if AI systems affect Korean users or markets</li>
-                            <li>Appoint a domestic representative if required under the threshold criteria</li>
-                            <li>Review AI classification against Korea's simplified risk framework</li>
+                            <li>Review AI governance frameworks for India market requirements</li>
+<li>Assess disclosure obligations for AI-powered features</li>
                         </ul>
                     </div>
                 </article>
-
-                <!-- Story 3 -->
                 <article class="story">
                     <span class="story-number">3</span>
-                    <p class="story-jurisdiction"><span class="flag">&#127480;&#127468;</span> Singapore</p>
-                    <h2 class="story-title"><a href="https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/advisory-guidelines/advisory-guidelines-on-the-use-of-personal-data-in-ai-recommendation-and-decision-systems.pdf">PDPC AI Guidelines and Three New Governance Initiatives</a></h2>
-                    <p class="story-source">PDPC Singapore, IMDA, Norton Rose Fulbright</p>
-                    <div class="story-tags">
-                        <span class="tag ai">AI</span>
-                        <span class="tag">Data Privacy</span>
-                        <span class="tag">Guidance</span>
-                    </div>
-                    <p class="story-summary">
-                        Singapore continues its <strong>sector-led approach to AI governance</strong> rather than comprehensive AI legislation. The PDPC's <strong>Advisory Guidelines on AI Recommendation and Decision Systems</strong> remain key, encouraging use of <strong>anonymised data</strong> where possible. At the <strong>AI Action Summit in February 2025</strong>, Singapore announced three new initiatives including the <strong>Global AI Assurance Pilot</strong> launched by IMDA and AI Verify Foundation to codify best practices for generative AI testing. The PDPC also introduced a <strong>Proposed Guide on Synthetic Data Generation</strong> for AI applications. Recent enforcement decisions from January 2026 show the PDPC maintaining its <strong>robust enforcement posture</strong> with penalties reaching <strong>S$1 million or 10% of turnover</strong>.
-                    </p>
-                    <div class="takeaways">
-                        <p class="takeaways-label">What This Means for You</p>
-                        <ul>
-                            <li>Apply PDPC's AI Advisory Guidelines when deploying AI systems with personal data</li>
-                            <li>Consider synthetic data generation to reduce privacy risks in AI training</li>
-                            <li>Use the Model AI Governance Framework and ISAGO for self-assessment</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Story 4 -->
-                <article class="story">
-                    <span class="story-number">4</span>
-                    <p class="story-jurisdiction"><span class="flag">&#127469;&#127472;</span> Hong Kong</p>
-                    <h2 class="story-title"><a href="https://www.mayerbrown.com/en/insights/publications/2026/01/hong-kong-issues-code-of-practice-under-the-protection-of-critical-infrastructures-computer-systems-ordinance">Critical Infrastructure Designations to Commence Mid-2026</a></h2>
-                    <p class="story-source">Mayer Brown, Ashurst, China Briefing</p>
-                    <div class="story-tags">
-                        <span class="tag new-law">New Law</span>
-                        <span class="tag">Cybersecurity</span>
-                        <span class="tag deadline">Mid-2026</span>
-                    </div>
-                    <p class="story-summary">
-                        Hong Kong's <strong>Protection of Critical Infrastructures (Computer Systems) Ordinance</strong>, effective January 1, 2026, is now operational with the <strong>Code of Practice</strong> issued by the new regulator. The Office of the Commissioner of Critical Infrastructure (Computer-system Security) will begin <strong>designating critical infrastructure operators mid-2026</strong> in a phased manner. Designated operators have a <strong>six-month compliance period</strong> following designation. The law covers <strong>8 critical sectors</strong> with the <strong>Hong Kong Monetary Authority</strong> and <strong>Office of Communications Authority</strong> as Designated Authorities. Penalties range from <strong>HKD 500,000 to HKD 5 million</strong>, with daily fines of <strong>HKD 50,000-100,000</strong> for continuing breaches. The law is comparable to the <strong>EU NIS2 Directive</strong>.
-                    </p>
-                    <div class="takeaways">
-                        <p class="takeaways-label">What This Means for You</p>
-                        <ul>
-                            <li>Assess likelihood of designation across the 8 critical infrastructure sectors</li>
-                            <li>Use the Code of Practice to benchmark cybersecurity controls proactively</li>
-                            <li>Prepare for six-month compliance window following any designation notice</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Story 5 -->
-                <article class="story">
-                    <span class="story-number">5</span>
-                    <p class="story-jurisdiction"><span class="flag">&#127471;&#127477;</span> Japan</p>
-                    <h2 class="story-title"><a href="https://iclg.com/practice-areas/cybersecurity-laws-and-regulations/japan">Active Cyber Defense - Cyber Council and Incident Reporting by November 2026</a></h2>
-                    <p class="story-source">ICLG, Baker McKenzie, Center for Cybersecurity Policy</p>
-                    <div class="story-tags">
-                        <span class="tag new-law">Implementation</span>
-                        <span class="tag">Cybersecurity</span>
-                        <span class="tag deadline">Nov 2026</span>
-                    </div>
-                    <p class="story-summary">
-                        Japan's <strong>Active Cyber Defense Act</strong>, passed May 2025, structures Japan's cyber defense around <strong>four pillars</strong>: public-private collaboration, communications monitoring, counter-access to attack sources, and neutralization by authorities. The <strong>Cybersecurity Council</strong> will be re-established by <strong>November 2026</strong> with involvement from the Prime Minister, essential infrastructure providers, and IT vendors. <strong>Incident reporting obligations</strong> for specified essential infrastructure providers take effect by the same deadline. Organizations must report cybersecurity incidents to both the <strong>Cyber Council and relevant ministries</strong>. Data breaches continue to fall under existing APPI rules, but the new framework <strong>expands the scope of reportable incidents</strong>.
-                    </p>
-                    <div class="takeaways">
-                        <p class="takeaways-label">What This Means for You</p>
-                        <ul>
-                            <li>Assess whether operations qualify as essential infrastructure under ACDA</li>
-                            <li>Prepare dual reporting procedures for Cyber Council and relevant ministries</li>
-                            <li>Review scope of reportable incidents beyond data breaches</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Story 6 -->
-                <article class="story">
-                    <span class="story-number">6</span>
-                    <p class="story-jurisdiction"><span class="flag">&#127470;&#127465;</span> Indonesia</p>
-                    <h2 class="story-title"><a href="https://www.rajahtannasia.com/viewpoints/new-law-on-personal-data-protection-comes-into-operation-on-1-january-2026/">PDP Agency Formation Targeted for 2026 - Implementing Regulations in Final Stage</a></h2>
-                    <p class="story-source">Rajah & Tann, Chambers, ASEAN Briefing</p>
-                    <div class="story-tags">
-                        <span class="tag new-law">Authority Formation</span>
-                        <span class="tag">Data Privacy</span>
-                        <span class="tag deadline">2026</span>
-                    </div>
-                    <p class="story-summary">
-                        Indonesia's <strong>Personal Data Protection Agency (Lembaga PDP)</strong> is targeted to be <strong>formed and operational by 2026</strong>. The draft <strong>Government Regulation on PDP Law implementation</strong> is in the "harmonization stage" before finalization. Until the PDP Agency is established, the <strong>Ministry of Communication and Digitals (MOCD)</strong> handles supervision. With the <strong>two-year transition period ended October 17, 2024</strong>, full compliance with Law No. 27 of 2022 is now required. Companies face fines up to <strong>2% of annual revenue</strong>, bans on data processing, or criminal liability. The law requires <strong>Data Protection Impact Assessments</strong> and <strong>DPO appointment</strong> for processing specific personal data.
-                    </p>
-                    <div class="takeaways">
-                        <p class="takeaways-label">What This Means for You</p>
-                        <ul>
-                            <li>Ensure full PDP Law compliance as the transition period has ended</li>
-                            <li>Monitor for PDP Agency formation and new implementing regulations</li>
-                            <li>Review cross-border data transfer mechanisms for adequacy requirements</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Story 7 -->
-                <article class="story">
-                    <span class="story-number">7</span>
                     <p class="story-jurisdiction"><span class="flag">&#127470;&#127475;</span> India</p>
-                    <h2 class="story-title"><a href="https://iapp.org/news/a/with-rules-finalized-india-s-dpdpa-takes-force">DPDP Rules - Consent Manager Registration Opens November 2026</a></h2>
-                    <p class="story-source">IAPP, National Law Review, MeitY</p>
+                    <h2 class="story-title"><a href="https://www.infomance.com/news/india-tightens-rules-on-ai-media/">India Tightens Rules on Artificial Intelligence (AI) Media</a></h2>
                     <div class="story-tags">
-                        <span class="tag new-law">Phased Rollout</span>
-                        <span class="tag deadline">Nov 2026</span>
-                        <span class="tag">Data Privacy</span>
+                        <span class="tag">Analysis</span>
+<span class="tag">News</span>
+<span class="tag ai">AI/ML</span>
                     </div>
                     <p class="story-summary">
-                        India's <strong>DPDP Rules</strong>, notified November 13, 2025, are being implemented in phases. <strong>Stage 1</strong> (November 2025) instituted the Data Protection Board. <strong>Stage 2 begins November 13, 2026</strong> with <strong>consent manager registration</strong>. <strong>Stage 3</strong> (May 2027) covers all remaining provisions including consent, privacy notices, and security requirements. The law introduces <strong>consent managers</strong> as single points of contact for data principals to manage consent - a unique feature compared to GDPR. <strong>72-hour breach notification</strong> is required. Penalties reach <strong>INR 250 crore (~$30 million)</strong>, with <strong>INR 200 crore</strong> for failure to disclose violations timely. Children are defined as under 18, broader than GDPR's under 16.
+                        Effective February 20, 2026, the rules mandate that &lt;strong&gt;any “synthetically generated information” appearing photorealistic or true-to-life must carry a prominent label and traceable metadata&lt;/strong&gt;.
                     </p>
                     <div class="takeaways">
                         <p class="takeaways-label">What This Means for You</p>
                         <ul>
-                            <li>Prepare consent management infrastructure ahead of November 2026 registration</li>
-                            <li>Implement 72-hour breach notification procedures</li>
-                            <li>Review children's data handling - India defines children as under 18</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Story 8 -->
-                <article class="story">
-                    <span class="story-number">8</span>
-                    <p class="story-jurisdiction"><span class="flag">&#127758;</span> ASEAN</p>
-                    <h2 class="story-title"><a href="https://www.bworldonline.com/economy/2026/02/08/729151/asean-digital-economy-deal-seen-lowering-business-costs/">DEFA Expected to Lower Business Costs - Signing Targeted Q4 2026</a></h2>
-                    <p class="story-source">BusinessWorld, World Economic Forum, Nation Thailand</p>
-                    <div class="story-tags">
-                        <span class="tag new-law">Upcoming Agreement</span>
-                        <span class="tag">Cross-Border</span>
-                        <span class="tag deadline">Q4 2026</span>
-                    </div>
-                    <p class="story-summary">
-                        The <strong>ASEAN Digital Economy Framework Agreement (DEFA)</strong> is on track for <strong>signing in Q4 2026</strong> in the Philippines following completion of negotiations earlier in the year. Businesses can expect <strong>lower compliance costs and smoother cross-border digital trade</strong> within five years. Divergent digital regulations currently cost ASEAN businesses <strong>$15-20 billion annually</strong> in compliance overhead. DEFA aims to eliminate this by harmonizing standards for <strong>data flows, e-payments, and digital product classification</strong>. As of August 2025, negotiations had concluded <strong>60% of paragraphs</strong> covering personal data protection, cybersecurity cooperation, AI, and emerging technologies. The digital economy could reach <strong>$2 trillion by 2030</strong>.
-                    </p>
-                    <div class="takeaways">
-                        <p class="takeaways-label">What This Means for You</p>
-                        <ul>
-                            <li>Anticipate harmonized data flow rules to simplify ASEAN operations post-2026</li>
-                            <li>Engage with industry associations on DEFA implementation guidance</li>
-                            <li>Plan for unified e-payment and digital product standards</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Story 9 -->
-                <article class="story">
-                    <span class="story-number">9</span>
-                    <p class="story-jurisdiction"><span class="flag">&#127475;&#127487;</span> New Zealand</p>
-                    <h2 class="story-title"><a href="https://www.bellgully.com/insights/preparing-for-ipp-3a-new-requirements-effective-1-may-2026/">IPP 3A Deadline Approaching - Indirect Collection Notices Required May 1</a></h2>
-                    <p class="story-source">Bell Gully, IAPP, Privacy Commissioner</p>
-                    <div class="story-tags">
-                        <span class="tag deadline">1 May 2026</span>
-                        <span class="tag new-law">New Requirement</span>
-                        <span class="tag">Data Privacy</span>
-                    </div>
-                    <p class="story-summary">
-                        New Zealand's <strong>Privacy Amendment Act 2025</strong> introduces <strong>Information Privacy Principle 3A (IPP 3A)</strong> effective <strong>May 1, 2026</strong> - now less than 3 months away. Organizations must inform individuals when personal information is <strong>collected indirectly</strong> from sources other than the individual themselves. This closes a gap identified by the EU during New Zealand's <strong>adequacy assessment</strong>. Separately, the <strong>Biometrics Processing Privacy Code 2025</strong> requires compliance by <strong>August 3, 2026</strong> for organizations using facial recognition and biometric technologies. The <strong>Customer and Product Data Act 2025</strong> also enables greater cross-business data sharing, creating both opportunities and compliance considerations.
-                    </p>
-                    <div class="takeaways">
-                        <p class="takeaways-label">What This Means for You</p>
-                        <ul>
-                            <li>Map all indirect data collection sources before May 1 deadline</li>
-                            <li>Update privacy notices to cover third-party data collection scenarios</li>
-                            <li>Review biometric processing practices for August Code compliance</li>
+                            <li>Review AI governance frameworks for India market requirements</li>
+<li>Assess disclosure obligations for AI-powered features</li>
                         </ul>
                     </div>
                 </article>
             </section>
 
-            <!-- Compliance Countdown -->
-            <section class="compliance-countdown">
-                <p class="section-label">Compliance Countdown</p>
-                <p style="font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 1rem;">Key regulatory deadlines affecting technology companies in APAC.</p>
-                <table class="countdown-table">
-                    <thead>
-                        <tr>
-                            <th>Time Left</th>
-                            <th>Date</th>
-                            <th>Jurisdiction</th>
-                            <th>Requirement</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="days-urgent">81 days</td>
-                            <td>1 May 2026</td>
-                            <td>New Zealand</td>
-                            <td>IPP 3A indirect collection notification requirements</td>
-                        </tr>
-                        <tr>
-                            <td class="days-soon">~4 months</td>
-                            <td>Mid-2026</td>
-                            <td>Hong Kong</td>
-                            <td>Critical infrastructure designations commence</td>
-                        </tr>
-                        <tr>
-                            <td class="days-soon">175 days</td>
-                            <td>3 Aug 2026</td>
-                            <td>New Zealand</td>
-                            <td>Biometrics Processing Privacy Code compliance</td>
-                        </tr>
-                        <tr>
-                            <td>277 days</td>
-                            <td>Nov 2026</td>
-                            <td>Japan</td>
-                            <td>Cyber Council re-establishment and incident reporting</td>
-                        </tr>
-                        <tr>
-                            <td>277 days</td>
-                            <td>13 Nov 2026</td>
-                            <td>India</td>
-                            <td>DPDP consent manager registration opens</td>
-                        </tr>
-                        <tr>
-                            <td>~8 months</td>
-                            <td>Q4 2026</td>
-                            <td>ASEAN</td>
-                            <td>DEFA signing expected in Philippines</td>
-                        </tr>
-                        <tr>
-                            <td>304 days</td>
-                            <td>10 Dec 2026</td>
-                            <td>Australia</td>
-                            <td>Children's Online Privacy Code mandatory release</td>
-                        </tr>
-                        <tr>
-                            <td>305 days</td>
-                            <td>11 Dec 2026</td>
-                            <td>Australia</td>
-                            <td>Automated decision-making privacy policy disclosures</td>
-                        </tr>
-                        <tr>
-                            <td>~1 year</td>
-                            <td>2026</td>
-                            <td>Indonesia</td>
-                            <td>PDP Agency (Lembaga PDP) to become operational</td>
-                        </tr>
-                        <tr>
-                            <td>458 days</td>
-                            <td>13 May 2027</td>
-                            <td>India</td>
-                            <td>DPDP full implementation deadline</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 1rem; font-style: italic;">Deadlines extracted from this week's stories. Verify all dates with primary sources.</p>
+
+            <section class="stories">
+                <p class="section-label">Region Insights</p>
+                <div style="padding: 1.5rem 0;">
+                    
+        <h2>Regional Trends &amp; Analysis</h2>
+        - **AI/ML Focus:** Multiple jurisdictions advancing AI governance frameworks<br/>- **Cross-border impacts:** Diverse regulatory developments requiring jurisdiction-specific compliance approaches.<br/>- **Upcoming:** Monitor ongoing regulatory consultations and guidance updates.
+        <p><em>Analysis based on this week's regulatory developments across APAC.</em></p>
+      
+                </div>
             </section>
         </main>
 
         <footer>
             <p class="footer-brand">APAC Legal Digest</p>
             <p class="footer-meta">For technology company legal professionals</p>
-            <p class="footer-meta">Generated February 9, 2026</p>
+            <p class="footer-meta">Generated February 27, 2026</p>
         </footer>
     </div>
 </body>
