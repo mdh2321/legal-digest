@@ -50,6 +50,10 @@ jobs:
         run: |
           python run_digest.py --format rss --publish
 
+      - name: Generate HTML page
+        run: |
+          python scripts/generate_html.py
+
       - name: Send email digest
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
