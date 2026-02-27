@@ -82,6 +82,9 @@ class DigestGenerator:
 
         if verbose:
             print(f"  Collected {len(all_stories)} stories")
+            if not all_stories:
+                print("  WARNING: Zero stories collected from search API!")
+                print("  Check Brave API key and rate limits.")
 
         # Step 3: Filter stories
         if verbose:
