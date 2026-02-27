@@ -5,17 +5,38 @@
     <link>https://legal-digest.local/</link>
     <description>Weekly legal and regulatory news digest for global technology companies operating in Asia-Pacific. Covering Australia, Singapore, Japan, and other APAC jurisdictions.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 27 Feb 2026 12:21:45 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 13:38:53 +0000</lastBuildDate>
     <ttl>10080</ttl>
     <item>
-      <title>[ENFORCEMENT] [News] Telecommunications (Interception and Access) Amendment (Data Retention) Act 2015 - Wikipedia</title>
-      <link>https://en.wikipedia.org/wiki/Telecommunications_(Interception_and_Access)_Amendment_(Data_Retention)_Act_2015</link>
+      <title>[COURT DECISION] [Publication] Detail of unfair trading practices prohibitions released - Consumer Trading &amp; Unfair Trading - Australia</title>
+      <link>https://www.mondaq.com/australia/consumer-trading-unfair-trading/1747234/detail-of-unfair-trading-practices-prohibitions-released</link>
       <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
       <category>Australia</category>
       <category>AI/ML</category>
       <category>Contract Law</category>
+      <category>Consumer Protection</category>
+      <description>Though there are specific examples of the conduct identified in the legislation, the bespoke and novel wording of the prohibitions (focussing on unreasonable manipulation or unreasonable distortion), which departs from the existing prohibitions on unconscionable conduct and unfair contract terms, is likely to cause uncertainty pending judicial consideration. Further, it is apparent that the legislation is not intended to prohibit all dark patterns.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review AI governance frameworks for Australia market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
+        </ul>
+        <h2>Practical Impact</h2>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>Australia</strong> | Topics: <strong>AI/ML</strong>, <strong>Contract Law</strong>, <strong>Consumer Protection</strong></em></p>
+        <p><a href="https://www.mondaq.com/australia/consumer-trading-unfair-trading/1747234/detail-of-unfair-trading-practices-prohibitions-released">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>[CONSULTATION] [Law Firm] Dark patterns to face the light of day: unfair trading practices targeted in proposed ACL reforms| Gilbert + Tobin</title>
+      <link>https://www.gtlaw.com.au/insights/dark-patterns-to-face-the-light-of-day-unfair-trading-practices-targeted-in-proposed-acl-reforms</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Australia</category>
+      <category>AI/ML</category>
+      <category>Consumer Protection</category>
       <category>Telecom</category>
-      <description>Furthermore, the Law Council of Australia (LCA) recommended that the power to prescribe by way of regulation the mandatory data set should be removed from the Bill and the Bill should clearly define the types of telecommunications data and the specific data set to be retained. The 2015 PJCIS Report took into consideration these concerns and recommended the Bill be redrafted to prescribe the data set in the primary legislation. When the Bill was amended in 2015, the data to be retained was detailed within the primary legislation, under s 187AA, and this was the form in which the Bill became law.</description>
+      <description>Stronger protections against ‘drip pricing’ by requiring prominent, proximate disclosure of any transaction-based charges whenever a base price for goods or services is displayed, to ensure consumers are aware of mandatory per-transaction fees throughout a consumer’s purchase journey. These measures are intended to complement existing ACL provisions on misleading or deceptive conduct, unconscionable conduct and unfair contract terms, while closing perceived gaps exposed by evolving marketplace practices and technologies.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
@@ -24,38 +45,19 @@
         </ul>
         <h2>Practical Impact</h2>
         <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
-        <p><em>Country: <strong>Australia</strong> | Topics: <strong>AI/ML</strong>, <strong>Contract Law</strong>, <strong>Telecom</strong></em></p>
-        <p><a href="https://en.wikipedia.org/wiki/Telecommunications_(Interception_and_Access)_Amendment_(Data_Retention)_Act_2015">Read full article &rarr;</a></p>
+        <p><em>Country: <strong>Australia</strong> | Topics: <strong>AI/ML</strong>, <strong>Consumer Protection</strong>, <strong>Telecom</strong></em></p>
+        <p><a href="https://www.gtlaw.com.au/insights/dark-patterns-to-face-the-light-of-day-unfair-trading-practices-targeted-in-proposed-acl-reforms">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>[NEW LAW] [News] Australia&#x27;s cryptocurrency crossroads: new regulations to transform the game of digital money | The Canberra Times | Canberra, ACT</title>
-      <link>https://www.canberratimes.com.au/story/9185083/australias-cryptocurrency-crossroads-new-regulations-to-transform-the-game-of-digital-money/</link>
-      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
-      <category>Australia</category>
-      <category>Fintech</category>
-      <category>AML</category>
-      <description>The government has also passed a new bill called the Corporations Amendment (Digital Assets Framework) Bill 2025, and an update to the Anti-Money Laundering Bill. It is geared towards the inclusion of digital asset platforms into the current ...</description>
-      <content:encoded><![CDATA[
-        <h2>Key Takeaways</h2>
-        <ul>
-          <li>Monitor regulatory developments in Australia</li>
-          <li>Assess potential compliance obligations</li>
-        </ul>
-        <h2>Practical Impact</h2>
-        <p>Impacts digital payment integrations, financial service partnerships, and regulatory licensing.</p>
-        <p><em>Country: <strong>Australia</strong> | Topics: <strong>Fintech</strong>, <strong>AML</strong></em></p>
-        <p><a href="https://www.canberratimes.com.au/story/9185083/australias-cryptocurrency-crossroads-new-regulations-to-transform-the-game-of-digital-money/">Read full article &rarr;</a></p>
-      ]]></content:encoded>
-    </item>
-    <item>
-      <title>[ENFORCEMENT] [News] Australian Securities and Investments Commission (ASIC) hits FIIG with cyber security failure fine - The DESK - The leading source of information for bond traders</title>
-      <link>https://www.fi-desk.com/asic-hits-fiig-with-cyber-security-failure-fine/</link>
+      <title>[CONSULTATION] [Publication] The Year Ahead: Australian Competition and Consumer Commission focusses on 11 priorities - Lexology</title>
+      <link>https://www.lexology.com/library/detail.aspx?g=da1c7831-ac9a-4ff8-95b7-999d53cdfd71</link>
       <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
       <category>Australia</category>
       <category>AI/ML</category>
-      <category>Cybersecurity</category>
-      <description>Investment manager FIIG Securities has been hit with a AUD 2.5 million regulatory penalty following failures to protect clients from cyber security threats and comply with its Australian Financial Services</description>
+      <category>Competition</category>
+      <category>Consumer Protection</category>
+      <description>Reflecting growing concerns about the emergence of subscription traps, dark patterns that manipulate consumers, and the rise in unsafe consumer goods sold online, the Australian Competition and Consumer Commission (ACCC) will prioritise manipulative and false practices, as well as unsafe consumer goods in digital markets. This aligns with the recently published exposure draft Bill on unfair trading practices, which addresses dark patterns, subscription contracts and drip pricing.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
@@ -64,39 +66,40 @@
         </ul>
         <h2>Practical Impact</h2>
         <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
-        <p><em>Country: <strong>Australia</strong> | Topics: <strong>AI/ML</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://www.fi-desk.com/asic-hits-fiig-with-cyber-security-failure-fine/">Read full article &rarr;</a></p>
+        <p><em>Country: <strong>Australia</strong> | Topics: <strong>AI/ML</strong>, <strong>Competition</strong>, <strong>Consumer Protection</strong></em></p>
+        <p><a href="https://www.lexology.com/library/detail.aspx?g=da1c7831-ac9a-4ff8-95b7-999d53cdfd71">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>[ENFORCEMENT] [News] FIIG fined $2.5 million over cyber security failures | Insurance Business</title>
-      <link>https://www.insurancebusinessmag.com/au/news/cyber/fiig-fined-2-5-million-over-cyber-security-failures-565027.aspx</link>
+      <title>[ANALYSIS] [Publication] A decade on - the Australian Competition and Consumer Commission (ACCC)’s highs and lows - Lexology</title>
+      <link>https://www.lexology.com/library/detail.aspx?g=dd76a063-548c-4153-a877-9a469a69e3a2</link>
       <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
       <category>Australia</category>
-      <category>AI/ML</category>
-      <category>Cybersecurity</category>
-      <description>A major data breach that exposed thousands of investors’ personal details has led to a $2.5 million penalty against FIIG Securities Limited, after the Federal Court found the firm breached its Australian Financial Services (AFS) licence ...</description>
+      <category>E-commerce</category>
+      <category>Competition</category>
+      <category>Consumer Protection</category>
+      <description>Over ten editions, we have tracked the Australian Competition and Consumer Commission (ACCC)’s evolution from a focused competition and consumer protection enforcer to a multidisciplinary market steward engaged in digital platform regulation, energy transition oversight, mandatory merger reform, and consumer protection across an increasingly complex economy.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
-          <li>Review AI governance frameworks for Australia market requirements</li>
-          <li>Assess disclosure obligations for AI-powered features</li>
+          <li>Monitor Australia competition authority guidance</li>
+          <li>Review platform practices and self-preferencing policies</li>
         </ul>
         <h2>Practical Impact</h2>
-        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
-        <p><em>Country: <strong>Australia</strong> | Topics: <strong>AI/ML</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://www.insurancebusinessmag.com/au/news/cyber/fiig-fined-2-5-million-over-cyber-security-failures-565027.aspx">Read full article &rarr;</a></p>
+        <p>Influences market strategy, platform practices, and potential regulatory scrutiny of digital services.</p>
+        <p><em>Country: <strong>Australia</strong> | Topics: <strong>E-commerce</strong>, <strong>Competition</strong>, <strong>Consumer Protection</strong></em></p>
+        <p><a href="https://www.lexology.com/library/detail.aspx?g=dd76a063-548c-4153-a877-9a469a69e3a2">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>[ENFORCEMENT] [News] Top Cybersecurity Companies in Singapore 2026 [Updated List]</title>
-      <link>https://deepstrike.io/blog/top-cybersecurity-companies-singapore</link>
-      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <title>[ENFORCEMENT] [Publication] Singapore: Personal Data Protection Commission (PDPC) Fines Travel Agency for Data Breach - Lexology</title>
+      <link>https://www.lexology.com/library/detail.aspx?g=8cbdbe67-1f4d-48a7-b3f9-32a0c29de4b7</link>
+      <pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate>
       <category>Singapore</category>
       <category>AI/ML</category>
       <category>Data Privacy</category>
       <category>Cybersecurity</category>
-      <description>Breach‑impact projections for 2026 show sustained upward pressure on financial loss per incident, with global averages rising alongside regulatory fines, litigation exposure, contractual penalties, insurance premium surcharges, and long‑term reputational erosion. Enforcement under Monetary Authority of Singapore (MAS) TRM, Personal Data Protection Act (PDPA), ISO 27001, DORA‑aligned financial guidance, and cross‑border data‑protection expectations continues to tighten, shifting cybersecurity validation from optional best practice to contractual and legal necessity.</description>
+      <description>On 31 October 2025, the Personal Data Protection Commission (Personal Data Protection Commission (PDPC)) ordered Air Sino-Euro Associates Travel Pte Ltd (“Organization”) to pay a financial penalty of SGD 47,000 for breaching its accountability and protection obligation under ...</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
@@ -106,18 +109,60 @@
         <h2>Practical Impact</h2>
         <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
         <p><em>Country: <strong>Singapore</strong> | Topics: <strong>AI/ML</strong>, <strong>Data Privacy</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://deepstrike.io/blog/top-cybersecurity-companies-singapore">Read full article &rarr;</a></p>
+        <p><a href="https://www.lexology.com/library/detail.aspx?g=8cbdbe67-1f4d-48a7-b3f9-32a0c29de4b7">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>[ENFORCEMENT] [News] The Artificial Intelligence (AI) regulatory tug-of-war: Caught between state, federal laws</title>
-      <link>https://www.informationweek.com/machine-learning-ai/the-ai-regulatory-tug-of-war-caught-between-state-and-federal-mandates</link>
+      <title>[COURT DECISION] [Publication] Detail of unfair trading practices prohibitions released - Consumer Trading &amp; Unfair Trading - Australia</title>
+      <link>https://www.mondaq.com/australia/consumer-trading-unfair-trading/1747234/detail-of-unfair-trading-practices-prohibitions-released</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Singapore</category>
+      <category>AI/ML</category>
+      <category>Contract Law</category>
+      <category>Consumer Protection</category>
+      <description>Though there are specific examples of the conduct identified in the legislation, the bespoke and novel wording of the prohibitions (focussing on unreasonable manipulation or unreasonable distortion), which departs from the existing prohibitions on unconscionable conduct and unfair contract terms, is likely to cause uncertainty pending judicial consideration. Further, it is apparent that the legislation is not intended to prohibit all dark patterns.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review AI governance frameworks for Singapore market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
+        </ul>
+        <h2>Practical Impact</h2>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>Singapore</strong> | Topics: <strong>AI/ML</strong>, <strong>Contract Law</strong>, <strong>Consumer Protection</strong></em></p>
+        <p><a href="https://www.mondaq.com/australia/consumer-trading-unfair-trading/1747234/detail-of-unfair-trading-practices-prohibitions-released">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>[ANALYSIS] [News] 2025/13 “What is Shaping Artificial Intelligence (Artificial Intelligence (AI)) Governance Policies in Southeast Asia?” by Kristina Fong</title>
+      <link>https://www.iseas.edu.sg/articles-commentaries/iseas-perspective/2025-13-what-is-shaping-artificial-intelligence-ai-governance-policies-in-southeast-asia-by-kristina-fong/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Singapore</category>
+      <category>AI/ML</category>
+      <category>Consumer Protection</category>
+      <category>AML</category>
+      <description>The other integral aspect cited is the need to have a seamless coordination mechanism amongst the MSA and other regulatory bodies tasked with the supervision of the Artificial Intelligence (AI) ecosystem. These bodies could include those involved in competition matters and consumer protection. In Southeast Asia, countries with more established AI ecosystems (Singapore, Malaysia and Thailand)[10] and regulatory coordination mechanisms in place would be better placed to implement this model.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review AI governance frameworks for Singapore market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
+        </ul>
+        <h2>Practical Impact</h2>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>Singapore</strong> | Topics: <strong>AI/ML</strong>, <strong>Consumer Protection</strong>, <strong>AML</strong></em></p>
+        <p><a href="https://www.iseas.edu.sg/articles-commentaries/iseas-perspective/2025-13-what-is-shaping-artificial-intelligence-ai-governance-policies-in-southeast-asia-by-kristina-fong/">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>[ENFORCEMENT] [Publication] Environmental, Social, and Governance (ESG) And Competition Law In Cross-Border M&amp;A: A Contemporary Shift In Corporate And Commercial Regulation</title>
+      <link>https://www.livelaw.in/articles/esg-competition-law-corporate-commercial-regulation-524608</link>
       <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
       <category>Japan</category>
       <category>AI/ML</category>
-      <category>Data Privacy</category>
-      <category>Cybersecurity</category>
-      <description>Strachan suggested CIOs consider ... data privacy, cybersecurity and cross-border data transfers. The companies that succeed are &quot;the ones that build a compliance program designed for uncertainty rather than certainty,&quot; he said. The risks in both the &quot;guess&quot; and &quot;ignore&quot; approaches primarily lie in steep penalties that can accumulate through stacked enforcement actions. &quot;Unlike the EU, where penalties flow from a single Artificial Intelligence (AI) framework, in the U.S. the biggest risk isn&#x27;t a single AI fine, it&#x27;s stacked ...</description>
+      <category>Competition</category>
+      <category>Corporate Governance</category>
+      <description>They are no longer confined to voluntary commitments or investor reporting. To ensure merger clearances, the authorities are also prepared to accept or require remedies and commitments to target the objectives of sustainability. Environmental, Social, and Governance (ESG) has become a quasi-regulatory parameter in the merger control phenomenon. The Competition authorities now need to assess not only traditional price and market-structure effects but also sustainability outcomes. This approach represents a contemporary shift in corporate and commercial regulation.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
@@ -126,114 +171,165 @@
         </ul>
         <h2>Practical Impact</h2>
         <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
-        <p><em>Country: <strong>Japan</strong> | Topics: <strong>AI/ML</strong>, <strong>Data Privacy</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://www.informationweek.com/machine-learning-ai/the-ai-regulatory-tug-of-war-caught-between-state-and-federal-mandates">Read full article &rarr;</a></p>
+        <p><em>Country: <strong>Japan</strong> | Topics: <strong>AI/ML</strong>, <strong>Competition</strong>, <strong>Corporate Governance</strong></em></p>
+        <p><a href="https://www.livelaw.in/articles/esg-competition-law-corporate-commercial-regulation-524608">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>[ENFORCEMENT] [News] South Korea publishes investigation results into Coupang data breach | Biometric Update</title>
-      <link>https://www.biometricupdate.com/202602/south-korea-publishes-investigation-results-into-coupang-data-breach</link>
+      <title>[ANALYSIS] [Publication] Navigating Privacy, Consent And Dark Pattern Risks For E-Commerce And Retail Platforms In India – Consumer Data, Targeted Advertising And Trust - Data Protection - India</title>
+      <link>https://www.mondaq.com/india/data-protection/1742782/navigating-privacy-consent-and-dark-pattern-risks-for-e-commerce-and-retail-platforms-in-india-consumer-data-targeted-advertising-and-trust</link>
       <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
-      <category>South Korea</category>
+      <category>India</category>
+      <category>AI/ML</category>
       <category>Data Privacy</category>
-      <category>Cybersecurity</category>
-      <description>South Korea’s Personal Information Protection Act predicts fines of up to three percent of annual revenue for violating data protection regulations, meaning that Coupang’s penalty could exceed US$1 billion.</description>
+      <category>E-commerce</category>
+      <description>Data Mapping and Purpose Review: Identify all consumer data flows and associated purposes. Consent and UX Audit: Eliminate dark patterns and redesign consent journeys. Ad-Tech and Vendor Controls: Audit SDKs, cookies and third-party integrations. Contractual Safeguards: Update seller, logistics and vendor agreements. Governance and Training: Align product, marketing and compliance teams on Digital Personal Data Protection (DPDP) obligations. The DPDP Act and Rules mark a decisive shift in India&#x27;s digital commerce landscape.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
-          <li>Review data handling practices for South Korea compliance</li>
-          <li>Assess cross-border data transfer mechanisms</li>
+          <li>Review AI governance frameworks for India market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
         </ul>
         <h2>Practical Impact</h2>
-        <p>Affects customer data handling, DPA requirements, <strong>cross-border</strong> transfers, and data subject rights <strong>implementation</strong>.</p>
-        <p><em>Country: <strong>South Korea</strong> | Topics: <strong>Data Privacy</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://www.biometricupdate.com/202602/south-korea-publishes-investigation-results-into-coupang-data-breach">Read full article &rarr;</a></p>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>India</strong> | Topics: <strong>AI/ML</strong>, <strong>Data Privacy</strong>, <strong>E-commerce</strong></em></p>
+        <p><a href="https://www.mondaq.com/india/data-protection/1742782/navigating-privacy-consent-and-dark-pattern-risks-for-e-commerce-and-retail-platforms-in-india-consumer-data-targeted-advertising-and-trust">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>[COURT DECISION] [News] Artificial Intelligence (AI) Governance Bill and US tariff ruling to dominate Dewan Rakyat sitting | Malaysia | The Vibes</title>
-      <link>https://www.thevibes.com/articles/news/119910/ai-governance-bill-and-u.s-tariff-ruling-to-dominate-dewan-rakyat-sitting</link>
+      <title>[COURT DECISION] [Publication] Detail of unfair trading practices prohibitions released - Consumer Trading &amp; Unfair Trading - Australia</title>
+      <link>https://www.mondaq.com/australia/consumer-trading-unfair-trading/1747234/detail-of-unfair-trading-practices-prohibitions-released</link>
       <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
-      <category>Malaysia</category>
+      <category>Indonesia</category>
       <category>AI/ML</category>
       <category>Contract Law</category>
-      <category>IP</category>
-      <description>According to the Order Paper published on Parliament’s official website, Rodziah Ismail (PH–Ampang) will, during Minister’s Question Time, ask the Prime Minister to explain how the forthcoming legislation addresses copyright and intellectual property concerns arising from Artificial Intelligence (AI) systems trained on copyrighted materials, including text, images, audio and video. She is also seeking clarification on safeguards to protect creators and rights holders against the unauthorised use of their works. Separately, Datuk Rosol Wahid (PN–Hulu Terengganu) will request the Prime Minister to state the Malaysian government’s official stance on the decision by the US Supreme Court declaring tariffs introduced by Trump to be unlawful.</description>
+      <category>Consumer Protection</category>
+      <description>Though there are specific examples of the conduct identified in the legislation, the bespoke and novel wording of the prohibitions (focussing on unreasonable manipulation or unreasonable distortion), which departs from the existing prohibitions on unconscionable conduct and unfair contract terms, is likely to cause uncertainty pending judicial consideration. Further, it is apparent that the legislation is not intended to prohibit all dark patterns.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
-          <li>Review AI governance frameworks for Malaysia market requirements</li>
+          <li>Review AI governance frameworks for Indonesia market requirements</li>
           <li>Assess disclosure obligations for AI-powered features</li>
         </ul>
         <h2>Practical Impact</h2>
         <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
-        <p><em>Country: <strong>Malaysia</strong> | Topics: <strong>AI/ML</strong>, <strong>Contract Law</strong>, <strong>IP</strong></em></p>
-        <p><a href="https://www.thevibes.com/articles/news/119910/ai-governance-bill-and-u.s-tariff-ruling-to-dominate-dewan-rakyat-sitting">Read full article &rarr;</a></p>
+        <p><em>Country: <strong>Indonesia</strong> | Topics: <strong>AI/ML</strong>, <strong>Contract Law</strong>, <strong>Consumer Protection</strong></em></p>
+        <p><a href="https://www.mondaq.com/australia/consumer-trading-unfair-trading/1747234/detail-of-unfair-trading-practices-prohibitions-released">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>[ENFORCEMENT] [Publication] Key updates on the amended cybersecurity law of China - Lexology</title>
-      <link>https://www.lexology.com/library/detail.aspx?g=28c90124-124d-43ed-b908-11d289dd313b</link>
+      <title>[COURT DECISION] [Publication] Detail of unfair trading practices prohibitions released - Consumer Trading &amp; Unfair Trading - Australia</title>
+      <link>https://www.mondaq.com/australia/consumer-trading-unfair-trading/1747234/detail-of-unfair-trading-practices-prohibitions-released</link>
       <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
-      <category>Taiwan</category>
+      <category>South Korea</category>
       <category>AI/ML</category>
-      <category>Cybersecurity</category>
-      <description>The revised Law establishes an additional tiered penalty regime featuring stricter fines for material cybersecurity violations. It further aligns liability-related provisions with the Personal Information Protection Law (Personal Information Protection Law (PIPL)) and the Data Security Law (DSL), and incorporates a statutory provision that supports Artificial Intelligence (AI) innovation while emphasizing requirements for improving AI ethics governance and strengthening risk monitoring and assessment.</description>
+      <category>Contract Law</category>
+      <category>Consumer Protection</category>
+      <description>Though there are specific examples of the conduct identified in the legislation, the bespoke and novel wording of the prohibitions (focussing on unreasonable manipulation or unreasonable distortion), which departs from the existing prohibitions on unconscionable conduct and unfair contract terms, is likely to cause uncertainty pending judicial consideration. Further, it is apparent that the legislation is not intended to prohibit all dark patterns.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
-          <li>Review AI governance frameworks for Taiwan market requirements</li>
+          <li>Review AI governance frameworks for South Korea market requirements</li>
           <li>Assess disclosure obligations for AI-powered features</li>
         </ul>
         <h2>Practical Impact</h2>
         <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
-        <p><em>Country: <strong>Taiwan</strong> | Topics: <strong>AI/ML</strong>, <strong>Cybersecurity</strong></em></p>
-        <p><a href="https://www.lexology.com/library/detail.aspx?g=28c90124-124d-43ed-b908-11d289dd313b">Read full article &rarr;</a></p>
+        <p><em>Country: <strong>South Korea</strong> | Topics: <strong>AI/ML</strong>, <strong>Contract Law</strong>, <strong>Consumer Protection</strong></em></p>
+        <p><a href="https://www.mondaq.com/australia/consumer-trading-unfair-trading/1747234/detail-of-unfair-trading-practices-prohibitions-released">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>AI Regulatory Tracker - 22 February 2026</title>
-      <link>https://legal-digest.local/ai-tracker</link>
-      <pubDate>Fri, 27 Feb 2026 12:21:45 +0000</pubDate>
-      <category>AI Regulation</category>
-      <category>APAC</category>
-      <description>AI governance and regulatory developments across 10 APAC jurisdictions.</description>
+      <title>[COURT DECISION] [Publication] Detail of unfair trading practices prohibitions released - Consumer Trading &amp; Unfair Trading - Australia</title>
+      <link>https://www.mondaq.com/australia/consumer-trading-unfair-trading/1747234/detail-of-unfair-trading-practices-prohibitions-released</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <category>New Zealand</category>
+      <category>AI/ML</category>
+      <category>Contract Law</category>
+      <category>Consumer Protection</category>
+      <description>Though there are specific examples of the conduct identified in the legislation, the bespoke and novel wording of the prohibitions (focussing on unreasonable manipulation or unreasonable distortion), which departs from the existing prohibitions on unconscionable conduct and unfair contract terms, is likely to cause uncertainty pending judicial consideration. Further, it is apparent that the legislation is not intended to prohibit all dark patterns.</description>
       <content:encoded><![CDATA[
-        <h2>AI Regulatory Tracker</h2>
-        <p><em>This week's AI governance and regulation developments across all 10 APAC jurisdictions.</em></p>
-
-        <div style="background: #f5f0e8; padding: 12px 16px; border-radius: 8px; margin: 16px 0;">
-          <p style="margin: 0; font-size: 0.9em;"><strong>Coverage:</strong> Australia, Singapore, Japan, South Korea, India, Indonesia, Philippines, Hong Kong, New Zealand, Vietnam</p>
-        </div>
-
-        
-            <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #eee;">
-              <p style="margin: 0 0 4px 0;"><strong>🇯🇵 Japan</strong></p>
-              <p style="margin: 0 0 8px 0; font-weight: 600;">The Artificial Intelligence (AI) regulatory tug-of-war: Caught between state, federal laws</p>
-              <p style="margin: 0 0 8px 0; color: #666;">Strachan suggested CIOs consider ... data privacy, cybersecurity and cross-border data transfers. The companies that succeed are &quot;the ones that build a compliance program designed for uncertainty rath...</p>
-              <p style="margin: 0;"><a href="https://www.informationweek.com/machine-learning-ai/the-ai-regulatory-tug-of-war-caught-between-state-and-federal-mandates">Read more &rarr;</a></p>
-            </div>
-
-            <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #eee;">
-              <p style="margin: 0 0 4px 0;"><strong>🇲🇾 Malaysia</strong></p>
-              <p style="margin: 0 0 8px 0; font-weight: 600;">Artificial Intelligence (AI) Governance Bill and US tariff ruling to dominate Dewan Rakyat sitting | Malaysia | The Vibes</p>
-              <p style="margin: 0 0 8px 0; color: #666;">According to the Order Paper published on Parliament’s official website, Rodziah Ismail (PH–Ampang) will, during Minister’s Question Time, ask the Prime Minister to explain how the forthcoming legisla...</p>
-              <p style="margin: 0;"><a href="https://www.thevibes.com/articles/news/119910/ai-governance-bill-and-u.s-tariff-ruling-to-dominate-dewan-rakyat-sitting">Read more &rarr;</a></p>
-            </div>
-
-        <p style="margin-top: 16px; font-size: 0.9em; color: #666;"><em>AI stories identified based on content analysis. Includes AI governance, algorithmic regulation, foundation models, and automated decision-making.</em></p>
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review AI governance frameworks for New Zealand market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
+        </ul>
+        <h2>Practical Impact</h2>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>New Zealand</strong> | Topics: <strong>AI/ML</strong>, <strong>Contract Law</strong>, <strong>Consumer Protection</strong></em></p>
+        <p><a href="https://www.mondaq.com/australia/consumer-trading-unfair-trading/1747234/detail-of-unfair-trading-practices-prohibitions-released">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>[ENFORCEMENT] [Publication] Environmental, Social, and Governance (ESG) And Competition Law In Cross-Border M&amp;A: A Contemporary Shift In Corporate And Commercial Regulation</title>
+      <link>https://www.livelaw.in/articles/esg-competition-law-corporate-commercial-regulation-524608</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Thailand</category>
+      <category>AI/ML</category>
+      <category>Competition</category>
+      <category>Corporate Governance</category>
+      <description>They are no longer confined to voluntary commitments or investor reporting. To ensure merger clearances, the authorities are also prepared to accept or require remedies and commitments to target the objectives of sustainability. Environmental, Social, and Governance (ESG) has become a quasi-regulatory parameter in the merger control phenomenon. The Competition authorities now need to assess not only traditional price and market-structure effects but also sustainability outcomes. This approach represents a contemporary shift in corporate and commercial regulation.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review AI governance frameworks for Thailand market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
+        </ul>
+        <h2>Practical Impact</h2>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>Thailand</strong> | Topics: <strong>AI/ML</strong>, <strong>Competition</strong>, <strong>Corporate Governance</strong></em></p>
+        <p><a href="https://www.livelaw.in/articles/esg-competition-law-corporate-commercial-regulation-524608">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>[NEW LAW] [Publication] UK eyes rapid ban on social media for under 16s, curbs to Artificial Intelligence (AI) chatbots | Reuters</title>
+      <link>https://www.reuters.com/business/media-telecom/uks-starmer-seeks-greater-powers-regulate-online-access-2026-02-15/</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Global/Extraterritorial</category>
+      <category>AI/ML</category>
+      <category>Platform Liability</category>
+      <description>Britain&#x27;s 2023 Online Safety Act is one of the world&#x27;s strictest safety regimes, but it does not cover one-to-one interactions with Artificial Intelligence (AI) chatbots unless they share information with other users, a loophole technology minister Liz Kendall said would ...</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review AI governance frameworks for Global/Extraterritorial market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
+        </ul>
+        <h2>Practical Impact</h2>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>Global/Extraterritorial</strong> | Topics: <strong>AI/ML</strong>, <strong>Platform Liability</strong></em></p>
+        <p><a href="https://www.reuters.com/business/media-telecom/uks-starmer-seeks-greater-powers-regulate-online-access-2026-02-15/">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>[ANALYSIS] [Publication] EU Artificial Intelligence (AI) Act Implementation Project Plan: Key Compliance Steps and Risk Classifications - Lexology</title>
+      <link>https://www.lexology.com/library/detail.aspx?g=2834f709-bf90-4495-85a0-fa3422880ff3</link>
+      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Global/Extraterritorial</category>
+      <category>AI/ML</category>
+      <category>Data Privacy</category>
+      <description>This requirement reflects the extraterritorial scope of the Artificial Intelligence (AI) Act — similar to the General Data Protection Regulation (GDPR) — meaning it applies not only to EU-based companies but also to foreign providers whose AI systems have an impact within the EU market.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review AI governance frameworks for Global/Extraterritorial market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
+        </ul>
+        <h2>Practical Impact</h2>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>Global/Extraterritorial</strong> | Topics: <strong>AI/ML</strong>, <strong>Data Privacy</strong></em></p>
+        <p><a href="https://www.lexology.com/library/detail.aspx?g=2834f709-bf90-4495-85a0-fa3422880ff3">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
       <title>Region Insights - 22 February 2026</title>
       <link>https://legal-digest.local/insights</link>
-      <pubDate>Fri, 27 Feb 2026 12:21:45 +0000</pubDate>
+      <pubDate>Fri, 27 Feb 2026 13:38:53 +0000</pubDate>
       <category>Analysis</category>
       <category>APAC</category>
       <description>Cross-jurisdictional trends and upcoming regulatory developments for the week.</description>
       <content:encoded><![CDATA[
         <h2>Regional Trends &amp; Analysis</h2>
-        <p>AI/ML Focus: Multiple jurisdictions advancing AI governance frameworks<br/>Cross-border impacts: AI/ML developments affecting multinational operations and compliance strategies.<br/>Upcoming: Key consultation period or deadline mentioned in featured developments.</p>
+        <p>AI/ML Focus: Multiple jurisdictions advancing AI governance frameworks<br/>Cross-border impacts: E-commerce developments affecting multinational operations and compliance strategies.<br/>Upcoming: Multiple consultation periods and implementation deadlines across 2 jurisdictions.</p>
         <p><em>Analysis based on this week's regulatory developments across APAC.</em></p>
       ]]></content:encoded>
     </item>
