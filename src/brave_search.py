@@ -56,7 +56,7 @@ class BraveSearchClient:
             time.sleep(1.0 - elapsed)
         self._last_request_time = time.time()
 
-    def search(self, query: str, freshness: str = "pw", count: int = 20) -> List[Dict]:
+    def search(self, query: str, freshness: str = "pm", count: int = 20) -> List[Dict]:
         """
         Execute a web search via Brave Search API.
 

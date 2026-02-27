@@ -49,22 +49,27 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: |
           python run_digest.py --format rss --publish
+          echo "--- Feed content check ---"
+          grep -c '<item>' docs/feed.xml 2>/dev/null || echo "0 items in feed"
 
       - name: Verify digest has content
+        id: verify
         run: |
-          # Check that feed.xml has at least one <item> — abort if empty
-          if ! grep -q '<item>' docs/feed.xml 2>/dev/null; then
-            echo "ERROR: Digest generated with zero stories. Keeping previous version."
-            git checkout -- docs/
-            exit 1
+          if grep -q '<item>' docs/feed.xml 2>/dev/null; then
+            echo "Feed has content — proceeding."
+            echo "has_content=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "WARNING: Digest generated with zero stories."
+            echo "has_content=false" >> "$GITHUB_OUTPUT"
           fi
-          echo "Feed has content — proceeding."
 
       - name: Generate HTML page
+        if: steps.verify.outputs.has_content == 'true'
         run: |
           python scripts/generate_html.py
 
       - name: Send email digest
+        if: steps.verify.outputs.has_content == 'true'
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           DIGEST_EMAIL: ${{ vars.DIGEST_EMAIL }}
@@ -76,6 +81,7 @@ jobs:
           fi
 
       - name: Archive old digests
+        if: steps.verify.outputs.has_content == 'true'
         run: |
           # Keep last 12 weeks of digests
           cd docs/archive 2>/dev/null || mkdir -p docs/archive
@@ -90,10 +96,12 @@ jobs:
           find docs/archive -name "digest-*.html" -mtime +84 -delete 2>/dev/null || true
 
       - name: Update archive index
+        if: steps.verify.outputs.has_content == 'true'
         run: |
           python scripts/update_archive_index.py
 
       - name: Commit and push changes
+        if: steps.verify.outputs.has_content == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"

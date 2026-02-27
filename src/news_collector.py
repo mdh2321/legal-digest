@@ -37,11 +37,10 @@ class NewsCollector:
 
     def build_search_queries(self, jurisdiction: str) -> List[str]:
         """
-        Build optimized search queries for a jurisdiction (~15-20 queries).
+        Build optimized search queries for a jurisdiction (~6-8 queries).
 
-        Uses Brave freshness=pw instead of month/year in query text.
-        Keeps high-value regulator site: searches, drops batched law firm/
-        publication/think tank/association searches.
+        Consolidates topics to minimize API calls while maintaining coverage.
+        Brave freshness parameter handles time filtering.
 
         Args:
             jurisdiction: Two-letter jurisdiction code
@@ -60,45 +59,24 @@ class NewsCollector:
 
         queries = []
 
-        # --- 1. CORE TOPIC QUERIES (5) ---
-        core_topics = [
-            'data privacy data protection law regulation',
-            'cybersecurity law regulation incident breach',
-            'artificial intelligence AI regulation governance',
-            'digital regulation technology law',
-            'platform regulation online safety digital services',
-        ]
-        for topic in core_topics:
-            queries.append(f'{jur_name} {topic}')
+        # --- 1. BROAD TECH LAW QUERY (1) ---
+        queries.append(f'{jur_name} technology law regulation 2026')
 
-        # --- 2. ENFORCEMENT QUERIES (2) ---
-        queries.append(f'{jur_name} enforcement penalty fine data privacy cybersecurity')
-        queries.append(f'{jur_name} investigation compliance order undertaking infringement notice')
+        # --- 2. CORE TOPICS (3, consolidated) ---
+        queries.append(f'{jur_name} data privacy data protection regulation')
+        queries.append(f'{jur_name} cybersecurity regulation data breach law')
+        queries.append(f'{jur_name} artificial intelligence AI regulation governance')
 
-        # --- 3. DATA BREACH QUERY (1) ---
-        queries.append(f'{jur_name} data breach notification cyber incident')
+        # --- 3. ENFORCEMENT + LEGISLATION (2, consolidated) ---
+        queries.append(f'{jur_name} enforcement penalty fine privacy cybersecurity AI')
+        queries.append(f'{jur_name} new law regulation amendment digital technology')
 
-        # --- 4. CONSULTATION / DRAFT LEGISLATION (2) ---
-        queries.append(f'{jur_name} draft legislation consultation technology digital')
-        queries.append(f'{jur_name} proposed regulation amendment privacy AI cybersecurity')
-
-        # --- 5. COMMERCIAL / FINTECH (2) ---
-        queries.append(f'{jur_name} fintech digital assets cryptocurrency regulation')
-        queries.append(f'{jur_name} e-commerce electronic signature contract law')
-
-        # --- 6. REGULATOR SITE SEARCHES (batched, high-value) ---
+        # --- 4. REGULATOR SITE SEARCH (1, if available) ---
         regulator_sites = REGULATOR_SOURCES.get(jurisdiction, [])
         if regulator_sites:
-            for i in range(0, len(regulator_sites), 4):
-                batch = regulator_sites[i:i+4]
-                site_filter = ' OR '.join(f'site:{site}' for site in batch)
-                queries.append(f'{jur_name} regulation announcement ({site_filter})')
-
-        # --- 7. COURT SITE SEARCHES (1-2, if available) ---
-        court_sites = COURT_SOURCES.get(jurisdiction, [])
-        if court_sites:
-            site_filter = ' OR '.join(f'site:{site}' for site in court_sites[:4])
-            queries.append(f'{jur_name} technology data privacy judgment ruling ({site_filter})')
+            batch = regulator_sites[:4]
+            site_filter = ' OR '.join(f'site:{site}' for site in batch)
+            queries.append(f'{jur_name} ({site_filter})')
 
         return queries
 
