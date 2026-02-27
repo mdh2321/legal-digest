@@ -31,7 +31,7 @@ class EmailSender:
             resend.api_key = self.api_key
 
     def send_digest(self, html_content: str, subject: str, to_email: str,
-                    from_email: str = "digest@legal-digest.dev") -> bool:
+                    from_email: str = "onboarding@resend.dev") -> bool:
         """
         Send digest email.
 
