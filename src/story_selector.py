@@ -132,7 +132,8 @@ class StorySelector:
         """
         Check if two stories are about the same news event.
 
-        Uses title similarity, key term overlap, and entity matching.
+        Uses exact URL match (cross-jurisdiction), then title similarity,
+        key term overlap, and entity matching (same jurisdiction only).
 
         Args:
             story1: First story
@@ -142,7 +143,11 @@ class StorySelector:
         Returns:
             bool: True if stories appear to be duplicates
         """
-        # Must be same jurisdiction
+        # Exact URL match = always duplicate regardless of jurisdiction
+        if story1.url == story2.url:
+            return True
+
+        # For content-based similarity, must be same jurisdiction
         if story1.jurisdiction != story2.jurisdiction:
             return False
 
