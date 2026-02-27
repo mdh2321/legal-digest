@@ -32,17 +32,6 @@ def create_brave_search_function():
         print("[DIAG] Brave client NOT enabled.")
         return None
     print("Using Brave Search API for live search.")
-
-    # Diagnostic: test with a simple query
-    print("[DIAG] Testing Brave API with a simple query...")
-    test_results = client.search("Australia data privacy regulation 2026", freshness="pm", count=3)
-    print(f"[DIAG] Test query returned {len(test_results)} results")
-    for r in test_results[:2]:
-        print(f"[DIAG]   - {r.get('title', '?')[:80]}")
-    if not test_results:
-        print("[DIAG] WARNING: Brave API returned zero results for test query!")
-        print(f"[DIAG] API key starts with: {client.api_key[:8]}..." if client.api_key else "[DIAG] No API key!")
-
     return client.search
 
 
