@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>APAC Legal Digest - Week of 18 October 2026</title>
+    <title>APAC Legal Digest - Week of 25 October 2026</title>
     <link>https://legal-digest.local/</link>
     <description>Weekly legal and regulatory news digest for global technology companies operating in Asia-Pacific. Covering Australia, Singapore, Japan, and other APAC jurisdictions.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 25 Oct 2026 22:13:34 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 23:16:57 +0000</lastBuildDate>
     <ttl>10080</ttl>
     <item>
       <title>[GUIDANCE] [Publication] Competition Litigation Laws and Regulations 2027 | Australia</title>
       <link>https://iclg.com/practice-areas/competition-litigation-laws-and-regulations/australia/</link>
-      <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
       <category>Australia</category>
       <category>Data Privacy</category>
       <category>Competition</category>
@@ -31,7 +31,7 @@
     <item>
       <title>[ENFORCEMENT] [Regulator] Privacy regulatory action policy | Office of the Australian Information Commissioner (OAIC)</title>
       <link>https://www.oaic.gov.au/about-the-OAIC/our-regulatory-approach/privacy-regulatory-action-policy</link>
-      <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
       <category>Australia</category>
       <category>AI/ML</category>
       <category>Contract Law</category>
@@ -51,7 +51,7 @@
     <item>
       <title>[ANALYSIS] [Publication] Introduction: how competition authorities are adapting to the digital economy - Lexology</title>
       <link>https://www.lexology.com/indepth/guide/digital-markets-guide/sixth-edition/article/introduction-how-competition-authorities-are-adapting-the-digital-economy</link>
-      <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
       <category>Australia</category>
       <category>AI/ML</category>
       <category>Competition</category>
@@ -71,7 +71,7 @@
     <item>
       <title>[GUIDANCE] [Regulator] Competition, productivity and the role of right-sized regulation | Australian Competition and Consumer Commission (ACCC)</title>
       <link>https://www.accc.gov.au/about-us/news/speeches/competition-productivity-and-the-role-of-right-sized-regulation</link>
-      <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
       <category>Australia</category>
       <category>AI/ML</category>
       <category>Outsourcing</category>
@@ -89,13 +89,14 @@
       ]]></content:encoded>
     </item>
     <item>
-      <title>[ENFORCEMENT] [Publication] When Interface Persuades: Rapido, Dark Patterns And Consumer Protection</title>
-      <link>https://www.livelaw.in/lawschool/articles/when-interface-persuades-rapido-dark-patterns-consumer-protection-551814</link>
-      <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+      <title>[NEW LAW] [Regulator] &quot;Building Trusted Foundations for Digital Finance&quot; - Keynote Address by Mr Chia Der Jiun, Managing Director, Monetary Authority of Singapore, at INSEAD Digital Finance &amp; Agentic Artificial Intelligence (AI) Summit on 9 October 2026</title>
+      <link>https://www.mas.gov.sg/news/speeches/2026/building-trusted-foundations-for-digital-finance</link>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
       <category>Singapore</category>
       <category>AI/ML</category>
-      <category>Consumer Protection</category>
-      <description>The Central Consumer Protection Authority (CCPA) has imposed a penalty of Rs. 10 lakh on Roppen Transportation Services Pvt. Ltd., which operates the app-based taxi aggregator Rapido, for the use of dark patterns in its ride-booking interface, misleading advertisements, and unfair contract terms against the Guidelines for Prevention and Regulation of Dark Patterns, 2023.</description>
+      <category>Competition</category>
+      <category>Fintech</category>
+      <description>Tokenised bank deposits, regulated stablecoins and central bank digital currency can each serve different needs. For example, deposit tokens will find acceptance in banking-related use cases in cash management and payments, while stablecoins may find wider adoption on crypto exchanges and in fintech payments. Whatever the use case, what underpins trusted adoption is safety, stability and wide acceptance. Hence it is important to ensure that settlement assets used in digital markets, particularly for wholesale transactions, are sound, appropriately regulated and able to interoperate.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
@@ -104,34 +105,14 @@
         </ul>
         <h2>Practical Impact</h2>
         <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
-        <p><em>Country: <strong>Singapore</strong> | Topics: <strong>AI/ML</strong>, <strong>Consumer Protection</strong></em></p>
-        <p><a href="https://www.livelaw.in/lawschool/articles/when-interface-persuades-rapido-dark-patterns-consumer-protection-551814">Read full article &rarr;</a></p>
+        <p><em>Country: <strong>Singapore</strong> | Topics: <strong>AI/ML</strong>, <strong>Competition</strong>, <strong>Fintech</strong></em></p>
+        <p><a href="https://www.mas.gov.sg/news/speeches/2026/building-trusted-foundations-for-digital-finance">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>[NEW LAW] [Regulator] &quot;Financial Services and Markets (Amendment) Bill&quot; - Second Reading Speech by Mr Alvin Tan, Minister of State for Foreign Affairs and National Development, and Board Member of the Monetary Authority of Singapore (Monetary Authority of Singapore (MAS)), on behalf of Mr Gan Kim Yong, Deputy Prime Minister and Minister for Energy, Trade and Industry (Trade), and Chairman of MAS, on 6 October 2026</title>
-      <link>https://www.mas.gov.sg/news/speeches/2026/second-reading-speech-for-fsma-bill-2026</link>
-      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
-      <category>Singapore</category>
-      <category>AI/ML</category>
-      <category>Corporate Governance</category>
-      <description>To complement these powers, the Bill will allow Monetary Authority of Singapore (MAS) to impose Total Loss Absorbing Capacity (“TLAC”) requirements. Under this TLAC framework, Domestic Systemically Important Banks (“DSIBs”) in Singapore will be required to hold additional eligible loss-absorbing instruments and other financial resources.</description>
-      <content:encoded><![CDATA[
-        <h2>Key Takeaways</h2>
-        <ul>
-          <li>Review AI governance frameworks for Singapore market requirements</li>
-          <li>Assess disclosure obligations for AI-powered features</li>
-        </ul>
-        <h2>Practical Impact</h2>
-        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
-        <p><em>Country: <strong>Singapore</strong> | Topics: <strong>AI/ML</strong>, <strong>Corporate Governance</strong></em></p>
-        <p><a href="https://www.mas.gov.sg/news/speeches/2026/second-reading-speech-for-fsma-bill-2026">Read full article &rarr;</a></p>
-      ]]></content:encoded>
-    </item>
-    <item>
-      <title>[ANALYSIS] [Regulator] Financial Services Agency (FSA) Weekly Review No.705 October 6, 2026</title>
-      <link>https://www.fsa.go.jp/en/newsletter/weekly2026/705.html</link>
-      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
+      <title>[ANALYSIS] [Regulator] Financial Services Agency (FSA) Weekly Review No.706 October 13, 2026</title>
+      <link>https://www.fsa.go.jp/en/newsletter/weekly2026/706.html</link>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
       <category>Japan</category>
       <category>AI/ML</category>
       <category>Contract Law</category>
@@ -146,13 +127,55 @@
         <h2>Practical Impact</h2>
         <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
         <p><em>Country: <strong>Japan</strong> | Topics: <strong>AI/ML</strong>, <strong>Contract Law</strong>, <strong>Telecom</strong></em></p>
-        <p><a href="https://www.fsa.go.jp/en/newsletter/weekly2026/705.html">Read full article &rarr;</a></p>
+        <p><a href="https://www.fsa.go.jp/en/newsletter/weekly2026/706.html">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>[ENFORCEMENT] [Publication] Upcoming amendments to Indonesia&#x27;s Competition Law: Key changes for businesses - Lexology</title>
+      <link>https://www.lexology.com/library/detail.aspx?g=61bdb6a6-77d7-49e9-801f-117c16734103</link>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
+      <category>Indonesia</category>
+      <category>AI/ML</category>
+      <category>Contract Law</category>
+      <category>Competition</category>
+      <description>To strengthen enforcement against horizontal agreements, the Bill also introduces Indonesia&#x27;s first formal leniency programme. Incentivising disclosure: The programme encourages businesses to voluntarily disclose their involvement in specific anti-competitive conduct (such as price fixing, market allocation, production restrictions, conspiracies and exclusive dealings) and cooperate with KPPU investigations.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review AI governance frameworks for Indonesia market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
+        </ul>
+        <h2>Practical Impact</h2>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>Indonesia</strong> | Topics: <strong>AI/ML</strong>, <strong>Contract Law</strong>, <strong>Competition</strong></em></p>
+        <p><a href="https://www.lexology.com/library/detail.aspx?g=61bdb6a6-77d7-49e9-801f-117c16734103">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>[NEW LAW] [Publication] Stablecoin regulations in Hong Kong and the Philippines | Law.asia</title>
+      <link>https://law.asia/stablecoin-regulations-hong-kong-philippines/</link>
+      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate>
+      <category>Hong Kong</category>
+      <category>Contract Law</category>
+      <category>Competition</category>
+      <category>Corporate Governance</category>
+      <description>Bankruptcy &amp; insolvencyCapital marketsCompetition &amp; antitrustDispute resolutionEmploymentESGHealthcare &amp; life sciencesIntellectual propertyM&amp;AReal estateTaxTMT ... The Stablecoins Ordinance (chapter 656), together with subsidiary legislation (chapter 656A), came into force on 1 August 2025. It created a licensing regime administered primarily by the Hong Kong Monetary Authority (HKMA) for stablecoin issuance in Hong Kong and, in specified cases, outside Hong Kong.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review standard terms for Hong Kong enforceability</li>
+          <li>Assess liability limitation and indemnification clauses</li>
+        </ul>
+        <h2>Practical Impact</h2>
+        <p>Affects standard terms, limitation of liability clauses, auto-renewal provisions, and subscription agreements.</p>
+        <p><em>Country: <strong>Hong Kong</strong> | Topics: <strong>Contract Law</strong>, <strong>Competition</strong>, <strong>Corporate Governance</strong></em></p>
+        <p><a href="https://law.asia/stablecoin-regulations-hong-kong-philippines/">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
       <title>[ENFORCEMENT] [News] OECD Review of Thailand&#x27;s Legal and Policy Framework for Fighting Foreign Bribery | OECD</title>
       <link>https://www.oecd.org/en/publications/oecd-review-of-thailand-s-legal-and-policy-framework-for-fighting-foreign-bribery_09fbb31d-en.html</link>
-      <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
       <category>Thailand</category>
       <category>AI/ML</category>
       <category>Contract Law</category>
@@ -171,9 +194,9 @@
       ]]></content:encoded>
     </item>
     <item>
-      <title>AI Regulatory Tracker - 18 October 2026</title>
+      <title>AI Regulatory Tracker - 25 October 2026</title>
       <link>https://legal-digest.local/ai-tracker</link>
-      <pubDate>Sun, 25 Oct 2026 22:13:34 +0000</pubDate>
+      <pubDate>Sun, 01 Nov 2026 23:16:57 +0000</pubDate>
       <category>AI Regulation</category>
       <category>APAC</category>
       <description>AI governance and regulatory developments across 10 APAC jurisdictions.</description>
@@ -187,25 +210,32 @@
 
         
             <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #eee;">
+              <p style="margin: 0 0 4px 0;"><strong>🇸🇬 Singapore</strong></p>
+              <p style="margin: 0 0 8px 0; font-weight: 600;">&quot;Building Trusted Foundations for Digital Finance&quot; - Keynote Address by Mr Chia Der Jiun, Managing Director, Monetary Authority of Singapore, at INSEAD Digital Finance &amp; Agentic Artificial Intelligence (AI) Summit on 9 October 2026</p>
+              <p style="margin: 0 0 8px 0; color: #666;">Tokenised bank deposits, regulated stablecoins and central bank digital currency can each serve different needs. For example, deposit tokens will find acceptance in banking-related use cases in cash m...</p>
+              <p style="margin: 0;"><a href="https://www.mas.gov.sg/news/speeches/2026/building-trusted-foundations-for-digital-finance">Read more &rarr;</a></p>
+            </div>
+
+            <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #eee;">
               <p style="margin: 0 0 4px 0;"><strong>🇯🇵 Japan</strong></p>
-              <p style="margin: 0 0 8px 0; font-weight: 600;">Financial Services Agency (FSA) Weekly Review No.705 October 6, 2026</p>
+              <p style="margin: 0 0 8px 0; font-weight: 600;">Financial Services Agency (FSA) Weekly Review No.706 October 13, 2026</p>
               <p style="margin: 0 0 8px 0; color: #666;">This page contains the latest in events, developments, and updates to the Financial Services Agency (FSA) website. For files in HTML formats, when you click original press release links, and click the...</p>
-              <p style="margin: 0;"><a href="https://www.fsa.go.jp/en/newsletter/weekly2026/705.html">Read more &rarr;</a></p>
+              <p style="margin: 0;"><a href="https://www.fsa.go.jp/en/newsletter/weekly2026/706.html">Read more &rarr;</a></p>
             </div>
 
         <p style="margin-top: 16px; font-size: 0.9em; color: #666;"><em>AI stories identified based on content analysis. Includes AI governance, algorithmic regulation, foundation models, and automated decision-making.</em></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>Region Insights - 18 October 2026</title>
+      <title>Region Insights - 25 October 2026</title>
       <link>https://legal-digest.local/insights</link>
-      <pubDate>Sun, 25 Oct 2026 22:13:34 +0000</pubDate>
+      <pubDate>Sun, 01 Nov 2026 23:16:57 +0000</pubDate>
       <category>Analysis</category>
       <category>APAC</category>
       <description>Cross-jurisdictional trends and upcoming regulatory developments for the week.</description>
       <content:encoded><![CDATA[
         <h2>Regional Trends &amp; Analysis</h2>
-        <p>AI/ML Focus: Multiple jurisdictions advancing AI governance frameworks<br/>Cross-border impacts: Telecom developments affecting multinational operations and compliance strategies.<br/>Upcoming: Monitor ongoing regulatory consultations and guidance updates.</p>
+        <p>AI/ML Focus: Multiple jurisdictions advancing AI governance frameworks<br/>Cross-border impacts: Fintech developments affecting multinational operations and compliance strategies.<br/>Upcoming: Key consultation period or deadline mentioned in featured developments.</p>
         <p><em>Analysis based on this week's regulatory developments across APAC.</em></p>
       ]]></content:encoded>
     </item>
