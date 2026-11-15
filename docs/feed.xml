@@ -1,41 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>APAC Legal Digest - Week of 01 November 2026</title>
+    <title>APAC Legal Digest - Week of 08 November 2026</title>
     <link>https://legal-digest.local/</link>
     <description>Weekly legal and regulatory news digest for global technology companies operating in Asia-Pacific. Covering Australia, Singapore, Japan, and other APAC jurisdictions.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Nov 2026 23:20:16 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2026 23:42:19 +0000</lastBuildDate>
     <ttl>10080</ttl>
     <item>
-      <title>[GUIDANCE] [Publication] Competition Litigation Laws and Regulations 2027 | Australia</title>
-      <link>https://iclg.com/practice-areas/competition-litigation-laws-and-regulations/australia/</link>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
-      <category>Australia</category>
-      <category>Data Privacy</category>
-      <category>Competition</category>
-      <category>Corporate Governance</category>
-      <description>The firm’s pro bono programme focuses on supporting low income, disadvantaged and marginalised people in the Australian community. ... The firm’s services span: board advisory and governance; class actions; competition and antitrust; corporate crime and investigations; cyber, privacy and data protection; dispute resolution; employment and industrial relations; energy and resources; environment and planning; environmental, social and governance (Environmental, Social, and Governance (ESG)); equity capital markets; finance; financial services regulation; foreign direct investment; funds management; information technology and communications; intellectual property; merger arbitrage; mergers and acquisitions; private equity and venture capital; projects and construction; real estate; restructuring and insolvency; and tax.</description>
-      <content:encoded><![CDATA[
-        <h2>Key Takeaways</h2>
-        <ul>
-          <li>Review data handling practices for Australia compliance</li>
-          <li>Assess cross-border data transfer mechanisms</li>
-        </ul>
-        <h2>Practical Impact</h2>
-        <p>Affects customer data handling, DPA requirements, <strong>cross-border</strong> transfers, and data subject rights <strong>implementation</strong>.</p>
-        <p><em>Country: <strong>Australia</strong> | Topics: <strong>Data Privacy</strong>, <strong>Competition</strong>, <strong>Corporate Governance</strong></em></p>
-        <p><a href="https://iclg.com/practice-areas/competition-litigation-laws-and-regulations/australia/">Read full article &rarr;</a></p>
-      ]]></content:encoded>
-    </item>
-    <item>
-      <title>[ENFORCEMENT] [Regulator] Privacy regulatory action policy | Office of the Australian Information Commissioner (OAIC)</title>
-      <link>https://www.oaic.gov.au/about-the-OAIC/our-regulatory-approach/privacy-regulatory-action-policy</link>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <title>[ENFORCEMENT] [Law Firm] When Competition Meets Consumer Protection: Europe’s Expanding Playbook on Algorithmic Pricing | Freshfields</title>
+      <link>https://www.freshfields.com/en/our-thinking/blogs/risk-and-compliance/when-competition-meets-consumer-protection-europes-expanding-playbook-on-algori-102o8iv</link>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
       <category>Australia</category>
       <category>AI/ML</category>
-      <category>Contract Law</category>
-      <description>Chapter 7: Civil penalties — serious or repeated interference with privacy and other penalty provisions ... The Office of the Australian Information Commissioner (OAIC) is updating this page to reflect changes to the Privacy Act 1988 made by the Privacy and Other Legislation Amendment Act 2024 (POLA Act). These changes enhance the privacy of individuals with respect to their personal information, and include changes to the Information Commissioner’s enforcement powers.</description>
+      <category>Data Privacy</category>
+      <category>Competition</category>
+      <description>Finally, competition authorities may take unlawful personalized pricing behavior under the General Data Protection Regulation (General Data Protection Regulation (GDPR)) into account when establishing an abuse of dominance under Article 102 TFEU. Beyond classic antitrust enforcement, algorithmic pricing sits at the centre of a converging web of European digital, consumer, and data protection rules. Enforcers are no longer looking only at collusion or market power; they are policing the data inputs that fuel pricing engines and the consumer-facing tactics used to display those prices.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
@@ -44,14 +24,54 @@
         </ul>
         <h2>Practical Impact</h2>
         <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
-        <p><em>Country: <strong>Australia</strong> | Topics: <strong>AI/ML</strong>, <strong>Contract Law</strong></em></p>
-        <p><a href="https://www.oaic.gov.au/about-the-OAIC/our-regulatory-approach/privacy-regulatory-action-policy">Read full article &rarr;</a></p>
+        <p><em>Country: <strong>Australia</strong> | Topics: <strong>AI/ML</strong>, <strong>Data Privacy</strong>, <strong>Competition</strong></em></p>
+        <p><a href="https://www.freshfields.com/en/our-thinking/blogs/risk-and-compliance/when-competition-meets-consumer-protection-europes-expanding-playbook-on-algori-102o8iv">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>[ENFORCEMENT] [Publication] Reuters Antitrust News | Today&#x27;s Latest Stories | Reuters</title>
+      <link>https://www.reuters.com/legal/antitrust/</link>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
+      <category>Australia</category>
+      <category>AI/ML</category>
+      <category>Competition</category>
+      <description>Nigeria&#x27;s state oil firm ‌NNPC has accused Dangote Petroleum Refinery of seeking to restrict competition and expose the country&#x27;s fuel market to monopoly control by challenging import licences issued to rival marketers, according to court documents seen by ​Reuters. ... EU antitrust regulators will decide by June 26 ​whether to clear oilfield services ‌firm Baker Hughes&#x27; $13.6 billion acquisition of Chart Industries , according to a ​European Commission filing. ... Australia’s competition watchdog said on Friday that Coles and dairy firm Brownes ​Foods Operations each paid A$39,600 ($28,270.44) after ‌receiving infringement notices for restrictive milk supply terms and unclear pricing, respectively.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review AI governance frameworks for Australia market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
+        </ul>
+        <h2>Practical Impact</h2>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>Australia</strong> | Topics: <strong>AI/ML</strong>, <strong>Competition</strong></em></p>
+        <p><a href="https://www.reuters.com/legal/antitrust/">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>[CONSULTATION] [Law Firm] Proposed EU Digital Fairness Act targets addictive design, &#x27;dark patterns&#x27; and unfair personalisation | Osborne Clarke</title>
+      <link>https://www.osborneclarke.com/insights/proposed-eu-digital-fairness-act-targets-addictive-design-dark-patterns-and-unfair</link>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
+      <category>Australia</category>
+      <category>AI/ML</category>
+      <category>Consumer Protection</category>
+      <description>The proposal blacklists ten &quot;dark patterns&quot; considered unfair in all circumstances, which the Commission would have the power to update. The list includes false availability or popularity claims; persistent messaging throughout the ordering process creating an impression of product scarcity; defaults that consumers have to reject; inferred consent to payment for additional products; price, contract duration and automatic renewal information presented less prominently than other material information; sending fake notifications to encourage consumers to re-engage with a platform or site; and making it difficult for consumers to refuse, withdraw or change a choice they have made.</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review AI governance frameworks for Australia market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
+        </ul>
+        <h2>Practical Impact</h2>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>Australia</strong> | Topics: <strong>AI/ML</strong>, <strong>Consumer Protection</strong></em></p>
+        <p><a href="https://www.osborneclarke.com/insights/proposed-eu-digital-fairness-act-targets-addictive-design-dark-patterns-and-unfair">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
       <title>[GUIDANCE] [Regulator] Competition, productivity and the role of right-sized regulation | Australian Competition and Consumer Commission (ACCC)</title>
       <link>https://www.accc.gov.au/about-us/news/speeches/competition-productivity-and-the-role-of-right-sized-regulation</link>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
       <category>Australia</category>
       <category>AI/ML</category>
       <category>Outsourcing</category>
@@ -69,14 +89,35 @@
       ]]></content:encoded>
     </item>
     <item>
-      <title>[GUIDANCE] [Regulator] Opening Address by Minister Josephine Teo at the Singapore International Cyber Week (Day 2) on 14 Oct 2026 | Cyber Security Agency of Singapore</title>
-      <link>https://www.csa.gov.sg/news-events/speeches/opening-address-by-minister-josephine-teo-at-the-singapore-international-cyber-week-day-2-on-14-oct-2026/</link>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <title>[NEW LAW] [Law Firm] Digital Fairness Act What the first draft means for businesses - Bird &amp; Bird</title>
+      <link>https://www.twobirds.com/en/insights/2026/digital-fairness-act-what-the-first-draft-means-for-businesses</link>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
+      <category>Singapore</category>
+      <category>AI/ML</category>
+      <category>Data Privacy</category>
+      <category>E-commerce</category>
+      <description>Today’s rules form a patchwork: The Digital Services Act (“DSA”) bans dark patterns, but only on online platforms, and it steps back where consumer law or the General Data Protection Regulation ...</description>
+      <content:encoded><![CDATA[
+        <h2>Key Takeaways</h2>
+        <ul>
+          <li>Review AI governance frameworks for Singapore market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
+        </ul>
+        <h2>Practical Impact</h2>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>Singapore</strong> | Topics: <strong>AI/ML</strong>, <strong>Data Privacy</strong>, <strong>E-commerce</strong></em></p>
+        <p><a href="https://www.twobirds.com/en/insights/2026/digital-fairness-act-what-the-first-draft-means-for-businesses">Read full article &rarr;</a></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>[GUIDANCE] [Regulator] Advisory on Recent Uptick in Reported Cyber Incidents | Cyber Security Agency of Singapore</title>
+      <link>https://www.csa.gov.sg/alerts-and-advisories/advisories/ad-2026-017/</link>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
       <category>Singapore</category>
       <category>AI/ML</category>
       <category>Cybersecurity</category>
       <category>IP</category>
-      <description>At the Singapore International Cyber Week 2026, Minister Josephine Teo highlighted Singapore’s efforts to address Artificial Intelligence (AI)-enabled scams and emerging quantum threats. She outlined initiatives to strengthen scam detection and announced new quantum-safe migration guidance for organisations to complete migration by 2035, alongside a Quantum-Safe Kickstarter Grant to support early pilots and help organisations prepare for future cybersecurity risks.</description>
+      <description>Since September, the average monthly number of reported cyber incidents has been three times the January–August average. These incidents do not appear to be part of coordinated campaigns targeting Singapore, but reflect a broader global trend of opportunistic attacks.</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
@@ -86,13 +127,13 @@
         <h2>Practical Impact</h2>
         <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
         <p><em>Country: <strong>Singapore</strong> | Topics: <strong>AI/ML</strong>, <strong>Cybersecurity</strong>, <strong>IP</strong></em></p>
-        <p><a href="https://www.csa.gov.sg/news-events/speeches/opening-address-by-minister-josephine-teo-at-the-singapore-international-cyber-week-day-2-on-14-oct-2026/">Read full article &rarr;</a></p>
+        <p><a href="https://www.csa.gov.sg/alerts-and-advisories/advisories/ad-2026-017/">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>[ANALYSIS] [Regulator] Financial Services Agency (FSA) Weekly Review No.706 October 13, 2026</title>
-      <link>https://www.fsa.go.jp/en/newsletter/weekly2026/706.html</link>
-      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <title>[ANALYSIS] [Regulator] Financial Services Agency (FSA) Weekly Review No.707 October 20, 2026</title>
+      <link>https://www.fsa.go.jp/en/newsletter/weekly2026/707.html</link>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
       <category>Japan</category>
       <category>AI/ML</category>
       <category>Contract Law</category>
@@ -107,34 +148,13 @@
         <h2>Practical Impact</h2>
         <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
         <p><em>Country: <strong>Japan</strong> | Topics: <strong>AI/ML</strong>, <strong>Contract Law</strong>, <strong>Telecom</strong></em></p>
-        <p><a href="https://www.fsa.go.jp/en/newsletter/weekly2026/706.html">Read full article &rarr;</a></p>
-      ]]></content:encoded>
-    </item>
-    <item>
-      <title>[NEW LAW] [Publication] The ultimate guide to Indonesia’s latest patent regulation | Law.asia</title>
-      <link>https://law.asia/indonesia-latest-patent-regulation/</link>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
-      <category>Indonesia</category>
-      <category>Competition</category>
-      <category>Corporate Governance</category>
-      <category>IP</category>
-      <description>Bankruptcy &amp; insolvencyCapital marketsCompetition &amp; antitrustDispute resolutionEmploymentESGHealthcare &amp; life sciencesIntellectual propertyM&amp;AReal estateTaxTMT ... The government of Indonesia has enacted Ministry of Law Regulation No.6 of 2026, introducing an updated procedural framework for patent applications before the Directorate General of Intellectual Property (DGIP).</description>
-      <content:encoded><![CDATA[
-        <h2>Key Takeaways</h2>
-        <ul>
-          <li>Monitor Indonesia competition authority guidance</li>
-          <li>Review platform practices and self-preferencing policies</li>
-        </ul>
-        <h2>Practical Impact</h2>
-        <p>Influences market strategy, platform practices, and potential regulatory scrutiny of digital services.</p>
-        <p><em>Country: <strong>Indonesia</strong> | Topics: <strong>Competition</strong>, <strong>Corporate Governance</strong>, <strong>IP</strong></em></p>
-        <p><a href="https://law.asia/indonesia-latest-patent-regulation/">Read full article &rarr;</a></p>
+        <p><a href="https://www.fsa.go.jp/en/newsletter/weekly2026/707.html">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
       <title>[ENFORCEMENT] [Publication] Upcoming amendments to Indonesia&#x27;s Competition Law: Key changes for businesses - Lexology</title>
       <link>https://www.lexology.com/library/detail.aspx?g=61bdb6a6-77d7-49e9-801f-117c16734103</link>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
       <category>Indonesia</category>
       <category>AI/ML</category>
       <category>Contract Law</category>
@@ -153,30 +173,30 @@
       ]]></content:encoded>
     </item>
     <item>
-      <title>[NEW LAW] [Publication] Stablecoin regulations in Hong Kong and the Philippines | Law.asia</title>
-      <link>https://law.asia/stablecoin-regulations-hong-kong-philippines/</link>
-      <pubDate>Fri, 01 Aug 2025 00:00:00 +0000</pubDate>
-      <category>Hong Kong</category>
+      <title>[ENFORCEMENT] [Publication] Malaysia’s regulatory overhaul: key reforms that businesses need to track - Lexology Pro</title>
+      <link>https://www.lexology.com/pro/content/malaysias-regulatory-overhaul-key-reforms-businesses-need-track</link>
+      <pubDate>Fri, 19 Feb 2027 00:00:00 +0000</pubDate>
+      <category>Malaysia</category>
+      <category>AI/ML</category>
       <category>Contract Law</category>
       <category>Competition</category>
-      <category>Corporate Governance</category>
-      <description>Bankruptcy &amp; insolvencyCapital marketsCompetition &amp; antitrustDispute resolutionEmploymentESGHealthcare &amp; life sciencesIntellectual propertyM&amp;AReal estateTaxTMT ... The Stablecoins Ordinance (chapter 656), together with subsidiary legislation (chapter 656A), came into force on 1 August 2025. It created a licensing regime administered primarily by the Hong Kong Monetary Authority (HKMA) for stablecoin issuance in Hong Kong and, in specified cases, outside Hong Kong.</description>
+      <description>From Artificial Intelligence (AI) governance and cybercrime to food safety and competition law, Malaysia’s reforms pursue stronger oversight, tougher penalties and more proactive enforcement. ... Tell us what would make legal research, regulatory monitoring and practical guidance more valuable in your day-to-day work. ... Checklist Checklist: What to consider when reviewing a software license agreement – Business-to-Business (B2B) (USA) View all · Anti-Bribery &amp; Corruption - The UK Legislative Framework &amp; International Landscape Explored - Learn Live MBL Seminars | 2 CPD hours Online 19 February 2027</description>
       <content:encoded><![CDATA[
         <h2>Key Takeaways</h2>
         <ul>
-          <li>Review standard terms for Hong Kong enforceability</li>
-          <li>Assess liability limitation and indemnification clauses</li>
+          <li>Review AI governance frameworks for Malaysia market requirements</li>
+          <li>Assess disclosure obligations for AI-powered features</li>
         </ul>
         <h2>Practical Impact</h2>
-        <p>Affects standard terms, limitation of liability clauses, auto-renewal provisions, and subscription agreements.</p>
-        <p><em>Country: <strong>Hong Kong</strong> | Topics: <strong>Contract Law</strong>, <strong>Competition</strong>, <strong>Corporate Governance</strong></em></p>
-        <p><a href="https://law.asia/stablecoin-regulations-hong-kong-philippines/">Read full article &rarr;</a></p>
+        <p>Influences AI feature development, disclosure requirements, and liability frameworks for AI-powered services.</p>
+        <p><em>Country: <strong>Malaysia</strong> | Topics: <strong>AI/ML</strong>, <strong>Contract Law</strong>, <strong>Competition</strong></em></p>
+        <p><a href="https://www.lexology.com/pro/content/malaysias-regulatory-overhaul-key-reforms-businesses-need-track">Read full article &rarr;</a></p>
       ]]></content:encoded>
     </item>
     <item>
       <title>[ENFORCEMENT] [News] OECD Review of Thailand&#x27;s Legal and Policy Framework for Fighting Foreign Bribery | OECD</title>
       <link>https://www.oecd.org/en/publications/oecd-review-of-thailand-s-legal-and-policy-framework-for-fighting-foreign-bribery_09fbb31d-en.html</link>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
       <category>Thailand</category>
       <category>AI/ML</category>
       <category>Contract Law</category>
@@ -195,9 +215,9 @@
       ]]></content:encoded>
     </item>
     <item>
-      <title>AI Regulatory Tracker - 01 November 2026</title>
+      <title>AI Regulatory Tracker - 08 November 2026</title>
       <link>https://legal-digest.local/ai-tracker</link>
-      <pubDate>Sun, 08 Nov 2026 23:20:16 +0000</pubDate>
+      <pubDate>Sun, 15 Nov 2026 23:42:19 +0000</pubDate>
       <category>AI Regulation</category>
       <category>APAC</category>
       <description>AI governance and regulatory developments across 10 APAC jurisdictions.</description>
@@ -211,25 +231,39 @@
 
         
             <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #eee;">
+              <p style="margin: 0 0 4px 0;"><strong>🇦🇺 Australia</strong></p>
+              <p style="margin: 0 0 8px 0; font-weight: 600;">When Competition Meets Consumer Protection: Europe’s Expanding Playbook on Algorithmic Pricing | Freshfields</p>
+              <p style="margin: 0 0 8px 0; color: #666;">Finally, competition authorities may take unlawful personalized pricing behavior under the General Data Protection Regulation (General Data Protection Regulation (GDPR)) into account when establishing...</p>
+              <p style="margin: 0;"><a href="https://www.freshfields.com/en/our-thinking/blogs/risk-and-compliance/when-competition-meets-consumer-protection-europes-expanding-playbook-on-algori-102o8iv">Read more &rarr;</a></p>
+            </div>
+
+            <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #eee;">
               <p style="margin: 0 0 4px 0;"><strong>🇯🇵 Japan</strong></p>
-              <p style="margin: 0 0 8px 0; font-weight: 600;">Financial Services Agency (FSA) Weekly Review No.706 October 13, 2026</p>
+              <p style="margin: 0 0 8px 0; font-weight: 600;">Financial Services Agency (FSA) Weekly Review No.707 October 20, 2026</p>
               <p style="margin: 0 0 8px 0; color: #666;">This page contains the latest in events, developments, and updates to the Financial Services Agency (FSA) website. For files in HTML formats, when you click original press release links, and click the...</p>
-              <p style="margin: 0;"><a href="https://www.fsa.go.jp/en/newsletter/weekly2026/706.html">Read more &rarr;</a></p>
+              <p style="margin: 0;"><a href="https://www.fsa.go.jp/en/newsletter/weekly2026/707.html">Read more &rarr;</a></p>
+            </div>
+
+            <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #eee;">
+              <p style="margin: 0 0 4px 0;"><strong>🇲🇾 Malaysia</strong></p>
+              <p style="margin: 0 0 8px 0; font-weight: 600;">Malaysia’s regulatory overhaul: key reforms that businesses need to track - Lexology Pro</p>
+              <p style="margin: 0 0 8px 0; color: #666;">From Artificial Intelligence (AI) governance and cybercrime to food safety and competition law, Malaysia’s reforms pursue stronger oversight, tougher penalties and more proactive enforcement. ... Tell...</p>
+              <p style="margin: 0;"><a href="https://www.lexology.com/pro/content/malaysias-regulatory-overhaul-key-reforms-businesses-need-track">Read more &rarr;</a></p>
             </div>
 
         <p style="margin-top: 16px; font-size: 0.9em; color: #666;"><em>AI stories identified based on content analysis. Includes AI governance, algorithmic regulation, foundation models, and automated decision-making.</em></p>
       ]]></content:encoded>
     </item>
     <item>
-      <title>Region Insights - 01 November 2026</title>
+      <title>Region Insights - 08 November 2026</title>
       <link>https://legal-digest.local/insights</link>
-      <pubDate>Sun, 08 Nov 2026 23:20:16 +0000</pubDate>
+      <pubDate>Sun, 15 Nov 2026 23:42:19 +0000</pubDate>
       <category>Analysis</category>
       <category>APAC</category>
       <description>Cross-jurisdictional trends and upcoming regulatory developments for the week.</description>
       <content:encoded><![CDATA[
         <h2>Regional Trends &amp; Analysis</h2>
-        <p>AI/ML Focus: Multiple jurisdictions advancing AI governance frameworks<br/>Cross-border impacts: Corporate Governance developments affecting multinational operations and compliance strategies.<br/>Upcoming: Key consultation period or deadline mentioned in featured developments.</p>
+        <p>AI/ML Focus: Multiple jurisdictions advancing AI governance frameworks<br/>Cross-border impacts: Contract Law developments affecting multinational operations and compliance strategies.<br/>Upcoming: Multiple consultation periods and implementation deadlines across 3 jurisdictions.</p>
         <p><em>Analysis based on this week's regulatory developments across APAC.</em></p>
       ]]></content:encoded>
     </item>
